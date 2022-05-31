@@ -6,4 +6,3 @@ raw_data/
 *.csv
 **/__pycache__/
 .env
-Nico_overpassAPI.ipynb
