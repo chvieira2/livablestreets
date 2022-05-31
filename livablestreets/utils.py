@@ -31,10 +31,10 @@ def m_to_coord(m, latitude=52.52, direction='east'):
     """
 
     # Coordinate offsets in radians
-    if direction in ['east', 'west', 'e', 'w']:
-        return m/(111_111*math.cos(latitude))
-    elif direction in ['north', 'south', 'n', 's']:
-        return m/111_111
+    if direction in ['x', 'east', 'west', 'e', 'w']:
+        return abs(m/(111_111*math.cos(latitude)))
+    elif direction in ['y', 'north', 'south', 'n', 's']:
+        return abs(m/111_111)
     return None
 
 
