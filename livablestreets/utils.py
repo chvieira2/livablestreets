@@ -41,6 +41,28 @@ def m_to_coord(m, latitude=52.52, direction='east'):
 def compute_rmse(y_pred, y_true):
     return np.sqrt(((y_pred - y_true) ** 2).mean())
 
+def haversine_vectorized(df,
+                         start_lat="lat_center",
+                         start_lon="lng_center",
+                         end_lat=52.50149,  # Berlin centroid lat
+                         end_lon=13.40232):  # Berlin centroid lng
+    """
+        Calculate the great circle distance between two points
+        on the earth (specified in decimal degrees).
+        Vectorized version of the haversine distance for pandas df
+        Computes distance in kms
+    """
+
+    lat_1_rad, lon_1_rad = np.radians(df[start_lat].astype(float)), np.radians(df[start_lon].astype(float))
+    lat_2_rad, lon_2_rad = np.radians(end_lat), np.radians(end_lon)
+    dlon = lon_2_rad - lon_1_rad
+    dlat = lat_2_rad - lat_1_rad
+
+    a = np.sin(dlat / 2.0) ** 2 + np.cos(lat_1_rad) * np.cos(lat_2_rad) * np.sin(dlon / 2.0) ** 2
+    c = 2 * np.arcsin(np.sqrt(a))
+    return 6371 * c
+
+
 
 if __name__ == '__main__':
     print(m_to_coord(10))
