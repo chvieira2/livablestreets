@@ -1,13 +1,11 @@
-import time
-
+import math
 import numpy as np
 
 
-def haversine_vectorized(df,
-                         start_lat="pickup_latitude",
-                         start_lon="pickup_longitude",
-                         end_lat="dropoff_latitude",
-                         end_lon="dropoff_longitude"):
+def coord_to_m(start_lat,
+               start_lon,
+               end_lat,
+               end_lon):
     """
         Calculate the great circle distance between two points
         on the earth (specified in decimal degrees).
@@ -15,8 +13,8 @@ def haversine_vectorized(df,
         Computes distance in kms
     """
 
-    lat_1_rad, lon_1_rad = np.radians(df[start_lat].astype(float)), np.radians(df[start_lon].astype(float))
-    lat_2_rad, lon_2_rad = np.radians(df[end_lat].astype(float)), np.radians(df[end_lon].astype(float))
+    lat_1_rad, lon_1_rad = np.radians(start_lat), np.radians(start_lon)
+    lat_2_rad, lon_2_rad = np.radians(end_lat), np.radians(end_lon)
     dlon = lon_2_rad - lon_1_rad
     dlat = lat_2_rad - lat_1_rad
 
@@ -25,13 +23,21 @@ def haversine_vectorized(df,
     return 6371 * c
 
 
-def minkowski_distance(df, p,
-                       start_lat="pickup_latitude",
-                       start_lon="pickup_longitude",
-                       end_lat="dropoff_latitude",
-                       end_lon="dropoff_longitude"):
-    x1 = df[start_lon]
-    x2 = df[end_lon]
-    y1 = df[start_lat]
-    y2 = df[end_lat]
-    return ((abs(x2 - x1) ** p) + (abs(y2 - y1)) ** p) ** (1 / p)
+def m_to_coord(m, latitude=52.52, direction='east'):
+    """
+        Takes an offset in meters in a given direction (north, south, east and west) at a given latitude and returns the corresponding value in lat (north or south) or lon (east or west) degrees
+        Uses the French approximation.
+        More info here: https://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+    """
+
+    # Coordinate offsets in radians
+    if direction in ['x', 'east', 'west', 'e', 'w']:
+        return abs(m/(111_111*math.cos(latitude)))
+    elif direction in ['y', 'north', 'south', 'n', 's']:
+        return abs(m/111_111)
+    return None
+
+
+if __name__ == '__main__':
+    print(m_to_coord(10))
+    print(m_to_coord(10, direction='south'))
