@@ -38,6 +38,10 @@ def m_to_coord(m, latitude=52.52, direction='east'):
     return None
 
 
+def compute_rmse(y_pred, y_true):
+    return np.sqrt(((y_pred - y_true) ** 2).mean())
+
+
 if __name__ == '__main__':
     print(m_to_coord(10))
     print(m_to_coord(10, direction='south'))
