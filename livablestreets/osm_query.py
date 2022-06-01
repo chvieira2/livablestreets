@@ -2,8 +2,15 @@ import requests
 import json
 
 
+overpass_url = "http://overpass-api.de/api/interpreter"
+
+study_area = 'area["ISO3166-2"="DE-BE"]->.berlin'
+
+keys_values_osm = {'amenity':['bbq','cafe']}
+
+
 def param_nodes(keys):
-    '''converts the dict into a string, returns a str for quering nodes'''
+    '''converts the dict into a string, returns a str'''
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
@@ -11,7 +18,7 @@ def param_nodes(keys):
     return osm_keys
 
 def param_ways(keys):
-    '''converts the dict into a string, returns a str for quering ways'''
+    '''converts the dict into a string, returns a str'''
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
@@ -19,7 +26,7 @@ def param_ways(keys):
     return osm_keys
 
 def param_areas(keys):
-    '''converts the dict into a string, returns a str for quering areas'''
+    '''converts the dict into a string, returns a str'''
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
@@ -27,21 +34,18 @@ def param_areas(keys):
     return osm_keys
 
 
-def query_params_osm(keys, feat='nodes'):
+def query_params_osm(keys, feat):
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can added to a same key as a list, returns a dict
     arg feat = nodes, ways or areas'''
 
-    overpass_url = "http://overpass-api.de/api/interpreter"
-    study_area = 'area["ISO3166-2"="DE-BE"]->.berlin'
-
     if feat == 'ways':
         params = param_ways(keys)
-        out_type = 'skel'
+        out_type = 'geom'
     if feat == 'areas':
         params = param_areas(keys)
-        out_type = 'skel'
-    else:
+        out_type = 'geom'
+    if feat == 'nodes':
         params = param_nodes(keys)
         out_type = 'center'
 
