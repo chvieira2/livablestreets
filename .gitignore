@@ -3,7 +3,9 @@
 .ipynb_checkpoints
 .DS_Store
 raw_data/
-*.csv
+
+# *.csv
+
 **/__pycache__/
 .env
 Nico_overpassAPI.ipynb
