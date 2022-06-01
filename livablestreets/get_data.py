@@ -24,7 +24,7 @@ culture = {'amenity':['social_centre','theatre','public_bookcase',
 
 community = {'office': ['association','charity', 'coworking',
                         'educational_institution', 'employment_agency', 'foundation',
-                        'ngo', ; 'political_party', 'research']}
+                        'ngo', 'political_party', 'research']}
 
 #Queries for acitvities
 health_care = {'amenity':['baby_hatch','clinic','dentist',
@@ -40,11 +40,11 @@ education = {'amenity':['college','kindergarten','language_school',
 economic = {'amenity':['atm', 'bank', 'bureau_de_change']}
 
 #Queries for comfort
-comfort_spots = {'amenity':['bbq','bench','dog_toilet',
+comfort_sports = {'amenity':['bbq','bench','dog_toilet',
                       '	drinking_water', 'give_box', 'shelter', 'shower',
                       'toilets', 'water_point', 'watering_place']}
 
-leisure_spots = {'leisure':['bandstand','bird_hide','dog_park',
+leisure_sports = {'leisure':['bandstand','bird_hide','dog_park',
                       'firepit', 'swimming_pool', 'stadium', 'sports_centre',
                       'pitch', 'picnic_table', 'fitness_centre'],
                  'historic':''}
