@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import time
 
 
 def coord_to_m(start_lat,
@@ -63,6 +64,19 @@ def haversine_vectorized(df,
     return 6371 * c
 
 
+def simple_time_tracker(method):
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+        if 'log_time' in kw:
+            name = kw.get('log_name', method.__name__.upper())
+            kw['log_time'][name] = int((te - ts))
+        else:
+            print(method.__name__, round(te - ts, 2))
+        return result
+
+    return timed
 
 if __name__ == '__main__':
     print(m_to_coord(10))
