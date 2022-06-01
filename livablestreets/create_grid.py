@@ -80,7 +80,7 @@ def calculate_features_from_centroid(df, polygon = None):
 
     return df
 
-def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 30):
+def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 1000):
     if stepsize > 1: # This means that the step size is in meters and should be converted to degrees
         stepsize_x = m_to_coord(stepsize, latitude=north_lat, direction='x')
         stepsize_y = m_to_coord(stepsize, direction='y')
@@ -94,22 +94,29 @@ def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 30):
     lng_end = []
     lat_center = []
     lng_center = []
-
+    # polygons = []
     for y in np.arange(north_lat, south_lat-stepsize_y, stepsize_y)[::-1]:
         for x in np.arange(east_lng, west_lng-stepsize_x, stepsize_x):
             lat_start.append(y)
             lat_end.append(y+stepsize_y)
             lng_start.append(x)
             lng_end.append(x+stepsize_x)
+
             lat_center.append(np.mean([y,y+stepsize_y]))
             lng_center.append(np.mean([x,x+stepsize_x]))
+
+            # polygons.append(Polygon([Point(y,x),
+            #       Point(y,x+stepsize_x),
+            #       Point(y+stepsize_y,x),
+            #       Point(y+stepsize_y,x+stepsize_x)]))
 
     df = pd.DataFrame({'lat_start':lat_start,
                          'lat_end':lat_end,
                          'lng_start':lng_start,
                          'lng_end':lng_end,
                          'lat_center': lat_center,
-                         'lng_center': lng_center,
+                         'lng_center': lng_center
+                        #  'geometry':polygons
                          })
 
     df = calculate_features_from_centroid(df)
@@ -120,8 +127,9 @@ def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 30):
 if __name__ == '__main__':
     # print(m_to_coord(100)) # check if import is working
     df = create_geofence(52.338246, 52.675508, 13.088348, 13.761159) # using official Berlin boundaries
+    print(df)
     print(len(df[df['grid_in_berlin']]), len(df))
-    df.to_csv('raw_data/Berlin_grid.csv',index=False)
+    df.to_csv('raw_data/Berlin_grid_1000m.csv',index=False)
     # print(get_shape_berlin()[1])
     # print(is_point_in_polygon(52.50149,13.40232)) # Berlin centroid, so it should return True
     # calculate_features_from_centroid(create_geofence(52.338246, 52.675508, 13.088348, 13.761159))
