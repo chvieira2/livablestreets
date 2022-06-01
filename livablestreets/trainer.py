@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # Get geafence and features
     grid_size = 1000 # in meters (but also accepts degrees if wanted)
     coordenates = [52.343717, 52.650508, 13.114412, 13.739281] # Geofence over Berlin (official Berlin boundaries). Should input users locations in the future.
-    df = get_file_from_gcp(file_name=' Berlin_grid_1000m.csv')
+    df = get_file_from_gcp(file_name=f'Berlin_grid_{grid_size}m.csv')
     # df = function_that_adds_features(df)
 
 
