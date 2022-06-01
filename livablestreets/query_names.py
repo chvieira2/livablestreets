@@ -24,7 +24,7 @@ culture = {'amenity':['social_centre','theatre','public_bookcase',
 
 community = {'office': ['association','charity', 'coworking',
                         'educational_institution', 'employment_agency', 'foundation',
-                        'ngo', ; 'political_party', 'research']}
+                        'ngo', 'political_party', 'research']}
 
 #Queries for acitvities
 health_care = {'amenity':['baby_hatch','clinic','dentist',
