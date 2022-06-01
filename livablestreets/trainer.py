@@ -111,19 +111,24 @@ class Trainer(object):
 if __name__ == "__main__":
     # Get geafence and features
     grid_spacing = 20 # in meters (but also accepts degrees if wanted)
-    coordenates = [52.343717, 52.650508, 13.114412, 13.739281] # Geofence over Berlin (coordenates chosen by eye). Should input users locations in the future.
+    coordenates = [52.343717, 52.650508, 13.114412, 13.739281] # Geofence over Berlin (official Berlin boundaries). Should input users locations in the future.
     df = create_geofence(coordenates[0], coordenates[1], coordenates[2], coordenates[3], stepsize=grid_spacing)
     # df = function_that_adds_features(df)
 
+
+
+
     # Define X, y and test and training sets. Validation set needed?
     y = df["livability_score"]
-    X = df.drop(columns=["livability_score", 'lat_start', 'lat_end', 'lon_start', 'lon_end'], axis=1)
+    X = df.drop(columns=["livability_score", 'lat_start', 'lat_end',
+                         'lon_start', 'lon_end',
+                         'lat_center', 'lon_center'], axis=1)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
     # Train and save model, locally and log model online on mlflow
     trainer = Trainer(X=X_train, y=y_train)
     trainer.set_experiment_name('First try')
-    trainer.run(model_name='Linear_first_try',  method='Linear')
+    trainer.run(model_name='Linear_first_try', method='Linear')
     rmse = trainer.evaluate(X_test, y_test)
     print(f"rmse: {rmse}")
     trainer.save_model_locally(model_name='Linear_first_try')
