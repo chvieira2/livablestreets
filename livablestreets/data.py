@@ -6,7 +6,7 @@ from livablestreets.params import BUCKET_NAME
 
 
 @simple_time_tracker
-def get_data_from_gcp(grid_size=1000, optimize=False, **kwargs):
+def get_grid_from_gcp(grid_size=1000, optimize=False, **kwargs):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     # Add Client() here
     client = storage.Client()
@@ -34,5 +34,5 @@ def clean_data(df, test=False):
 
 if __name__ == '__main__':
     # print(f"gs://{BUCKET_NAME}/data/Berlin_grid_{1000}m.csv")
-    df = get_data_from_gcp()
+    df = get_grid_from_gcp()
     print(df)
