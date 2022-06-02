@@ -54,7 +54,7 @@ def feature_cat_mean_score(df):
 @simple_time_tracker
 def integrate_all_features_counts(file_name):
     """ Receives the name of the file that is obtained from GCP (or local if available).
-        Calls external function to create the grid polygon for each grid"""#
+        Calls external function to create the grid polygon for each grid"""
     # shapely.speedups makes some of the spatial queries running faster
     # shapely.speedups.enable()
 
@@ -144,9 +144,11 @@ def integrate_all_features_counts(file_name):
 
     # MinMax normalize all features
     df_grid = min_max_scaler(df_grid)
+    print('Features were MinMax scaled')
 
     # Calculate the mean per category
     df_grid= feature_cat_mean_score(df_grid)
+    print('Category mean was calculated')
 
     return df_grid
 
@@ -300,11 +302,18 @@ def point_in_grid_counter3(polygon, points):
     return len(pointInPolys)
 
 @simple_time_tracker
-def integrate_all_features_counts3(file_name):
+def integrate_all_features_counts3(df_grid=None, file_name = None,
+                                    stepsize = 10000, location = 'Berlin',
+                                    save_local=True, save_gcp=True):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
+
+    # shapely.speedups makes some of the spatial queries running faster
+    # shapely.speedups.enable()
+
     # Get grid and create polygons
-    df_grid = get_file(file_name=file_name)
+    if df_grid is None:
+        df_grid = get_file(file_name=file_name)
     print('loaded grid')
     df_grid=grid_to_polygon3(df_grid)
     print('created polygons')
@@ -359,18 +368,18 @@ def integrate_all_features_counts3(file_name):
             social_eating_in_polygon.append(point_in_grid_counter3(polygon, points_social_eating))
             social_night_life_in_polygon.append(point_in_grid_counter3(polygon, points_social_night_life))
         else:
-            activities_economic_in_polygon.append(-1)
-            activities_education_in_polygon.append(-1)
-            activities_health_care_in_polygon.append(-1)
-            activities_public_service_in_polygon.append(-1)
-            comfort_leisure_sports_in_polygon.append(-1)
-            comfort_sports_in_polygon.append(-1)
-            # comfort_trees_in_polygon.append(-1)
-            mobility_public_transport_in_polygon.append(-1)
-            social_community_in_polygon.append(-1)
-            social_culture_in_polygon.append(-1)
-            social_eating_in_polygon.append(-1)
-            social_night_life_in_polygon.append(-1)
+            activities_economic_in_polygon.append(np.NaN)
+            activities_education_in_polygon.append(np.NaN)
+            activities_health_care_in_polygon.append(np.NaN)
+            activities_public_service_in_polygon.append(np.NaN)
+            comfort_leisure_sports_in_polygon.append(np.NaN)
+            comfort_sports_in_polygon.append(np.NaN)
+            # comfort_trees_in_polygon.append(np.NaN)
+            mobility_public_transport_in_polygon.append(np.NaN)
+            social_community_in_polygon.append(np.NaN)
+            social_culture_in_polygon.append(np.NaN)
+            social_eating_in_polygon.append(np.NaN)
+            social_night_life_in_polygon.append(np.NaN)
 
     df_grid['activities_economic'] = activities_economic_in_polygon
     df_grid['activities_education'] = activities_education_in_polygon
@@ -387,7 +396,17 @@ def integrate_all_features_counts3(file_name):
 
     ## Create the livability score
     # Remove polygons to save space
-    # df_grid = df_grid.drop(columns=['polygon'])
+    df_grid = df_grid.drop(columns=['polygon'])
+
+    # MinMax normalize all features
+    df_grid = min_max_scaler(df_grid)
+    print('Features were MinMax scaled')
+
+    # Calculate the mean per category
+    df_grid= feature_cat_mean_score(df_grid)
+    print('Category mean was calculated')
+
+    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
@@ -399,9 +418,9 @@ def integrate_all_features_counts3(file_name):
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts3(file_name='Berlin_grid_3000m.csv')
-    save_file(df_grid, file_name='FeatCounts_Berlin_grid_3000m.csv')
-    df_grid = integrate_all_features_counts3(file_name='Berlin_grid_1000m.csv')
-    save_file(df_grid, file_name='FeatCounts_Berlin_grid_1000m.csv')
-    df_grid = integrate_all_features_counts3(file_name='Berlin_grid_100m.csv')
-    save_file(df_grid, file_name='FeatCounts_Berlin_grid_100m.csv')
+    # df_grid = integrate_all_features_counts3(stepsize = 10000, file_name='Berlin_grid_10000m.csv')
+    # df_grid = integrate_all_features_counts3(stepsize = 3000, file_name='Berlin_grid_3000m.csv')
+    # df_grid = integrate_all_features_counts3(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
+    # df_grid = integrate_all_features_counts3(stepsize = 100, file_name='Berlin_grid_100m.csv')
+
+    print('This shouldnt run add_features_to_grid.py')

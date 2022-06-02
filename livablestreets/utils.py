@@ -17,35 +17,36 @@ def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
     df[columns] = scaler.fit_transform(df[columns])
     return df
 
-def get_file(file_name, file_path='data', save_local=True):
+def get_file(file_name, local_file_path='data', gcp_file_path = 'data', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
 
     try:
-        df = pd.read_csv(f'livablestreets/{file_path}/{file_name}')
+        df = pd.read_csv(f'livablestreets/{local_file_path}/{file_name}')
     except FileNotFoundError:
         # Add Client() here
         client = storage.Client()
-        path = f"gs://{BUCKET_NAME}/{file_path}/{file_name}"
+        path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
         df = pd.read_csv(path)
         if save_local:
-            df.to_csv(f'livablestreets/{file_path}/{file_name}', index=False)
+            df.to_csv(f'livablestreets/{local_file_path}/{file_name}', index=False)
 
     return df
 
-def save_file(df_grid, file_name, save_local=True, save_gcp=True):
+def save_file(df_grid, file_name, local_file_path='data', gcp_file_path = 'data/WorkingTables', save_local=True, save_gcp=True):
     # Save locally
     if save_local:
-        df_grid.to_csv(f'livablestreets/data/{file_name}', index=False)
-        print(f"=> {file_name} saved locally in livablestreets/data/{file_name}")
+        df_grid.to_csv(f'livablestreets/{local_file_path}/{file_name}', index=False)
+        print(f"=> {file_name} saved locally in livablestreets/{local_file_path}/{file_name}")
 
     # Save on GCP
     if save_gcp:
         client = storage.Client().bucket(BUCKET_NAME)
 
-        storage_location = f'data/WorkingTables/{file_name}'
+        storage_location = f'{gcp_file_path}/{file_name}'
         blob = client.blob(storage_location)
-        blob.upload_from_filename(f'livablestreets/data/{file_name}')
+        blob.upload_from_filename(f'livablestreets/{local_file_path}/{file_name}')
         print(f"=> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
+
 
 def coord_to_m(start_lat,
                start_lon,
