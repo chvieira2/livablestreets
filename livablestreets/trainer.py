@@ -2,7 +2,7 @@ import joblib
 from matplotlib.pyplot import step
 from termcolor import colored
 import mlflow
-from livablestreets.data import get_data_from_gcp
+from livablestreets.data import get_file_from_gcp
 from livablestreets.encoders import TimeFeaturesEncoder, DistanceTransformer
 from livablestreets.gcp import storage_upload
 from livablestreets.utils import compute_rmse
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # Get geafence and features
     grid_size = 1000 # in meters (but also accepts degrees if wanted)
     coordenates = [52.343717, 52.650508, 13.114412, 13.739281] # Geofence over Berlin (official Berlin boundaries). Should input users locations in the future.
-    df = get_data_from_gcp(grid_size=grid_size)
+    df = get_file_from_gcp(file_name=f'Berlin_grid_{grid_size}m.csv')
     # df = function_that_adds_features(df)
 
 
