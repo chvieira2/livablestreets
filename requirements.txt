@@ -30,3 +30,4 @@ termcolor
 
 #API
 osm-runner
+requests
