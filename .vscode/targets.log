@@ -6,8 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Wed Jun  1 15:30:11 2022
+
+# Make data base, printed on Thu Jun  2 14:36:53 2022
 
 # Variables
 
@@ -44,7 +47,7 @@ BUCKET_FILE_NAME = $(shell basename ${LOCAL_PATH})
 # environment
 _ = /usr/bin/make
 # environment
-GOOGLE_APPLICATION_CREDENTIALS = /Users/ievab/code/ievabi/gcp/fast-gateway-346914-6ce2d3ed8744.json
+GOOGLE_APPLICATION_CREDENTIALS = /Users/ievab/code/ievabi/gcp/livablestreets-d32c667f3b06.json
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
@@ -52,7 +55,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-06fb88e8-6b95-4cdf-89f4-13fc9f2f1a98.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-3520b071-7f72-4fab-a70f-cd240c5e8fe5.sock
 # environment
 VSCODE_CWD = /Users/ievab/code/ievabi/livablestreets
 # environment
@@ -124,7 +127,7 @@ USER = ievab
 # makefile
 .DEFAULT_GOAL := set_project
 # environment
-TERM_SESSION_ID = E9EC863B-C260-48F2-A49B-1177804255F9
+TERM_SESSION_ID = F448F9CC-D0BF-40A0-BC19-48465DA96B42
 # environment
 LESS = -R
 # automatic
@@ -156,7 +159,7 @@ TERM_PROGRAM_VERSION = 443
 # environment
 NVM_DIR = /Users/ievab/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.7567787E-69EC-4466-A30C-0F1A0C290C95
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.E33507F6-B765-4176-A23E-8DB9CC673AA9
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 11)
@@ -222,9 +225,9 @@ VSCODE_PID = 5045
 
 # Directories
 
-# . (device 16777220, inode 8674356718): 15 files, no impossibilities.
+# . (device 16777220, inode 8674356718): 16 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -250,7 +253,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-01 15:22:49
+#  Last modified 2022-06-02 14:32:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -297,9 +300,6 @@ create_bucket:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-make: *** No rule to make target `all'.  Stop.
-
 #  commands to execute (from `Makefile', line 23):
 	-@gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 	
@@ -309,6 +309,7 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 87):
+ 
 	@rm -f */version.txt
 	@rm -f .coverage
 	@rm -fr */__pycache__ __pycache__
@@ -345,6 +346,6 @@ run_api:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jun  1 15:30:11 2022
+# Finished Make data base on Thu Jun  2 14:36:53 2022
 
  
