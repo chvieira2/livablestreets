@@ -129,7 +129,7 @@ if __name__ == '__main__':
     df = create_geofence(52.338246, 52.675508, 13.088348, 13.761159) # using official Berlin boundaries
     print(df)
     print(len(df[df['grid_in_berlin']]), len(df))
-    df.to_csv('raw_data/Berlin_grid_1000m.csv',index=False)
+    df.to_csv('livablestreets/data/Berlin_grid_1000m.csv',index=False)
     # print(get_shape_berlin()[1])
     # print(is_point_in_polygon(52.50149,13.40232)) # Berlin centroid, so it should return True
     # calculate_features_from_centroid(create_geofence(52.338246, 52.675508, 13.088348, 13.761159))
