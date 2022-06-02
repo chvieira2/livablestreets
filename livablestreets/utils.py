@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
                                          'activities_health_care', 'activities_public_service',
-                                         'comfort_leisure_sports', 'comfort_sports', 'convenience',
+                                         'comfort_leisure_sports', 'comfort_sports',
                                          'mobility_public_transport', 'social_community', 'social_culture',
                                          'social_eating', 'social_night_life']):
 
@@ -36,6 +36,7 @@ def save_file(df_grid, file_name, save_local=True, save_gcp=True):
     # Save locally
     if save_local:
         df_grid.to_csv(f'livablestreets/data/{file_name}', index=False)
+        print(f"=> {file_name} saved locally in livablestreets/data/{file_name}")
 
     # Save on GCP
     if save_gcp:
