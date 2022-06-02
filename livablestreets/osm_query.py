@@ -37,7 +37,7 @@ def param_areas(keys):
 
 def query_params_osm(keys, feat, limit=''):
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
-    several values can added to a same key as a list, returns a dict
+    several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
     limit = number (optional query limit)'''
 
