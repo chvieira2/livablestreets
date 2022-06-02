@@ -3,7 +3,7 @@ import pandas as pd
 from livablestreets.utils import m_to_coord
 from shapely.geometry import Point, Polygon
 import geopandas
-from livablestreets.utils import haversine_vectorized
+from livablestreets.utils import haversine_vectorized, save_file
 
 
 def get_shape_berlin():
@@ -80,7 +80,7 @@ def calculate_features_from_centroid(df, polygon = None):
 
     return df
 
-def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 1000):
+def create_geofence(north_lat, south_lat, east_lng, west_lng, stepsize = 3000):
     if stepsize > 1: # This means that the step size is in meters and should be converted to degrees
         stepsize_x = m_to_coord(stepsize, latitude=north_lat, direction='x')
         stepsize_y = m_to_coord(stepsize, direction='y')
@@ -129,7 +129,4 @@ if __name__ == '__main__':
     df = create_geofence(52.338246, 52.675508, 13.088348, 13.761159) # using official Berlin boundaries
     print(df)
     print(len(df[df['grid_in_berlin']]), len(df))
-    df.to_csv('livablestreets/data/Berlin_grid_1000m.csv',index=False)
-    # print(get_shape_berlin()[1])
-    # print(is_point_in_polygon(52.50149,13.40232)) # Berlin centroid, so it should return True
-    # calculate_features_from_centroid(create_geofence(52.338246, 52.675508, 13.088348, 13.761159))
+    save_file(df, file_name='Berlin_grid_3000m.csv')
