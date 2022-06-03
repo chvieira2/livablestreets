@@ -1,5 +1,6 @@
 from sklearn.preprocessing import MinMaxScaler
 from skimage.filters import gaussian
+import numpy as np
 
 def grid_tomatrix(df):
     #set the limits of the df for getting the shape
