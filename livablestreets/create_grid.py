@@ -13,7 +13,7 @@ def get_shape_of_location(location):
     if location in ['Berlin', 'berlin', 'BER', 'ber']:
         # Use geopandas package to work with the shape file of Berlin
         # geojson for all berlin neighbourhoods was downloaded from here: https://daten.odis-berlin.de/de/dataset/bezirksgrenzen/
-        gdf = gdp.read_file('raw_data/bezirksgrenzen.geojson')
+        gdf = gdp.read_file(f'livablestreets/data/{location}/bezirksgrenzen.geojson')
 
         # gdf.dissolve will colapse all neighborhoods into a single shape of the whole berlin
         gdf = gdf.dissolve()
@@ -23,6 +23,7 @@ def get_shape_of_location(location):
         gdf['Location'] = 'Berlin'
         gdf = gdf.set_index("Location")
 
+        print(f'Obtained shape file for {location}')
         return gdf
 
 def calculate_features_from_centroid(df, location, location_polygon = None):
@@ -46,7 +47,7 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
                          start_lon="lng_center",
                          end_lat=centroid_lat,
                          end_lon=centroid_lng)
-    print('Calculated grid distance to location centroid')
+    print(f'Calculated grid distance to {location} centroid')
 
     foo_boolean = []
     foo_angles = []
@@ -79,8 +80,8 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
     df['grid_in_berlin'] = foo_boolean
     df['degrees_to_centroid'] = foo_angles
 
-    print('Identified grids inside and outside of location')
-    print('Calculated the angular direction (degrees) of grids to centroid')
+    print(f'Identified grids inside and outside of {location}')
+    print(f'Calculated the angular direction (degrees) of grids to centroid')
 
     return df
 
@@ -134,14 +135,14 @@ def create_geofence(north_lat=None, south_lat=None, east_lng=None, west_lng=None
     # Calculate distance and angle from centroid. Also check which grids belong to the Location map
     df = calculate_features_from_centroid(df, location = location)
 
-    print('Successfully created geofence of location')
+    print(f'Successfully created geofence of {location}')
 
-    save_file(df, file_name=f'{location}_grid_{stepsize}m.csv', save_local=save_local, save_gcp=save_gcp)
+    save_file(df, file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df
 
 
 
 if __name__ == '__main__':
-    df = create_geofence(stepsize = 10000) # 52.338246, 52.675508, 13.088348, 13.761159
-    print('This shouldnt run')
+    df = create_geofence(stepsize = 10000, save_local=True, save_gcp=False) # 52.338246, 52.675508, 13.088348, 13.761159
+    print(df)
