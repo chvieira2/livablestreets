@@ -9,11 +9,11 @@ import shapely.speedups
 
 
 
-def features_into_list_points(file_name, lat='lat',lng='lon'):
+def features_into_list_points(file_name, lat='lat',lng='lon', location='Berlin'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
-    df_feature = get_file(file_name)
+    df_feature = get_file(file_name, local_file_path=f'data/{location}/Features', gcp_file_path = f'data/{location}/Features')
     print(f'loaded {file_name}')
     return [[x, y] for x, y in df_feature[[lat,lng]].itertuples(index=False)]
 
@@ -52,31 +52,36 @@ def feature_cat_mean_score(df):
     return df
 
 @simple_time_tracker
-def integrate_all_features_counts(file_name):
+def integrate_all_features_counts(df_grid=None, file_name = None,
+                                    stepsize = 10000, location = 'Berlin',
+                                    save_local=True, save_gcp=True):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
     # shapely.speedups makes some of the spatial queries running faster
     # shapely.speedups.enable()
 
     # Get grid and create polygons
-    df_grid = get_file(file_name=file_name)
+    if file_name is not None:
+        df_grid = get_file(file_name=file_name, local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
+    if df_grid is None:
+        df_grid = get_file(file_name=file_name, local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
     # Get the list of points
-    points_activities_economic = features_into_list_points('activities_economic.csv')
-    points_activities_education = features_into_list_points('activities_education.csv')
-    points_activities_health_care = features_into_list_points('activities_health_care.csv')
-    points_activities_public_service = features_into_list_points('activities_public_service.csv')
-    points_comfort_leisure_sports = features_into_list_points('comfort_leisure_sports.csv')
-    points_comfort_sports = features_into_list_points('comfort_sports.csv')
-    # points_comfort_trees = features_into_list_points('comfort_trees.csv')
-    points_mobility_public_transport = features_into_list_points('mobility_public_transport.csv')
-    points_social_community = features_into_list_points('social_community.csv')
-    points_social_culture = features_into_list_points('social_culture.csv')
-    points_social_eating = features_into_list_points('social_eating.csv')
-    points_social_night_life = features_into_list_points('social_night_life.csv')
+    points_activities_economic = features_into_list_points('activities_economic.csv', location=location)
+    points_activities_education = features_into_list_points('activities_education.csv', location=location)
+    points_activities_health_care = features_into_list_points('activities_health_care.csv', location=location)
+    points_activities_public_service = features_into_list_points('activities_public_service.csv', location=location)
+    points_comfort_leisure_sports = features_into_list_points('comfort_leisure_sports.csv', location=location)
+    points_comfort_sports = features_into_list_points('comfort_sports.csv', location=location)
+    # points_comfort_trees = features_into_list_points('comfort_trees.csv', location=location)
+    points_mobility_public_transport = features_into_list_points('mobility_public_transport.csv', location=location)
+    points_social_community = features_into_list_points('social_community.csv', location=location)
+    points_social_culture = features_into_list_points('social_culture.csv', location=location)
+    points_social_eating = features_into_list_points('social_eating.csv', location=location)
+    points_social_night_life = features_into_list_points('social_night_life.csv', location=location)
 
     print('created points lists')
 
@@ -178,28 +183,30 @@ def point_in_grid_counter2(polygon, points):
     return np.sum(contains(np.array(points)))
 
 @simple_time_tracker
-def integrate_all_features_counts2(file_name):
+def integrate_all_features_counts2(df_grid=None, file_name = None,
+                                    stepsize = 10000, location = 'Berlin',
+                                    save_local=True, save_gcp=True):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
     # Get grid and create polygons
-    df_grid = get_file(file_name=file_name)
+    df_grid = get_file(file_name=file_name, local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon2(df_grid)
     print('created polygons')
 
     # Get the list of points
-    points_activities_economic = features_into_list_points('activities_economic.csv')
-    points_activities_education = features_into_list_points('activities_education.csv')
-    points_activities_health_care = features_into_list_points('activities_health_care.csv')
-    points_activities_public_service = features_into_list_points('activities_public_service.csv')
-    points_comfort_leisure_sports = features_into_list_points('comfort_leisure_sports.csv')
-    points_comfort_sports = features_into_list_points('comfort_sports.csv')
-    # points_comfort_trees = features_into_list_points('comfort_trees.csv')
-    points_mobility_public_transport = features_into_list_points('mobility_public_transport.csv')
-    points_social_community = features_into_list_points('social_community.csv')
-    points_social_culture = features_into_list_points('social_culture.csv')
-    points_social_eating = features_into_list_points('social_eating.csv')
-    points_social_night_life = features_into_list_points('social_night_life.csv')
+    points_activities_economic = features_into_list_points('activities_economic.csv', location=location)
+    points_activities_education = features_into_list_points('activities_education.csv', location=location)
+    points_activities_health_care = features_into_list_points('activities_health_care.csv', location=location)
+    points_activities_public_service = features_into_list_points('activities_public_service.csv', location=location)
+    points_comfort_leisure_sports = features_into_list_points('comfort_leisure_sports.csv', location=location)
+    points_comfort_sports = features_into_list_points('comfort_sports.csv', location=location)
+    # points_comfort_trees = features_into_list_points('comfort_trees.csv', location=location)
+    points_mobility_public_transport = features_into_list_points('mobility_public_transport.csv', location=location)
+    points_social_community = features_into_list_points('social_community.csv', location=location)
+    points_social_culture = features_into_list_points('social_culture.csv', location=location)
+    points_social_eating = features_into_list_points('social_eating.csv', location=location)
+    points_social_night_life = features_into_list_points('social_night_life.csv', location=location)
 
     print('created points lists')
 
@@ -272,12 +279,12 @@ def integrate_all_features_counts2(file_name):
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points3(file_name, lat='lat',lng='lon'):
+def features_into_list_points3(file_name, lat='lat',lng='lon', location='Berlin'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    df_feature = get_file(file_name)
+    df_feature = get_file(file_name, local_file_path=f'data/{location}/Features', gcp_file_path = f'data/{location}/Features')
     print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
@@ -313,24 +320,24 @@ def integrate_all_features_counts3(df_grid=None, file_name = None,
 
     # Get grid and create polygons
     if df_grid is None:
-        df_grid = get_file(file_name=file_name)
+        df_grid = get_file(file_name=file_name, local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon3(df_grid)
     print('created polygons')
 
     # Get the list of points
-    points_activities_economic = features_into_list_points3('activities_economic.csv')
-    points_activities_education = features_into_list_points3('activities_education.csv')
-    points_activities_health_care = features_into_list_points3('activities_health_care.csv')
-    points_activities_public_service = features_into_list_points3('activities_public_service.csv')
-    points_comfort_leisure_sports = features_into_list_points3('comfort_leisure_sports.csv')
-    points_comfort_sports = features_into_list_points3('comfort_sports.csv')
-    # points_comfort_trees = features_into_list_points3('comfort_trees.csv')
-    points_mobility_public_transport = features_into_list_points3('mobility_public_transport.csv')
-    points_social_community = features_into_list_points3('social_community.csv')
-    points_social_culture = features_into_list_points3('social_culture.csv')
-    points_social_eating = features_into_list_points3('social_eating.csv')
-    points_social_night_life = features_into_list_points3('social_night_life.csv')
+    points_activities_economic = features_into_list_points3('activities_economic.csv', location=location)
+    points_activities_education = features_into_list_points3('activities_education.csv', location=location)
+    points_activities_health_care = features_into_list_points3('activities_health_care.csv', location=location)
+    points_activities_public_service = features_into_list_points3('activities_public_service.csv', location=location)
+    points_comfort_leisure_sports = features_into_list_points3('comfort_leisure_sports.csv', location=location)
+    points_comfort_sports = features_into_list_points3('comfort_sports.csv', location=location)
+    # points_comfort_trees = features_into_list_points3('comfort_trees.csv', location=location)
+    points_mobility_public_transport = features_into_list_points3('mobility_public_transport.csv', location=location)
+    points_social_community = features_into_list_points3('social_community.csv', location=location)
+    points_social_culture = features_into_list_points3('social_culture.csv', location=location)
+    points_social_eating = features_into_list_points3('social_eating.csv', location=location)
+    points_social_night_life = features_into_list_points3('social_night_life.csv', location=location)
 
     print('created points lists')
 
@@ -406,7 +413,7 @@ def integrate_all_features_counts3(df_grid=None, file_name = None,
     df_grid= feature_cat_mean_score(df_grid)
     print('Category mean was calculated')
 
-    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', save_local=save_local, save_gcp=save_gcp)
+    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
