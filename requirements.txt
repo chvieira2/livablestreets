@@ -34,3 +34,7 @@ requests
 
 #kernel
 skimage
+
+#web
+streamlit
+streamlit_folium
