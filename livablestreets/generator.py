@@ -62,6 +62,8 @@ class LivabilityMap(object):
             self.generate_grid()
 
         ## Get features for a given location
+    # def get_feat_loc(self.location):
+    #     pass
         # Needs fixing as it isn't working stand alone. Needs to collect from API (OSM) and save features as csv
 
         ## Integrates features count to grid
