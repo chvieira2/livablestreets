@@ -425,9 +425,8 @@ def integrate_all_features_counts3(df_grid=None, file_name = None,
 
 
 if __name__ == '__main__':
-    # df_grid = integrate_all_features_counts3(stepsize = 10000, file_name='Berlin_grid_10000m.csv')
-    # df_grid = integrate_all_features_counts3(stepsize = 3000, file_name='Berlin_grid_3000m.csv')
-    # df_grid = integrate_all_features_counts3(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
+    df_grid = integrate_all_features_counts3(stepsize = 3000, file_name='Berlin_grid_3000m.csv')
+    df_grid = integrate_all_features_counts3(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts3(stepsize = 100, file_name='Berlin_grid_100m.csv')
 
     print('This shouldnt run add_features_to_grid.py')

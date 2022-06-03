@@ -113,5 +113,5 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    Berlin = LivabilityMap(stepsize = 3000).calc_livability()
+    Berlin = LivabilityMap(stepsize = 100).calc_livability()
     print(Berlin.describe())
