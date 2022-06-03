@@ -34,6 +34,7 @@ requests
 
 #kernel
 skimage
+scikit-image
 
 #web
 streamlit
