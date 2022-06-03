@@ -33,7 +33,7 @@ osm-runner
 requests
 
 #kernel
-skimage
+# skimage
 scikit-image
 
 #web
