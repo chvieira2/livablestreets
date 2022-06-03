@@ -1,5 +1,5 @@
 # path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
-LOCAL_PATH=raw_data/Berlin_grid_30m.csv
+LOCAL_PATH=livablestreets/data/df_economic.csv
 
 # project id
 PROJECT_ID=livablestreets
