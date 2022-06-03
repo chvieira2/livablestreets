@@ -25,6 +25,10 @@ create_bucket:
 upload_data:
 	-@gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 
+### Running web page
+run_streamlit:
+	streamlit run app.py
+
 ### GCP configuration - - - - - - - - - - - - - - - - - - -
 
 # /!\ you should fill these according to your account
