@@ -2,7 +2,7 @@ import folium
 from folium.plugins import HeatMap
 import pandas as pd
 import numpy as np
-from livablestreets.generator import LivabilityMap
+from livablestreets.utils import get_file
 
 #--------------display map--------------------
 mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11)
@@ -43,7 +43,9 @@ def plot_heatmaps(heatmaps):
 
 
 def show_map(cityname='Berlin'):
-    df = pd.read_csv('livablestreets/data/Livability_Berlin_grid_100m.csv')
+    df = get_file('Livability_Berlin_grid_100m.csv', local_file_path='data/WorkingTables',
+                  gcp_file_path = 'data/WorkingTables',
+                  save_local=True)
     #----select only the data for inside the grid--------
     df = df[df['grid_in_berlin']==True]
     ##----Get all categories that end with _mean and if present 'livability'
@@ -53,8 +55,8 @@ def show_map(cityname='Berlin'):
     ##----Create heatmaps for each feature
     heatmaps = create_heatmap(categories)
     ##-----plot heatmaps
-    map = plot_heatmaps(heatmaps)
-    return map
+    mapObj = plot_heatmaps(heatmaps)
+    return mapObj
 
 if __name__ == '__main__':
     print('Loading map...')
