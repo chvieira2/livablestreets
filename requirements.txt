@@ -19,14 +19,14 @@ yapf
 # API
 gcsfs
 google-cloud-storage
-mlflow
+# mlflow
 s3fs
 
 # utilities
 six>=1.14
-joblib
-memoized-property
-termcolor
+# joblib
+# memoized-property
+# termcolor
 
 #API
 osm-runner
@@ -34,7 +34,7 @@ requests
 
 #kernel
 # skimage
-scikit-image
+# scikit-image
 
 #web
 streamlit
