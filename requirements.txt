@@ -5,9 +5,9 @@ twine
 wheel>=0.29
 
 # data science
-numpy
+# numpy
 pandas
-scikit-learn
+# scikit-learn
 
 # tests/linter
 black
@@ -18,19 +18,24 @@ yapf
 
 # API
 gcsfs
-google-cloud-storage
-mlflow
+# google-cloud-storage
+# mlflow
 s3fs
 
 # utilities
 six>=1.14
-joblib
-memoized-property
-termcolor
+# joblib
+# memoized-property
+# termcolor
 
 #API
-osm-runner
-requests
+# osm-runner
+# requests
 
 #kernel
-skimage
+# skimage
+# scikit-image
+
+#web
+streamlit
+streamlit_folium
