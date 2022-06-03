@@ -5,9 +5,9 @@ twine
 wheel>=0.29
 
 # data science
-numpy
+# numpy
 pandas
-scikit-learn
+# scikit-learn
 
 # tests/linter
 black
@@ -18,7 +18,7 @@ yapf
 
 # API
 gcsfs
-google-cloud-storage
+# google-cloud-storage
 # mlflow
 s3fs
 
@@ -29,8 +29,8 @@ six>=1.14
 # termcolor
 
 #API
-osm-runner
-requests
+# osm-runner
+# requests
 
 #kernel
 # skimage
