@@ -21,6 +21,6 @@ def livability_score(df, weights = [1,1,1,1],
 
 
 if __name__ == '__main__':
-    # df_grid = get_file(file_name='FeatCounts_Berlin_grid_10000m.csv', local_file_path='data/Berlin/WorkingTables', gcp_file_path = 'data/Berlin/WorkingTables')
-    # print(livability_score(df_grid, stepsize = 10000))
+    df_grid = get_file(file_name='FeatCounts_Berlin_grid_10000m.csv', local_file_path='data/Berlin/WorkingTables', gcp_file_path = 'data/Berlin/WorkingTables')
+    print(livability_score(df_grid, stepsize = 10000))
     print('')
