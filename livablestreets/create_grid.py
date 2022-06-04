@@ -4,11 +4,14 @@ from livablestreets.utils import m_to_coord
 from shapely.geometry import Point
 import geopandas as gdp
 from livablestreets.utils import haversine_vectorized, save_file
-from livablestreets.utils import simple_time_tracker
+from livablestreets.utils import simple_time_tracker, create_dir
 
-
+@simple_time_tracker
 def get_shape_of_location(location):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
+
+    # Create folder for location if it doesn't exist
+    create_dir(path = f'livablestreets/data/{location}')
 
     if location in ['Berlin', 'berlin', 'BER', 'ber']:
         # Use geopandas package to work with the shape file of Berlin
@@ -86,8 +89,8 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
     return df
 
 @simple_time_tracker
-def create_geofence(north_lat=None, south_lat=None, east_lng=None, west_lng=None,
-                    stepsize = 3000, location = 'Berlin',
+def create_geofence(location, stepsize,
+                    north_lat=None, south_lat=None, east_lng=None, west_lng=None,
                     save_local=True, save_gcp=True):
     # Obtain location max bounds
     if north_lat is None:
