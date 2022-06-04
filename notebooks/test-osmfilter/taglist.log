@@ -1,7 +1,7 @@
 Overview OSM data
 ===========
-Nodes:                             1327
-Ways:                               214
+Nodes:                             7929
+Ways:                               291
 Relations:                            0
 ===========
 
@@ -16,52 +16,18 @@ total:                                          0
 
 Tag Count Ways:
 ============
-total:                                       1020
+total:                                        305
 ============
-highway                                       214
-surface                                       177
-foot                                          128
-motor_vehicle                                 121
-lit                                            77
-name                                           69
-bicycle                                        48
-source                                         32
-layer                                          28
-segregated                                     27
-bridge                                         27
-oneway                                         20
-tracktype                                      12
-access                                          7
-motorcar                                        6
-motorcycle                                      5
-smoothness                                      4
-incline                                         3
-horse                                           3
-lcn                                             3
-cycleway                                        3
-maxspeed                                        2
-tunnel                                          2
-embankment                                      1
-fixme                                           1
+natural                                       291
+leaf_type                                       7
+source                                          3
+place                                           2
+landuse                                         1
+name                                            1
 
 
 Tag Count Nodes:
 ============
-total:                                        170
+total:                                          3
 ============
-crossing                                       36
-highway                                        36
-crossing_ref                                   18
-crossing:island                                17
-barrier                                        16
-bicycle                                        14
-foot                                           12
-source                                          6
-tactile_paving                                  4
-horse                                           4
-kerb                                            2
-name                                            1
-traffic_sign                                    1
-fixme                                           1
-ford                                            1
-motor_vehicle                                   1
+natural                                         3
