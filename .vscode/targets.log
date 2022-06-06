@@ -7,15 +7,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Thu Jun  2 14:36:53 2022
+# Make data base, printed on Mon Jun  6 12:57:48 2022
 
 # Variables
 
-# makefile (from `Makefile', line 66)
-FILENAME = trainer
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -38,12 +34,8 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/ievab/code/ievabi/livablestreets
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 2)
-LOCAL_PATH = raw_data/Berlin_grid_30m.csv
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
-# makefile (from `Makefile', line 15)
-BUCKET_FILE_NAME = $(shell basename ${LOCAL_PATH})
 # environment
 _ = /usr/bin/make
 # environment
@@ -54,8 +46,10 @@ MAKEFILE_LIST :=  Makefile
 VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
+# makefile (from `Makefile', line 47)
+PYPI_USERNAME = <AUTHOR>
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-3520b071-7f72-4fab-a70f-cd240c5e8fe5.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-cdb9d11e-f983-42e9-8a8f-574147f5f5db.sock
 # environment
 VSCODE_CWD = /Users/ievab/code/ievabi/livablestreets
 # environment
@@ -64,8 +58,6 @@ PATH = /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:./bin:./
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VIRTUAL_ENV = /Users/ievab/.pyenv/versions/3.8.13/envs/lewagon
-# makefile (from `Makefile', line 61)
-RUNTIME_VERSION = 2.2
 # environment
 LaunchInstanceID = 621741B1-31CC-4995-8461-20E5F373CF1B
 # environment
@@ -125,15 +117,13 @@ MAKE_VERSION := 3.81
 # environment
 USER = ievab
 # makefile
-.DEFAULT_GOAL := set_project
+.DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = F448F9CC-D0BF-40A0-BC19-48465DA96B42
+TERM_SESSION_ID = F5B5E0D9-FD4E-48AD-AB8E-01C08999B59A
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# makefile (from `Makefile', line 59)
-PYTHON_VERSION = 3.7
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # environment
@@ -159,19 +149,11 @@ TERM_PROGRAM_VERSION = 443
 # environment
 NVM_DIR = /Users/ievab/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.E33507F6-B765-4176-A23E-8DB9CC673AA9
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.CE30D66B-5BC6-496A-B58C-A605C2042DCC
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from `Makefile', line 11)
-BUCKET_FOLDER = data
 # automatic
 +F = $(notdir $+)
-# makefile (from `Makefile', line 17)
-REGION = europe-west3
-# makefile (from `Makefile', line 8)
-BUCKET_NAME = wagon-data-871-vieira-livablestreets
-# makefile (from `Makefile', line 65)
-PACKAGE_NAME = TaxiFareModel
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
 # environment
@@ -180,8 +162,6 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# makefile (from `Makefile', line 60)
-FRAMEWORK = scikit-learn
 # environment
 EDITOR = code
 # environment
@@ -198,26 +178,20 @@ SECURITYSESSIONID = 186a3
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# makefile (from `Makefile', line 5)
-PROJECT_ID = livablestreets
 # environment
 PYENV_VIRTUALENV_INIT = 1
 # default
 .INCLUDE_DIRS = /usr/local/include
-# makefile (from `Makefile', line 70)
-JOB_NAME = taxi_fare_training_pipeline_$(shell date +'%Y%m%d_%H%M%S')
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
-# makefile (from `Makefile', line 47)
-BUCKET_TRAINING_FOLDER = 'trainings'
 # environment
 VSCODE_PID = 5045
 # variable set hash-table stats:
-# Load=101/1024=10%, Rehash=0, Collisions=3/125=2%
+# Load=89/1024=9%, Rehash=0, Collisions=2/115=2%
 
 # Pattern-specific Variable Values
 
@@ -225,9 +199,9 @@ VSCODE_PID = 5045
 
 # Directories
 
-# . (device 16777220, inode 8674356718): 16 files, no impossibilities.
+# . (device 16777220, inode 8674356718): 20 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -235,14 +209,46 @@ VSCODE_PID = 5045
 
 # Files
 
-# Not a target:
-all:
+run_streamlit:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 61):
+	-@streamlit run app.py
+	
+
+black:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 11):
+	@black scripts/* livablestreets_app/*.py
+	
+
+all: clean install test black check_code
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
+
+install_requirements:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 5):
+	@pip install -r requirements.txt
+	
+
+pypi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 55):
+	@twine upload dist/* -u $(PYPI_USERNAME)
+	
 
 # Not a target:
 .SUFFIXES:
@@ -253,41 +259,77 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-02 14:32:32
+#  Last modified 2022-06-06 12:57:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-gcp_submit_training:
+test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 77):
-	gcloud ai-platform jobs submit training ${JOB_NAME} \
-	--job-dir gs://${BUCKET_NAME}/${BUCKET_TRAINING_FOLDER} \
-	--package-path ${PACKAGE_NAME} \
-	--module-name ${PACKAGE_NAME}.${FILENAME} \
-	--python-version=${PYTHON_VERSION} \
-	--runtime-version=${RUNTIME_VERSION} \
-	--region ${REGION} \
-	--stream-logs
+#  commands to execute (from `Makefile', line 14):
+	@coverage run -m pytest tests/*.py
+	@coverage report -m --omit="${VIRTUAL_ENV}/lib/python*"
 	
 
-upload_data:
+build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 26):
-	-@gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
+#  commands to execute (from `Makefile', line 49):
+	@python setup.py sdist bdist_wheel
 	
 
-set_project:
+heroku_login:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 20):
-	-@gcloud config set project ${PROJECT_ID}
+#  commands to execute (from `Makefile', line 67):
+	-@heroku login
+	
+
+check_code:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 8):
+	@flake8 scripts/* livablestreets_app/*.py
+	
+
+heroku_create_app:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 70):
+	-@heroku create ${APP_NAME}
+	
+
+count_lines:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 34):
+	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	@echo ''
+	@find ./scripts -name '*-*' -exec  wc -l {} \; | sort -n| awk \
+ 
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	@echo ''
+	@find ./tests -name '*.py' -exec  wc -l {} \; | sort -n| awk \
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	@echo ''
+	
+
+deploy_heroku:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 73):
+	-@git push heroku master
+	-@heroku ps:scale web=1
 	
 
 # Not a target:
@@ -296,45 +338,65 @@ set_project:
 #  Modification time never checked.
 #  File has not been updated.
 
-create_bucket:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 23):
-	-@gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
-	
-
 clean:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 87):
- 
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := clean
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/10=10%
+#  commands to execute (from `Makefile', line 21):
 	@rm -f */version.txt
 	@rm -f .coverage
-	@rm -fr */__pycache__ __pycache__
-	@rm -fr build dist *.dist-info *.egg-info
-	@rm -fr */*.pyc
+	@rm -fr */__pycache__ */*.pyc __pycache__
+	@rm -fr build dist
+	@rm -fr livablestreets_app-*.dist-info
+	@rm -fr livablestreets_app.egg-info
 	
 
-run_locally:
+ftest:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 74):
-	@python -m ${PACKAGE_NAME}.${FILENAME}
+#  commands to execute (from `Makefile', line 18):
+	@Write me
 	
 
-run_api:
+pypi_test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 97):
-	uvicorn api.fast:app --reload  # load web server with code autoreload
+#  commands to execute (from `Makefile', line 52):
+	@twine upload -r testpypi dist/* -u $(PYPI_USERNAME)
+	
+
+install:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 29):
+	@pip install . -U
 	
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/23=0%
+# Load=19/1024=2%, Rehash=0, Collisions=0/38=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -346,6 +408,6 @@ run_api:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jun  2 14:36:53 2022
+# Finished Make data base on Mon Jun  6 12:57:48 2022
 
  
