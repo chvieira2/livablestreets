@@ -7,7 +7,7 @@ requirements = [x.strip() for x in content if 'git+' not in x]
 
 setup(name='livablestreets',
       version="1.0",
-      description="livablestreet web",
+      description="streamlit app",
       packages=find_packages(),
       install_requires=requirements,
       test_suite='tests',

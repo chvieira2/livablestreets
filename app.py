@@ -16,41 +16,40 @@ st.set_page_config(
 #.css-18e3th9 change top padding main container
 # .css-1oe6wy4 changed top paging sidebar
 # iframe changed the size of the map's iframe
-mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10)
-# st.markdown(
-#             f'''
-#             <style>
-#                 .css-18e3th9 {{
-#                     padding-top: 10px;
-#                 }}
-#                 .css-1oe6wy4 {{
-#                     padding-top: 35px;
-#                 }}
-#                 iframe {{
-#                 width: 100%;
-#                 height: 500px;
-#                 }}
-#             </style>
-#             ''', unsafe_allow_html=True)
+#mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10)
+st.markdown(
+            f'''
+            <style>
+                .css-18e3th9 {{
+                    padding-top: 10px;
+                }}
+                .css-1oe6wy4 {{
+                    padding-top: 35px;
+                }}
+                iframe {{
+                width: 100%;
+                height: 500px;
+                }}
+            </style>
+            ''', unsafe_allow_html=True)
 
 
-# st.markdown("""<h1 style='text-align: center; color: white;'>
-#             Get livability scores in Berlin
-#             </h1>""",
-#             unsafe_allow_html=True)
+st.markdown("""<h1 style='text-align: center; color: white;'>
+            Get livability scores in Berlin
+            </h1>""",
+            unsafe_allow_html=True)
 
 
-# #------------------Creating a map-------------------------------
-# mapObj = show_map()
+#------------------Creating a map-------------------------------
+mapObj, heatmaps = show_map()
+#-----------------------sidebar---------------------------------
+st.sidebar.markdown(f"""
+    ## Choose a map to display
+    """)
+for k,v in heatmaps.items():
+    st.sidebar.checkbox(k)
 
-# #-----------------------sidebar---------------------------------
-# st.sidebar.markdown(f"""
-#     ## Choose a map to display
-#     """)
-# if st.sidebar.checkbox('Berlin borders'):
-#     print('Hello')
-#     #geo_Berlin.add_to(mapObj)
-
+#st.session_state
 # if st.sidebar.checkbox('Berlin districts'):
 #     print('Hello')
 #     #geo_livingArea.add_to(mapObj)

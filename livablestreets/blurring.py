@@ -57,7 +57,7 @@ def loop_channels(array, slice = None, sigma_list = [0,0,0,0,8,0,0,9,0,0,0,0,0,0
 
 
 if __name__ == '__main__':
-    df = get_file(file_name='FeatCount_Berlin_grid_1000m.csv', local_file_path=f'data/Berlin/WorkingTables', gcp_file_path = f'data/Berlin/WorkingTables')
+    df = get_file(file_name='FeatCount_Berlin_grid_100m.csv', local_file_path=f'data/Berlin/WorkingTables', gcp_file_path = f'data/Berlin/WorkingTables')
     array = grid_tomatrix(df)
     print(array[::1].shape)
     # print(loop_channels(array,sigma_list = [0,0,0,0,0,0,8,0,0,9,0,0,0,0]).shape)

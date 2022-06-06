@@ -1,13 +1,20 @@
-# packaging
+#web
+streamlit
+streamlit-folium
+
+#maps
+folium
+
+# # packaging
 pip>=9
 setuptools>=26
 twine
 wheel>=0.29
 
 # data science
-# numpy
+numpy
 pandas
-# scikit-learn
+scikit-learn
 
 # tests/linter
 black
@@ -16,9 +23,10 @@ flake8
 pytest
 yapf
 
-# API
+# # API
 gcsfs
-# google-cloud-storage
+google-cloud-storage
+fsspec
 # mlflow
 s3fs
 
@@ -28,14 +36,4 @@ six>=1.14
 # memoized-property
 # termcolor
 
-#API
-# osm-runner
-# requests
-
-#kernel
-# skimage
-# scikit-image
-
-#web
-streamlit
-streamlit_folium
+typing_extensions
