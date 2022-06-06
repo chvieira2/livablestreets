@@ -98,6 +98,7 @@ def get_leisure_sports(leisure_sports):
     df_leisure_sports.to_csv('../livablestreets/data/Features/comfort_leisure_sports.csv', index=False)
 
 def get_all():
+
     # return get_public_transp(public_transport)
     get_bike_infraestructure(bike_infraestructure)
     get_eating(eating)
@@ -112,8 +113,8 @@ def get_all():
     get_leisure_sports(leisure_sports)
 
 
-
 if __name__ == "__main__":
+
     # print(get_eating(eating))
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     print(get_all())
