@@ -18,10 +18,6 @@ from shapely.geometry import mapping
 
 
 @simple_time_tracker
-
-
-
-
 def get_id_deambiguate(city_name= "berlin"):
 
     # Geocoding request via Nominatim
