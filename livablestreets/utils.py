@@ -5,6 +5,16 @@ import pandas as pd
 from livablestreets.params import BUCKET_NAME
 from google.cloud import storage
 from sklearn.preprocessing import MinMaxScaler
+import os
+
+def create_dir(path):
+    # Check whether the specified path exists or not
+    if os.path.exists(path):
+        print(f"The directory {path} already exists!")
+    else:
+        # Create a new directory because it does not exist
+        os.makedirs(path)
+        print(f"The new directory {path} has been created!")
 
 def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
                                          'activities_health_care', 'activities_public_service',
