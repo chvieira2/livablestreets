@@ -9,7 +9,7 @@ folium
 # pip>=9
 # setuptools>=26
 # twine
-# wheel>=0.29
+wheel>=0.29
 
 # data science
 numpy
