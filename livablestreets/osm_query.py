@@ -1,5 +1,5 @@
 import requests
-import json
+# import json
 
 
 overpass_url = "http://overpass-api.de/api/interpreter"

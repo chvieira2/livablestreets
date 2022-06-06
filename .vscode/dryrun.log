@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ievab/code/ievabi/livablestreets'
-gcloud config set project livablestreets
+pip install -r requirements.txt
 make: Leaving directory `/Users/ievab/code/ievabi/livablestreets'
  
