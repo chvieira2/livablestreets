@@ -1,0 +1,19 @@
+Overview OSM test
+===========
+Nodes:                                0
+Ways:                                 1
+Relations:                            0
+===========
+
+
+
+------Way--------
+
+Nr. 1 of test
+Id: 46796872
+Tags:
+{'layer': '-1',
+ 'location': 'underground',
+ 'man_made': 'pipeline',
+ 'name': 'Wäschgräble',
+ 'waterway': 'drain'}
