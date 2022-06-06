@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sqlalchemy import column
+# from sqlalchemy import column
 from livablestreets.utils import simple_time_tracker, get_file, save_file, min_max_scaler
 from shapely.geometry import Point, Polygon
 import matplotlib.path as mplPath

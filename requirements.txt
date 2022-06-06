@@ -15,6 +15,11 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+geopandas
+shapely
+geopy
+overpy
+geojson
 
 # tests/linter
 black
@@ -25,7 +30,7 @@ yapf
 
 # # API
 gcsfs
-google-cloud-storage
+# google-cloud-storage
 fsspec
 # mlflow
 s3fs
