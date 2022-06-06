@@ -73,14 +73,9 @@ class LivabilityMap(object):
 
         return self.df_grid
 
-<<<<<<< HEAD
-    def get_features(self, self.location):
-        features = get_all()
-        return features
-=======
     def get_features(self):
-        get_all()
->>>>>>> origin
+        features = get_all(location=self.location)
+        return features
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -168,6 +163,7 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    Berlin = LivabilityMap()
-    Berlin.calc_livability()
-    print(Berlin.df_grid_Livability.describe())
+    # Berlin = LivabilityMap()
+    # Berlin.calc_livability()
+    # print(Berlin.df_grid_Livability.describe())
+    print(get_features('Berlin'))
