@@ -7,6 +7,32 @@ from livablestreets_app.utils import get_file
 #--------------display map--------------------
 mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11)
 
+def plot(df):
+    columns = df.columns
+    columns_categories = [col for col in columns if col.split('_')[-1]=='mean']
+    if 'livability' in columns:
+        columns_categories.append('livability')
+    # create arrays for each category + livability
+    categories={}
+    for cat in columns_categories:
+        categories[cat] = np.array(df[['lat_center','lng_center', cat]])
+
+    heatmaps={}
+    for category in categories.keys():
+        heatmaps[category]=HeatMap(categories[category],
+                          min_opacity=0.2,
+                          gradient={0:'Navy', 0.25:'Blue',0.5:'Green', 0.75:'Yellow',1: 'Red'},
+                          radius=20,
+                          name=category,
+                          show=False)
+    #create map with heatmaps
+    mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10) #hardcoded for Berlin
+    for hm in heatmaps.values():
+        mapObj.add_child(hm)
+    folium.LayerControl().add_to(mapObj)
+    return mapObj
+
+
 #--------------help functions--------------------
 ##----Get all categories that end with _mean and if present 'livability'
 def get_category_names(df):
