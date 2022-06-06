@@ -36,19 +36,19 @@ def param_areas(keys):
     return osm_keys
 
 
-def query_params_osm(location, keys, feat, limit=''):
+def query_params_osm(location, keys, features, limit=''):
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
     limit = number (optional query limit)'''
 
-    if feat == 'ways':
+    if features == 'ways':
         params = param_ways(keys)
         out_type = 'geom'
-    if feat == 'areas':
+    if features == 'areas':
         params = param_areas(keys)
         out_type = 'geom'
-    if feat == 'nodes':
+    if features == 'nodes':
         params = param_nodes(keys)
         out_type = 'center'
 
