@@ -61,11 +61,11 @@ with st.sidebar:
 
 if submitted:
     placeholder_map.empty()
-    weights = [st.session_state.weight_activity,
+    weights = (st.session_state.weight_activity,
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
-               st.session_state.weight_social]
-    city = LivabilityMap(weights=weights)
+               st.session_state.weight_social)
+    city = LivabilityMap(weights=weights, location=st.session_state.input_city)
     city.calc_livability()
     df = city.df_grid_Livability
     mapObj = plot(df)

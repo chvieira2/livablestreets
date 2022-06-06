@@ -2,11 +2,11 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts3
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
-from livablestreets.get_csv import get_all
+#from livablestreets.get_csv import get_all
 from livablestreets.osm_query import query_params_osm
 
 class LivabilityMap(object):
-    def __init__(self):
+    def __init__(self, location, weights):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
@@ -74,7 +74,8 @@ class LivabilityMap(object):
         return self.df_grid
 
     def get_features(self):
-        get_all()
+        #get_all()
+        pass
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
