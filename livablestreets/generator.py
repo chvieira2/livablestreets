@@ -2,19 +2,21 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts3
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
-#from livablestreets.get_csv import get_all
+
+
+# from livablestreets.get_csv import get_all
 from livablestreets.osm_query import query_params_osm
 
 class LivabilityMap(object):
-    def __init__(self, location, weights):
+    def __init__(self, location = 'Berlin', weights = (1,1,1,1), stepsize=1000):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
-        self.location = 'Berlin'
-        self.stepsize = 1000
-        self.weights = (1,1,1,1)
+        self.location = location
+        self.stepsize = stepsize
+        self.weights = weights
         self.sigmas = [0,0,0,0,8,0,0,9,0,0,0,0,0,0]
 
     def location_input(self):
@@ -66,15 +68,15 @@ class LivabilityMap(object):
         # Obtain shape's centroid
         centroid = gdf_shape_location.centroid
         centroid = list(centroid[0].coords)[0]
+        self.location_centroid = centroid
 
-
-        self.location_center = centroid
-        self.path_location_geojson = f'livablestreets/data/{self.location}.geojson'
+        self.path_location_geojson = f'livablestreets/data/{self.location}/{self.location}_boundaries.geojson'
 
         return self.df_grid
 
+    @simple_time_tracker
     def get_features(self):
-        #get_all()
+        # get_all()
         pass
 
     @simple_time_tracker
@@ -163,6 +165,6 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    Berlin = LivabilityMap()
-    Berlin.calc_livability()
-    print(Berlin.df_grid_Livability.describe())
+    city = LivabilityMap(location = 'Berlin')
+    city.calc_livability()
+    print(city.df_grid_Livability.describe())
