@@ -1,7 +1,7 @@
 Overview OSM data
 ===========
-Nodes:                             7929
-Ways:                               291
+Nodes:                            57440
+Ways:                              2900
 Relations:                            0
 ===========
 
@@ -16,18 +16,136 @@ total:                                          0
 
 Tag Count Ways:
 ============
-total:                                        305
+total:                                       5066
 ============
-natural                                       291
-leaf_type                                       7
-source                                          3
-place                                           2
-landuse                                         1
-name                                            1
+natural                                      2898
+leaf_type                                     900
+name                                          217
+leaf_cycle                                    209
+attraction                                    167
+barrier                                        86
+name:en                                        79
+landuse                                        57
+name:nl                                        55
+name:de                                        54
+man_made                                       40
+name:la                                        39
+place                                          38
+protection_title                               34
+species:wikipedia                              19
+landcover                                      17
+wikidata                                       15
+grassland                                      14
+leisure                                        10
+wheelchair                                      9
+description                                     8
+species:wikidata                                8
+alt_name                                        7
+wikipedia                                       7
+access                                          6
+source                                          5
+layer                                           4
+ref                                             3
+start_date                                      3
+surface                                         2
+name:ru                                         2
+name:etymology:wikidata                         2
+name:etymology:wikipedia                        2
+managed                                         2
+tourism                                         2
+website                                         2
+fence_type                                      2
+old_name                                        2
+name:da                                         2
+genus                                           2
+boundary                                        2
+protect_class                                   2
+protect_id                                      2
+protected                                       2
+heritage                                        1
+heritage:operator                               1
+lda:criteria                                    1
+ref:lda                                         1
+created_by                                      1
+TMC:cid_58:tabcd_1:Class                        1
+TMC:cid_58:tabcd_1:LCLversion                   1
+TMC:cid_58:tabcd_1:LocationCode                 1
+addr:city                                       1
+addr:housenumber                                1
+addr:postcode                                   1
+addr:street                                     1
+email                                           1
+historic                                        1
+image                                           1
+phone                                           1
+type                                            1
+height                                          1
+capacity                                        1
+seats                                           1
+building                                        1
+proposed:landuse                                1
+short_protection_title                          1
+postal_code                                     1
+loc_name                                        1
+seamark:sea_area:category                       1
+seamark:type                                    1
+denotation                                      1
 
 
 Tag Count Nodes:
 ============
-total:                                          3
+total:                                        304
 ============
-natural                                         3
+barrier                                       100
+access                                         28
+foot                                           20
+natural                                        19
+bicycle                                        16
+amenity                                        13
+created_by                                     10
+backrest                                        9
+motor_vehicle                                   6
+material                                        6
+source                                          5
+name                                            5
+horse                                           4
+ref                                             3
+addr:city                                       3
+addr:country                                    3
+addr:housenumber                                3
+addr:postcode                                   3
+addr:street                                     3
+addr:suburb                                     3
+vehicle                                         3
+opening_hours                                   2
+motorcar                                        2
+entrance                                        2
+man_made                                        2
+speisebezirk                                    2
+bollard                                         2
+waste                                           2
+TMC:cid_58:tabcd_1:Class                        1
+TMC:cid_58:tabcd_1:LCLversion                   1
+TMC:cid_58:tabcd_1:LocationCode                 1
+TMC:cid_58:tabcd_1:NextLocationCode             1
+TMC:cid_58:tabcd_1:PrevLocationCode             1
+note                                            1
+place                                           1
+waterway                                        1
+cycle_barrier                                   1
+fee                                             1
+surveillance                                    1
+addr:inclusion                                  1
+leaf_cycle                                      1
+leaf_type                                       1
+access:delivery                                 1
+noexit                                          1
+emergency                                       1
+highway                                         1
+kerb                                            1
+colour                                          1
+wheelchair                                      1
+artist_name                                     1
+artwork_type                                    1
+tourism                                         1
+website                                         1
