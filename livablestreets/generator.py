@@ -60,7 +60,8 @@ class LivabilityMap(object):
         return self.df_grid
 
     def get_features(self, self.location):
-        get_all()
+        features = get_all()
+        return features
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
