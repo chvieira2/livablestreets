@@ -4,15 +4,15 @@ from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
 
 class LivabilityMap(object):
-    def __init__(self, location = 'Berlin', stepsize = 1000, weights = (1,1,1,1)):
+    def __init__(self):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
-        self.location = location
-        self.stepsize = stepsize
-        self.weights = None
+        self.location = 'Berlin'
+        self.stepsize = 1000
+        self.weights = (1,1,1,1)
         self.sigmas = [0,0,0,0,8,0,0,9,0,0,0,0,0,0]
 
     def location_input(self):
