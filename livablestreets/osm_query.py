@@ -4,7 +4,7 @@ import requests
 
 overpass_url = "http://overpass-api.de/api/interpreter"
 
-study_area = 'area["ISO3166-2"="DE-BE"]->.berlin'
+location = 'area["ISO3166-2"="DE-BE"]->.berlin'
 # study_area = f'{city}->.city'
 
 #example query list:
@@ -36,7 +36,7 @@ def param_areas(keys):
     return osm_keys
 
 
-def query_params_osm(keys, feat, limit=''):
+def query_params_osm(location, keys, feat, limit=''):
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
@@ -54,7 +54,7 @@ def query_params_osm(keys, feat, limit=''):
 
     overpass_query = f"""
                     [out:json];
-                    {study_area};
+                    {location};
                     ({params}
                     );
                     out {limit} {out_type};
