@@ -5,6 +5,7 @@ import json
 overpass_url = "http://overpass-api.de/api/interpreter"
 
 study_area = 'area["ISO3166-2"="DE-BE"]->.berlin'
+# study_area = f'{city}->.city'
 
 #example query list:
 keys_values_osm = {'amenity':['bbq','cafe']}
@@ -15,7 +16,7 @@ def param_nodes(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""node['{k}'='{v}'](area.berlin);"""
+            osm_keys += f"""node['{k}'='{v}'](area.city);"""
     return osm_keys
 
 def param_ways(keys):
@@ -23,7 +24,7 @@ def param_ways(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""way['{k}'='{v}'](area.berlin);"""
+            osm_keys += f"""way['{k}'='{v}'](area.city);"""
     return osm_keys
 
 def param_areas(keys):
@@ -31,7 +32,7 @@ def param_areas(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""area['{k}'='{v}'](area.berlin);"""
+            osm_keys += f"""area['{k}'='{v}'](area.city);"""
     return osm_keys
 
 
