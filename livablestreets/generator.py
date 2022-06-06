@@ -2,6 +2,7 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts3
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+from livablestreets.get_csv import get_all
 
 
 # from livablestreets.get_csv import get_all
@@ -76,9 +77,7 @@ class LivabilityMap(object):
 
     @simple_time_tracker
     def get_features(self):
-        features = get_all(location=self.location)
-        return features
-
+        get_all(location=self.location)
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -88,9 +87,7 @@ class LivabilityMap(object):
             self.generate_grid()
 
         ## Get features for a given location
-    # def get_feat_loc(self.location):
-    #     pass
-        # Needs fixing as it isn't working stand alone. Needs to collect from API (OSM) and save features as csv
+        self.get_features()
 
         ## Integrates features count to grid
         if self.df_grid_FeatCount is None:
@@ -166,7 +163,6 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'Berlin')
+    city = LivabilityMap(location = 'London')
     city.calc_livability()
     print(city.df_grid_Livability.describe())
-
