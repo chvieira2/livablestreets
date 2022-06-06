@@ -22,20 +22,6 @@
                 599012412,
                 597757327
             ]
-        },
-        "46796846":{
-            "id":46796846,
-            "tags":{
-                "location":"underground",
-                "man_made":"pipeline",
-                "name":"W\u00e4schgr\u00e4bli",
-                "waterway":"drain"
-            },
-            "refs":[
-                275133472,
-                597910238,
-                597910239
-            ]
         }
     },
     "Relation":{}
