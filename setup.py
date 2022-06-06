@@ -13,5 +13,5 @@ setup(name='livablestreets',
       test_suite='tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
-      scripts=['scripts/livablestreets_app-run'],
+      scripts=['scripts/livablestreets-run'],
       zip_safe=False)
