@@ -2,7 +2,7 @@ import folium
 from folium.plugins import HeatMap
 import pandas as pd
 import numpy as np
-from livablestreets_app.utils import get_file
+from livablestreets.utils import get_file
 
 #--------------display map--------------------
 mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11)

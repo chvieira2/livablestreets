@@ -5,10 +5,10 @@ install_requirements:
 	@pip install -r requirements.txt
 
 check_code:
-	@flake8 scripts/* livablestreets_app/*.py
+	@flake8 scripts/* livablestreets/*.py
 
 black:
-	@black scripts/* livablestreets_app/*.py
+	@black scripts/* livablestreets/*.py
 
 test:
 	@coverage run -m pytest tests/*.py
@@ -22,8 +22,8 @@ clean:
 	@rm -f .coverage
 	@rm -fr */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
-	@rm -fr livablestreets_app-*.dist-info
-	@rm -fr livablestreets_app.egg-info
+	@rm -fr livablestreets-*.dist-info
+	@rm -fr livablestreets.egg-info
 
 install:
 	@pip install . -U
