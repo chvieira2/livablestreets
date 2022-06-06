@@ -1,0 +1,91 @@
+Overview OSM data
+===========
+Nodes:                             6356
+Ways:                                 0
+Relations:                            0
+===========
+
+
+
+
+Tag Count Relations:
+============
+total:                                          0
+============
+
+
+Tag Count Ways:
+============
+total:                                          0
+============
+
+
+Tag Count Nodes:
+============
+total:                                      40812
+============
+highway                                      6356
+name                                         6352
+shelter                                      5336
+tactile_paving                               4599
+bench                                        4554
+bin                                          4088
+lit                                          3813
+public_transport                             1588
+bus                                          1581
+wheelchair                                   1309
+operator                                      286
+check_date:shelter                            177
+network                                       122
+note                                           71
+operator:short                                 55
+departures_board                               41
+route_ref                                      39
+bus_routes                                     31
+covered                                        28
+ref_name                                       27
+bus_route                                      27
+network:short                                  25
+network:wikidata                               25
+toilets:wheelchair                             24
+network:wikipedia                              24
+website                                        18
+source                                         18
+ref                                            18
+old_name                                       18
+ref:BVG                                        17
+passenger_information_display                  16
+local_ref                                      16
+bus_lines                                      15
+check_date:tactile_paving                      12
+amenity                                         9
+name:VBB                                        9
+gtfs:stop_id                                    7
+line                                            7
+name:BVG                                        4
+ele                                             4
+fee_zone                                        4
+check_date:bench                                3
+description                                     3
+fixme                                           3
+direction                                       2
+name:fr                                         2
+name:ru                                         2
+name:uk                                         2
+name:en                                         2
+check_date:bin                                  2
+opening_hours                                   2
+uic_name                                        2
+uic_ref                                         2
+name:de                                         2
+mapillary                                       2
+disused                                         2
+check_date:lit                                  1
+tramway                                         1
+image                                           1
+access                                          1
+tram                                            1
+contact:website                                 1
+phone                                           1
+survey:date                                     1
+service_times                                   1
