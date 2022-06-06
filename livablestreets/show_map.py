@@ -9,11 +9,11 @@ from livablestreets.utils import create_coords
 mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11)
 
 #Read in GeoJson file with Ortsteile-Berlin
-geo1=r"livablestreets_app/data/lor_ortsteile.geojson"
+geo1=r"livablestreets/data/lor_ortsteile.geojson"
 file1 = open(geo1, encoding="utf8")
 text1 = file1.read()
 geo_livingArea = GeoJson(text1, name="Living Areas",show=False, zoom_on_click=True)
-geo2=r"livablestreets_app/data/OSMB-Berlin.geojson"
+geo2=r"livablestreets/data/OSMB-Berlin.geojson"
 file2 = open(geo2, encoding="utf8")
 text2 = file2.read()
 geo_Berlin = GeoJson(text2, name="Berlin",show=True, zoom_on_click=True)
@@ -24,7 +24,7 @@ geo_Berlin.add_to(mapObj)
 
 # Create a Heatmap
 # convert to (n, 2) nd-array format for heatmap if not in right format
-PATH_TO_FILE='livablestreets_app/data/bars_BE.json'
+PATH_TO_FILE='livablestreets/data/bars_BE.json'
 coords = create_coords(PATH_TO_FILE)
 
 #print(type(coords))
