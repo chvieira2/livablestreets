@@ -64,3 +64,4 @@ if submitted:
     city = LivabilityMap(weights=weights)
     df = city.calc_livability()
     mapObj = plot(df)
+    stf.folium_static(mapObj)
