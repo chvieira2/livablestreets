@@ -97,6 +97,7 @@ def create_geofence(location, stepsize,
         east_lng, north_lat, west_lng, south_lat = get_shape_of_location(location)['geometry'].total_bounds
 
     print(f'Bounds coordinates are north_lat:{north_lat}, south_lat:{south_lat}, east_lng:{east_lng}, west_lng:{west_lng}')
+
     # Adjust setpsize
     if stepsize > 10: # This probably means that the step size is in meters and should be converted to degrees
         stepsize_x = m_to_coord(stepsize, latitude=north_lat, direction='x')
