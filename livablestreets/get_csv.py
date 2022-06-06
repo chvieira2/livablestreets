@@ -106,4 +106,4 @@ def get_all():
 
 if __name__ == "__main__":
     print(get_eating(eating))
-    df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
+    #df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
