@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 from livablestreets.utils import m_to_coord
-from shapely.geometry import Point
 import geopandas as gdp
 from livablestreets.utils import haversine_vectorized, save_file
 from livablestreets.utils import simple_time_tracker, create_dir
@@ -9,20 +8,19 @@ from livablestreets.utils import simple_time_tracker, create_dir
 from geopy.geocoders import Nominatim
 from shapely.ops import linemerge, unary_union, polygonize
 import overpy
-from geojson import Point, Feature, FeatureCollection, dump
+from geojson import dump
 
 import shapely.geometry as geometry
-
-from shapely.geometry import mapping
+from shapely.geometry import Point, mapping
 
 
 
 @simple_time_tracker
-def get_id_deambiguate(city_name= "berlin"):
+def get_id_deambiguate(location):
 
     # Geocoding request via Nominatim
     geolocator = Nominatim(user_agent="city_compare")
-    geo_results = geolocator.geocode(city_name, exactly_one=False, limit=3)
+    geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
 
     # Searching for relation in result set
     for r in geo_results:
@@ -68,22 +66,34 @@ def get_city_geojson(area_osm_id):
     city_shape = geometry.MultiPolygon(polygons)
     return city_shape
 
-def save_geojson(city_name, city_shape):
+def save_geojson(location):
     # converts to geojson
-    geojson_city = mapping(city_shape)
+    area_osm_id = get_id_deambiguate(location)
+    city_shape = get_city_geojson(area_osm_id)
+
     # saves to file
-    with open(f'{city_name}_boundaries.geojson', 'w') as f:
-        dump(mapping(geojson_city), f)
+    with open(f'livablestreets/data/{location}/{location}_boundaries.geojson', 'w') as f:
+        dump(mapping(city_shape), f)
 
 '''----------------------------------------------------'''
 
-
-
 def get_shape_of_location(location):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
+    try:
+        gdf = gdp.read_file(f'livablestreets/data/{location}/{location}_boundaries.geojson')
+    except:
+        save_geojson(location)
+        gdf = gdp.read_file(f'livablestreets/data/{location}/{location}_boundaries.geojson')
 
-    # Create folder for location if it doesn't exist
-    create_dir(path = f'livablestreets/data/{location}')
+
+    gdf['Location'] = location
+    gdf = gdf.set_index("Location")
+
+    print(f'Obtained shape file for {location}')
+    return gdf
+
+def get_shape_of_location_Berlin(location):
+    """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
 
     if location in ['Berlin', 'berlin', 'BER', 'ber']:
         # Use geopandas package to work with the shape file of Berlin
@@ -115,7 +125,6 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
     centroid_lat = centroid[1]
     centroid_lng = centroid[0]
 
-
     # Calculate distance for each grid
     df['km_to_centroid'] = haversine_vectorized(df,
                          start_lat="lat_center",
@@ -129,7 +138,6 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
     for index in range(len(df)):
         lat = df['lat_center'][index]
         lng = df['lng_center'][index]
-
         # Test if point is inside the locations shape
         point = Point(lng,lat)
         foo_boolean.append(polygon.contains(point)[0])
@@ -163,7 +171,7 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
 @simple_time_tracker
 def create_geofence(location, stepsize,
                     north_lat=None, south_lat=None, east_lng=None, west_lng=None,
-                    save_local=True, save_gcp=True):
+                    save_local=True, save_gcp=False):
     # Obtain location max bounds
     if north_lat is None:
         east_lng, north_lat, west_lng, south_lat = get_shape_of_location(location)['geometry'].total_bounds
@@ -220,7 +228,4 @@ def create_geofence(location, stepsize,
 
 
 if __name__ == '__main__':
-
-
-    df = create_geofence(stepsize = 10000, save_local=True, save_gcp=False) # 52.338246, 52.675508, 13.088348, 13.761159
-    print(df)
+    print(create_geofence(location = 'London', stepsize = 1000))
