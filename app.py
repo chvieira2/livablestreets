@@ -1,5 +1,6 @@
 import streamlit as st
 import folium
+from folium import GeoJson
 import streamlit_folium as stf
 from folium.plugins import HeatMap
 import numpy as np
@@ -35,7 +36,7 @@ st.markdown(
             ''', unsafe_allow_html=True)
 
 
-st.markdown("""<h1 style='text-align: center; color: white;'>
+st.markdown("""<h1 style='text-align: center; color: white'>
             Explore livability scores in city of your choice
             </h1>""",
             unsafe_allow_html=True)
@@ -68,8 +69,22 @@ if submitted:
     city = LivabilityMap(weights=weights, location=st.session_state.input_city)
     city.calc_livability()
     df = city.df_grid_Livability
-    mapObj = plot(df)
+    #city center position lat,lon
+    city.generate_grid()
+    city_coords = [city.location_centroid[1],city.location_centroid[0]]
+    # city borders map
+    geojson_path=city.path_location_geojson
+    file = open(geojson_path, encoding="utf8").read()
+    city_borders = GeoJson(file,
+                          name=city.location,
+                          show=True,
+                          zoom_on_click=True)
+    mapObj = plot(df, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
-        st.write('Use the layers at the top right corner of the map to investigate different features that contribute to livability!')
+        st.markdown("""<h6 style='text-align: center; color: white'>
+            Use the layers at the top right corner of the map to investigate
+            different features that contribute to livability!
+            </h6>""",
+            unsafe_allow_html=True)
         stf.folium_static(mapObj)
