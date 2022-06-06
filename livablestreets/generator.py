@@ -1,18 +1,20 @@
-from livablestreets.create_grid import create_geofence
+from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts3
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+from livablestreets.get_csv import get_all
+from livablestreets.osm_query import query_params_osm
 
 class LivabilityMap(object):
-    def __init__(self, location = 'Berlin', stepsize = 1000, weights = (1,1,1,1)):
+    def __init__(self):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
-        self.location = location
-        self.stepsize = stepsize
-        self.weights = None
+        self.location = 'Berlin'
+        self.stepsize = 1000
+        self.weights = (1,1,1,1)
         self.sigmas = [0,0,0,0,8,0,0,9,0,0,0,0,0,0]
 
     def location_input(self):
@@ -30,6 +32,8 @@ class LivabilityMap(object):
         for now it automatically returns (1,1,1,1)"""
         self.weights = (1,1,1,1)
 
+
+
     @simple_time_tracker
     def generate_grid(self):
         """ Function that puts together everything"""
@@ -37,7 +41,7 @@ class LivabilityMap(object):
         ## Gets input from user
         if self.location is None:
             self.location_input()
-            # Create folder for location if it doesn't exist
+        # Create folder for location if it doesn't exist
         create_dir(path = f'livablestreets/data/{self.location}')
         create_dir(path = f'livablestreets/data/{self.location}/Features')
         create_dir(path = f'livablestreets/data/{self.location}/WorkingTables')
@@ -55,12 +59,22 @@ class LivabilityMap(object):
         else:
             print('generate_grid has already been called before')
 
+        ## Create the location center as class variable and the path to the corresponding GeoJson file
+        # get location shape
+        gdf_shape_location = get_shape_of_location(self.location)
+
+        # Obtain shape's centroid
+        centroid = gdf_shape_location.centroid
+        centroid = list(centroid[0].coords)[0]
+
+
+        self.location_center = centroid
+        self.path_location_geojson = f'livablestreets/data/{self.location}.geojson'
+
         return self.df_grid
 
-    def get_features(self, location=None):
-
-        #features = get_all()
-        pass
+    def get_features(self):
+        get_all()
 
     @simple_time_tracker
     def add_FeatCount_grid(self):

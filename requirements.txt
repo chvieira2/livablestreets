@@ -6,22 +6,22 @@ streamlit-folium
 folium
 
 # # packaging
-# pip>=9
-# setuptools>=26
-# twine
-# wheel>=0.29
+pip>=9
+setuptools>=26
+twine
+wheel>=0.29
 
 # data science
 numpy
 pandas
 scikit-learn
 
-# # tests/linter
-# black
-# coverage
-# flake8
-# pytest
-# yapf
+# tests/linter
+black
+coverage
+flake8
+pytest
+yapf
 
 # # API
 gcsfs
