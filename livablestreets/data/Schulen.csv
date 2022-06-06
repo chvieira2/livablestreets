@@ -1,0 +1,913 @@
+BSN;Name;PLZ;Adresse;Telefon;Fax;eMail;Internet
+01A04;Berlin-Kolleg;10551;Turmstr. 75;901838210;901838222;sekretariat@berlin-kolleg.de;http://www.berlin-kolleg.de
+01B01;OSZ Banken, Immobilien und Versicherungen;10557;Alt-Moabit 10;398840;39884119;info@osz-biv.de;http://www.osz-biv.de
+01B02;Staatliche Technikerschule Berlin;10555;Bochumer Str. 8 B;3900060;39000682;info@technikerschule-berlin.de;http://www.technikerschule-berlin.de
+01B03;OSZ Kommunikations-, Informations- und Medientechnik;13359;Osloer Str. 23-26;493070;49307100;Sekretariat@oszkim.de;http://www.oszkim.de
+01B04;OSZ Gesundheit I;13349;Schwyzer Str. 6/8;4530800;45308077;sekretariat@osz-gesundheit.de;http://www.osz-gesundheit.de
+01B05;Staatliche Wirtschaftsfachschule fr Hotellerie und Gastronomie Berlin;10117;Niederwallstr. 6-7;20613130;20613131;info@hotelfachschule-berlin.de;http://www.hotelfachschule-berlin.de
+01G01;Grundschule am Arkonaplatz;10115;Ruppiner Str. 47-48;48625680;486256820;sekretariat@arkonaplatz.schule.berlin.de;http://www.grundschuleamarkonaplatz.de
+01G02;Papageno-Grundschule;10115;Bergstr. 58;30881711;30881710;sekretariat@papageno-grundschule.de;http://www.papageno-grundschule.de
+01G04;Kastanienbaum-Grundschule;10119;Gipsstr. 23 A;275816330;275816350;sekretariat@kb.schule.berlin.de;http://www.kastanienbaumgrundschule.de
+01G05;Grundschule Neues Tor;10115;Hannoversche Str. 20;24088330;24088340;schulleitung@01G05.schule.berlin.de;http://www.neues-tor.de
+01G07;GutsMuths-Grundschule;10179;Singerstr. 8;2408386;24083888;sekretariat@gutsmuths.schule.berlin.de;http://www.gutsmuths-grundschule.de
+01G08;Grundschule am Brandenburger Tor;10117;Wilhelmstr. 52;20629430;20629440;sekretariat@gsabt.schule.berlin.de;http://www.Grundschule-am-Brandenburger-Tor.de
+01G10;City-Grundschule;10179;Sebastianstr. 57;28449060;28449070;Sekretariat@city.schule.berlin.de;http://www.city-grundschule.de
+01G11;Kurt-Tucholsky-Grundschule;10559;Rathenower Str. 18;3974429310;3974429338;01G11@01G11.schule.berlin.de;http://www.kurt-tucholsky-grundschule.de
+01G15;Anne-Frank-Grundschule;10557;Paulstr. 20 B;20629180;20629188;sekretariat@anne-frank-grundschule.de;http://anne-frank-grundschule.de
+01G16;Moabiter Grundschule;10557;Paulstr. 28;30208630;30208640;kontakt@moabiter-grundschule.de;http://www.moabiter-grundschule.de
+01G18;Carl-Bolle-Grundschule;10551;Waldenserstr. 20-21;397457810;397457811;info@carl-bolle-grundschule.de;http://www.carl-bolle-grundschule.de
+01G19;Hansa-Grundschule;10555;Lessingstr. 5;39806430;39806434;sekretariat@hansa.online;http://www.hansa-grundschule-online.de
+01G24;Gottfried-R__Grundschule;13349;Ungarnstr. 75;45081110;45081120;01G24@01G24.schule.berlin.de;http://www.gottfried-roehl-schule.de
+01G25;Rudolf-Wissell-Grundschule;13357;Ellerbeker Str. 7-8;49799940;497999420;Schulleitung@rudolf-wissell.schule.berlin.de;http://www.rudolf-wissell-grundschule.de
+01G27;Gesundbrunnen-Grundschule;13357;Prinzenallee 8;493015660;493015666;sekretariat@gesundbrunnen-grundschule.de;http://www.gesundbrunnen-grundschule.de
+01G28;Brder-Grimm-Grundschule;13353;Tegeler Str. 18-19;4530840;45308415;sekretariat@bggs.schule.berlin.de;http://bggs-berlin.de
+01G29;Wilhelm-Hauff-Grundschule;13359;Gotenburger Str. 8;48490810;48490820;01G29@01G29.schule.berlin.de;http://wilhelm-hauff-grundschule.de
+01G31;Wedding-Grundschule;13347;Antonstr. 10;901844250;901847437;plorenz@wedding-schule.de;http://www.wedding-schule.de
+01G32;Carl-Kraemer-Grundschule;13359;Zechliner Str. 4;4998993;49989955;carl-kraemer-grundschule@t-online.de;http://www.carl-kraemer-gs.de
+01G35;Humboldthain-Grundschule;13355;Grenzstr. 7;46777330;46777340;sekretariat@humboldthain.schule.berlin.de;http://www.humboldthain-grundschule.de
+01G36;Andersen-Grundschule;13359;Kattegatstr. 26;493015410;493015420;sekretariat@andersen.schule.berlin.de;http://www.andersen-grundschule.de
+01G37;Heinrich-Seidel-Grundschule;13355;Ramlerstr. 9-10;4677669210;4677669219;info@hsgs.berlin;http://www.hsgs.berlin
+01G38;Gustav-Falke-Grundschule;13355;Strelitzer Str. 42;467779960;467779974;info@gustav-falke-schule.de;http://www.gustav-falke-schule.de
+01G39;Vineta-Grundschule;13355;Demminer Str. 27;467768660;467768670;info@vineta.schule.berlin.de;http://www.vineta-grundschule.de
+01G40;M__see-Grundschule;13351;Afrikanische Str. 123-125;45979210;45979233;sekretariat@moewensee-schule.de;http://www.moewensee-schule.de
+01G41;Erika-Mann-Grundschule;13347;Utrechter Str. 25-27;45085510;45085511;erika.mann.grundschule@googlemail.com;http://www.erika-mann-grundschule.com
+01G42;Anna-Lindh-Schule (Grundschule);13351;Guineastr. 17-18;45307530;45307520;01G42@01G42.schule.berlin.de;http://www.anna-lindh-schule.de
+01G43;Albert-Gutzmann-Schule (Grundschule);13357;Orthstr. 1;46905960;46905970;sekretariat@gutzmannschule.de;http://www.gutzmannschule.de
+01G44;Allegro-Grundschule;10785;Ltzowstr. 83-85;257572710;257572734;berlin@allegro-grundschule.de;http://www.allegro-grundschule.de
+01G45;Leo-Lionni-Grundschule;13353;Mllerstr. 158;469799670;469799674;info@leo-lionni-grundschule.de;http://www.leo-lionni-grundschule.de
+01G46;Grundschule am Koppenplatz;10115;Koppenplatz 12;8471210910;8471210920;sekretariat@koppenplatz.schule.berlin.de;http://www.schule-am-koppenplatz.de
+01G47;Miriam-Makeba-Grundschule;10555;Zinzendorfstr. 15-16;39405210;39405220;01G47@01G47.schule.berlin.de;http://www.miriam-makeba-schule.de
+01G48;Grundschule am Nordhafen;10115;Boyenstr. 1;225027130;;01G48@01G48.schule.berlin.de;http://www.48-schule-berlin.de
+01K01;Willy-Brandt-Schule;13357;Grntaler Str. 5;4039492120;4039492170;kontakt@willy-brandt-teamschule.de;http://www.willy-brandt-teamschule.de
+01K02;Ernst-Schering-Schule;13353;Ltticher Str. 47-48;45308710;45308711;info@ernst-schering-schule.de;http://www.ernst-schering-schule.de
+01K03;Ernst-Reuter-Schule;13355;Stralsunder Str. 57;467779910;467779916;verwaltung@ernst-reuter-schule.berlin;http://ers.edupage.org
+01K04;Heinrich-von-Stephan-Gemeinschaftsschule;10553;Neues Ufer 6;39063130;39063140;sekretariat@hvs.schule.berlin.de;http://www.hvs-schule-berlin.de
+01K06;Herbert-Hoover-Schule (Integrierte Sekundarschule);13357;Pankstr. 18-19;46906340;46906344;schulleitung@hhs-berlin.de;http://www.hhs-berlin.de
+01K07;Hemingway-Schule;10115;Gartenstraߥ 10-17;200892210;200892220;sekretariat@hemingway-schule.de;http://www.hemingway-schule.de
+01K08;Schule am Schillerpark (Integrierte Sekundarschule);13349;Ofener Str. 6;45799450;45799455;sekretariat@schule-am-schillerpark.de;http://www.Schule-am-Schillerpark.de
+01K09;Hedwig-Dohm-Schule (Integrierte Sekundarschule);10559;Stephanstr. 27;38377131;38377130;hedwig-dohm-os@web.de;http://www.hedwig-dohm-os.de
+01K10;Theodor-Heuss-Gemeinschaftsschule;10559;Quitzowstr. 141;39835210;39835232;sekretariat@thgberlin.de;http://www.thgberlin.de
+01P01;Evangelische Schule Berlin Mitte (Gemeinschaftsschule);10178;Rochstr. 7;70725482;70725483;schule@esbm.de;http://www.esbm.de
+01P03;Jdisches Gymnasium Moses Mendelssohn;10115;Groߥ Hamburger Str. 27;7262657110;7262657145;info@jgmm.de;http://www.jgmm.de
+01P04;Freie Waldorfschule Berlin Mitte;10178;Weinmeisterstr. 16;80097580;800975814;verwaltung@waldorfschule-mitte.de;http://www.waldorfschule-mitte.de
+01P05;Katholische Schule Sankt Paulus (Grundschule);10551;Waldenserstr. 27;3954196;3955032;schulleitung@st-paulus.schule;http://www.st-paulus.schule
+01P06;Canisius-Kolleg;10785;Tiergartenstr. 30-31;26481100;26481164;schulleitung@canisius.de;http://www.canisius.de
+01P07;Lazarus Schulen der Hoffnungstaler Stiftung Lobetal;13355;Bernauer Str. 115-118;46705204;46705212;C.Herbst-Anacker@lazarus-schulen.berlin;http://www.lazarus-schulen.de
+01P11;Plan B Berufsfachschule fr Altenpflege des Europ䩳chen Bildungswerks fr Beruf und Gesellschaft gGmbH;10179;Alte Jakobstr. 79-80;220114970;;planb-pflegeschule@ebg.de;
+01P13;Freie Schule am Mauerpark (Grundschule);13355;Wolliner Str. 25/26;42022690;42022691;info@freieschuleberlin.de;http://www.freieschuleberlin.de
+01P14;BEST-Sabel Berufsakademie;10179;Littenstr. 109;4284910;42849120;schule@best-sabel.de;http://www.best-sabel.de
+01P16;Berlin Metropolitan School (Integrierte Sekundarschule);10115;Linienstr. 122;88727390;887273920;info@metropolitanschool.com;http://www.metropolitanschool.com
+01P18;Bilinguale Schule Phorms Berlin Mitte;13355;Ackerstr. 76;467986300;467986320;berlin-mitte@phorms.de;http://www.berlin-mitte.phorms.de
+01P22;Berlin Cosmopolitan School;10119;Rckerstr. 9;688332324;688332323;mail@cosmopolitanschool.de;http://www.cosmopolitanschool.de
+01P23;Evangelische Schule Berlin Zentrum (Gemeinschaftsschule);10179;Wallstr. 32;25760710;257607129;info@ev-schule-zentrum.de;http://www.ev-schule-zentrum.de
+01P25;Internationale Lomonossow-Schule Berlin (Gemeinschaftsschule);10785;Genthiner Str. 20;270007700;270007710;tiergarten@lomonossow-schulen.de;http://www.lomonossow-grundschule.de
+01P36;BTB Schulzentrum gGmbH;10178;Alexanderstr. 5;2888589925;2888589990;info@btb-schulzentrum.de;http://www.btb-schulzentrum.de
+01P39;GPB College gGmbH;10117;Beuthstr. 8;3904810;39048140;info@gpb-college.de;http://www.GPB-College.de
+01P40;Berufsfachschule Paulo Freire im Zentrum ܂ERLEBEN;10559;Turmstr. 21;30390653;30614371;info@pflege-lernen.org;http://www.pflege-lernen.org
+01P42;WWV Bildungsakademie gGmbH;10178;Alexanderstr. 1;5146930;;wwv@wwv-online.de;http://www.abizubi.de
+01P46;DDA Destiny Diversity Academy GmbH;13355;Brunnenstr. 110 D;76236766;76236767;info@ddacademy.de;http://www.ddacademy.de
+01P47;Ecole Voltaire (Grundschule);10785;Kurfrstenstr. 53;4110015;4110014;verein@ecolevoltaire.de;http://www.ecolevoltaire.de
+01P48;meco Akademie GmbH;13347;Seestr. 64;81005820;81005824;info@meco-akademie.de;http://www.meco-akademie.de
+01P49;Quinoa-Schule Freie Sekundarschule Berlin Wedding;13409;Khnemannstr. 26;983224100;983224109;info@quinoa-bildung.de;http://www.quinoa-bildung.de
+01P50;Kristall Grundschule - Inklusive Grundschule in freier Tr䧥rschaft;13353;Tegeler Str. 13;30873841;30873850;kristall-gs@tjfbg.de;http://www.tjfbg.de
+01P51;mediencollege Berlin gGmbH;10115;Invalidenstr. 17;28873093;28873094;grimmer@mediencollege-berlin.de;http://www.mediencollege.berlin
+01P52;Schulen der ASIG Stiftung e.V.;10553;Kaiserin-Augusta-Allee 14;4690540;46905420;info@asig-berlin.de;http://www.asig-berlin.de
+01P54;GFBI gGmbH - Gesellschaft fr Berufsbildung und Integration;10551;Turmstr. 44;91692880;91692882;info@gfbi-ggmbh.de;
+01P55;FRւEL Akademie gGmbH - Fachschule fr Sozialp䤡gogik;10178;Alexanderstr. 9;21235280;21235120;info@froebel-akademie.de;http://www.froebel-gruppe.de/akademie
+01S01;Schule am Zille-Park;13347;Raven鳴r. 10-12;460617401;460617404;info@schule-am-zille-park.de;http://www.schule-am-zille-park.de
+01S05;Schule in der Charit鼯td>;13353;Augustenburger Platz 1;130238053;130238055;sekretariat@sidc.schule.berlin.de;http://www.schuleindercharite.de
+01S06;Albert-Gutzmann-Schule;13357;Orthstr. 1;46905960;46905970;sekretariat@gutzmannschule.de;http://www.gutzmannschule.de
+01S07;Charlotte-Pfeffer-Schule;10178;Berolinastr. 8;2465740;24657428;schulleitung@charlotte-pfeffer-schule.de;http://www.charlotte-pfeffer.schule-berlin.de
+01Y02;John-Lennon-Gymnasium;10119;Zehdenicker Str. 17;40500110;40500120;sekretariat@jlgym-berlin.de;http://www.jlgym-berlin.de
+01Y04;Musikgymnasium Carl Philipp Emanuel Bach;10115;Rheinsberger Str. 4-5;40505830;40505850;bach.musikgymnasium@berlin.de;http://musikgymnasium-berlin.de
+01Y07;Franz__ches Gymnasium;10785;Derfflingerstr. 7;25758910;25758919;mdormann-farnir@fg-berlin.eu;http://www.fg-berlin.eu
+01Y08;Lessing-Gymnasium;13349;Sch__gstr. 17;45798510;45798516;post@lessing-gymnasium-berlin.de;http://www.lessing-gymnasium-berlin.eu
+01Y09;Diesterweg-Gymnasium;13357;B__erstr. 2-6;46309620;46309630;sekretariat@dwgym.berlin;http://www.dwgym.berlin
+01Y11;Max-Planck-Gymnasium;10179;Singerstr. 8 A;847118830;847118840;sekretariat@mpg-berlin.de;http://www.mpg-berlin.de
+01Y12;Gymnasium Tiergarten;10555;Altonaer Str. 26;398009710;398009722;sekretariat@gymnasium-tiergarten.de;http://gymnasium-tiergarten.de
+02B01;August-Sander-Schule;10245;Naglerstr. 1-3;29362760;293627620;schulbuero@august-sander-schule.de;http://www.august-sander-schule.de
+02B02;Hans-B__er-Schule (OSZ Konstruktionsbautechnik);10969;Lobeckstr. 76;61670510;61670599;info@osz-kt.de;http://www.osz-kt.de
+02B03;Modeschule Berlin (OSZ Bekleidung und Mode);10969;Kochstr. 9;25391511;25391515;Schulleitung@modeschule-berlin.de;http://www.modeschule-berlin.de
+02B04;OSZ Handel 1;10997;Wrangelstr. 98;6112960;61129615;sekretariat-schulleitung@oszhandel1.de;http://www.oszhandel.de
+02B05;Jane-Addams-Schule (OSZ Sozialwesen);10249;Stra߭annstr. 14-16;4202760;420276321;kontakt@osz-soz.de;http://www.osz-soz.de
+02G01;Spartacus-Grundschule;10249;Friedenstr. 40-45;42024930;42024937;schulleitung@grundschule-friedrichshain.de;http://www.grundschule-friedrichshain.de
+02G02;Hausburg-Grundschule;10249;Hausburgstr. 20;93956760;939567615;sekretariat@hausburg.schule.berlin.de;http://www.hausburgschule.de
+02G03;Justus-von-Liebig-Grundschule;10247;Liebigstr. 18A;447283211;447283215;02G03@02G03.schule.berlin.de;http://www.jvl-gs.de
+02G04;Pettenkofer-Grundschule;10247;Pettenkoferstr. 20-24;3229811911;3229811915;Sekretariat@pettenkofer.schule.berlin.de;http://www.pettenkofer-grundschule.de
+02G07;Ludwig-Hoffmann-Grundschule;10243;Lasdehner Str. 21-23;293474211;293474215;schulleitung@l-hoffmann.schule.berlin.de;http://www.ludwig-hoffmann-grundschule.de
+02G08;Grundschule am Traveplatz;10247;Jessnerstr. 24-32;48488000;484880030;sek@gs-am-traveplatz.schule-berlin-fk.de;http://www.grundschule-am-traveplatz.de
+02G09;Zille-Grundschule;10245;Boxhagener Str. 46;484880423;484880449;schulleitung@zille-grundschule.de;http://www.Zille-Grundschule.de
+02G10;Modersohn-Grundschule;10245;Niemannstr. 3;48488340;4848834127;Schulleitung@modersohn.schule.berlin.de;http://www.modersohn-schule.de
+02G11;Thalia-Grundschule;10245;Alt-Stralau 34;29347830;293478315;Schulleitung@thalia-gs.schule.berlin.de;http://www.thalia-grundschule.de
+02G12;Kurt-Schumacher-Grundschule;10969;Puttkamerstr. 19;50585931;50585915;02G12@02G12.schule.berlin.de;http://www.kurt-schumacher-grundschule.de
+02G13;Charlotte-Salomon-Grundschule;10965;Groߢeerenstr. 40;50587511;50587515;Sekretariat@02G13.schule.berlin.de;http://www.charlotte-salomon-grundschule.de
+02G14;Galilei-Grundschule;10969;Friedrichstr. 13;50585811;50585815;sekretariat@galilei-grundschule.de;http://www.galilei-grundschule.de
+02G18;Nrtingen-Grundschule;10997;Mariannenplatz 28;61784231;61784235;sekretariat@nuertingen.schule.berlin.de;http://www.nuertingen-grundschule.de
+02G19;Fanny-Hensel-Grundschule;10963;Sch__erger Str. 24;50586811;50586815;sekretariat@fanny-hensel.schule.berlin.de;http://www.Fanny-Hensel-Grundschule.de
+02G20;Brgermeister-Herz-Grundschule;10961;Wilmsstr. 10;3198702211;3198702215;sekretariat@bmh.schule.berlin.de;http://www.bmh-schule.de
+02G21;Reinhardswald-Grundschule;10961;Gneisenaustr. 73-74;69037211;69037215;sekretariat@reinhardswald.schule.berlin.de;http://www.reinhardswald-grundschule.de
+02G22;Jens-Nydahl-Grundschule;10999;Kohlfurter Str. 20;50586111;50586115;sekretariat@jng.schule.berlin.de;
+02G23;Fichtelgebirge-Grundschule;10997;G__tzer Ufer 2;22502811;22502815;schulleitung@fichtelgebirge.schule.berlin.de;http://fichtelgebirge-grundschule-berlin.de
+02G24;Otto-Wels-Grundschule;10969;Alexandrinenstr. 12;50585311;50585315;sekretariat@otto-wels.schule.berlin.de;http://www.owg-berlin.de
+02G26;Lemgo-Grundschule;10967;B__str. 5;50585711;50585715;Sekretariat@lemgo.schule.de;http://www.lemgo-grundschule.de
+02G27;Hunsrck-Grundschule;10999;Manteuffelstr. 79;22503111;22503115;schulleitung@hunsrueck-grundschule.de;http://www.Hunsrueck-Grundschule.de
+02G29;Heinrich-Zille-Grundschule;10997;Waldemarstr. 118;22503611;22503615;Heinrich-Zille-GS@web.de;http://www.Heinrich-Zille-Grundschule.de
+02G31;Adolf-Glaߢrenner-Grundschule;10965;Hagelberger Str. 34;50587531;50587535;Adolf-Glassbrenner-Schule@web.de;http://www.adolf-glassbrenner-schule.de
+02G32;Clara-Grunwald-Grundschule;10963;Hallesche Str. 24;81888311;81888315;clara-grunwald-gs@gmx.de;http://www.clara-grunwald.cidsnet.de
+02G33;Aziz-Nesin-Grundschule;10961;Urbanstr. 15;2700409431;2700409435;Sekretariat@aziz-nesin.schule.berlin.de;http://www.aziz-nesin-schule.de
+02G34;Jane-Goodall-Grundschule;10247;Scharnweberstr. 19;2464789211;2464789215;sekretariat@jane-goodall.schule.berlin.de;http://www.jane-goodall-grundschule.de
+02G35;Rosa-Parks-Grundschule;10999;Reichenberger Str. 65;22502511;22502515;mail@rosa-parks-grundschule.de;http://www.rosa-parks-grundschule.de
+02G36;Blumen-Grundschule;10243;Andreasstr. 50;3198702911;3198702915;buero@36-grundschule.de;http://www.36-grundschule.de
+02G37;37. Schule (Grundschule) (Neugrndung zum 01.08.2022);10249;Pufendorfstr. 10;;;;
+02K01;Ellen-Key-Schule;10243;Rdersdorfer Str. 20-27;29773060;2977306215;sekretariat@ellen-key.schule.berlin.de;http://www.eko-online.net
+02K02;Carl-von-Ossietzky-Schule (Gemeinschaftsschule);10961;Blcherstr. 46 -47;2250277111;2250277115;sekretariat@cvo-berlin.de;http://www.cvo-berlin.de
+02K03;Hector-Peterson-Schule;10963;Tempelhofer Ufer 15;50587711;50587715;sekretariat@hps-berlin.schule;http://www.hps-berlin.schule
+02K04;Lina-Morgenstern-Schule (Gemeinschaftsschule);10961;Gneisenaustr. 7;81858711;81858715;schulleitung@lmg.schule.berlin.de;http://lina-morgenstern-gemeinschaftsschule.de
+02K05;Schule am K__stor (Integrierte Sekundarschule);10249;Weinstr. 3;447283411;447283415;sek@koenigstor-os.schule-berlin-fk.de;http://www.schule-am-koenigstor.de
+02K06;Emanuel-Lasker-Schule (Gemeinschaftsschule);10245;Modersohnstr. 53;2910807;29669216;sekretariat@02K06.schule.berlin.de;http://els-schule.de
+02K07;Georg-Weerth-Schule;10249;Eckertstr. 16a;246567211;246567215;info@georg-weerth-schule.de;http://www.georg-weerth-schule.de
+02K08;Refik-Veseli-Schule (Integrierte Sekundarschule);10997;Skalitzer Str. 55;22503511;22503515;Sekretariat@rvs.schule.berlin.de;http://www.refik-veseli-schule.eu
+02K09;Albrecht-von-Graefe-Schule (Integrierte Sekundarschule);10967;Graefestr. 85;50586011;50586015;sekretariat@graefemail.de;http://www.albrecht-von-graefe-schule.de
+02K10;Ferdinand-Freiligrath-Schule (Integrierte Sekundarschule);10961;Bergmannstr. 64;50585611;50585615;sekretariat@ferdinand-freiligrath-schule.de;http://www.ferdinand-freiligrath-schule.de
+02P03;Islamische Grundschule;10967;Boppstr. 4;69507860;69507861;sekretariat@islamische-grundschule.de;http://www.islamische-grundschule.de
+02P04;Freie Waldorfschule Kreuzberg;10969;Ritterstr. 78;61510100;408189615;schulsekretariat@fwsk.net;http://www.waldorfschule-kreuzberg.de
+02P05;Sozialp䤡gogisches Institut Berlin Walter May - Stiftung SPI;10963;Hallesches Ufer 32-38;25937390;259373950;fachschulen@stiftung-spi.de;http://www.spi-fachschulen.de
+02P07;Campus Berufsbildung e.V.;10969;Friedrichstr. 231;25931877;25931879;tbfs@campus-bb.de;http://www.campus-bb.de
+02P09;Freie Schule Kreuzberg (Grundschule);10997;Wrangelstr. 128;74073334;74073335;kontakt@freieschulekreuzberg.de;http://freieschulekreuzberg.de
+02P10;Vitanas Akademie gGmbH;10997;Skalitzer Str. 85-86;5498860;54988610;akademie@vitanas.de;http://www.vitanas.de
+02P11;Berlin Bilingual School (Grundschule);10249;Weinstr. 1;24628089;27582913;info@berlin-bilingual.de;http://berlin-bilingual-school.de
+02P12;Kreativit䴳Grundschule Berlin Friedrichshain;10243;Strausberger Str. 38;29035117;29039449;schule-fh@krea-schulzentrum.de;http://www.krea-schulzentrum.de
+02P13;Netzwerk-Schule (Gemeinschaftsschule);10243;Marchlewskistr. 40;40393340;;schule@netzwerkspielkultur.de;http://schule.netzwerkspielkultur.de
+02P16;BWK Berufsfachschule fr Altenpflege;10997;Cuvrystr. 34;6179290;61792937;kontakt@bwk-berlin.de;http://www.bwk-berlin.de
+02P19;FORUM Berufsbildung e.V.;10969;Charlottenstr. 2;2590080;25900810;info@forum-berufsbildung.de;http://www.forum-berufsbildung.de
+02P20;WBS Training Schulen gGmbH;10247;Voigtstr. 3;24326902;34727919;schulen.berlin@wbs-schulen.de;http://www.wbs-schulen.de
+02P22;Pro Inklusio - Fachschule fr Sozialp䤡gogik;10997;Muskauer Str. 53;20078010;20078465;proinklusio@diebildungspartner.de;http://www.procedo-berlin.com
+02P23;Concept Berufliche Schulen gGmbH Berlin;10245;Revaler Str. 100;48485850;48485868;info@concept-berlin.de;http://www.concept-berlin.de
+02P25;Evangelische Schule Berlin Friedrichshain (Grundschule);10249;Petersburger Platz 5;32296700;32297730;info@ev-schule-friedrichshain.de;http://www.ev-schule-friedrichshain.de
+02P26;VIA Bildungszentrum fr Pflegeberufe;10969;Axel-Springer-Str. 42;25373927;25373933;bildungszentrum@via-berlin.de;http://www.via-bildungszentrum.de
+02P29;Kenntnisreich gGmbH;10965;Schmiedehof 23;98510786;;fachschule@kenntnisreich.de;http://www.kenntnisreich-kindertagesstaetten.de
+02P30;Concept - Fachschule fr Sozialp䤡gogik;10243;Gubener Str. 47;33916940;;info@concept-berlin.de;http://www.concept-berlin.de
+02P31;procon College gGmbH;10963;Stresemannstr. 78;17655237525;21002124;info@procon-college.de;http://www.procon-college.de
+02P32;sfe Schule fr Erwachsenenbildung e.V.;10961;Gneisenaustr. 2A;6937048;6937049;koa@sfeberlin.de;http://www.sfeberlin.de
+02P33;Freie Schule Windrose;10999;Wiener Str. 1-6;15221883813;61621769;info@freie-schule-windrose.de;http://www.freie-schule-windrose.de
+02S01;Temple-Grandin-Schule;10243;Lasdehner Str. 19;293474231;293474235;Schulleitung@temple-grandin.schule.berlin.de;http://www.temple-grandin-schule.de
+02S02;Gustav-Meyer-Schule;10999;Kohlfurter Str. 22;347423911;347423915;02S02@02S02.schule.berlin.de;http://www.gustav-meyer-schule.de
+02S03;Margarethe-von-Witzleben-Schule;10243;Palisadenstr. 76-77;420249211;420249215;schulleitung@witzleben.schule.berlin.de;http://www.witzleben-schule.de
+02S06;Liebmann-Schule;10969;Friedrichstr. 13;50585831;50585835;02S06@02S06.schule.berlin.de;
+02Y01;Andreas-Gymnasium;10243;Koppenstr. 76;29369020;2936902199;sekretariat@andreas.schule.berlin.de;http://www.andreas-schule.org
+02Y03;Heinrich-Hertz-Gymnasium;10247;Rigaer Str. 81-82;42262080;422620884;sekretariat@hhgym.de;http://www.hhgym.de
+02Y04;Georg-Friedrich-H䮤el-Gymnasium;10247;Frankfurter Allee 6 A;2250279011;2250279015;sekretariat@haendelgym.de;http://www.haendelgym.de
+02Y05;Dathe-Gymnasium;10243;Helsingforser Str. 11-13;2936063;293606415;sek@dathe-gymnasium.de;http://www.dathe-gymnasium.de
+02Y06;Leibniz-Gymnasium;10961;Schleiermacherstr. 23;50586711;50586715;sekretariat@leibnizschule-berlin.de;http://www.leibnizschule-berlin.de
+02Y07;Robert-Koch-Gymnasium;10967;Dieffenbachstr. 60;50585731;50585735;Koch-Gymnasium@web.de;http://www.Robert-Koch-Oberschule.de
+02Y08;Hermann-Hesse-Gymnasium;10967;B__str. 16;666434090;666434091;kontakt@hesse-kreuzberg.de;http://www.hesse-kreuzberg.de
+03A04;Abendgymnasium Prenzlauer Berg;10439;Driesener Str. 22;4254218;4250121;mail@abendgymnasium-berlin.de;http://www.abendgymnasium-berlin.de
+03B02;Berufliche Schule fr Sozialwesen Pankow;13158;Erbeskopfweg 6-10;50019910;50019924;sekretariat@schule-sozialwesen-pankow.de;http://www.schule-sozialwesen-pankow.de
+03B04;Brillat-Savarin-Schule (OSZ Gastgewerbe);13088;Buschallee 23 A;9142660;914266220;sekretariat@osz-gastgewerbe.de;http://www.osz-gastgewerbe.de
+03B06;Konrad-Zuse-Schule;13156;Hermann-Hesse-Str. 34/36;91609411;9165691;sekretariat@kzsb.de;http://www.konrad-zuse-schule-berlin.de
+03B07;Elinor-Ostrom-Schule (OSZ Browirtschaft und Dienstleistungen);10409;Mandelstr. 6-8;42185411;42185412;info@oszeos.de;http://www.oszeos.de
+03B08;Staatliche Ballett- und Artistikschule Berlin;10409;Erich-Weinert-Str. 103;4057790;40577919;schulleitung@ballettschule-berlin.de;http://www.ballettschule-berlin.de
+03B10;Max-Bill-Schule (OSZ Planen, Bauen, Gestalten);13086;Gustav-Adolf-Str. 66;912052175;912052174;03B10@03B10.schule.berlin.de;http://www.max-bill-schule.de
+03G01;Schule am Hamburger Platz (Grundschule);13086;Gustav-Adolf-Str. 21;9246762;92091818;info@schule-am-hamburger-platz.de;http://www.schule-am-hamburger-platz.de
+03G02;Heinrich-Roller-Grundschule;10405;Heinrich-Roller-Str. 18;4425674;44039188;sekretariat@roller.schule.berlin.de;http://www.Heinrich-Roller-Grundschule.de
+03G03;Grundschule am Kollwitzplatz;10435;Knaackstr. 67;44377100;44377108;Sekretariat@gsak.schule.berlin.de;http://www.gs-am-Kollwitzplatz.de
+03G04;Grundschule an der Marie;10405;Christburger Str. 7;40301298;24627804;Sekretariat@marie.schule.berlin.de;http://www.schule-an-der-Marie.de
+03G05;Homer-Grundschule;10407;Pasteurstr. 10/12;4250575;4250177;post@homergs.de;http://www.homer-grundschule.de
+03G06;B__w-Grundschule;10407;John-Schehr-Str. 38;42851032;42851034;info@boetzow-grundschule.de;http://www.boetzow-grundschule.de
+03G08;Grundschule am Planetarium;10405;Ella-Kay-Str. 47;4250874;42081125;03G08@03G08.schule.berlin.de;http://www.gsap.de
+03G09;Thomas-Mann-Grundschule;10437;Greifenhagener Str. 58;4457761;4455590;03G09@03G09.schule.berlin.de;http://www.thomas-mann-grundschule.de
+03G10;Grundschule am Hohen Feld;13125;Bedeweg 1;948006220;948006233;sekretariat@gsahf.schule.berlin.de;http://grundschule-amhohenfeld.de
+03G11;Schule am Falkplatz (Grundschule);10437;Gleimstr. 49;443875010;44387539;schulleiterin@schule-am-falkplatz.berlin;http://www.schule-am-falkplatz.berlin
+03G12;Paul-Lincke-Grundschule;10409;Pieskower Weg 39;42850876;42850877;03G12@03G12.schule.berlin.de;
+03G13;Grundschule in Rosenthal;13158;Kastanienallee 59;91699480;91699481;info@grundschule-rosenthal.de;http://www.grundschule-rosenthal.de
+03G14;Bornholmer Grundschule;10439;Ibsenstr. 17;4458763;44719469;bornholmer14@t-online.de;http://www.bornholmer-grundschule.de
+03G15;Schule am Senefelderplatz;10435;Sch__user Allee 165;4468900;44689013;03G15@03G15.schule.berlin.de;http://www.schule-am-senefelderplatz.de
+03G16;Grundschule am Teutoburger Platz;10119;Templiner Str. 1-3;44358050;44358051;schulleitung@teute.schule.berlin.de;http://www.schule-am-teute.de
+03G17;Grundschule am Weiߥn See;13088;Falkenberger Str. 31;9269462;34353387;03G17@03G17.schule.berlin.de;http://grundschule-am-weissen-see.de
+03G18;Picasso-Grundschule;13088;Gounodstr. 71;9606660;96066621;sekretariat@picasso.schule.berlin.de;http://www.picasso-grundschule.de
+03G20;Grundschule im Moselviertel;13088;Brodenbacher Weg 31;9250976;92375652;sekretariat@mosel.schule.berlin.de;http://www.moselschule.de
+03G21;Grundschule unter den B䵭en;13129;Alt-Blankenburg 26;4743325;47487607;gudbaeumen@t-online.de;http://www.gudbaeumen.de
+03G22;Grundschule am Wasserturm;13089;Tino-Schwierzina-Str. 66;4720176;47033360;gsamwasserturm@freenet.de;http://www.grundschule-am-wasserturm.com/
+03G23;Grundschule Alt-Karow;13125;Bahnhofstr. 32;94794970;94794975;grundschule-alt-karow@gmx.de;http://www.grundschule-alt-karow.de
+03G24;Grundschule im Panketal;13125;Achillesstr. 31;94794920;9479492231;gs-im-panketal@gmx.de;http://www.grundschule-im-panketal.de
+03G25;Carl-Humann-Grundschule;10439;Scherenbergstr. 7;4441580;44719045;humann-grundschule@gmx.de;
+03G26;Arnold-Zweig-Grundschule;13187;Wollankstr. 131;49790970;49790979;sekretariat@arnold-zweig.schule.berlin.de;http://www.arnold-zweig-grundschule.com
+03G27;Elizabeth-Shaw-Grundschule;13187;Grunowstr. 17;49301190;49301199;Sekretariat@shaw.schule.berlin.de;http://shaw-grundschule.de
+03G28;Hasengrund-Schule (Grundschule);13156;Hermann-Hesse-Str. 48-52;47402940;47402941;sekretariat@hasengrund.schule.berlin.de;http://hasengrund.edupage.org
+03G29;Grundschule Am Sandhaus;13125;Wiltbergstr. 37-39;9490046;9490036;sekretariat@sandhaus.schule.berlin.de;
+03G32;Grundschule an den Buchen;13156;Wilhelm-Wolff-Str. 19;91699460;91699461;sekretariat-gsbuchen@gmx.de;http://www.gs-buchen.de
+03G33;Jeanne-Barez-Schule (Grundschule);13127;Hauptstr. 66;47498931;47498938;sekretariat@jeaba.de;http://www.jeanne-barez-schule.de
+03G34;Mendel-Grundschule;13187;Stiftsweg 3;47607910;476079911;mendel-schule@t-online.de;
+03G35;Platanengrundschule;13159;Hauptstr. 20;9131120;47411973;platanengrundschule@gmx.de;
+03G36;Elisabeth-Christinen-Grundschule;13156;Buchholzer Str. 3;40058920;40058921;Sekretariat@03G36.schule.berlin.de;ecg.schule
+03G37;Klecks-Grundschule;13187;Brixener Str. 40;47901920;47901921;sekretariat@klecks-grund.schule.berlin.de;
+03G38;Grundschule im Blumenviertel;10407;Syringenplatz 30;42850870;42850872;03G38@03G38.schule.berlin.de;http://www.grundschule-im-blumenviertel.de
+03G39;Grundschule Wolkenstein;13189;Neumannstr. 65;47901890;47901891;sekretariat@wolkenstein.schule.berlin.de;http://www.gs-wolkenstein.de
+03G40;Schule am Birkenhof;13127;Arnouxstr. 18;474029100;47411448;sekretariat@birkenhof.schule.berlin.de;http://www.schule-am-birkenhof.de
+03G41;Trelleborg-Schule (Grundschule);13189;Eschengraben 40;479018611;479018618;trelleborg-schule@t-online.de;http://www.trelleborg-schule.de
+03G43;Grundschule Wilhelmsruh;13158;Lessingstr. 44;91645320;91645328;sekretariat@grundschule-wilhelmsruh.de;http://www.grundschule-wilhelmsruh.de
+03G44;Georg-Zacharias-Grundschule;13088;Sulzfelder Str. 15;9269089;9252784;44.Grundschule-Pankow@web.de;http://44gspankow.be.schule.de
+03G45;Grundschule im Hofgarten;10435;Danziger Str. 50;40301657;40301667;sekretariat@hofgarten.schule.berlin.de;http://www.grundschuleimhofgarten.de
+03G46;Grundschule im Eliashof;10437;Senefelderstr. 6;40504800;40301889;sekretariat@03g46.schule.berlin.de;
+03G47;47. Schule (Grundschule);13187;Mendelstr. 54;47607930;47607931;info@schuleanderstrauchwiese.de;http://www.schuleanderstrauchwiese.de
+03G48;48. Schule (Grundschule);10407;Conrad-Blenkle-Str. 20;43770573;;03G48@03G48.schule.berlin.de;http://www.03g48.de
+03G49;49. Schule (Grundschule) (Neugrndung zum 01.08.2022);13085;Rennbahnstr. 45;;;;
+03G50;50. Schule (Grundschule) (Neugrndung zum 01.08.2022);13125;Karower Chaussee 97;;;;
+03K01;Kurt-Schwitters-Schule;10405;Greifswalder Str. 25;42847841;42847869;ksoberlin.cids@t-online.de;http://www.kurt-schwitters.schule
+03K02;Kurt-Tucholsky-Schule (Integrierte Sekundarschule);13189;Neumannstr. 9-11;4799000;479900122;sekretariat1@kto-berlin.de;http://www.kto-berlin.de
+03K03;Konrad-Duden-Schule (Integrierte Sekundarschule);13156;Rolandstr. 35;4450959;44738903;kontakt@isskd.de;http://www.isskd.de
+03K04;Gustave-Eiffel-Schule;10409;Hanns-Eisler-Str. 78-80;42809070;4280907109;sekretariat@ges.schule.berlin.de;http://www.gustave-eiffel-schule.de/
+03K05;Heinz-Brandt-Schule;13086;Langhansstr. 120;9251208;9253132;kontakt@heinz-brandt-schule.de;http://www.heinz-brandt-schule.de
+03K06;Reinhold-Burger-Schule;13187;Neue Sch__lzer Str. 32;49979940;49979948;Sekretariat@03k06.schule.berlin.de;http://www.reinhold-burger-schule.de
+03K07;Tesla-Schule (Gemeinschaftsschule);10407;Rudi-Arndt-Str. 18;4212230;4235995;sekretariat@tesla-schule.de;http://www.tesla-schule.de
+03K08;Hagenbeck-Schule;13086;Gustav-Adolf-Str. 60;96275050;96275053;info@hagenbeck-schule.de;http://www.hagenbeck-schule.de
+03K09;Janusz-Korczak-Schule (Integrierte Sekundarschule);13187;Dolomitenstr. 94;47909940;47909949;Janusz-Korczak-OR@web.de;
+03K10;Hufeland-Schule (Integrierte Sekundarschule);13125;Walter-Friedrich-Str. 16-18;94800610;94800618;sekretariat@hufelandschule.berlin;http://www.hufelandschule.berlin
+03K11;Wilhelm-von-Humboldt-Gemeinschaftsschule;10439;Erich-Weinert-Str. 70;411983970;411983979;sekretariat@wvh-gemeinschaftsschule.de;http://wvh-gemeinschaftsschule.de
+03P03;Schulen Christburg Campus Prenzlauer Berg;10405;Christburger Str. 14;4431237170;4431237179;Geschaeftsfuehrung@Christburg-Campus.de;http://www.christburg-campus.de
+03P08;Katholisches Schulzentrum Edith Stein;10405;Greifswalder Str. 18;4243930;42439326;KS-edithstein@t-online.de;http://www.schulzentrum-edithstein.de
+03P10;Katholische Theresienschule (Gymnasium);13086;Behaimstr. 29;9246425;9246262;Theresienschule@t-online.de;http://www.Theresienschule.de
+03P11;Stephanus-Schule;13086;Albertinenstr. 20;96249751;96249758;katrin.leisterer@stephanus.org;http://www.stephanus-schule.de
+03P12;Evangelische Schule Pankow (Grundschule);13187;Galenusstr. 60 a;47498940;47498949;info@ev-schule-pankow.de;http://www.ev-schule-pankow.de
+03P13;Freie Schule Pankow (Integrierte Sekundarschule);13156;Grabbeallee 66;4733083;47300129;info@freie-schule-pankow.de;http://www.freie-schule-pankow.de
+03P14;Freie Grundschule Pfefferwerk;10439;Sch__ieߥr Str. 7;44717305;44717306;grundschule@pfefferwerk.de;http://freie-grundschule.de
+03P15;AUCOTEAM GmbH;10407;Storkower Str. 115 A;42188661;4286259;berufsfachschule@aucoteam.de;http://www.aucoteam-berufsfachschule.de
+03P18;dreieins-Grundschule Berlin-Pankow;13088;Bizetstr. 64;92092220;92092931;grundschule-pankow@dreieins.org;http://www.dreieins.org/pankow
+03P20;SchuleEins (Gemeinschaftsschule);13187;Berliner Str.120/121;475966930;4759669320;sekretariat.speicher@schuleeins.de;http://www.schuleeins.de
+03P21;Freie Integrative Montessori Grundschule Pankow;13187;Hadlichstr. 2;50019130;500191929;montessori-schule-pankow@karuna-ev.de;http://www.montessori-p䤡gogik-pankow.de
+03P22;Klax-Gemeinschaftsschule;13189;Neumannstr. 13 A;92109646;34745169;info@klax-schule.de;http://www.klax-schule.de
+03P23;Freie Naturschule im StadtGUT (Grundschule);13159;Hauptstr. 26;40058302;;kontakt@freie-naturschule-stadtgut.de;http://www.freie-naturschule-stadtgut.de
+03P24;Ting-Schule (Integrierte Sekundarschule);13189;Berliner Str. 100;47004506;47004529;ting@ting-schule.de;http://www.ting-schule.de
+03P26;Lauder Beth-Zion Schule (Gemeinschaftsschule);10405;Rykestr. 53;440131620;440131629;sekretariat@team.lauderschule.de;http://www.lauderschule.de
+03P27;Klax Berufsakademie;13086;Langhansstr. 74B;6665470;47796204;info@klax-ausbildung.de;http://www.klax-ausbildung.de
+03P28;Platanus Schule Berlin (Gemeinschaftsschule);13187;Berliner Str. 12;49004880;490048809;info@platanus-schule.de;http://www.platanus-schule.de
+03P30;Freie Waldorfschule am Prenzlauer Berg;10409;Grtelstr. 16;42082010;420820117;weiss@schulemachen.com;http://www.schulemachen.com
+03P32;Montessori-Gemeinschaftsschule Berlin Buch;13125;"Wiltbergstr. 90; Haus 23";911464900;911464909;info@karuna-mgbb.de;http://www.montessori-berlin-buch.de
+03P33;Evangelische Schule Berlin Buch (Grundschule);13125;Wiltbergstr. 50;31958200;31958199;buero@ev-schule-buch.de;http://www.ev-schule-buch.de
+03P36;WETEK - Fachschule fr Sozialp䤡gogik;10119;Christinenstr. 18-19;44383360;44383369;fachschule@wetek.de;http://www.wetek.de
+03P37;Berlin Bilingual School (Integrierte Sekundarschule);13189;Granitzstr. 38A;44383248;;info@berlin-bilingual.de;http://www.berlin-bilingual-school.de
+03P38;S.K.O.U.T. - Fachschule fr Sozialp䤡gogik;10405;Marienburger Str. 18;484947111;484947123;info@s-k-o-u-t.de;http://www.s-k-o-u-t.de
+03P39;Stephanus-Grundschule;13086;Parkstr. 22;96249231;;mathilda.blasczyk@stephanus.org;http://www.stephanus-bildung.de
+03P40;SAfS - Spektrum Akademie fr Sozialp䤡gogik;13089;Tino-Schiwerzina-Str. 32;24531905;;info@safs-berlin.de;
+03P41;Naturschule am Brosepark;13156;Dietzgenstr. 49;17634341136;;kontakt@naturschule-im-stadtgut.de;http://www.naturschule-am-brosepark.de
+03P42;Weiterdenker-Fachschule fr Sozialp䤡gogik;10435;Danziger Str. 50;868001030;;kontakt@ifbw.info;http://www.kubibe.de
+03P43;Pfefferwerk - Fachschule fr Sozialp䤡gogik;10119;Christinenstr. 18/19;44383721;44383100;info@pfefferwerk-akademie.de;http://www.pfefferwerk-akademie.de
+03P44;St. Hildegard Akademie gGmbH;13158;Hertzstr. 67;41206760;412067615;info@hildegard-akademie-berlin.de;
+03P45;PepperMont Freie Sekundarschule fr ganzheitliches Lernen;10409;Greifswalder Str. 88;15780528194;44383108;peppermont@pfefferwerk.de;http://www.pfefferwerk.de
+03S03;Helene-Haeusler-Schule;10405;Mendelssohnstr. 10;47377641;47377640;sekretariat@helene-haeusler.schule.berlin.de;http://www.helene-haeusler-schule.de
+03S06;Schule am Birkenhof;13127;Arnouxstr. 18;474029100;47411448;sekretariat@birkenhof.schule.berlin.de;http://www.schule-am-birkenhof.de
+03S08;Panke-Schule;13187;Klaustaler Str. 21;47607920;47607921;kontakt@panke-schule.de;http://www.panke-schule.de
+03S09;Schule an der Strauchwiese;13187;Mendelstr. 54;47607930;47607931;info@schuleanderstrauchwiese.de;http://www.schuleanderstrauchwiese.de
+03S10;Marianne-Buggenhagen-Schule;13125;Ernst-Busch-Str. 29;9487880;94878827;info.mbs-berlin@t-online.de;
+03Y03;K䴨e-Kollwitz-Gymnasium;10439;Dunckerstr. 65-66;4447671;4459794;sekretariat@kkos.net;http://www.kkos.net
+03Y04;Heinrich-Schliemann-Gymnasium;10439;Dunckerstr. 64;4468950;446895106;schulleitung@hsg-berlin.de;http://www.hsg-berlin.de
+03Y08;Carl-von-Ossietzky-Gymnasium;13187;G__hstr. 42-44;49400390;49400391;sekretariat@cvo.berlin;http://cvo.berlin
+03Y10;Rosa-Luxemburg-Gymnasium;13189;Kissingenstr. 12;91607730;91607731;sekretariat@rlg.berlin;http://www.rlo-berlin.de
+03Y13;Felix-Mendelssohn-Bartholdy-Gymnasium;10407;Pasteurstr. 7;420827400;420827404;sekretariat@fmbg.schule.berlin.de;http://www.fmbg-berlin.de
+03Y14;Primo-Levi-Gymnasium;13086;Pistoriusstr. 133;9290168111;9290168110;sekretariat@plg-berlin.de;http://www.plg-berlin.de
+03Y15;Max-Delbrck-Gymnasium;13156;Kuckhoffstr. 2;47596720;4759672110;sekretariat@max-delbrueck-gymnasium.de;http://www.Max-Delbrck-Gymnasium.de
+03Y16;Robert-Havemann-Gymnasium;13125;Achillesstr. 79;94878511;94878519;03Y16@03Y16.schule.berlin.de;http://www.robert-havemann-gymnasium.de
+03Y17;Gymnasium am Europasportpark;10407;Kniprodestr. 29;405771260;405771269;sekretariat@gesp-berlin.de;http://www.gesp-berlin.de
+04A04;Charlotte-Wolff-Kolleg;10627;Pestalozzistr. 40-41;902928825;902928858;Leitung@charlotte-wolff-kolleg.de;http://www.charlotte-wolff-kolleg.de
+04A06;Peter-A.-Silbermann-Schule;10713;Blissestr. 22;89745160;89745169;info@abendgymnasium.de;http://www.abendgymnasium.de
+04A08;Sportschule im Olympiapark - Poelchau-Schule;14053;Prinz-Friedrich-Karl-Weg 1;30063300;30063308;kontakt@sportschule-olympiapark-poelchau.de;http://www.sportschule-olympiapark-poelchau.de
+04B01;Loschmidt-Oberschule;10587;Loschmidtstr. 19;34505810;34505840;zentrale@loschmidt-oberschule.de;http://www.loschmidt-oberschule.de
+04B02;Hans-Litten-Schule (OSZ Recht und Wirtschaft);14059;Danckelmannstr. 26-28;3030170;30301752;leitung@hans-litten-schule.de;http://www.hans-litten-schule.de
+04B03;OSZ Kraftfahrzeugtechnik;10585;Gierkeplatz 1-3;90198600;90198610;info@osz-kfz.de;http://www.osz-kfz.de
+04B04;Ruth-Cohn-Schule (OSZ Sozialwesen);10625;Bismarckstr. 20;34506714;34506740;04B04@osz-rcs.de;http://www.osz-ruth-cohn.de
+04B05;Anna-Freud-Schule (OSZ Sozialwesen);13627;Halemweg 22;36417810;36417820;04B05@04B05.schule.berlin.de;http://www.anna-freud-osz.de
+04B06;Leopold-Ullstein-Schule (OSZ Wirtschaft);10715;Prinzregentenstr. 32;85758533;85758550;info@leopold-ullstein-schule.de;http://www.leopold-ullstein-schule.de
+04B07;OSZ K__rpflege;10625;Schillerstr. 120;8649700;86497051;info@osz-koerperpflege.de;http://www.osz-koerperpflege.de
+04B08;Kl䲥-Bloch-Schule;10715;Prinzregentenstr. 60;85758939;85758937;buero@klaere-bloch-schule.de;http://www.klaere-bloch-schule.de
+04G01;Eichendorff-Grundschule;10625;Goethestr. 19;437272270;4372722729;sekretariat@eichendorff.schule.berlin.de;http://www.eichendorff-grundschule-berlin.de
+04G02;Lietzensee-Grundschule;14057;Witzlebenstr. 34-35;30830630;308306363;sekretariat@lietzenseeschule.schule.berlin.de;http://www.lietzenseeschule.de
+04G04;Joan-Mir󭇲undschule;10623;Bleibtreustr. 43;902928100;;mail@joan-miro-grundschule.de;http://www.joan-miro-grundschule.de
+04G05;Dietrich-Bonhoeffer-Grundschule;14050;Spandauer Damm 205-215;303284510;3032845129;Sekretariat@dibog.schule.berlin.de;
+04G06;Wald-Grundschule;14055;Waldschulallee 83-93;902926900;902926917;sekretariat@wald-grundschule.de;http://wald-grundschule.de
+04G07;Ludwig-Cauer-Grundschule;10587;Cauerstr. 36-38;902925700;902925707;04G07@04G07.schule.berlin.de;http://www.cauerschule.de
+04G08;Mierendorff-Grundschule;10589;Mierendorffstr. 20-24;902927508;902927550;04G08@04G08.Berlin.Schule.de;http://www.mierendorff-grundschule.de
+04G09;Erwin-von-Witzleben-Grundschule;13627;Halemweg 34;666290910;666290929;schulleitung@erwin-von-witzleben.schule.berlin.de;
+04G11;Helmuth-James-von-Moltke-Grundschule;13627;Heckerdamm 221;348068910;3480689129;sekretariat@moltke.schule.berlin.de;http://www.moltke-grundschule.de
+04G12;Schinkel-Grundschule;10585;Nithackstr. 8;902924000;902924040;sekretariat@schinkel.schule.berlin.de;http://www.schinkel-grundschule.de
+04G13;Nehring-Grundschule;14059;Nehringstr. 9-10;902924300;902924343;sekretariat@nehring.schule.berlin.de;http://www.nehring-grundschule.de
+04G14;Reinhold-Otto-Grundschule;14050;Leistikowstr. 7-8;3641050120;3641050124;04G14@04G14.schule.berlin.de;http://www.reinhold-otto.de
+04G15;Charles-Dickens-Grundschule;14055;Dickensweg 15;30328680;303286819;sekretariat@charles-dickens.schule.berlin.de;http://www.charles-dickens-gs.de
+04G17;Johann-Peter-Hebel-Grundschule;10719;Emser Str. 50;860085210;8600852129;sekretariat@hebelschule-berlin.de;http://www.hebelschule-berlin.de
+04G18;Ernst-Habermann-Grundschule;10715;Prinzregentenstr. 33-34;81462460;814624629;schule@ernst-habermann.de;http://www.ernst-habermann.de
+04G19;Grundschule am Rdesheimer Platz;14197;Rdesheimer Str. 24-30;902917010;902917033;Sekretariat@garp.schule.berlin.de;http://www.garp-schule.de
+04G20;Katharina-Heinroth-Grundschule;10709;Mnstersche Str. 15-17;8904395111;8904395129;sekretariat@katharina-heinroth-grundschule.de;http://katharina-heinroth-grundschule.de
+04G21;Halensee-Grundschule;10711;Joachim-Friedrich-Str. 35-36;8902860;89028630;sekretariat@halensee.schule.berlin.de;http://www.Halensee-Grundschule.de
+04G22;Grunewald-Grundschule;14193;Delbrckstr. 20 A;89049690;890496919;sekretariat@grunewald.schule.berlin.de;http://www.grunewald-grundschule.de
+04G23;Alt-Schmargendorf-Grundschule;14199;Reichenhaller Str. 8;810567670;8105676729;schulleitung@asg.schule.berlin.de;http://www.alt-schmargendorf-grundschule.de
+04G24;Carl-Orff-Grundschule;14199;Berkaer Str. 9-10;902922809;902922805;sekretariat@carl-orff-gs.de;http://www.carl-orff-gs.de
+04G25;Cecilien-Schule (Grundschule);10717;Nikolsburger Platz 5;8639050;86390570;04G25@04G25.schule.berlin.de;http://www.cecilien-schule.de
+04G26;Birger-Forell-Grundschule;10715;Koblenzer Str. 22-24;8577180;85771877;sekretariat@birger-forell.schule.berlin.de;http://www.birger-forell-grundschule.de
+04G27;Judith-Kerr-Grundschule;14199;Friedrichshaller Str. 13;8979940;89799418;verwaltung@04G27.schule.berlin.de;http://www.judith-kerr-grundschule.de
+04K02;Friedensburg-Schule;10623;Goethestr. 8-9;902917804;902917898;sekretariat@fosbe.de;http://www.fosbe.de
+04K03;Robert-Jungk-Schule;10707;S䣨sische Str. 58;8639280;863928299;schulleitung@r-j-o.de;http://www.Robert-Jungk-Oberschule.de
+04K04;Nelson-Mandela-Schule;10719;Pfalzburger Str. 30;86395370;863953719;schulleitung@nelson-mandela-schule.net;http://www.nelson-mandela-schule.net
+04K05;Paula-Frst-Schule (Gemeinschaftsschule);10629;Sybelstr. 20-21;902927220;902927250;sekretariat@paula-fuerst.schule.berlin.de;http://www.paula-fuerst-gemeinschaftsschule.de
+04K06;Schule am Schloss (Integrierte Sekundarschule);14059;Schlo߳tr. 55 A;902924110;902924132;sekretariat@schuleamschloss.de;http://www.schuleamschloss.de
+04K07;Integrierte Sekundarschule Wilmersdorf;14199;Kranzer Str. 3;897845910;8978459129;sekretariat@sekundarschule-wilmersdorf.berlin.schule.de;http://www.sekundarschule-wilmersdorf.de
+04K08;Peter-Ustinov-Schule;14057;Kuno-Fischer-Str. 22-26;303286610;303286630;sekretariat@peter-ustinov-schule.de;http://www.peter-ustinov-schule.de
+04K09;Otto-von-Guericke-Schule (Integrierte Sekundarschule);10709;Eisenzahnstr. 47-48;860085310;8600853129;kontakt@ovgos.de;http://www.ovgos.de
+04K10;Wangari-Maathai-Internationale-Schule;10715;Babelsberger Str. 24;85758945;85758940;secretary@wangari-maathai-schule.de;http://wangari-maathai-schule.jimdofree.com
+04P01;Katholische Schule Herz Jesu (Grundschule);14055;Insterburgallee 8-10;33007010;330070129;sekretariat@kshj.schulerzbistum.de;http://www.herz-jesu-schule.de
+04P02;Schele-Schule (Grundschule);14052;Olympische Str. 23;3044990;98352334;buero@Schele-Schule.de;http://www.Schele-Schule.de
+04P03;Heinz-Galinski-Schule (Grundschule);14055;Waldschulallee 73-75;3011940;30119444;kontakt@hgsberlin.de;http://www.hgsberlin.de
+04P04;Katholische Schule Liebfrauen (Gymnasium);14050;Ahornallee 33;30613013;30613014;sekretariat@ksl.schulerzbistum.de;http://www.KSLiebfrauen.de
+04P05;Evangelische Schule Charlottenburg (Integrierte Sekundarschule);10587;Guerickestr. 4-6;343571610;343571620;sekretariat@ev-schule-charlottenburg.de;http://www.ev-schule-charlottenburg.de
+04P09;IFAG Institut fr angewandte Gerontologie;10585;Haubachstr. 8;3415034;3482303;info@ifag-berlin.de;http://www.ifag-berlin.de
+04P10;Katholische Schule Sankt Ludwig (Grundschule);10719;Dsseldorfer Str. 13;8824867;8824868;kontakt@ludwig-gs.de;http://ludwig-gs.de
+04P11;Evangelisches Gymnasium zum Grauen Kloster;14193;Salzbrunner Str. 41;8254011;8254012;sekretariat@graues-kloster.de;http://www.graues-kloster.de
+04P12;Annie-Heuser-Schule;10709;Eisenzahnstr. 37;86393061;86393063;schule@annie-heuser-schule.de;http://www.annie-heuser-schule.de
+04P15;Freie Schule Charlottenburg;14052;Frankenallee 6;89409930;89060908;info@freie-schule-charlottenburg.de;http://www.freie-schule-charlottenburg.de
+04P20;Rackow-Schulen Berlin;10623;Fasanenstr. 81;31504243;31504244;info@rackow-berlin.de;http://www.rackow-schulen.de
+04P21;Evangelische Schule Wilmersdorf (Grundschule);10707;Brandenburgische Str. 51;81826980;89728334;info@evgruwi.de;http://www.evgruwi.de
+04P22;Erste Aktivschule Charlottenburg (Grundschule);10587;Alt-Lietzow 31;30366968;30366967;kontakt@aktivschule-berlin.de;http://www.aktivschule-charlottenburg.de
+04P23;Jdische Traditionsschule;14052;Spandauer Damm 220;32678897;32678833;heike.michalak@jschule.de;http://www.jschule.de
+04P24;Moser-Schule - Schweizer Gymnasium;14052;Badenallee 31-32;30838282;30838288;info@moserschule.de;http://www.moserschule.de
+04P27;Schule am Westend;14050;Spandauer Damm 130;30355970;30355979;k.schicke@zspr.de;http://www.zspr.de
+04P35;Mentora Gymnasium;10587;Salzufer 6;81058080;;info@mentora-gymnasium.de;http://www.mentora-gymnasium.de
+04P37;Campus Berufsbildung e.V.;10627;Wilmersdorfer Str. 126-127;420827900;;d.hoffmeister@campus-bb.de;http://www.campus-berlin.de
+04P39;Berlin British School (Grundschule);14055;Dickensweg 17-19;35109190;35109199;info@berlinbritishschool.de;http://www.berlinbritishschool.de
+04P40;Berlin British School (Integrierte Sekundarschule);14055;Am Postfenn 31;35109180;35109189;info@berlinbritishschool.de;http://www.berlinbritishschool.de
+04P41;Freudberg Gemeinschaftsschule;10717;Bundesallee 35;68400951;3309990002;melanie.thoelldte@freudbergschule.de;http://www.freudbergschule.de
+04P42;Private Kant-Schule - Berlin International School;14195;Lentzeallee 8/14;82007790;82007799;office@berlin-international-school.de;http://www.berlin-international-school.de
+04P45;Jewish International School - Masorti-Grundschule;10629;Roscherstr. 6;85607780;85607781;schule@masorti.de;http://www.masorti.de
+04S02;Arno-Fuchs-Schule;10585;Richard-Wagner-Str. 30;902913250;902913259;r.gehret@arno-fuchs-schule.de;http://www.arno-fuchs-schule.de
+04S04;Reinfelder-Schule;14055;Maik䦥rpfad 30;902925050;902925064;post@reinfelder-schule.de;http://www.reinfelder-schule.de
+04S05;Ernst-Adolf-Eschke-Schule fr Geh__se;14055;Waldschulallee 29;902925000;902925033;post@eaeschule.de;http://www.eschke-schule.de
+04S06;Finkenkrug-Schule;10713;Mannheimer Str. 21-22;8277060;82770618;sekretariat@finkenkrug.schule.berlin.de;http://finkenkrug-berlin.de
+04S07;Comenius-Schule;10713;Gieselerstr. 4;8649950;86499518;schulleitung@schule-comenius.de;http://www.schule-comenius.de
+04Y01;Schiller-Gymnasium;10625;Schillerstr. 125-127;902925920;902925841;sekretariat@sgym.schule.berlin.de;http://www.sgym.de
+04Y02;Wald-Gymnasium;14055;Waldschulallee 95;902926930;902926925;waldgymnasium@gmx.de;http://www.waldgymnasium.de
+04Y03;Sophie-Charlotte-Gymnasium;10629;Sybelstr. 2;902928600;902928660;sekretariat@scg.schule.berlin.de;http://www.scgberlin.de
+04Y04;Gottfried-Keller-Gymnasium;10589;Olbersstr. 38;902927310;902927362;kontakt@gks-berlin.de;http://www.gks-berlin.de
+04Y05;Herder-Gymnasium;14052;Westendallee 45-46;902927800;902927821;sekretariat@herder-gymnasium.eu;http://www.herder-gymnasium.eu
+04Y06;Heinz-Berggruen-Gymnasium;14052;Bayernallee 4;902928702;902928720;info@hbgym.de;http://hbgym.de
+04Y07;Friedrich-Ebert-Gymnasium;10713;Blissestr. 22;8974510;89745124;danz@feo-berlin.de;http://feo.schule.de
+04Y08;Hildegard-Wegscheider-Gymnasium;14193;Lassenstr. 16-20;89745420;8974542129;wegscheider-gymnasium@gmx.de;http://www.wegscheider-gymnasium.de
+04Y09;Walther-Rathenau-Gymnasium;14193;Herbertstr. 2-6;8902990;89029918;sekretariat@wrg.schule.berlin.de;http://www.wrs-berlin.de
+04Y10;Marie-Curie-Gymnasium;10715;Weimarische Str. 21;8599497110;8599497129;schulleitung@mcg-berlin.de;http://www.mcg-berlin.de
+04Y11;Goethe-Gymnasium;10717;Gasteiner Str. 23;8649960;8617680;info.goethe-gymnasium@t-online.de;http://goethe-gymnasium.berlin/
+05A03;VHS Spandau - Harri-Reinert;13597;Carl-Schurz-Str. 59;902795006;902795836;sekretariat-zbw@vhs-spandau.de;http://www.vhs.berlin.de
+05B01;OSZ TIEM (Technische Informatik, Industrieelektronik und EnergieManagement);13599;Goldbeckweg 8-14;3549460;35494614;info@osztiem.de;http://www.osztiem.de
+05B02;Knobelsdorff-Schule (OSZ Bautechnik I);13599;Nonnendammallee 140-143;335030;33503200;kontakt@knobelsdorff-schule.de;http://www.knobelsdorff-schule.de
+05G01;Ernst-Ludwig-Heim-Grundschule;13597;Grunewaldstr. 8;3393870;33938721;elhg@web.de;
+05G02;Grundschule am Eichenwald;13587;Gaismannshofer Weg 2;36758110;367581110;Grundschule_am_Eichenwald@t-online.de;
+05G04;Klosterfeld-Grundschule;13583;Seegefelder Str. 125;37899040;378990444;05G04@05G04.schule.berlin.de;http://www.klosterfeld-grundschule.de
+05G05;Christoph-F__rich-Grundschule;13595;F__richplatz 5;36208530;362085324;sekretariat@05g05.schule.berlin.de;http://www.foelleschule-berlin.de
+05G06;Siegerland-Grundschule;13589;Hermann-Schmidt-Weg 4;3789110;378911111;sekretariat@siegerland-schule.de;http://www.siegerland-schule.de
+05G07;Lynar-Grundschule;13585;Lutherstr. 19-20;3039850;30398525;info@lynar-grundschule.de;http://www.lynar-grundschule.de
+05G08;Konkordia-Grundschule;13581;Elsflether Weg 26;33096560;330965619;05G08@05G08.schule.berlin.de;http://www.konkordia-grundschule.de
+05G10;Grundschule am Birkenhain;13581;Seeburger Str. 59;3519360;35193624;info@grundschule-am-birkenhain.de;http://www.grundschule-am-birkenhain.de
+05G11;Robert-Reinick-Grundschule;13629;Jungfernheideweg 33-49;36702460;367024622;sekretariat@05g11.schule.berlin.de;http://www.robert-reinick-grundschule.de
+05G12;Grundschule am Weinmeisterhorn;13593;Daberkowstr. 27;36208520;362085210;gs.am.weinmeisterhorn@t-online.de;http://www.gsamweinmeisterhorn.schule-berlin.net
+05G13;Bernd-Ryke-Grundschule;13599;Daumstr. 12;3548050;35480521;info@bernd-ryke-gs.de;http://www.bernd-ryke-gs.de
+05G14;Linden-Grundschule;13591;Staakener Feldstr. 6-8;3647290;364729129;sekretariat@linden-gs.schule.berlin.de;http://www..linden-grundschule.de
+05G15;Askanier-Grundschule;13583;Borkzeile 34;36753860;367538622;t.berlin@askanier-gs.de;http://www.askanier-gs.de
+05G16;Zeppelin-Grundschule;13591;Heidebergplan 3-4;36709510;367095123;info@zeppelin-gs.de;http://www.zeppelin-gs.de
+05G17;Astrid-Lindgren-Grundschule;13591;Sdekumzeile 5;3758620;37586222;sekretariat@lindgren.schule.berlin.de;http://www.lindgrenschule.de
+05G18;Grundschule im Beerwinkel;13589;Im Spektefeld 31;308322660;3738436;schulleitung@beerwinkel.de;http://www.beerwinkel.berlin
+05G19;Grundschule am Ritterfeld;14089;Schallweg 31;36500100;365001021;schule@ritterfeld.berlin;http://www.grundschuleamritterfeld.de
+05G20;Carl-Schurz-Grundschule;13587;Hakenfelder Str. 32;35599010;355990110;sekretariat@05g20.schule.berlin.de;http://www.carl-schurz-grundschule.de
+05G21;Paul-Moor-Grundschule;13595;Adamstr. 24-25;36992071;36992070;sekretariat@05G21.schule.berlin.de;http://www.paulmoor-gs.de
+05G22;Christian-Morgenstern-Grundschule;13593;R䣫nitzer Steig 12;3647930;36479320;christian-morgenstern-gs.cids@t-online.de;http://www.christian-morgenstern-grundschule.de
+05G23;Grundschule am Brandwerder;13591;Spandauer Str. 86;36709520;367095210;sekretariat@brandwerder.de;http://www.brandwerder.de
+05G24;Grundschule am Windmhlenberg;14089;Am Kinderdorf 23;36208550;362085526;sekretariat@windmuehlenberg.schule.berlin.de;http://www.schuleamwindmuehlenberg.de
+05G25;Grundschule am Wasserwerk;13589;Pionierstr. 197;3083246;30832470;sekretariat@05G25-05S04.schule.berlin.de;
+05G26;Grundschule am Amalienhof;13593;Weinmeisterhornweg 120-122;36208510;362085127;buero@amalienhof.schule.berlin.de;http://gsamalienhof.de
+05G27;Peter-H䲴ling-Grundschule;13585;Flankenschanze 20;3537230;35372324;sekretariat@peter-haertling.schule.berlin.de;http://www.peter-haertling-gs.de
+05G28;Grundschule an der Pulvermhle;13599;Grtzmacherweg 7;33776567;33776573;sekretariat@gs-pulvermuehle.de;http://www.gs-pulvermuehle.de
+05G29;Mary-Poppins-Grundschule;14089;Am Flugplatz Gatow 20;3699633;36996349;mary-poppins-grundschule@arcor.de;
+05G30;Birken-Grundschule;13585;Hgelschanze 8;437287910;437287911;sekretariat@05G30.schule.berlin.de;
+05K01;Martin-Buber-Oberschule (Integrierte Sekundarschule);13589;Im Spektefeld 33;3758640;37586464;info@martin-buber-oberschule.de;http://www.martin-buber-oberschule.de
+05K02;Carlo-Schmid-Oberschule (Integrierte Sekundarschule);13581;Lutoner Str. 15-19;3519530;35195355;h.vahl@carlo-schmid.schule;http://www.carlo-schmid-oberschule.de
+05K03;Bertolt-Brecht-Oberschule (Integrierte Sekundarschule);13595;Wilhelmstr. 10;3308990;33089966;sekretariat@brecht-oberschule.de;http://www.brecht-oberschule.de
+05K04;Heinrich-B__Oberschule (Integrierte Sekundarschule);13587;Am Forstacker 9/11;3350070;33500717;hbo@boell-schule.de;http://www.boell-schule.de
+05K05;B.-Traven-Gemeinschaftsschule;13583;Recklinghauser Weg 26;375865100;375865226;sekretariat@btg.schule.berlin.de;http://www.btg.schule
+05K06;Wolfgang-Borchert-Schule (Integrierte Sekundarschule);13585;Blumenstr. 13;3559280;35592818;sekretariat@05K06.schule.berlin.de;http://borchertschule-spandau.de
+05K07;Schule an der Jungfernheide (Integrierte Sekundarschule);13629;Lenther Steig 1-3;3839260;38392622;info@schule-an-der-jungfernheide.de;http://www.schule-an-der-jungfernheide.de
+05K08;Schule an der Haveldne (Integrierte Sekundarschule);13595;Jaczostr. 53-67;3650973;36509740;Sekretariat@havelduene.berlin;http://havelduene.berlin/
+05K09;Schule am Staakener Kleeblatt (Integrierte Sekundarschule);13591;Brunsbtteler Damm 431-437;3640330;364033111;staakener.kleeblatt@gmail.com;http://www.schuleamstaakenerkleeblatt.de
+05P01;Freie Waldorfschule Havelh__- Eugen Kolisko;14089;Neukladower Allee 1;369924620;369924629;schule@havelhoehe.net;http://www.havelhoehe.net
+05P02;Katholische Schule Bernhard Lichtenberg (Grundschule);13585;Hohenzollernring 159;3332010;35303736;sekretariat@ksbl.schulerzbistum.de;http://www.ksbl.de
+05P03;Evangelische Schule Spandau im Johannesstift;13587;Sch__lder Allee 26, Haus 27;35599050;35599054;info@ev-schule-spandau.de;http://www.ev-schule-spandau.de
+05P04;August Hermann Francke Schule;13587;Sch__lder Allee 26;33609329;33609697;ulrike.mueller@jsd.de;http://www.johannesstift-diakonie.de/teilhabe-paedagogik/august-hermann-francke-schule/
+05P05;Berufsschule des Rotkreuz-Instituts;14089;Krampnitzer Weg 83-87;36502192;3656856;behrendt.k@bbw-rki-berlin.de;http://www.DRK-Berlin.de
+05P06;Werner-von-Siemens-Werkberufsschule der Siemens AG;13629;Nonnendammallee 104;1728322106;;berlin.spe@siemens.com;http://www.ausbildung.siemens.com
+05P10;Soziale Fachschulen Johannesstift Diakonie gGmbH;13587;Sch__lder Allee 26 /Haus46;33609402;33609376;soziale.fachschulen@jsd.de;http://www.fachschulen-johannesstift.de
+05P13;Wilhelmstadt Schulen;13593;Wilhelmstr. 28-30;36289213;36289214;a.reising@wilhelmstadtschulen.de;http://www.wilhelmstadtschulen.de
+05P15;Immanuel-Grundschule;13589;Stadtrandstr. 465;4431237230;4431237239;Immanuel@Christburg-Campus.de;http://www.Immanuel-Grundschule.de
+05P18;Freie Georgschule;13595;G__str. 140;77379300;77379309;verwaltung@freie-georgschule.de;http://www.freie-georgschule.de
+05P19;SIS Swiss International School Berlin;13593;Heerstr. 463;36439820;;info.berlin@swissinternationalschool.de;http://www.swissinternationalschool.de
+05S01;Schule am Grngrtel;13585;Askanierring 42;437287910;437287911;sekretariat@05G30.schule.berlin.de;http://schule-am-gruenguertel.de
+05S03;Schule am Gartenfeld;13581;Seecktstr. 2;303987420;3039874225;schule_am_gartenfeld-berlin@t-online.de;http://www.schule-am-gartenfeld.de
+05S04;Schule am Stadtrand;13589;Pionierstr. 197;3083246;30832470;sekretariat@05G25-05S04.schule.berlin.de;http://www.zwei-schulen.de
+05Y01;Freiherr-vom-Stein-Gymnasium;13597;Galenstr. 40-44;3309653;33096547;freiherr-vom-stein-gymnasium@t-online.de;http://www.steingymnasium.de
+05Y02;Kant-Gymnasium;13585;Bismarckstr. 54;3539480;35394810;info@kant-gym.de;http://www.Kant-gymnasium-berlin.de
+05Y03;Hans-Carossa-Gymnasium;14089;Am Landschaftspark Gatow 40;36996511;36996519;Sekretariat@hans-carossa-gymnasium.de;http://www.hcg-berlin.de
+05Y04;Carl-Friedrich-von-Siemens-Gymnasium;13629;Jungfernheideweg 79;34505680;345056833;mail@cfvsiemens.de;http://www.cfvsiemens.de
+05Y05;Lily-Braun-Gymnasium;13597;Mnsingerstr. 2;3389040;338904144;e-post@lily-braun-gymnasium.de;http://www.lily-braun-gymnasium.de
+06A05;VHS Steglitz-Zehlendorf - Victor-Gollancz;12207;Goethestr. 9-11;902992208;902992599;zbw-sekretariat@t-online.de;http://www.zbw-berlin.de
+06B01;Peter-Lenn魓chule (OSZ Natur und Umwelt);14163;Hartmannsweilerweg 29;81490112;81490180;info@peter-lenne-schule.de;http://www.peter-lenne-schule.de
+06B02;Louise-Schroeder-Schule (OSZ Browirtschaft und Verwaltung);12207;Lippst䤴er Str. 9-11;90172501;90172509;info@oszbueroverw.de;http://www.osz-louise-schroeder.de
+06B03;OSZ Browirtschaft 1;12207;Ostpreuߥndamm 40;76890010;76890036;schulleitung@oszbw1.de;http://osz-buerowirtschaft.de
+06B04;Wilhelm-Ostwald-Schule (OSZ Gestaltung);12169;Immenweg 6;90166700;90166706;verwaltung@wilhelm-ostwald-schule.de;http://www.wilhelm-ostwald-schule.de
+06G01;Nord-Grundschule;14163;Potsdamer Str. 7;902995468;902996151;sekretariat@nord-grund.schule.berlin.de;http://www.nordgrundschule.de
+06G02;Sd-Grundschule;14165;Claszeile 56;84509638;8152630;info@sued-grundschule.de;http://www.sd-grundschule-berlin.de
+06G03;Johannes-Tews-Grundschule;14129;Wasgenstr. 50;8032072;80491348;schulleitung@jtg-berlin.de;http://www.johannes-tews-grundschule.de
+06G04;Erich-K䳴ner-Grundschule;14195;Bachstelzenweg 2-8;84414860;84414865;sekretariat@eks.schule.berlin.de;http://www.erich-kaestner-grundschule-berlin.de
+06G05;Conrad-Schule (Grundschule);14109;Schulstr. 4;902996926;902996976;info@conrad-schule.de;http://www.conrad-schule.de
+06G06;Mhlenau-Grundschule;14195;Molsheimer Str. 7;8325099;8329622;sekretariat@muehlenau.de;http://www.muehlenau.de
+06G07;Zinnowwald-Grundschule;14163;Wilskistr. 78;902995586;902996152;Sekretariat@zinnowwald.schule.berlin.de;
+06G08;Schweizerhof-Grundschule;14167;Leo-Baeck-Str. 28-30;902995475;902996154;06G08@06G08.schule.berlin.de;http://www.schweizerhof-grundschule.de
+06G09;Dreilinden-Grundschule;14109;Dreilindenstr. 65;8038009;8039224;sekretariat@dreilinden-grundschule.de;http://www.dreilinden-grundschule.de
+06G10;Grundschule am Buschgraben;14165;Ludwigsfelder Str. 43-47;8025018;8021653;sekretariat@gab.schule.berlin.de;http://www.grundschuleambuschgraben.de
+06G12;Quentin-Blake-Grundschule;14195;Httenweg 40;902998031;902998025;schulleitung@quentin-blake.schule.berlin.de;http://www.quentin-blake-europe-school.de
+06G14;Sachsenwald-Grundschule;12157;Sachsenwaldstr. 20-21;79742910;79742919;sekretariat@sachsenwald.schule.berlin.de;http://www.sachsenwald-grundschule.de
+06G15;Dunant-Grundschule;12163;Gritznerstr. 19-23;79742160;79742170;sekr@dunant-grundschule.de;http://www.dunant-grundschule.de
+06G16;Rothenburg-Grundschule;12165;Rothenburgstr. 16/17;902992314;902992367;schulleitung@rothenburg.schule.berlin.de;http://www.rothenburg-grundschule.de
+06G17;Grundschule am Insulaner;12169;Hanstedter Weg 11-15;79742860;797428638;sekretariat@06g17.schule.berlin.de;http://www.grundschuleaminsulaner.de
+06G18;Athene-Grundschule;12205;Curtiusstr. 37;81009710;81009739;sekretariat@athene.schule.berlin.de;http://www.athene-grundschule.de
+06G20;Alt-Lankwitzer Grundschule;12247;Schulstr. 17-21;7668790;76687918;buero@a-l-gs.schule.berlin.de;http://www.alt-lankwitzer-grundschule.de
+06G21;Paul-Schneider-Grundschule;12249;Seydlitzstr. 30-34;93951511;93953413;sekretariat@06g21.schule.berlin.de;http://www.paul-schneider-grundschule.de
+06G22;Giesensdorfer Grundschule;12207;Ostpreuߥndamm 63;71097530;71097532;sekretariat@giesensdorfer.schule.berlin.de;http://www.giesensdorfer-grundschule.de
+06G23;Kronach-Grundschule;12203;Moltkestr. 24-26;84416760;84416771;schulleitung@kronach.schule.berlin.de;http://www.kronach-grundschule.de
+06G24;Grundschule unter den Kastanien;12209;Kastanienstr. 6 -8;93951940;93951941;info@kastanie.schule.berlin.de;http://www.grundschule-unter-den-kastanien.de
+06G25;Clemens-Brentano-Grundschule;12205;Kommandantenstr. 83-84;84416460;84416470;schulleitung@c-brentano-grundschule.de;http://www.c-brentano-grundschule.de
+06G26;K䴨e-Kruse-Grundschule;12203;Tietzenweg 108;84416950;84416958;Kaethe-Kruse-Grundschule@t-online.de;
+06G27;Grundschule am K__sgraben;12249;Gallwitzallee 136-144;77206590;77206599;sekretariat@grundschule-am-koenigsgraben.de;http://www.grundschule-am-koenigsgraben.de
+06G28;Ludwig-Bechstein-Grundschule;12249;Halbauer Weg 25;7668780;76687818;06G28@06G28.schule.berlin.de;http://www.ludwig-bechstein-grundschule.net
+06G29;Grundschule am Karpfenteich;12209;Hildburghauser Str. 135;72006990;72006999;info@karpfenteich.schule.berlin.de;http://www.grundschule-am-karpfenteich.de
+06G30;Mercator-Grundschule;12207;Mercatorweg 8-10;7551086;75510878;schule@mercator-gs.de;http://www.mercator-gs.de
+06G31;Grundschule an der B䫥;12203;Haydnstr. 15;84416430;84416459;info@baeke.net;http://www.baeke.net
+06G32;Grundschule am Stadtpark Steglitz;12167;Karl-Stieler-Str. 10-11;93951947;93951946;sekretariat@06G32.schule.berlin.de;http://www.grundschule-am-stadtpark-steglitz.de
+06G33;Friedrich-Drake-Grundschule;12205;Drakestr. 80;844159541;844159534;buero@f-d-gs.de;http://www.friedrich-drake-grundschule.de
+06G34;34. Schule (Grundschule);12169;Plantagenstr. 8-9;79744241;79744235;06G34@06G34.schule.berlin.de;http://www.plantage34.de
+06K01;John-F.-Kennedy-Schule;14167;Teltower Damm 87-93;902995710;902995711;"highschool@jfksberlin.org; elementaryschool@jfksberlin.org";http://www.jfks.de
+06K02;Wilma-Rudolph-Schule (Integrierte Sekundarschule);14169;Am Hegewinkel 2 A;902996464;902996766;buero@wilma-rudolph.de;http://www.wilma-rudolph.de
+06K03;Kopernikus-Schule (Integrierte Sekundarschule);12163;Lepsiusstr. 24-28;79744260;79744289;buero@kos-mail.de;http://www.kopernikus-oberschule.de
+06K04;Br__y-Schule (Integrierte Sekundarschule);12249;Dessauerstr. 63;902992010;902992393;post@broendby.de;http://www.broendby.de
+06K08;Max-von-Laue-Schule;12203;Drerstr. 27;84414920;84414928;Sekretariat@mvl.schule.berlin.de;http://www.max-von-laue-oberschule.de
+06K09;Gail-S.-Halvorsen-Integrierte Sekundarschule;14195;Im Gehege 6;84108184;8314055;sekretariat@halvorsen-schule.de;http://www.halvorsen-schule.de
+06K10;Helene-Lange-Schule (Integrierte Sekundarschule);12169;Lauenburger Str. 110/114;902992345;902992385;06K10@06K10.schule.berlin.de;http://www.helene-lange-schule-steglitz.de
+06K11;Anna-Essinger-Gemeinschaftsschule;12203;Tietzenweg 101;84416940;84416949;sekretariat-os@aegs.de;http://aegs.de
+06P01;Katholische Schule Sankt Ursula (Grundschule);14169;Kleinaustr. 4;8113555;81295021;sekretariat@kssu.schulerzbistum.de;http://www.st-ursula-gs.de
+06P02;Johanna-Gerdes-Grundschule;14163;Salzachstr. 4;8015385;8016999;sec@jgg-berlin.de;http://www.johanna-gerdes-grundschule.de
+06P04;Rudolf-Steiner-Schule Berlin;14195;Auf dem Grat 3;8300910;83009155;info@dahlem.waldorf.net;http://dahlem.waldorf.net
+06P05;Emil-Molt-Schule;14165;Claszeile 60;8457060;84570612;info@emil-molt-schule.de;http://www.emil-molt-schule.de
+06P06;K__in-Luise-Stiftung;14195;Podbielskiallee 78;841813;84181480;info@kls-berlin.de;http://www.koenigin-luise-stiftung.de
+06P07;Parzival-Schule;14163;Quermatenweg 6;8181970;81819710;info@parzival-schule-berlin.de;http://www.parzival-schule-berlin.de
+06P08;Sancta-Maria-Schule der Hedwigschwestern;14109;Dreilindenstr. 24-26;80303261;80303265;kontakt@sancta-maria-schule.de;http://www.sancta-maria-schule.de
+06P09;Caroline-von-Heydebrand-Schule;14129;Klopstockstr. 36-42;8016003;8014368;heydebrand@waldorf.net;http://www.heydebrand.waldorf.net
+06P10;Private Kant-Schule (Grundschule);12165;Grunewaldstr. 44;820070900;820070909;info@kant-grundschule.de;http://www.private-kant-schulen.de
+06P11;Private Kant-Schule;12169;K__rstr. 11;79000360;79000369;info@kant-oberschule.de;http://www.kant-oberschule.de
+06P12;Evangelische Schule Steglitz (Integrierte Sekundarschule);12167;Beymestr. 6-7;7916001;7916021;info@ev-schule-steglitz.de;http://www.ev-schule-steglitz.de
+06P13;Gemeinschaftsschule nach der P䤡gogik Berthold Ottos;12203;Holbeinstr. 21;8335090;84314394;sekretariat@berthold-otto-schule.de;http://www.berthold-otto-schule.de
+06P15;Oberlin-Seminar;12203;Tietzenweg 130;79701440;79701441;buero@oberlin-seminar.de;http://www.oberlin-seminar.de
+06P18;Bilinguale Schule Phorms Berlin Sd;14167;Harry-S.-Truman-Allee 3;91684990;91684999;berlin-sued@phorms.de;http://www.berlin-sued.phorms.de
+06P20;Freie Schule Anne-Sophie Berlin;14169;Clayallee 328-334;8471463910;8471463926;info.berlin@freie-schule-anne-sophie.de;http://www.freie-schule-anne-sophie.de
+06P21;Internationale Montessorischule Berlin (Grundschule);14109;Zum Heckeshorn 38;80482270;80482271;jtyson@montessori-friends.de;http://www.montessori-am-wannsee.de
+06P24;Evangelische Grundschule Zehlendorf;14165;Pfarrlandstr. 26;200094180;200094184;buero@ev-schule-zehlendorf.de;http://www.ev-schule-zehlendorf.de
+06S01;Pestalozzi-Schule;14163;Hartmannsweilerweg 47;902995760;902996167;epost@pestalozzi-schule-berlin.de;http://www.pestalozzi-schule-berlin.de
+06S02;Biesalski-Schule;14195;Httenweg 40;902996474;902998020;buero@biesalski-schule.de;http://www.biesalski-schule.de
+06S03;Peter-Frankenfeld-Schule;12247;Wedellstr. 26;77206560;77206589;sekretariat@frankenfeld.schule.berlin.de;http://www.peter-frankenfeld-schule.de
+06S05;J.-A.-Zeune-Schule fr Blinde und Berufsfachschule Dr. Silex;12165;Rothenburgstr. 14;902992390;902992013;sekretariat@zeune-schule.de;http://www.zeune-schule.de
+06Y01;Schadow-Gymnasium;14163;Beuckestr. 27-29;902995463;902996158;sekretariat@schadow-gymnasium-berlin.de;http://www.schadow-gymnasium.de
+06Y02;Droste-Hlshoff-Gymnasium;14165;Sch__er Str. 8;84508466;84508468;sekretariat@droste-berlin.de;http://www.droste-berlin.de
+06Y03;Arndt-Gymnasium Dahlem;14195;K__in-Luise-Str. 80-84;8315052;8311002;sekretariat@arndt-gymnasium.de;http://www.arndt-gymnasium.de
+06Y04;Dreilinden-Gymnasium;14109;Dreilindenstr. 49;8031087;80404350;sekretariat@dreilinden-gymnasium.de;http://www.dreilinden-gymnasium.de
+06Y05;Werner-von-Siemens-Gymnasium;14129;Beskidenstr. 3;8039066;80404585;leitung@siemens-gymnasium-berlin.de;http://www.siemens-gymnasium-berlin.de
+06Y06;Beethoven-Gymnasium;12249;Barbarastr. 9;76890530;76890541;Leitung@beethoven-gymnasium.eu;http://www.beethoven-gymnasium.eu
+06Y07;Paulsen-Gymnasium;12163;Gritznerstr. 57;79742530;79742540;paulsengymnasium@pg-berlin.de;http://www.paulsen-gymnasium.de
+06Y08;Hermann-Ehlers-Gymnasium;12169;Elisenstr. 3-4;902992353;902992363;sekretariat@hermann-ehlers-schule.de;http://www.hermann-ehlers-schule.de
+06Y09;Fichtenberg-Oberschule;12165;Rothenburgstr. 18;90299 2354;90299 2304;info@fichtenberg-oberschule.net;http://fichtenberg-oberschule.net
+06Y10;Lilienthal-Gymnasium;12203;Ringstr. 2-3;84415360;84415370;sekretariat@lilienthal-gymnasium-berlin.de;http://www.lilienthal-gymnasium-berlin.de
+06Y11;Goethe-Gymnasium Lichterfelde;12205;Drakestr. 72-74;84416730;84416731;sekretariat@goethe-lichterfelde.schule.berlin.de;http://www.goethe-gymnasium-lichterfelde.de
+06Y12;Willi-Graf-Gymnasium;12207;Ostpreuߥndamm 166;7729004;772057999;sekretariat@willi-graf-os.de;http://www.willi-graf-gymnasium.de
+06Y13;Gymnasium Steglitz;12169;Heesestr. 15;93951937;93951939;sekretariat@gymnasiumsteglitz.de;http://www.gymnasiumsteglitz.de
+07A05;Kolleg Sch__erg;10787;Nrnberger Str. 63;902774391;902776926;Sekretariat@KollegSchoeneberg.de;http://www.KollegSchoeneberg.de
+07A06;VHS Tempelhof-Sch__erg;10829;Ella-Barowsky-Str 62;902774321;902776846;zbw-vhs.t-s@web.de;http://www.vhs-tempelhof-schoeneberg.de
+07B02;Marie-Elisabeth-Lders-Oberschule;10783;Steinmetzstr. 79;26391660;26391672;sekretariat@melo-berlin.de;http://www.melo-berlin.de
+07B03;OSZ Lotis (Logistik, Touristik und Steuern);10965;Dudenstr. 35-37;78604511;78604515;sekretariat@osz-lotis.de;http://www.osz-lotis.de
+07G01;Spreewald-Grundschule;10781;Pallasstr. 15;902777151;902774366;sekretariat@spreewald.schule.berlin.de;http://www.spreewald-grundschule.de
+07G02;Finow-Grundschule;10777;Welserstr. 16-22;902777175;902776875;sekretariat@finow.schule.berlin.de;http://www.finow-gs.de
+07G03;Werbellinsee-Grundschule;10781;Luitpoldstr. 38;902777153;902774796;sekretariat@werbellinsee.schule.berlin.de;http://www.Werbellinsee-Grundschule.de
+07G05;Havelland-Grundschule;10829;Kolonnenstr. 30 - 30a;902777155;902777060;sekretariat@havelland.schule.berlin.de;http://www.havelland-grundschule.de
+07G06;Sternberg-Grundschule;10825;Mettestr. 8;902777156;902776638;Schulleitung@sternberg.schule.berlin.de;http://www.sternberg-grundschulen.de
+07G07;Lindenhof-Grundschule;12105;Reglinstr. 29;902777157;902774584;sekretariat@lindenhof.schule.berlin.de;http://www.lindenhof-grundschule.de
+07G10;Teltow-Grundschule;10827;Feurigstr. 57;902777160;902776420;sekretariat@teltow.schule.berlin.de;http://www.teltow-grundschule.de
+07G12;Scharmtzelsee-Grundschule;10779;Hohenstaufenstr. 49;902777162;902774364;sekretariat@scharmuetzelsee.schule.berlin.de;http://www.scharmuetzelseegrundschule.de
+07G13;Neumark-Grundschule;10783;Steinmetzstr. 46-50;902777163;902774570;sekretariat@neumark.schule.berlin.de;http://www.neumark-grundschule.de
+07G14;L__itz-Grundschule;10779;Berchtesgadener Str. 10-11;902777164;902774315;sekretariat@loecknitz.schule.berlin.de;http://www.loecknitz-grundschule.de
+07G15;Fl䭩ng-Grundschule;12161;Illstr. 4-6;902777061;902774336;flaeming@schulen-tempelhof-schoeneberg.de;http://www.flaeming-grundschule.de
+07G16;Ruppin-Grundschule;14197;Offenbacher Str. 5A;902777907;902776906;ruppingrundschule@web.de;http://www.ruppin-grundschule.de
+07G17;Stechlinsee-Grundschule;12161;Rheingaustr. 7;902777908;902774569;Stechlinsee-Grundschule.Cids@t-online.de;http://www.stechlinsee-grundschule.de
+07G18;Grundschule am Barbarossaplatz;10781;Barbarossaplatz 5;902777109;902777947;07G18@07G18.schule.berlin.de;http://www.grundschuleambarbarossaplatz.de
+07G19;Paul-Simmel-Grundschule;12099;Felixstr. 26-58;902772660;902772680;sekretariat@paulsimmel.schule.berlin.de;http://www.paul-simmel-grundschule.de
+07G20;Maria-Montessori-Grundschule;12103;Friedrich-Wilhelm-Str. 72-74;902772661;902772226;sekretariat@mmg.schule.berlin.de;http://www.mmg-online.de
+07G21;Grundschule auf dem Tempelhofer Feld;12101;Schulenburgring 7-11;902772664;902772602;sekretariat@tempelhoferfeld.schule.berlin.de;http://gs-tempelhoferfeld.de
+07G22;Paul-Klee-Grundschule;12105;Konradinstr. 15-17;902772662;902772698;Sekretariat@07G22.schule.berlin.de;http://www.paul-klee-schule.de
+07G23;Sch䴺elberg-Grundschule;12109;Wolfsburger Weg 13-19;902777462;902772726;07G23@07G23.schule.berlin.de;http://www.schaetzelberg-grundschule.de
+07G24;Tempelherren-Grundschule;12101;Boelckestr. 58-60;902772665;902772616;sekretariat@tempelherren.schule.de;http://www.tempelherren-grundschule.de
+07G25;Mascha-Kal髯-Grundschule;12105;K__str. 32;902777461;902777506;sekretariat@mascha-kaleko-grundschule.de;http://www.mascha-kaleko-grundschule.de
+07G26;Grundschule im Taunusviertel;12309;Wiesbadener Str. 20;902778151;902778152;sekretariat@taunusviertel.schule.berlin.de;http://www.grundschule-im-taunusviertel.de
+07G27;Rudolf-Hildebrand-Grundschule;12107;Friedenstr. 23-25;902777456;902777457;sekretariat@rhg.schule.berlin.de;http://rhg.schule/
+07G28;Kiepert-Grundschule;12277;Prechtlstr. 21-23;902774097;902774101;schulleitung@kiepert.schule.berlin.de;http://www.kiepertgrundschule.de
+07G29;K䴨e-Kollwitz-Grundschule;12307;Mellener Str. 38-42;902778241;902778242;sekretariat@kollwitz-gs.schule.berlin.de;http://www.kkgsberlin.online
+07G30;Annedore-Leber-Grundschule;12305;Halker Zeile 137-149;902778243;902778223;Schulleitung@algs.schule.berlin.de;http://www.algs.de
+07G31;Carl-Sonnenschein-Grundschule;12109;Am Hellespont 4-6;902772670;902772760;07G31@07G31.schule.berlin.de;http://www.carl-sonnenschein-gs.de
+07G32;Bruno-H.-Brgel-Grundschule;12305;Rackebller Weg 70;902778250;902778251;sekretariat@bhb.schule.berlin.de;http://www.bruno-h-buergel-grundschule.de
+07G34;Marienfelder Schule (Grundschule);12279;Erbendorfer Weg 13;902774104;902774105;sekretariat@marienfelder.schulen-ts.de;http://www.marienfelder-gs.de
+07G35;Nahariya-Grundschule;12309;Nahariyastr. 13-17;902778256;902778257;sekretariat@nahariya.schule.berlin.de;http://www.nahariyaschule.de
+07G36;Grundschule am Dielingsgrund;12305;Dielingsgrund 35;902778222;902778252;sekretariat@dielingsgrund.schulen-ts.de;http://www.dielingsgrund.com
+07G37;Ikarus-Grundschule;12107;K__ngstr. 45;902777459;902777463;07G37@07G37.schule.berlin.de;http://www.ikarus-grundschule.de
+07G40;40. Schule (Grundschule) (Neugrndung zum 01.08.2022);10829;Ella-Barowsky-Str. 62-63;;;;
+07K01;Sophie-Scholl-Schule;10781;Elߨolzstr. 34-37;902777171;902774465;kontakt@sophie-scholl-schule.eu;http://sophie-scholl-schule.eu
+07K02;Carl-Zeiss-Schule;12305;Barnetstr. 12-14;902778206;902778209;sekretariat@carl-zeiss-oberschule.de;http://www.carl-zeiss-oberschule.de
+07K03;Gustav-Heinemann-Oberschule;12279;Waldsassener Str. 62;902774132;902774133;Sekretariat@ghoberlin.de;http://gho.berlin
+07K04;Theodor-Haubach-Schule;12305;Grimmstr. 9-11;902778245;902778239;sekretariat@ths-berlin.de;http://www.ths-berlin.de
+07K05;Solling-Schule;12277;Alt-Marienfelde 52;902777453;902777455;sekretariat@solling-schule.de;http://www.solling-schule.de
+07K06;Georg-von-Giesche-Schule;10779;Hohenstaufenstr. 47-48;902777169;902778956;kontakt@georg-von-giesche-schule.de;http://www.georg-von-giesche-schule.de
+07K07;Johanna-Eck-Schule (Integrierte Sekundarschule);12105;Ringstr. 103-106;902772676;902772681;sekretariat@johanna-eck-schule.de;http://www.johanna-eck-schule.de
+07K09;Gustav-Langenscheidt-Schule;10823;Belziger Str. 43-51;902777165;902774340;schulleitung@langenscheidt.schule.berlin.de;http://www.gustav-langenscheidt-schule.de
+07K10;Friedrich-Bergius-Schule;12159;Perelsplatz 6-9;902777910;902777839;Sekretariat@fbs-schule.de;http://www.Friedrich-Bergius-Schule.de
+07K11;Hugo-Gaudig-Schule;12101;Boelckestr. 58-60;902772666;902772239;07K11@07K11.schule.berlin.de;http://www.hugo-gaudig-schule.de
+07K12;Friedenauer Gemeinschaftsschule;12157;Rubensstr. 63;902777904;902774339;07K12@07K12.schule.berlin.de;http://www.friedenauer-gemeinschaftsschule.de
+07K13;Schule am Berlinickeplatz (Integrierte Sekundarschule);12103;Alt-Tempelhof 53-57;902772641;902772644;kontakt@schule-am-berlinickeplatz.de;http://www.schule-am-berlinickeplatz.de
+07P01;Katholische Schule Sankt Franziskus (Integrierte Sekundarschule);10781;Hohenstaufenstr. 1-2;91429480;914294829;sekretariat@kssf.schulerzbistum.de;http://www.kssf-berlin.de
+07P02;Pestalozzi-Fr__-Haus;10781;Karl-Schrader-Str. 7-8;21730242;21730188;schulleitung@pfh-berlin.de;http://www.pfh-berlin.de
+07P03;Lette-Verein Stiftung des __ntlichen Rechts;10777;Viktoria-Luise-Platz 6;21994111;21994241;sekretariat@lette-verein.de;http://www.letteverein.berlin
+07P04;Katholische Schule Sankt Alfons (Grundschule);12249;Tennstedter Str. 1;7111075;71581539;sekretariat@kssa.schulerzbistum.de;http://www.kssa.de
+07P05;Freie Schule in Berlin (Grundschule);12105;Viktoriastr. 13;7520771;;freieSchuleinBerlin@t-online.de;http://www.freie-schule-in-berlin.de
+07P06;Katholische Schule Sankt Hildegard;12277;Malteserstr. 171 A;75512170;755121720;sekretariat@kssh.schulerzbistum.de;http://www.kssh-berlin.de
+07P10;Campus Berufsbildung e.V.;10829;Geneststr. 5;7551210032;755121001;g.luebbers@campus-bb.de;http://www.campus-berlin.de
+07P11;Privates Europa-Gymnasium Berlin;10827;Hauptstr. 27;74073717;;info@europa-gymnasium.eu;http://www.europa-gymnasium.eu
+07P12;SPI Fachschule fr Sozialp䤡gogik;10829;Priesterweg 4;25937390;259373950;fachschulen@stiftung-spi.de;http://www.spi-fachschulen.de
+07P13;Deutsch Skandinavische Gemeinschaftsschule;12105;Machonstr. 54;760061230;760061239;info@dsg-schule.de;http://www.dsg-schule.de
+07P17;Humanistische Fachschule fr Sozialp䤡gogik;12109;Ullsteinstr. 130;27576786;;info@hufaso.de;http://humanistisch.de/fachschule
+07P18;Johannes-Schule Berlin;10829;Monumentenstr.13 A;70094110;700941117;verwaltung@johannes-schule-berlin.de;http://www.johannes-schule-berlin.de
+07P19;Freie Schule Sch__erg (Grundschule);10827;Hauptstr. 27;89009600;;info@freie-schule-schoeneberg.de;http://www.freie-schule-schoeneberg.de
+07P20;Rudolf Steiner Bildungszentrum gGmbH;10829;Monumentenstr. 13 B;684028630/684028610;684028677;post@freie-fachschule-berlin.de;
+07P21;BBA-Akademie fr Immobilienwirtschaft e.V.;12159;Hauptstr. 78/79;2308550;;kontakt@bba-campus.de;http://www.bba-campus.de
+07S01;Prignitz-Schule;12157;P__lmannstr. 2;902776932;902774538;07S01@07S01.schule.berlin.de;
+07S03;Steinwald-Schule;12277;Hanielweg 7-9;902774139;902774140;schulleitung@steinwald.schule.berlin.de;http://www.steinwald-schule-berlin.de
+07S04;Marianne-Cohn-Schule;12099;Holzmannstr. 7;902772555;902772558;sekretariat@cohn.schulen-ts.de;https://www.marianne-cohn-schule.de
+07Y01;Robert-Blum-Gymnasium;10829;Kolonnenstr. 21;9027777172;9027777823;sekretariat@robert-blum-schule.de;http://www.robert-blum-schule.de
+07Y02;Rckert-Gymnasium;10825;Mettestr. 8;902777173;902774351;schulleitung@rueckert-gymnasium-berlin.de;http://www.rueckert-gymnasium.berlin
+07Y03;Rheingau-Gymnasium;12161;Schwalbacher Str. 3-4;902777920;902774365;sekretariat@rheingau-gymnasium.de;http://www.rheingau-gymnasium.de
+07Y04;Paul-Natorp-Gymnasium;12161;Go߬erstr. 13-15;902777921;902777141;sekretariat@natorp-gymnasium.de;http://www.natorp.de
+07Y05;Luise-Henriette-Gymnasium;12105;Kurfrstenstr. 53-54;902772678;902772737;sekretariat@l-h-g.de;http://www.luise-henriette-berlin.de
+07Y06;Askanisches Gymnasium;12103;Kaiserin-Augusta-Str. 19/20;902772679;902772695;sekretariat@askanisches-gymnasium.de;http://www.askanisches-gymnasium.de
+07Y07;Eckener-Gymnasium;12105;Kaiserstr. 17-21;902777448;902777450;info@eckener-gymnasium.de;http://www.eckener-gymnasium.de
+07Y08;Ulrich-von-Hutten-Gymnasium;12307;Rehagener Str. 35-37;902778244;902778240;uvh@uvh-online.de;http://www.uvh-online.de
+07Y09;Georg-Bchner-Gymnasium;12305;Lichtenrader Damm 224;902778208;902778261;sekretariat@gbgonline.de;http://www.gbgonline.de
+08A10;VHS Neuk__ - Otto-Suhr / Tannenhofschule;12049;Mahlower Str. 23/24;6921782;69506189;sekretariat@zbw-neukoelln.de;http://zbw-neukoelln.de
+08B01;Annedore-Leber-Oberschule;12359;Paster-Behrens-Str. 88;66588361;66588363;sekr.br@aloberlin.de;http://www.aloberlin.de
+08B02;Lise-Meitner-Schule (OSZ Chemie, Physik und Biologie);12351;Lipschitzallee 25;6606890;66068960;sekretariat@osz-lise-meitner.eu;http://osz-lise-meitner.eu
+08B04;OSZ Informations- und Medizintechnik;12359;Haarlemer Str. 23-27;225027800;225027809;dahms@oszimt.de;http://www.oszimt.de
+08B05;Carl-Legien-Schule (Schulbetrieb an 01B04);13349;Schwyzer Str. 6-8;;;;
+08G01;Rixdorfer Schule (Grundschule);12043;Donaustr. 120;6139260;61303913;berlin.08G01@t-online.de;http://www.die-rixdorfer.de
+08G02;Theodor-Storm-Schule (Grundschule);12043;Hobrechtstr. 76;60690180;61303320;sekretariat@theodor-storm.schuel.berlin.de;http://www.Theodor-Storm-Grundschule.de
+08G03;Hans-Fallada-Schule (Grundschule);12059;Harzer Str. 73;632250670;68894345;hans-fallada-schule@gmx.de;http://www.hans-fallada-schule.de
+08G05;Elbe-Schule (Grundschule);12045;Elbestr. 11;632250880;68237067;berlin-08g05@versanet.de;http://www.elbeschule.de
+08G06;Karl-Weise-Schule (Grundschule);12049;Weisestr. 20;634130280;6271442;08G06@08G06.schule.berlin.de;http://karl-weise-schule.de
+08G07;Hermann-Boddin-Schule (Grundschule);12053;Boddinstr. 55;68874410;68874421;08G07@08G07.schule.berlin.de;http://www.boddin-schule.de
+08G08;Karlsgarten-Schule (Grundschule);12049;Karlsgartenstr. 7;62791420;62791442;berlin.08G08@versanet.de;http://www.karlsgarten.de
+08G09;Regenbogen-Schule (Grundschule);12053;Morusstr. 32;6898030;6820067;schulleitung@regenbogen.schule.berlin.de;http://www.regenbogen-grundschule.de
+08G11;Schliemann-Grundschule;12355;Gro߭Ziethener Chaussee 81;6636053;6632321;sekretariat@schliemann-grundschule.de;http://www.schliemann-grundschule.de
+08G12;Peter-Petersen-Schule (Grundschule);12053;Jonasstr. 15;6322506821;56824824;info@pps-berlin.de;http://www.pps-berlin.de
+08G13;Bruno-Taut-Schule (Grundschule);12359;Bruno-Taut-Ring 9C;60972490;60972496;Berlin_08G13@versanet.de;http://www.bruno-taut.de
+08G14;Konrad-Agahd-Schule (Grundschule);12053;Thomasstr. 39;632250680;68237212;schulleitung@schule.agahd.berlin.de;http://www.agahd.net
+08G15;Hermann-Sander-Schule (Grundschule);12051;Mariendorfer Weg 69;290276350;290276370;sekretariat@h-sander.schule.berlin.de;http://www.hermann-sander-schule.de
+08G16;Hugo-Heimann-Schule (Grundschule);12353;Hugo-Heimann-Str. 20;6679230;66792399;sekretariat@hugoheimann.schule.berlin.de;http://www.hugoheimannschule.de
+08G17;Richard-Schule (Grundschule);12055;Richardplatz 14;290283100;290283109;08G17@o8G17.schule.berlin.de;http://www.richard-grundschule.de
+08G18;Eduard-M__e-Schule (Grundschule);12059;Stuttgarter Str. 35-39;680856890;68895622;schulleitung@ems-neukoelln.de;http://www.ems-neukoelln.de
+08G19;Herman-Nohl-Schule (Grundschule);12347;Hannemannstr. 68;62008330;62008344;sekretariat@nohl-schule.de;http://www.herman-nohl.de
+08G20;Sonnen-Schule (Grundschule);12057;Dammweg 228;68975090;689750999;sekretariat@sonnen.schule.berlin.de;
+08G21;Silberstein-Schule (Grundschule);12051;Silbersteinstr. 42;62008922;62845765;info@silberstein-schule.de;http://www.silberstein-schule.de
+08G22;Schule am Regenweiher (Grundschule);12351;Johannisthaler Chaussee 328;6044012;66708150;sekretariat@regenweiher.schule.berlin.de;http://www.schule-am-regenweiher.de
+08G23;Zrich-Schule (Grundschule);12347;Wederstr. 49;60902970;62843958;Sekretariat@zuerich.schule.berlin.de;http://www.zuerich-schule-berlin.de
+08G24;Schule am Teltowkanal (Grundschule);12347;Rungiusstr. 46;627397990;6255079;08G24@08G24.schule.berlin.de;http://www.schule-am-teltowkanal.de
+08G25;Michael-Ende-Schule (Grundschule);12355;Neuhofer Str. 41;74075580;6691810;sekretariat@michael-ende.schule.berlin.de;http://www.michael-ende-schule-berlin.de
+08G26;Christoph-Ruden-Schule (Grundschule);12349;An den Achterh__ 13-17;7421014;74377997;sekretariat@08G26.schule.berlin.de;http://www.christoph-ruden-schule.de
+08G27;Oskar-Heinroth-Schule (Grundschule);12359;Rohrdommelweg 1;6021042;6661822;08G27@08G27.schule.berlin.de;http://oskar-heinroth-schule.de
+08G28;Matthias-Claudius-Schule (Grundschule);12355;K__icker Str. 148;60972130;6691866;post@mcgs.berlin;http://www.mcgs.berlin
+08G29;Wetzlar-Schule (Grundschule);12351;Tischlerzeile 34;6051007;66708035;08G29@08G29.schule.berlin.de;http://www.wetzlar-schule.de
+08G30;Schule am Sandsteinweg (Grundschule);12349;Hornblendeweg 2;762860;7628622;sekretariat@sams.schule.berlin.de;http://www.sams.gs
+08G31;Janusz-Korczak-Schule (Grundschule);12353;Wildhterweg 5;67066630;6042068;sekretariat@jkgs.schule.berlin.de;http://jkgs-berlin.de
+08G33;Schule am Fliederbusch (Grundschule);12357;Kornradenstr. 2;60972260;60972269;sekretariat@fliederbusch.schule.berlin.de;http://www.schule-am-fliederbusch.de
+08G34;Lisa-Tetzner-Schule (Grundschule);12353;Hasenhegerweg 12;660688701;660688814;sekretariat@08G34.schule.berlin.de;http://www.lisa-tetzner.de
+08G35;Schule in der K__ischen Heide (Grundschule);12057;H䮳elstr. 6;68296013;68597355;grundheide@t-online.de;
+08G36;L__zahn-Schule (Grundschule);12055;Drorystr. 3;68390500;683905014;sekretariat@loewenzahn.schule.berlin.de;http://www.loewenzahn-schule.de
+08G37;Rose-Oehmichen-Schule (Grundschule);12355;Lieselotte-Berger-Str. 65;6698810;66988129;sekretariat@08g37.schule.berlin.de;http://www.rose-oehmichen-schule-berlin.de
+08K01;Walter-Gropius-Schule (Gemeinschaftsschule);12351;Fritz-Erler-Allee 86;6009080;60090838;Gemeinschaftsschule@walter-gropius-schule-berlin.de;http://www.walter-gropius-schule-berlin.de
+08K02;Hermann-von-Helmholtz-Schule;12353;Wutzkyallee 68;6097170;60971738;info@hvhschule.de;http://www.hvhschule.de
+08K03;Otto-Hahn-Schule;12359;Buschkrugallee 63;62739790;627397955;sekretariat@ohs.berlin;http://ohs.berlin
+08K04;Heinrich-Mann-Schule;12353;Gerlinger Str. 22;742080;74208231;08K04@08K04.schule.berlin.de;http://www.heinrichmannschule.de
+08K05;Clay-Schule;12355;Bildhauerweg 9;660040;66004200;sekretariat@clay-schule.de;http://www.clay-schule.de
+08K06;Fritz-Karsen-Schule (Gemeinschaftsschule);12359;Onkel-Br䳩g-Str. 76-78;6090010;60900115;sekretariat@fritz-karsen.de;http://www.fritz-karsen.de
+08K08;Gemeinschaftsschule auf dem Campus Rtli;12045;Rtlistr. 41;600347620;61309896;schulleitung@campusruetli.de;http://www.campusruetli.de
+08K09;R__en-Schule;12435;Wildenbruchstr. 53;29027640;290276444;08K09@08K09.schule.berlin.de;http://www.roentgen-sekundarschule.de
+08K10;Zuckmayer-Schule;12053;Kopfstr. 55;6887475;68874770;08K10@08K10.schule.berlin.de;http://www.zuckmayer-schule.de
+08K11;Alfred-Nobel-Schule;12347;Britzer Damm 164;6064032;60081498;sekretariat@nobel.schule.berlin.de;http://www.alfred-nobel-schule.de
+08K12;Kepler-Schule;12057;Zwillingestr. 21-29;221994400;68598008;08K12@08K12.schule.berlin.de;
+08K13;Gemeinschaftsschule Campus Efeuweg;12357;Efeuweg 34;6669040;66690427;sekretariat@campus-efeuweg.schule.berlin.de;http://www.gemeinschaftsschule.campus-efeuweg.de
+08P01;Johann-Georg-Elser-Schule (Grundschule);12049;Mahlower Str. 23-24;60975622;60975695;neuzeitlich-christlich@t-online.de;http://www.nc-init.de
+08P02;Katholische Schule Sankt Marien (Grundschule);12353;Hugo-Heimann-Str. 2;6052032;66707578;Sekretariat@kssm-gs.schulerzbistum.de;http://www.marien-grundschule.de/
+08P03;Evangelische Schule Neuk__ (Integrierte Sekundarschule);12053;Mainzer Str. 47;6242027;6242028;buero@evangelische-schule-neukoelln.de;http://www.evangelische-schule-neukoelln.de
+08P04;Katholische Schule Sankt Marien;12043;Donaustr. 58;39881620;398816230;sekretariat@marienschule-berlin.de;http://www.marienschule-berlin.de
+08P08;Cenfila gGmbH;12057;Karl-Marx-Str. 255;667767970;667767979;info@acenta-berlin.de;http://www.cenfila.de
+08P09;MeineSchuleBerlin (Gemeinschaftsschule);12051;Delbrckstr. 18;1735647797;;meineschuleberlin@gmx.de;http://www.MeineSchuleBerlin.org
+08P10;Akademie Seehof GmbH - Private Berufsfachschule fr Altenpflege;12045;Elbestr. 28-29;804091050;8040910518;info-berlin@akademie-seehof.de;http://www.akademie-seehof.de
+08P13;b-trend-setting gUG (haftungsbeschr䮫t) media & more;12055;Lahnstr. 19;85610401;;info@b-trend-setting.de;http://www.b-trend-setting.de
+08P15;IB-Berlin-Brandenburg gGmbH - Medizinische Akademie Berlin;13347;Gerichtstr. 27;25292090;252920929;sozialberufe-berlin@ib.de;http://www.med-akademie.de
+08P17;DAA - Deutsche Angestellten-Akademie GmbH;12349;Buckower Damm 114;78902341;78902444;info.berlin@daa.de;http://www.daa-berlin.de
+08S01;Adolf-Reichwein-Schule;12059;Sonnenallee 188;63225111;63225121;sekretariat@adolf-reichwein.schule.berlin.de;http://www.adolf-reichwein-schule.com
+08S04;Schule am Zwickauer Damm;12353;Zwickauer Damm 16-22;6616079;6620906;Schule_am_Zwickauer_Damm1@t-online.de;http://www.schule-am-zwickauer-damm.de
+08S05;Schule am Hasenhegerweg;12353;Hasenhegerweg 12;660688702;660688816;sekretariat@08S05.schule.berlin.de;http://www.hasenhegerweg.de
+08S06;Hans-Fallada-Schule;12059;Harzer Str. 73-74;6322506724;68894345;hans-fallada-schule@gmx.de;http://www.hans-fallada-schule.de
+08S07;Schule am Bienwaldring;12349;Breitunger Weg 1;7430100;7005955;08S07@08S07.schule.berlin.de;http://www.schule-am-bienwaldring.de
+08S08;Schilling-Schule;12359;Paster-Behrens-Str. 81;6000272;6010177;schulleitung@schillingschule.de;http://www.schillingschule.de
+08S09;Schule an der Windmhle;12349;Buckower Damm 176;609724020;609724015;08S09@08S09.schule.berlin.de;http://www.schule-an-der-windmuehle.de
+08Y01;Albrecht-Drer-Gymnasium;12051;Emser Str. 133-137;221994310;221994343;08Y01@08Y01.schule.berlin.de;http://www.albrecht-duerer-gymnasium.de
+08Y02;Albert-Schweitzer-Gymnasium;12043;Karl-Marx-Str. 14;225009830;225009854;sekretariat@die-schweitzer.de;http://www.die-schweitzer.de
+08Y03;Albert-Einstein-Gymnasium;12359;Parchimer Allee 109;6009020;60090254;sekretariat@aeo.de;http://www.aeo.de
+08Y04;Ernst-Abbe-Gymnasium;12045;Sonnenallee 79;225013030;6233099;sekretariat@ernst-abbe.schule.berlin.de;http://www.ernst-abbe.de
+08Y05;Leonardo-da-Vinci-Gymnasium;12349;Haewererweg 35;742010;74201228;sekretariat@08y05.schule.berlin.de;http://Leonardo-da-Vinci-Gymnasium.de
+08Y06;Hannah-Arendt-Gymnasium;12355;Elfriede-Kuhr-Str. 17;6097180;60971810;h-a-os997@t-online.de;http://www.hannah-arendt-os.de
+09A05;Treptow-Kolleg;12437;Kiefholzstr. 274;5329141;5329142;schulleitung@treptow-kolleg.de;http://www.treptow-kolleg.de
+09A06;VHS Treptow-K__ick;12459;Zeppelinstr. 76-80;53699510;53699512;zbwtk-sekretariat@gmx.de;
+09A07;Flatow-Oberschule;12559;Birkenstr. 11;65486630;65486640;sekretariat@flatow-os.de;http://www.flatow-os.de
+09B03;Hermann-Scheer-Schule (OSZ Wirtschaft);12459;Helmholtzstr. 37;5389580;53895829;sekretariat@hs-osz.de;http://www.hermann-scheer-schule.de
+09G01;Bouch魓chule (Grundschule);12435;Bouchestr. 5;5337745;5337476;sekretariat@bouche.schule.berlin.de;http://www.bouche-schule.de
+09G03;Schule am Heidekampgraben (Grundschule);12437;H䮳elstr. 14;5328424;5328555;kontakt@heidekampgraben.de;http://www.grundschuleamheidekampgraben.de
+09G04;Sonnenblumen-Schule (Grundschule);12437;Radenzer Str. 16;5328413;5328174;sekretariat@sonnenblumen-grundschule.de;http://www.sonnenblumen-grundschule.de
+09G05;Schule am Ginkobaum (Grundschule);12487;Springbornstr. 250;6363317;6363338;Sekretariat@ginkobaum.schule.berlin.de;http://www.ginkobaumschule.de
+09G06;Melli-Beese-Schule (Grundschule);12487;Engelhardstr. 18;6361390;63103829;Sekretariat@melli-beese.schule.berlin.de;http://www.melli-beese-schule.de
+09G07;Schule an der alten Feuerwache (Grundschule);12439;Schnellerstr. 31;6361331;63104212;Sekretariat@09G07.schule.berlin.de;http://www.schuleanderfeuerwache.de
+09G09;Heide-Schule (Grundschule);12489;Florian-Geyer-Str. 87;67822789;67822794;09G09@09G09.schule.berlin.de;http://www.heide-grundschule.de
+09G10;Schule am Berg (Grundschule);12524;K__icker Str. 31;6728350;67068424;09g10@09g10.schule.berlin.de;http://www.schuleamberg.de
+09G11;Schule am Pegasuseck (Grundschule);12524;Pegasuseck 5;6733032;61504611;09G11@09G11.schule.berlin.de;http://www.pegasuseck.de
+09G13;Schule am Altglienicker Wasserturm (Grundschule);12524;Sachsenstr. 22;6728913;61504272;info@wasserturm-schule.de;http://www.wasserturm-schule.de
+09G14;Schule am Buntzelberg (Grundschule);12526;Schulzendorfer Str. 112;6763943;67197662;sekretariat@schule.buntzelberg.berlin.de;http://www.schule-am-buntzelberg.de
+09G15;Schule am Mohnweg (Grundschule);12524;Mohnweg 20;6797490;67974922;sekretariat@mohnweg.schule.berlin.de;http://www.grundschuleammohnweg.de
+09G16;Wendenschlo߭Schule (Grundschule);12557;K__zeile 123;6519703;6519702;09G16@09G16.schule.berlin.de;http://www.wendenschloss-schule.de
+09G17;Uhlenhorst-Grundschule;12555;Wongrowitzer Steig 37;6504144;6504145;Sekretariat@09G17.schule.berlin.de;http://www.uhlenhorst-grundschule.de
+09G18;Schule in der K__ischen Vorstadt (Grundschule);12557;Rudower Str. 201;64326715;64326798;Sekretariat@09G18.schule.berlin.de;http://www.schule-koellnische-vorstadt.de
+09G19;Amtsfeld-Schule (Grundschule);12559;Pablo-Neruda-Str. 8;6540192;6540058;amtsfeld-grundschule@t-online.de;http://www.amtsfeld-schule.de
+09G20;Mggelheimer Schule (Grundschule);12559;Odernheimer Str. 28;6598590;6598266;sekretariat@09g20.schule.berlin.de;http://mueggelheimer-grundschule.de
+09G21;Edison-Grundschule;12459;Wattstr. 69-70;5350657;5351013;sekretariat@edison.schule.berlin.de;http://www.edison-grundschule.de
+09G22;Schule an der Wuhlheide (Grundschule);12459;Kottmeierstr. 2;5350178;5351447;09G22@09G22.schule.berlin.de;http://www.grundschule-an-der-wuhlheide.de
+09G23;Hauptmann-von-K__ick-Schule (Grundschule);12555;Borgmannstr. 2-3;6571426;65017744;09G23@09G23.schule.berlin.de;http://www.hvkschule.de
+09G24;Mggelsee-Schule (Grundschule);12587;A߭annstr. 63;6458806;6455478;09g24@09g24.schule.berlin.de;http://www.mueggelsee-grundschule.de
+09G25;Mggelschl__en-Schule (Grundschule);12559;Alfred-Randt-Str. 56;6543102;6543124;09G25@09G25.schule.Berlin.de;http://www.ms-schule.de
+09G26;Schule an den Pttbergen (Grundschule);12589;Frstenwalder Allee 182;6489278;65017004;Sekretariat@09G26.schule.berlin.de;http://www.schule-an-den-puettbergen.de
+09G27;Friedrichshagener Schule (Grundschule);12587;Peter-Hille-Str. 7;6455411;6455395;09G27@09G27.schule.berlin.de;http://www.friehagrund.de
+09G29;Schm__itzer Insel-Schule (Grundschule);12527;Adlergestell 776;6758444;6758888;grundschule-schmoeckwitz@gmx.de;http://www.schm__s.de
+09G30;Kiefholz-Grundschule;12435;Kiefholzstr. 45;53007686;53007795;sekretariat@kiefholz.schule.berlin.de;http://kiefholz-grundschule.de
+09G31;31. Schule (Grundschule);12459;Keplerstr. 10;53010382;53010454;09G31@09G31.schule.berlin.de;
+09K01;Merian-Schule (Integrierte Sekundarschule);12555;Hoernlestr. 80;6571249;6571793;Sekretariat-Hoernlestrasse@09K01.schule.berlin.de;http://www.merian.schule
+09K02;Anna-Seghers-Schule (Gemeinschaftsschule);12489;Radickestr. 43;6774766;6774713;09K02@09K02.schule.berlin.de;https://www.anna-seghers-os.de
+09K03;Fritz-Khn-Schule (Integrierte Sekundarschule);12526;Dahmestr. 45;6764243;6763958;sekretariat@fritz-kuehn-schule.de;https://www.fritz-kuehn-schule.de
+09K04;Isaac-Newton-Schule (Integrierte Sekundarschule);12459;Zeppelinstr. 80-88;5350708;5353694;sekretariat@isaac-newton-schule.de;http://www.isaac-newton-schule.de
+09K05;Wilhelm-B__he-Schule (Integrierte Sekundarschule);12587;A߭annstr. 11;6455089;6458914;Sekretariat@boelsche.schule.berlin.de;http://wilhelm-boelsche-schule.de/
+09K06;Hans-Grade-Schule (Integrierte Sekundarschule);12487;Heubergerweg 37;6360961;63223629;09K06@09K06.schule.berlin.de;https://hans-grade-schule.de
+09K07;Sophie-Brahe-Gemeinschaftsschule;12435;Am Pl䮴erwald 17/23;53633950;536339519;info@sophie-brahe.de;http://www.sophie-brahe-schule.de
+09K08;Schule an der Dahme (Integrierte Sekundarschule);12557;Glienicker Str. 24-30;6744572;6743639;info@dahmeschule.de;http://www.dahmeschule.de/
+09K09;Grnauer Gemeinschaftsschule;12527;Walchenseestr. 40;6744540;67820026;sekretariat@gruenauer-schule.de;http://www.gruenauer-schule.de
+09P01;Freie Waldorfschule Berlin-Sdost;12439;Bruno-Brgel-Weg 9;67798010;67798011;post@waldorfsuedost.de;http://www.waldorfsuedost.de
+09P05;Grone - Bildungszentren Berlin GmbH - gemeinntzig;12435;Eichenstr. 3 B;53621540;53621542;akademie-berlin@grone.de;http://www.berufsschule-grone-berlin.de
+09P06;Montessori Campus Berlin K__ick (Gemeinschaftsschule);12557;K__zeile 125;330999001;330999002;post@montessori-cbk.de;http://www.montessorischule-cbk.de
+09P07;Evangelische Schule K__ick (Gymnasium);12557;Grne Trift 169;32532401;32532402;leitung@ev-schule-koepenick.de;http://www.ev-schule-koepenick.de
+09P09;BEST-Sabel-Oberschule;12555;Lindenstr. 1;280360970;280360971;oberschule@best-sabel.de;http://www.best-sabel.de
+09P10;Bewegte Schule K__ick (Grundschule);12555;Lindenstr. 26;65015495;65015504;schule-berlin@msbw-online.de;http://www.bewegte-schule-koepenick.de
+09P11;Berufsbildungszentrum Chemie;12489;Adlergestell 333;6700040;6747453;schelhase@bbz-chemie.de;http://www.bbz-chemie.de
+09P12;Mosaik-Grundschule;12439;Adlergestell 133;41766859;41766964;grundschule@mosaik-gs.com;http://www.mosaik-gs.com
+09P13;Evangelische Grundschule Friedrichshagen;12587;Peter-Hille-Str. 36;67122512;67122513;buero@ev-schule-friedrichshagen.de;http://www.ev-schule-friedrichshagen.de
+09P15;W-I-R-Grundschule Pfefferwerk;12557;Grne Trift 23 D;44383233;44383238;wir-grundschule@pfefferwerk.de;http://www.pfefferwerk.de
+09P16;Kreativit䴳Grundschule Berlin Treptow;12439;Hartriegelstr. 77;225027733;225027732;schule-treptow@krea-schulzentrum.de;http://www.krea-schulzentrum.de
+09P18;Freie Interkulturelle Waldorfschule Berlin;12439;Schnellerstr. 1-5;23942606;;berlin@interkulturellewaldorfschule.org;http://berlin.interkulturellewaldorfschule.org/de
+09P19;Technische Jugendfreizeit- und Bildungsgesellschaft (tjfbg) gGmbH;12459;Ostendstr. 1;206089120;20608922;info@ffap.de;http://www.tjfbg.de
+09P20;Elisabeth-Schulen;12459;Edisonstr. 63;22183860;22183861;elisabeth-schulen@hoffbauer-bildung.de;http://www.elisabeth-schulen.de
+09P21;NEWSchool (Integrierte Sekundarschule);12435;Lohmhlenstr. 65;34649310;34649312;info@newschool.de;http://www.newschool.de
+09S03;Albatros-Schule;12459;Treskowallee 222;53002990;530029920;info@albatros.schule.berlin.de;http://albatros-schule-berlin.de
+09S04;Ahorn-Schule;12587;Peter-Hille-Str. 118;6455031;6455865;09S04@09S04.schule.berlin.de;http://www.ahorn-schule.de
+09S06;Schule am Wildgarten;12437;K__icker Landstr. 185 A;5328067;53211930;09S06@09S06.schule.berlin.de;http://www.schule-wildgarten.de
+09Y03;Archenhold-Gymnasium;12439;Rudower Str. 7;6360195;6360185;sekretariat@archenhold.de;https://pi.archenhold.de
+09Y04;Anne-Frank-Gymnasium;12524;Uranusstr. 15-17;51653360;516533620;sekretariat@afg.schule.berlin.de;http://www.anne-frank-schule-berlin.de
+09Y05;Alexander-von-Humboldt-Gymnasium;12555;Oberspreestr. 173;6519788;;sekretariat@avh.berlin;http://www.avh-schule.de
+09Y06;Gerhart-Hauptmann-Gymnasium;12587;Bruno-Wille-Str. 37/39;6451839;6451824;sekretariat@ghs-berlin.de;http://www.ghs-berlin.de
+09Y10;Gebrder-Montgolfier-Gymnasium;12487;Ellernweg 20-22;6316677;6316678;sekretariat@gemont.de;http://www.gemont.de
+09Y11;Emmy-Noether-Gymnasium;12559;Pablo-Neruda-Str. 6-7;6542160;6545061;sekretariat@noether-gymnasium.de;http://www.noether-gymnasium.de
+10A04;Victor-Klemperer-Kolleg;12681;Martha-Arendsee-Str. 15;5426086;5426086;hoffmann@victor-klemperer-kolleg.de;http://www.abi-vkk.de
+10B01;Oscar-Tietz-Schule (OSZ Handel II);12681;Marzahner Chaussee 231;54987112;54987141;info@oscar-tietz-schule.de;http://www.oscar-tietz-schule.de
+10B02;Rahel-Hirsch-Schule (OSZ Gesundheit/Medizin);12627;Peter-Weiss-Gasse 8;99289030;99289059;sekretariat@rahel-hirsch.schule;
+10G01;Paavo-Nurmi-Grundschule;12689;Schorfheidestr. 42;9320057;9309565;Sekretariat@nurmi.schule.berlin.de;http://www.paavo-nurmi-grundschule.org
+10G03;Selma-Lagerl__rundschule;12689;W__tzer Str. 31;9309544;9339443;slagerloefg@aol.com;http://www.slgs.de
+10G04;Falken-Grundschule;12689;Geraer Ring 2;93022319;9328069;sekretariat@falken-gs.schule.berlin.de;http://www.falken-grundschule.de
+10G05;Ebereschen-Grundschule;12689;Borkheider Str. 28;9309511;93497955;ebereschen-gs@hotmail.de;http://www.ebereschen-grundschule.de
+10G07;Karl-Friedrich-Friesen-Grundschule;12687;Max-Herrmann-Str. 5;9328095;93492519;K.-F.-Friesen-Grundschule@t-online.de;http://kff.schule
+10G08;Wilhelm-Busch-Grundschule;12679;Parsteiner Ring 24/46;9309587;93491017;Wilhelm-Busch-GS@t-online.de;http://wilhelm-busch-gs.de
+10G09;Grundschule am Brgerpark;12679;Jan-Petersen-Str. 18 B;9309864;93663960;sekretariat@buergerpark.schule.berlin.de;http://www.gs-am-buergerpark.de
+10G10;Peter-Pan-Grundschule;12679;Stolzenhagener Str. 9;9358038;93668361;Sekretariat@peter-pan.schule.berlin.de;http://www.peter-pan-grundschule.de
+10G11;Grundschule an der Mhle;12685;Kienbergstr. 59;5416028;5415108;10G11@10G11.schule.berlin.de;
+10G12;Grundschule an der Geiߥnweide;12685;Amanlisweg 40;5429057;54986513;sekretariat@geissenweide.schule.berlin.de;http://www.gsadgw.de
+10G13;Johann-Strauss-Grundschule;12683;Cecilienstr. 80/81;5418166;5418188;sekretariat@johannstrauss.schule.berlin.de;http://www.johann-strauss-grundschule.de
+10G14;Grundschule unter dem Regenbogen;12681;Murtzaner Ring 35/37;54989880;54989880116;10G14@10G14.schule.berlin.de;http://www.grundschule-unterm-regenbogen.de
+10G16;Fuchsberg-Grundschule;12683;Apfelwicklerstr. 4/6;5142954;51068776;Sekretariat@fuchsberg.schule.berlin.de;http://www.fuchsberg.bildungslandschaft.berlin
+10G17;Beatrix-Potter-Grundschule;12629;Ludwigsfelder Str. 7;9939018;99285192;Sekretariat@beatrix-potter.schule.berlin.de;http://www.beatrix-potter-grundschule.de
+10G18;Pusteblume-Grundschule;12627;Kastanienallee 118;99284778;99284775;sekretariat@pusteblume-Grundschule.de;http://www.pusteblume-grundschule.de
+10G19;Bcherwurm-Schule am Weiher (Grundschule);12627;Eilenburger Str. 1;9918148;99283512;schulleitung@buecherwurm.schule.berlin.de;http://www.buecherwurm-grundschule.de
+10G22;Kolibri-Grundschule;12627;Sch__alder Str. 9;9989232;94395872;10G22@10G22.schule.berlin.de;http://www.kolibri-grundschule.de
+10G25;Grundschule am Schleipfuhl;12627;Nossener Str. 85;9917101;99278631;schulleitung@schleipfuhl.schule.berlin.de;http://www.grundschule-am-schleipfuhl.de
+10G26;Friedrich-Schiller-Grundschule;12623;An der Schule 13-17;5668913;56593680;sekretariat@fsg.schule.berlin.de;http://friedrich-schiller-grundschule.de
+10G28;Grundschule am Hollerbusch;12619;Erich-K䳴ner-Str. 64;5615085;55159433;10G28@10G28.schule.berlin.de;http://www.grundschule-am-hollerbusch.de
+10G29;Grundschule an der Wuhle;12619;Teterower Ring 79;5612127;56297918;sekretariat@anderwuhle.schule.berlin.de;http://www.grundschuleanderwuhle.de
+10G30;Mahlsdorfer Grundschule;12623;Feldrain 47;5627059;54712132;sekretariat@mahlsdorfer-gs.schule.berlin.de;http://www.mahlsdorfer-grundschule.de
+10G31;Franz-Carl-Achard-Grundschule;12621;Adolfstr. 25;5677339;56591226;sekretariat@achard.schule.berlin.de;http://www.achard-grundschule.org
+10G32;Kiekemal-Schule (Grundschule);12623;Hultschiner Damm 219;56597840;56597841;10G32@10G32.schule.berlin.de;http://www.kiekemal-grundschule.de
+10G33;Ulmen-Grundschule;12621;Ulmenstr. 79-85;5677052;56591144;10G33@10G33.schule.berlin.de;http://www.ulmenschule.de
+10G34;34. Schule (Grundschule);12689;Geraer Ring 54;93668090;93668094;10G34@10G34.schule.berlin.de;http://www.schule-am-gruenen-stadtrand.de
+10G36;36. Schule (Grundschule) (Neugrndung zum 01.08.2022);12627;Louis-Lewin-Str. 40;;;;
+10K01;Rudolf-Virchow-Schule;12679;Glambecker Ring 90;930298180;93029818406;kontakt@rvo-berlin.de;http://www.rvo-berlin.de
+10K02;Ernst-Haeckel-Schule;12629;Luckenwalder Str. 53;9909332;99285986;haeckel-os@arcor.de;
+10K03;Kerschensteiner-Schule;12689;Golliner Str. 2;93449920;934499215;k-iss@gmx.net;http://www.k-iss.de
+10K05;Jean-Piaget-Schule;12629;Mittenwalder Str. 5;9980793;99279059;Sekretariat@Piaget.Schule.Berlin.de;http://www.piaget-schule-berlin.de
+10K06;Georg-Klingenberg-Schule;12683;Alberichstr. 24;5143537;5143557;sekretariat@klingenberg.schule.berlin.de;http://www.georg-klingenberg.schule
+10K07;Caspar-David-Friedrich-Schule;12629;Alte Hellersdorfer Str. 7;5634354;56294021;sekretariat@cdf.schule.berlin.de;http://cdf-oberschule.de
+10K08;Johann-Julius-Hecker-Schule;12689;Hohenwalder Str. 2;93020910;930209141;sekretariat@hecker.schule.berlin.de;http://www.johann-julius-hecker-schule.de
+10K09;Konrad-Wachsmann-Schule;12627;Geithainer Str. 12;9918101;99283875;sekretariat@konrad-wachsmann.schule.berlin.de;http://www.konrad-wachsmann-schule.de
+10K10;Wolfgang-Amadeus-Mozart-Schule (Gemeinschaftsschule);12627;Cottbusser Str. 23;5612026;56294585;sekretariat@mozart.schule.berlin.de;http://www.mozart-schule.berlin
+10K11;Marcana-Schule (Gemeinschaftsschule);12689;Fl䭩ngstr. 16-18;9366870;93668715;marcanaschule@t-online.de;http://www.marcana-schule.de
+10K12;Gretel-Bergmann-Gemeinschaftsschule;12687;Liebensteiner Str. 24;9327177;9329092;gb-gems@mail.de;
+10K13;13. Schule (Integrierte Sekundarschule);12623;An der Schule 41-59;56554523;56554527;sekretariat@10K13.schule.berlin.de;
+10P03;Gesellschaft fr Pflege- und Sozialberufe gGmbH;12681;Bitterfelder Str. 13;9302070;93020720;info@gfp-berlin.de;http://www.gfp-berlin.de
+10P05;BEST-Sabel-Grundschule Mahlsdorf;12623;Erich-Baron-Weg 118;99283520;99283522;grundschule@best-sabel.de;http://www.best-sabel.de
+10P09;Sabine-Ball-Grundschule;12627;Lichtenhainer Str. 2;4431237200;4431237209;sabine-ball@christburg-campus.de;http://www.christburg-campus.de
+10P10;Internationale Lomonossow-Schule Berlin Marzahn (Gemeinschaftsschule);12683;Brebacher Weg 15, Haus 17;54804410;;marzahn@mitra-schulen.de;http://www.lomonossow-schule.de
+10P12;Freie Schule Berlin-Mahlsdorf;12623;Elsenstr. 13 A;97891077;97891078;info@fs-mahlsdorf.de;https://freieschule-mahlsdorf.de
+10P13;BEST-Sabel-Grundschule Kaulsdorf;12619;Wernerstr. 48;56594668;56594667;grundschule-kaulsdorf@best-sabel.de;http://www.best-sabel.de
+10P14;dreieins-Grundschule Berlin-Kaulsdorf;12619;Peter-Huchel-Str. 35;92901840;92901843;grundschule-kaulsdorf@dreieins.org;http://www.dreieins.org
+10P19;DRK - Schule fr soziale Berufe Berlin gGmbH;12681;Meeraner Str. 5;6003001900;60030091911;SchmeckthalM@drk-berlin.de;http://www.drk-berlin.de/drk-schule.html
+10P20;Chance Bildung, Jugend und Sport BJS gGmbH;12681;Allee der Kosmonauten 35A;40754613;40755409;bfs@chance-berlin.com;http://chance-berlin.com
+10P21;D&B Dienstleistung und Bildung gGmbH;12681;Leunaer Str. 7;9860090;9818502;post@dub-berlin.de;http://www.dub-berlin.de
+10P22;MANEGE gGmbH;12681;Otto-Rosenberg-Str. 1;8560686200;8560686222;sr.margareta@manege-berlin.de;http://www.manege-berlin.de
+10P23;dispo - Tf School of Social Work GmbH;12681;Wolfener Str. 32-34;;;info@school-of-social-work.de;http://school-of-social-work.de
+10S04;Schule am Pappelhof;12683;Ketschendorfer Weg 21;54979590;549795928;info@pappelhof.schule.berlin.de;http://schule-am-pappelhof.de
+10S07;Schule am Rosenhain;12627;Klingenthaler Str. 32;9989181;99278100;Sekretariat@rosenhain.schule.berlin.de;http://schule-am-rosenhain.de
+10S08;Schule am Mummelsoll;12627;Eilenburger Str. 4 (Eingang ber Gohliser Str. 51);9114161340;9114161130;schulleitung@10S08.schule.berlin.de;http://www.mummelsoll.de
+10Y01;Tagore-Gymnasium;12687;Sella-Hasse-Str. 25;9321069;9322025;schulleitung@tagore-gymnasium.de;http://www.tagore-gymnasium.de
+10Y02;Otto-Nagel-Gymnasium;12683;Schulstr. 11;5143864;5142816;sekretariat@otto-nagel-gymnasium.de;http://ong.berlin
+10Y03;Wilhelm-von-Siemens-Gymnasium;12683;Allee der Kosmonauten 134;549791340;549791339;schulleitung@wvsg.schule.berlin.de;https://www.wvsiemens-berlin.de/
+10Y08;Sartre-Gymnasium;12629;Kyritzer Str. 103;99281416;99281417;sekretariat@sartre-gymnasium.de;http://sartre-gymnasium.de
+10Y11;Melanchthon-Gymnasium;12627;Adele-Sandrock-Str. 73-75;9918008;99288973;spieler@melanchthon-schule-berlin.de;http://www.melanchthon-schule-berlin.de
+11A07;Schul- und Leistungssportzentrum Berlin (Sportforum);13053;Fritz-Lesch-Str. 35;983185205;983185209;sekretariat@slzb.de;http://www.slzb.de
+11B01;Hein-Moeller-Schule (OSZ Energietechnik II);10315;Allee der Kosmonauten 18;549330;5493337;sekretariat@hein-moeller-schule.de;http://www.Hein-Moeller-Schule.de
+11B02;Max-Taut-Schule (OSZ Geb䵤e, Umwelt, Technik);10317;Fischerstr. 36;52280148;52280161;michael.nitsche@max-taut-schule.de;http://www.max-taut-schule.de
+11B04;Friedrich-List-Schule (OSZ Bromanagement und Wirtschaftssprachen);10317;Marktstr. 2-3;55779060;55779061;info@fls-berlin.de;http://www.fls-berlin.de
+11G01;Sonnenuhr-Schule (Grundschule);10369;Franz-Jacob-Str. 33;9752028;97895304;11G01@11G01.schule.berlin.de;http://www.sonnenuhr-schule.de
+11G02;Schule am Roederplatz (Grundschule);10367;Bernhard-B䳴lein-Str. 22;9721419;97609379;sekretariat-gs-am-roederplatz@t-online.de;http://gs-am-roederplatz.de
+11G03;Schule im Gutspark (Grundschule);10367;Josef-Orlopp-Str. 20;5588170;5578184;sekretariat@gutspark.schule.berlin.de;http://www.grundschule-im-gutspark.de
+11G05;Schule auf dem lichten Berg (Grundschule);10365;Atzpodienstr. 19;5558219;55496960;schulleitung@11G05.schule.berlin.de;http://www.gs-lichtenberg-berlin.de
+11G06;Adam-Ries-Schule (Grundschule);10315;Alt-Friedrichsfelde 66;5135123;51009519;sekretariat-11g06@gmx.de;http://www.adamries.schule
+11G07;Hermann-Gmeiner-Schule (Grundschule);10365;Harnackstr. 17;5598291;55151567;Schulleitung@gmeiner.schule.berlin.de;http://www.gmeiner-schule-berlin.de
+11G08;Robinson-Schule (Grundschule);10317;W__chstr. 7;5228089811;5228089814;11G08@11G08.schule.berlin.de;http://www.robinsonschule-berlin.de
+11G09;Brgermeister-Ziethen-Schule (Grundschule);10315;Massower Str. 39;5251434;51062830;sekretariat@buezie.schule.berlin.de;http://www.buezie.de
+11G10;Schule im Ostseekarree (Grundschule);13051;Barther Str. 27;92403000;92403008;Sekretariat@11G10.schule.berlin.de;http://www.ostseekarree.net
+11G11;Bernhard-Grzimek-Schule (Grundschule);10319;Sewanstr. 184;5120097;50018411;Sekretariat@grzimek.schule.berlin.de;http://bernhard-grzimek-schule.de
+11G12;Lew-Tolstoi-Schule (Grundschule);10318;R__weg 120;5090147;50898373;sekretariat@11g12.schule.berlin.de;http://www.lew-tolstoi-schule.de
+11G13;Karlshorster Schule (Grundschule);10318;Lisztstr. 6;5090011;50898509;Sekr.KarlshorsterG@t-online.de;http://www.karlshorster-grundschule.de
+11G14;Richard-Wagner-Schule (Grundschule);10318;Ehrenfelsstr. 36;5099078;50014712;sekretariat@richard-wagner.schule.berlin.de;http://www.richard-wagner-grundschule.de
+11G16;Schule an der Victoriastadt (Grundschule);10317;N__erstr. 44;5107047;5107048;11G16@11G16.schule.berlin.de;http://www.gs-victoriastadt.de
+11G17;Brodowin-Schule (Grundschule);13055;Liebenwalder Str. 22;9864058;98317794;11G17@11G17.schule.berlin.de;http://www.brodowinschule.de
+11G18;Schule am Wilhelmsberg (Grundschule);13055;Sandinostr. 8;9711566;97605323;Wilhelmsberg@t-online.de;http://www.gs-am-wilhelmsberg.de
+11G19;Obersee-Schule (Grundschule);13053;Roedernstr. 69-72;9865038;97895263;sekretariat@obersee.schule.berlin.de;http://www.obersee-schule.de
+11G21;Schule Am Faulen See (Grundschule);13053;Degnerstr. 71;9830610;98306199;schule-am-faulen-see@gmx.de;http://www.schule-am-faulen-see.schule-berlin.net
+11G22;Martin-Niem__r-Grundschule;13053;Am Breiten Luch 5;9294089;9295169;MN11G22@t-online.de;http://Martin-Niemoeller-Schule.de
+11G23;Friedrichsfelder Schule (Grundschule);10315;Lincolnstr. 67;5251639;52279493;Sekretariat@11G23.schule.berlin.de;http://friedrichsfelder-schule.de
+11G25;Schule am W䬤chen (Grundschule);13051;Wustrower Str. 28;92403080;924030837;11G25@11g25.schule.berlin.de;http://11g25-berlin.de
+11G26;Randow-Schule (Grundschule);13057;Randowstr. 45;96066800;96066802;Sekretariat@randow.schule.berlin.de;http://www.randow-schule.de
+11G28;Feldmark-Schule (Grundschule);13057;Wartiner Str. 23;92403710;92403712;sekretariat@feldmark.schule.berlin.de;http://www.Feldmark-Schule.de
+11G29;Matibi-Schule (Grundschule);13059;Prendener Str. 15;9627640;96276419;sekretariat@matibi.schule.berlin.de;http://www.matibischule.de
+11G31;Schmetterlings-Grundschule;10319;Dolgenseestr. 60, Geb䵤e B;50018865;51061316;Sekretariat@11G31.schule.berlin.de;http://www.schmetterlings-grundschule.de
+11G32;Hans-Rosenthal-Grundschule;10367;Bernhard-B䳴lein-Str. 56;67810301;67810302;11G32@11G32.schule.berlin.de;http://www.11G32.de
+11G33;33. Schule (Grundschule);10365;Rdigerstr. 76;9721409;97104940;11G33@11G33.schule.berlin.de;
+11G34;34. Schule (Grundschule);13055;Konrad-Wolf-Str. 11;83208820;83208821;11G34@11G34.schule.berlin.de;
+11G35;35. Schule (Grundschule);10319;Sewanstr. 41;50018180;50018251;11G35@11G35.schule.berlin.de;http://www.35grundschule.de
+11G36;36. Schule (Grundschule);13057;Wartiner Str. 6;32306253;;11G36@11G36.schule.berlin.de;http://www.36gsli.de
+11G37;37. Schule (Grundschule);10318;Blockdammweg 60;;;11G37@11G37.schule.berlin.de;
+11G38;38. Schule (Grundschule);10369;Paul-Junius-Str. 69;;;11G38@11G38.schule.berlin.de;
+11K01;Alexander-Puschkin-Schule;10315;Massower Str. 37;5251429;5251390;mail@puschkinschule.eu;http://www.puschkinschule.eu
+11K02;Mildred-Harnack-Schule;10365;Schulze-Boysen-Str. 12;5594105;55493344;sekretariat@mh.schule.berlin.de;http://www.mildred-harnack-schule.de
+11K04;Gutenberg-Schule;13055;Sandinostr. 10;9711565;97895856;gutenberg-os@t-online.de;http://www.gutenberg-os.de
+11K05;Fritz-Reuter-Schule;13059;Prendener Str. 29;9627630;96276344;fritz@fritz-reuter-oberschule.de;http://www.Fritz-Reuter-Oberschule.de
+11K06;Schule am Rathaus;10367;Rathausstr. 8;5597668;55151000;OberschuleamRathaus@t-online.de;http://www.schuleamrathaus.de
+11K07;Vincent-van-Gogh-Schule (Integrierte Sekundarschule);13051;Wustrower Str. 26;92403020;92403029;11K07@11K07.schule.berlin.de;http://www.vincent-van-gogh-schule.de
+11K08;George-Orwell-Schule;10319;Sewanstr. 223;5125027;51099468;info@orwellschule.de;http://www.orwellschule.de
+11K09;Philipp-Reis-Schule (Integrierte Sekundarschule);13055;Werneuchener Str. 15;97104911;97104913;info@philipp-reis-oberschule.de;http://www.philipp-reis-oberschule.de
+11K10;Grner Campus Malchow (Gemeinschaftsschule);13051;Malchower Chaussee 2;96248595;96248596;schulleiter@gruener-campus-malchow.de;http://www.gruener-campus-malchow.de
+11K11;Paul-Schmidt-Schule (Integrierte Sekundarschule);13053;Malchower Weg 54;9864885;97999927;info@paul-schmidt-schule.de;http://www.paul-schmidt-schule.de
+11K12;Paul-und-Charlotte-Kniese-Schule (Gemeinschaftsschule);10319;Erich-Kurz-Str. 6-10;51659714;51659716;sekretariat@kniese.schule.berlin.de;http://www.kniese-schule-berlin.de
+11K13;13. Schule (Integrierte Sekundarschule) (Neugrndung zum 01.08.2022);10369;Storkower Str. 209B;;;;
+11K14;14. Schule (Integrierte Sekundarschule) (Neugrndung zum 01.08.2022);13057;Wartiner Str. 1-3;;;;
+11P01;Katholische Schule Sankt Mauritius (Grundschule);10365;Schulze-Boysen-Str. 28;55151821;55151827;st-mauritius-grundschule@t-online.de;http://www.st-mauritius-grundschule.de
+11P02;bbw Akademie fr Betriebswirtschaftliche Weiterbildung GmbH;10318;Rheinpfalzallee 82;50929403;50929373;schulsekretariat@bbw-berufliche-schulen.de;http://www.bbw-berufliche schulen.de
+11P03;Evangelische Schule Lichtenberg (Grundschule);10315;Rummelsburger Str. 3;54718014;54718110;info@ev-schule-lichtenberg.de;http://www.ev-schule-lichtenberg.de
+11P04;Kreativit䴳Grundschule Berlin Lichtenberg;10318;Ehrlichstr. 63;34665524;34665527;schule-karlshorst@krea-schulzentrum.de;http://www.krea-schulzentrum.de
+11P14;Schulen der BAWI gGmbH;10369;Franz-Jacob-Str. 2;27593888;27593889;zentrale@bawi-berlin.de;http://www.bawi-berlin.de
+11P15;Donner + Kern gGmbH;10367;M__ndorffstr. 48;27591090;27591120;j.heyne@donner-kern.schule;http://www.donner-kern.schule
+11P17;P䤡logik GmbH - Fachschule fr Sozialp䤡gogik;10369;Rudolf-Seiffert-Str. 50 A;347476170;347476193;schulleitung@paedalogik.de;http://www.paedalogik.de
+11P18;Akademie fr berufliche Bildung (AFBB) gGmbH;10365;Bornitzstr. 73-75;2888690;28886920;berlin@afbb-ggmbh.de;https://www.afbb.de/
+11P19;Semper Fachschulen gGmbH;10367;M__ndorffstr. 45-52;93693671;93693677;y.pielen@semper-schulen.de;http://www.semperschulen.de
+11P20;INHAUS Akademie - Berufsfachschule fr Altenpflege;10367;M__ndorffstr. 49;24000640;240006410;info@inhaus-berlin.de;http://www.inhaus-berlin.de
+11P21;Grundschule am Campus Hedwig;10367;M__ndorffstr. 33;17655725178;;grundschule.hedwig@sozdia.de;http://www.sozdia.de
+11S02;Schule am Fennpfuhl;10369;Alfred-Jung-Str. 19;9720416;97104980;Schule-am-Fennpfuhl@t-online.de;
+11S04;Paul-und-Charlotte-Kniese-Schule;10319;Erich-Kurz-Str. 6-10;51659714;51659716;sekretariat@kniese.schule.berlin.de;http://www.kniese-schule-berlin.de
+11S05;Schule am grnen Grund;10365;Herzbergstr. 79;5436709;54801474;sekretariat@gruener-grund.schule.berlin.de;
+11S06;Selma-Lagerl__chule;10365;Rdiger Str. 76;9721409;97104940;sekretariat@11S06.schule.berlin.de;http://www.sprachheilschule-selma-lagerloef.de
+11S07;Carl-von-Linn魓chule;10367;Paul-Junius-Str. 15;5050960;50509678;sekretariat@linne.schule.berlin.de;
+11S08;Schule Am Breiten Luch;13053;Am Breiten Luch 19;9295080;96209845;Sekretariat@11S08.schule.berlin.de;
+11S12;Nils-Holgersson-Schule;10369;Otto-Marquardt-Str. 12-14;5139676;50018292;mail@nils-holgersson-schule-berlin.de;
+11Y02;Johann-Gottfried-Herder-Gymnasium;10369;Franz-Jacob-Str. 8;97609567;97609569;sekretariat@jgherder.de;http://www.jgherder.de
+11Y05;Hans-und-Hilde-Coppi-Gymnasium;10318;R__weg 30-32;5098116;50158007;sekretariat@coppi-gym.de;http://www.coppi-gym.de
+11Y09;Barnim-Gymnasium;13057;Ahrensfelder Chaussee 41;9366690;;kontakt@barnim-gymnasium.net;http://www.barnim-gymnasium.net
+11Y10;Manfred-von-Ardenne-Gymnasium;13055;Werneuchener Str. 27-28;9865002;9827769;info@ardenne-gymnasium.de;http://www.ardenne-gymnasium.de
+11Y11;Immanuel-Kant-Gymnasium;10317;Lckstr. 63;5139748;51098927;sekretariat@kant-gymnasium.de;http://www.kant-gymnasium.de
+12B01;Georg-Schlesinger-Schule (OSZ Maschinen- und Fertigungstechnik);13409;Khleweinstr. 5;4979060;49790611;schulbuero@gs-schule.de;http://www.gs-schule.de
+12B02;Emil-Fischer-Schule (OSZ Ern䨲ung und Lebensmitteltechnik);13437;Cyclopstr. 1 - 5;4147210;41472126;sekretariat@emilfischerschule.de;http://www.emilfischerschule.de
+12B03;Ernst-Litfa߭Schule (OSZ Mediengestaltung und Medientechnologie);13437;Cyclopstr. 1-5;4147920;41479221;litfass@ernst-litfass-schule.de;http://www.ernst-litfass-schule.de
+12G01;Havelmller-Grundschule;13507;Namslaustr. 49-57;4322101;43555315;12G01@12G01.schule.berlin.de;http://havelmueller-grundschule.de
+12G02;Grundschule am Sch䦥rsee;13407;Holl䮤erstr. 25-30;4567474;4565038;sekretariat@gas.schule.berlin.de;http://www.schaefersee-grundschule.de
+12G03;Reginhard-Grundschule;13409;Letteallee 39-41;48096363;48096364;12G03@12G03.schule.berlin.de;http://www.reginhard-grundschule.de
+12G04;Till-Eulenspiegel-Grundschule;13407;Humboldtstr. 8-13;4953050;49875706;sekretariat@eulenspiegel.schule.berlin.de;http://www.till-eulenspiegel-schule-berlin.de
+12G05;Kolumbus-Grundschule;13409;Bchsenweg 23 A;4963041;4963042;Kolumbus-Grundschule@t-online.de;http://www.kolumbus-schule.de
+12G06;Hausotter-Grundschule;13409;Hausotterplatz 4;4915012;4914090;hausotter-grundschule@gmx.de;http://hausotter-grundschule.de
+12G07;Mark-Twain-Grundschule;13403;Auguste-Viktoria-Allee 95;41709571;4136830;12g07@12g07.schule.berlin.de;http://www.twainweb.de
+12G09;Grundschule an der Peckwisch;13439;Tornower Weg 26-34;41508006;4165114;schulleitung@peckwisch.de;http://www.peckwisch.de
+12G10;Peter-Witte-Grundschule;13437;Rathauspromenade 75;4118966;4118044;sekretariat@12g10.schule.berlin.de;http://www.peter-witte-schule.de
+12G11;Ringelnatz-Grundschule;13437;Wilhelm-Gericke-Str. 7-13;4148700;41109614;sekretariat@ringelnatz-grundschule.de;http://www.ringelnatz-grundschule.de/
+12G12;Borsigwalder Grundschule;13509;Miraustr. 100;4322051;43553587;sekretariat@borsigwalder.schule.berlin.de;http://borsigwaldergs.de
+12G13;Franz-Marc-Grundschule;13507;Treskowstr. 26-31;4339792;43774369;sekretariat@fmg.schule.berlin.de;http://www.fmg-tegel.de
+12G14;Alfred-Brehm-Grundschule;13507;Ascheberger Weg 8 A;4322408;43555187;brehm-schule@web.de;http://www.alfred-brehm-schule.de
+12G15;Hoffmann-von-Fallersleben-Grundschule;13509;Ziekowstr. 80-88;4339343;4347855;Sekretariat@hvfg.schule.berlin.de;http://www.grundschule-fallersleben-berlin.de
+12G17;Ellef-Ringnes-Grundschule;13503;Im Erpelgrund 11-17;417440780;41744078155;sekretariat@erg.schule.berlin.de;http://www.ellef-ringnes-grundschule.de
+12G18;Grundschule am Tegelschen Ort;13505;Gerlindeweg 11-23;4311786;4310058;12G18@12G18.schule.berlin.de;http://www.grundschule-tegelort.de
+12G19;Mnchhausen-Grundschule;13469;Artemisstr. 22-26;4111630;41190956;muenchhausen-gs@web.de;http://www.muenchhausen-grundschule.de
+12G20;Grundschule am Vierrutenberg;13469;Am Vierrutenberg 59-65;4026518;4029167;sekretariat@gs-am-vierrutenberg.de;http://www.grundschule-am-vierrutenberg.de
+12G21;Grundschule am Flieߴal;13467;Seebadstr. 42-43;4045827;4044065;buero@gsfliesstal.de;http://www.grundschule-am-fliesstal.de
+12G22;Gustav-Dreyer-Grundschule;13467;Freiherr-vom-Stein-Str. 31;4050860;40508620;12G22@12G22.schule.berlin.de;http://www.gustav-dreyer-schule.com
+12G23;Victor-Gollancz-Grundschule;13465;Gollanczstr. 18-24;4014659;4061573;schule@gollancz.de;http://www.victor-gollancz-grundschule.de
+12G24;Ren饭Sintenis-Grundschule;13465;Laurinsteig 39-45;40605910;406059199;sekretariat@rsg.schule.berlin.de;http://www.Renee-Sintenis-Grundschule.de
+12G26;M䲫ische Grundschule;13439;Dannenwalder Weg 163-165;4165057;41713122;12G26@12G26.schule.berlin.de;http://www.staatliche-europa-schule.de
+12G27;Chamisso-Grundschule;13435;Senftenberger Ring 27;40716257;4152050;info@chamisso-grundschule.de;http://www.chamisso-grundschule.com
+12G28;Grundschule in den Rollbergen;13469;Waldshuter Zeile 6;4023059;4029742;Sekretariat@rollberge.schule.berlin.de;http://www.rollberge.de
+12G29;Hermann-Schulz-Grundschule;13403;Kienhorststr. 67-79;4132008;41713958;12G29@12G29.schule.berlin.de;http://www.hermann-schulz-grundschule.de
+12G30;Reineke-Fuchs-Grundschule;13403;Foxweg 15;4132055;4135688;sekretariat@reineke-fuchs.schule.berlin.de;http://www.reineke-fuchs-grundschule.de/
+12G32;Charlie-Chaplin-Grundschule;13439;Wilhelmsruher Damm 90-94;4167676;40716619;Sekretariat@12G32.schule.berlin.de;http://charlie-chaplin-grundschule.com
+12G33;Lauterbach-Grundschule;13435;Senftenberger Ring 41;4021088;4022642;sek.12G33@lauterbach.schule.berlin.de;http://www.lauterbach-schule.de
+12G34;Otfried-Preu߬er-Grundschule;13503;Schulzendorfer Str. 99;43660380;436603810;sekretariat@ops.schule.berlin.de;http://www.ops-berlin.de
+12K01;Julius-Leber-Schule;13507;Treskowstr. 26-31;43557090;43557099;sekretariat@jls-berlin.de;http://www.jls-berlin.de
+12K02;Bettina-von-Arnim-Schule;13435;Senftenberger Ring 49;403050;40305199;info@bettina-schule.de;http://www.bettina-schule.de
+12K03;Max-Beckmann-Schule (Integrierte Sekundarschule);13403;Auguste-Viktoria-Allee 37;4134081;4135164;schulleitung@m-b-o.net;http://www.m-b-o.net
+12K04;Paul-L__Schule;13407;Lindauer Allee 23-25;4957026;49875423;paul-loebe-schule@gmx.de;http://www.paul-loebe-schule.de
+12K05;Gustav-Freytag-Schule (Integrierte Sekundarschule);13409;Breitkopfstr. 66-80;4958031;49873287;kontakt@gustav-freytag-schule.berlin;http://www.gustav-freytag-schule.berlin
+12K06;Benjamin-Franklin-Schule (Integrierte Sekundarschule);13509;Sommerfelder Str. 5-7;43983810;439838181;info@benjamin-franklin-schule.eu;http://www.benjamin-franklin-schule.de
+12K07;Jean-Kr䭥r-Schule (Integrierte Sekundarschule) Wittenau;13437;Alt-Wittenau 8-12;41109152;40999365;sekretariat@12K07.schule.berlin.de;http://www.jeankraemerschule.de
+12K09;Carl-Benz-Schule (Integrierte Sekundarschule);13467;Heidenheimer Str. 53-54;9029480000;9029480099;mail@carl-benz-oberschule.de;http://www.carl-benz-oberschule.de
+12K10;Carl-Bosch-Schule;13467;Frohnauer Str. 74-80;40584149;40584151;12K10@12K10.schule.berlin.de;http://www.carlbosch.de
+12K11;Albrecht-Haushofer-Schule;13503;Kurzebracker Weg 40-46;4319072;4361447;sekretariat@12k11.schule.berlin.de;http://www.albrecht-haushofer-schule.de
+12K12;Campus Hannah H__(Gemeinschaftsschule);13435;Finsterwalder Str. 52-56;40899960;408999666;12K12@12K12.schule.berlin.de;http://www.campus-hannah-hoech.de
+12P02;Waldorfschule M䲫isches Viertel Berlin;13439;Treuenbrietzener Str. 28;4072830;40728326;info@waldorfschule-mv.de;http://www.waldorfschule-mv.de
+12P03;Evangelische Schule Frohnau;13465;Benediktinerstr. 11-19;509305310;509305311;sekretariat@ev-frohnau.de;http://www.ev-frohnau.de
+12P04;Katholische Schule Salvator;13469;Frst-Bismarck-Str. 8-10;4111198;40910070;christian.dinter@kss.schulerzbistum.de;http://salvator.net
+12P06;Elisabethstift-Schule (Gemeinschaftsschule);13467;Falkentaler Steig 10;688343870;688343871;michael.winter@elisabethstift-berlin.de;http://www.elisabethstift-schule.de
+12P07;Private Goethe-Schulen;13435;Wittenauer Str. 112;40399849;40395426;sekretariatgoetheschulenberlin@gmail.com;http://goethe-grundschule.bifiz.de
+12P10;Demokratische Schule X (Gemeinschaftsschule);13503;Ruppiner Chaussee 209-211;60922621;;info@demokratische-schule-x.de;http://www.demokratische-schule-x.de
+12P11;Alternativschule Berlin (Gemeinschaftsschule);13469;Bondickstr. 8-9;4174860;417486150;info@alternativschule-berlin.de;http://www.alternativschule-berlin.de
+12P13;Euro Akademie Berlin;13507;Berliner Str. 66;43557030;43557059;berlin@euroakademie.de;http://www.euroakademie.de/berlin
+12P14;Montessori Campus am Tegeler Forst;13507;Gabrielenstr. 12/18;68405070;68405071;sekretariat@montessori-tegel.de;http://www.montessori-tegel.de
+12P15;EJF - Fachschule fr soziale Berufe;13503;Am B䲥nsprung 58;4306710;4306713;info-fachschule@ejf.de;http://www.ejf.de
+12P18;RENAFAN Akademie gGmbH;13507;Berliner Str. 36/37;438190440;4,38191E+11;Pflegeschule@renafan.de;http://www.renafan.de
+12P19;APEGO-Schule Berlin (Gemeinschaftsschule);13469;Dianastr. 44-46;27498477;;office@apego-schule.de;http://apego-schule.de
+12P21;Berufsfachschule fr Altenpflege;13403;Waldstr. 86-90;130141707;13029141700;andrea.bauwens@bildungscampus-berlin.de;http://www.bildungscampus-berlin.de
+12P22;Mosaik Fachschule fr Sozialp䤡gogik;13507;Flohrstr. 21;3301836074;3301836075;a.hoof@jus-or.de;
+12P23;Eventus - Fachschule fr Sozialp䤡gogik;13409;Markstr. 36-37;23535239;98374697;schulleitung@eventusfachschule.de;http://eventusfachschule.de
+12P24;G.A.L.B F__rung gGmbH;13509;Holzhauser Str. 180;22463511;22463509;steven.schulz@galb-berlin.de;http://www.galb-berlin.de
+12P25;Elisabethstift-Schule;13467;Berliner Str. 118;688343870;688343871;michael.winter@elisabethstift-berlin.de;http://www.elisabethstift-schule.de
+12P26;EJF Evangelisches Jugend- und Frsorgewerk gAG (Neugrndung zum 01.08.2022);13467;Berliner Str. 118;15150548417;40507160;fachschule@elisabethstift-berlin.de;http://www.elisabethstift-berlin.de/fachschule
+12S01;St__er-Schule;13509;Tietzstr. 26-28;4328011;43566163;sekretariat@stoetzner.schule.berlin.de;http://www.stoetznerschule-berlin.de
+12S03;Lauterbach-Schule;13435;Senftenberger Ring 41;4021089;40203789;sek.12S03@lauterbach.schule.berlin.de;http://www.lauterbach-schule.de
+12S04;Schule am Park;13437;Eichborndamm 276-284;4145034;4145033;sekretariat@sap.schule.berlin.de;http://www.schule-am-park-berlin.de
+12S05;Waldseeschule;13467;Olafstraߥ 32-34;030-9029480100;030-9029480199;12S05@12S05.schule.berlin.de;http://www.wiesengrund-schule.de
+12S06;Toulouse-Lautrec-Schule;13509;Miraustr. 126;4332097;4332099;sekretariat@toulouse-lautrec-schule.de;http://www.toulouse-lautrec-schule.de
+12Y01;Friedrich-Engels-Gymnasium;13407;Emmentaler Str. 67;4955056;4962871;feg@freenet.de;http://www.feg.berlin
+12Y02;Europ䩳ches Gymnasium Bertha-von-Suttner;13409;Reginhardstr. 172;491 60 57;492 80 45;verwaltung@bertha-von-suttner.de;http://www.bertha-von-suttner.de
+12Y03;Humboldt-Gymnasium;13509;Hatzfeldtallee 2-4;4337008;4337023;sekretariat@humboldtschule-berlin.eu;http://www.humboldtschule-berlin.de
+12Y04;Gabriele-von-Blow-Gymnasium;13509;Tile-Brgge-Weg 63;210052460;210052468;info@gvb-gymnasium.de;http://www.gvb-berlin.de
+12Y05;Georg-Herwegh-Gymnasium;13467;Fellbacher Str. 18-19;4042070;4042081;mail@herwegh-gymnasium.de;http://www.herwegh-gymnasium.de
+12Y06;Schulfarm Insel Scharfenberg;13505;Schwarzer Weg 101-105;430944330;4309443312;sekretariat@insel-scharfenberg.de;http://www.insel-scharfenberg.de
+12Y07;Romain-Rolland-Gymnasium;13469;Place Moli貥 4;4140170;41401718;sekretariat@roromail.de;http://www.romain-rolland-gymnasium.eu
+12Y08;Thomas-Mann-Gymnasium;13439;K__shorster Str. 10;414763670;4147636799;sekretariat@tmgberlin.de;http://www.tmgberlin.de
