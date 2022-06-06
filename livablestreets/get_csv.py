@@ -1,9 +1,9 @@
 import pandas as pd
-from pathlib import Path
+# from pathlib import Path
 import pandas as pd
-import requests
-import json
-import csv
+# import requests
+# import json
+# import csv
 from livablestreets.query_names import public_transport, bike_infraestructure, eating, night_life, culture, community, health_care, public_service, education, economic, comfort_sports, leisure_sports
 from osm_query import query_params_osm
 
