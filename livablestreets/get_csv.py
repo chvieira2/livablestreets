@@ -102,4 +102,5 @@ def get_leisure_sports(leisure_sports):
 
 
 if __name__ == "__main__":
-    print(get_public_transp(public_transport))
+    print(get_eating(eating))
+    df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
