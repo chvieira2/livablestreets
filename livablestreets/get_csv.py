@@ -95,7 +95,7 @@ def get_leisure_sports(leisure_sports):
     new_querie = query_params_osm(leisure_sports, 'nodes')
     df_leisure_sports = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_leisure_sports['coor'] = list(zip(df_leisure_sports.lat, df_leisure_sports.lon))
-    df_leisure_sports.to_csv('../livablestreets/data/Festures/comfort_leisure_sports.csv', index=False)
+    df_leisure_sports.to_csv('../livablestreets/data/Features/comfort_leisure_sports.csv', index=False)
 
 def get_all():
     # return get_public_transp(public_transport)
