@@ -63,11 +63,11 @@ economic = {'amenity':['atm', 'bank', 'bureau_de_change']}
 #Queries for comfort
 
 # Nodes
-comfort_spots = {'amenity':['bbq','bench','dog_toilet',
+comfort_sports = {'amenity':['bbq','bench','dog_toilet',
                       '	drinking_water', 'give_box', 'shelter', 'shower',
                       'toilets', 'water_point', 'watering_place']}
 
-leisure_spots = {'leisure':['bandstand','bird_hide','dog_park',
+leisure_sports = {'leisure':['bandstand','bird_hide','dog_park',
                       'firepit', 'swimming_pool', 'stadium', 'sports_centre',
                       'pitch', 'picnic_table', 'fitness_centre'],
                  'historic':''}
