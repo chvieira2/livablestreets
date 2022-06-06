@@ -4,7 +4,8 @@ import streamlit_folium as stf
 from folium.plugins import HeatMap
 import numpy as np
 import pandas as pd
-from livablestreets.display_map import show_map
+from livablestreets.display_map import plot
+from livablestreets.generator import LivabilityMap
 #-----------------------page configuration-------------------------
 st.set_page_config(
     page_title="Livable Streets",
@@ -35,32 +36,32 @@ st.markdown(
 
 
 st.markdown("""<h1 style='text-align: center; color: white;'>
-            Get livability scores in Berlin
+            Explore livability scores in city of your choice
             </h1>""",
             unsafe_allow_html=True)
 
 
-#------------------Creating a map-------------------------------
-mapObj, heatmaps = show_map()
-#-----------------------sidebar---------------------------------
-st.sidebar.markdown(f"""
-    ## Choose a map to display
-    """)
-for k,v in heatmaps.items():
-    st.sidebar.checkbox(k)
+#-------------------user inputs---------------------------
+#city
+st.markdown('#### Select city:')
+form = st.form("calc_weights")
+form.text_input(label='City', max_chars=20, key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
-#st.session_state
-# if st.sidebar.checkbox('Berlin districts'):
-#     print('Hello')
-#     #geo_livingArea.add_to(mapObj)
+form.slider(label='activity', key='weight_activity',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+form.slider(label='comfort', key='weight_comfort',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+form.slider(label='mobility',key='weight_mobility', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+form.slider(label='social',key='weight_social', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
 
-# if st.sidebar.checkbox('Bars'):
-#     print('Hello')
-#     # heatmap = HeatMap(coords_bars,
-#     #                   min_opacity=0.2,
-#     #                   radius=15,
-#     #                   #name='bars in Berlin',
-#     #                   show=True)
-#     # mapObj.add_child(heatmap)
+#Livability button
+submitted = form.form_submit_button('Calculate Livability', on_click=None)
 
-stf.folium_static(mapObj)
+if submitted:
+    st.write(st.session_state)
+    weights = [st.session_state.weight_activity,
+               st.session_state.weight_comfort,
+               st.session_state.weight_mobility,
+               st.session_state.weight_social]
+    city = LivabilityMap(weights=weights)
+    df = city.calc_livability()
+    mapObj = plot(df)
+    stf.folium_static(mapObj)
