@@ -1,3 +1,4 @@
+import pandas as pd
 
 # 4 categories with key, values list for openstreetmap feature extraction
 # dictionaries determinating geometry type (node or ways)
@@ -29,18 +30,14 @@ pedestrian = {'highway':['pedestrian','footway','living_street','corridor'],
 
 # Distance and sigma
 
-mobility = {
-            'node' : [ public_transport_bus , public_transport_rail, bike_infraestructure ],
-            'way' : [ pedestrian, cycle_paths ]
-            }
 
-mobility_distance = {
-                    'public_transport_bus' : 200 ,
-                    'public_transport_rail' : 500 ,
-                    'bike_infraestructure' : 50 ,
-                    'pedestrian' : 100 ,
-                    'cycle_paths' : 100
-                    }
+mobility = {
+            'public_transport_bus' : [public_transport_bus, 'bus', 200 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'public_transport_rail' : [public_transport_rail, 'rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'bike_infraestructure' : [bike_infraestructure, 'bike' , 50 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ]
+            }
 
 '''-------------------------social life---------------------------'''
 
@@ -62,16 +59,11 @@ community = {'office': ['association','charity', 'coworking',
 # Distance and sigma
 
 social_life = {
-            'node' : [ eating, night_life, culture, community ],
-            'way' : []
-            }
-
-social_life_distance = {
-                    'eating' : 200 ,
-                    'night_life' : 300 ,
-                    'culture' : 500 ,
-                    'community' : 400 ,
-                    }
+                'eating' : [eating, 'eating', 200 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'night_life' : [night_life,'nightlife' , 300 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'culture' : [culture,'culture' ,  500 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'community' : [community,'community', 400 , 'Node', 'Point', 'Point' , 'social_life' ]
+                }
 
 '''------------------------activities-------------------------------'''
 
@@ -96,21 +88,17 @@ educational = { 'amenity' : ['kindergarten','language_school', 'library',]}
 economic = {'amenity':['atm', 'bank', 'bureau_de_change']}
 
 # Distance and sigma
-activities = {
-            'node' : [ health_regional, health_local, goverment, public_service, post, education, educational, economic],
-            'way' : []
-            }
 
-activities_distance = {
-                    'health_regional' : 1000 ,
-                    'health_local' : 300 ,
-                    'goverment' : 500 ,
-                    'public_service' : 400 ,
-                    'post' : 100,
-                    'education' : 500,
-                    'educational' : 200,
-                    'economic' : 100
-                    }
+activities = {
+            'health_regional' : [health_regional, 'health_regional', 1000 , 'Node','Point','Point', 'activities'] ,
+            'health_local' : [health_local, 'health_local', 300 , 'Node','Point','Point', 'activities'] ,
+            'goverment' : [goverment,'goverment', 500  , 'Node','Point','Point', 'activities'] ,
+            'public_service' : [public_service, 'public_service', 400 , 'Node','Point','Point', 'activities'] ,
+            'post' : [post, 'post', 100, 'Node','Point','Point', 'activities'] ,
+            'education' : [education, 'education', 500, 'Node','Point','Point', 'activities'] ,
+            'educational' : [educational, 'educational', 200, 'Node','Point','Point', 'activities'] ,
+            'economic' : [economic, 'economic', 100 , 'Node','Point','Point', 'activities']
+            }
 
 '''-----------------------------comfort--------------------------'''
 
@@ -123,7 +111,7 @@ comfort_spots = {'amenity':['bbq','bench','dog_toilet',
                       'toilets', 'water_point', 'watering_place', 'fountain']}
 
 leisure_spots = {'leisure':['bird_hide','dog_park', 'firepit', 'pitch', 'picnic_table'],
-                 'historic': ['']}
+                 'historic': [True]}
 
 leisure_mass = {'leisure':['bandstand', 'swimming_pool', 'stadium', 'sports_centre', 'fitness_centre']}
 
@@ -137,26 +125,32 @@ water = {'natural':['water','beach'],
          'amenity':['fountain']}
 
 # Distance and sigma
-comfort = {
-            'node' : [ comfort_spots, leisure_spots, leisure_mass],
-            'way' : [ green, water ]
-            }
 
-comfort_distance = {
-                    'comfort_spots' : 100 ,
-                    'leisure_spots' : 200 ,
-                    'leisure_mass' : 500 ,
-                    'green' : 500 ,
-                    'water' : 500
-                    }
+comfort = {
+            'comfort_spots' : [ comfort_spots, 'comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_spots' : [ leisure_spots, 'leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_mass' : [ leisure_mass, 'leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'green' : [ green,'green', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'water' : [ water,'water', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ]
+            }
 
 
 '''--------------------------master query--------------------------'''
 
 
-master_query = {
-                mobility : mobility_distance ,
-                social_life : social_life_distance,
-                activities : activities_distance,
-                comfort : comfort_distance
-                }
+
+
+def master_query():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+
+        columns = ['query_string','name','distance','geomtype','jsontype','shapelytype','category']
+        query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        return query_df
+
+if __name__ == "__main__":
+    print(master_query())
