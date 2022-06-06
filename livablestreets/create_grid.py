@@ -6,7 +6,83 @@ import geopandas as gdp
 from livablestreets.utils import haversine_vectorized, save_file
 from livablestreets.utils import simple_time_tracker, create_dir
 
+from geopy.geocoders import Nominatim
+from shapely.ops import linemerge, unary_union, polygonize
+import overpy
+from geojson import Point, Feature, FeatureCollection, dump
+
+import shapely.geometry as geometry
+
+from shapely.geometry import mapping
+
+
+
 @simple_time_tracker
+
+
+
+
+def get_id_deambiguate(city_name= "berlin"):
+
+    # Geocoding request via Nominatim
+    geolocator = Nominatim(user_agent="city_compare")
+    geo_results = geolocator.geocode(city_name, exactly_one=False, limit=3)
+
+    # Searching for relation in result set
+    for r in geo_results:
+        print(r.address, r.raw.get("osm_type"))
+        if r.raw.get("osm_type") == "relation":
+            city = r
+            break
+
+
+    # Calculating area id
+    # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
+    # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
+    area_osm_id = int(city.raw.get("osm_id")) #for city
+    return area_osm_id
+
+def get_city_geojson(area_osm_id):
+
+    #overpass query with overpy
+    query = f"""[out:json][timeout:25];
+                rel({area_osm_id});
+                out body;
+                >;
+                out skel qt; """
+    # initiates overpy
+    api = overpy.Overpass()
+    result = api.query(query)
+
+    lss = []  #convert ways to linstrings
+
+    for ii_w, way in enumerate(result.ways):
+        ls_coords = []
+
+        for node in way.nodes:
+            ls_coords.append(
+                (node.lon, node.lat))  # create a list of node coordinates
+
+        lss.append(
+            geometry.LineString(ls_coords))  # create a LineString from coords
+
+    merged = linemerge([*lss])  # merge LineStrings
+    borders = unary_union(merged)  # linestrings to a MultiLineString
+    polygons = list(polygonize(borders))
+    city_shape = geometry.MultiPolygon(polygons)
+    return city_shape
+
+def save_geojson(city_name, city_shape):
+    # converts to geojson
+    geojson_city = mapping(city_shape)
+    # saves to file
+    with open(f'{city_name}_boundaries.geojson', 'w') as f:
+        dump(mapping(geojson_city), f)
+
+'''----------------------------------------------------'''
+
+
+
 def get_shape_of_location(location):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
 
@@ -148,5 +224,7 @@ def create_geofence(location, stepsize,
 
 
 if __name__ == '__main__':
+
+
     df = create_geofence(stepsize = 10000, save_local=True, save_gcp=False) # 52.338246, 52.675508, 13.088348, 13.761159
     print(df)
