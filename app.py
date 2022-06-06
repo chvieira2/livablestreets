@@ -40,28 +40,36 @@ st.markdown("""<h1 style='text-align: center; color: white;'>
             </h1>""",
             unsafe_allow_html=True)
 
+#Simple placeholder for the world map
+placeholder_map = st.empty()
+placeholder_map = stf.folium_static(folium.Map(location=[52.5200, 13.4050], zoom_start=2))
 
 #-------------------user inputs---------------------------
-#city
-st.markdown('#### Select city:')
-form = st.form("calc_weights")
-form.text_input(label='City', max_chars=20, key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
-form.slider(label='activity', key='weight_activity',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
-form.slider(label='comfort', key='weight_comfort',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
-form.slider(label='mobility',key='weight_mobility', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
-form.slider(label='social',key='weight_social', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+with st.sidebar:
+    st.markdown('#### Select city:')
+    form = st.form("calc_weights")
+    form.text_input(label='City', max_chars=20, key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
-#Livability button
-submitted = form.form_submit_button('Calculate Livability', on_click=None)
+    form.slider(label='activity', key='weight_activity',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+    form.slider(label='comfort', key='weight_comfort',min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+    form.slider(label='mobility',key='weight_mobility', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+    form.slider(label='social',key='weight_social', min_value=0.0, max_value=1., step=0.1, value=1., format='%.1f')
+
+    #Form submit button to generate the inputs from the user
+    submitted = form.form_submit_button('Calculate Livability', on_click=None)
 
 if submitted:
-    st.write(st.session_state)
+    placeholder_map.empty()
     weights = [st.session_state.weight_activity,
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social]
     city = LivabilityMap(weights=weights)
-    df = city.calc_livability()
+    city.calc_livability()
+    df = city.df_grid_Livability
     mapObj = plot(df)
-    stf.folium_static(mapObj)
+    #Used to fill the placeholder of the world map with according one of the selected city
+    with placeholder_map.container():
+        st.write('Use the layers at the top right corner of the map to investigate different features that contribute to livability!')
+        stf.folium_static(mapObj)
