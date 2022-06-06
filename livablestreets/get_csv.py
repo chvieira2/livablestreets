@@ -98,6 +98,9 @@ def get_leisure_sports(leisure_sports):
     df_leisure_sports.to_csv('../livablestreets/data/df_leisure_sports.csv', index=False)
     return df_leisure_sports
 
+def get_all():
+    pass
+
 
 
 
