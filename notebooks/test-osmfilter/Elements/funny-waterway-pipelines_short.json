@@ -1,29 +1,8 @@
 Overview OSM funny-waterway-pipelines
 ===========
 Nodes:                                0
-Ways:                                 2
+Ways:                                 0
 Relations:                            0
 ===========
 
 
-
-------Way--------
-
-Nr. 1 of funny-waterway-pipelines
-Id: 46796872
-Tags:
-{'layer': '-1',
- 'location': 'underground',
- 'man_made': 'pipeline',
- 'name': 'Wäschgräble',
- 'waterway': 'drain'}
-
-------Way--------
-
-Nr. 2 of funny-waterway-pipelines
-Id: 46796846
-Tags:
-{'location': 'underground',
- 'man_made': 'pipeline',
- 'name': 'Wäschgräbli',
- 'waterway': 'drain'}

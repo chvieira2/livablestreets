@@ -4,20 +4,26 @@ import pandas as pd
 import numpy as np
 from livablestreets.utils import get_file
 
-#--------------display map--------------------
-mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11)
 
-def plot(df):
-    df = df[df['grid_in_berlin']==True]
+def plot(df, city_coords:tuple, city_borders):
+    '''Plots the map of the city with overlayers for each category as well as
+    livability score
+    Inputs: obtained from LivabilityMap class instance generated from user
+    inputs
+    Output: map object
+    '''
+    #----------------------take only data from inside city coundaries--------
+    df = df[df['grid_in_location']==True]
+    # -------------- get all categories from df ----------------------------
     columns = df.columns
     columns_categories = [col for col in columns if col.split('_')[-1]=='mean']
     if 'livability' in columns:
         columns_categories.append('livability')
-    # create arrays for each category + livability
+    #---------- create data arrays for each category + livability ---------
     categories={}
     for cat in columns_categories:
         categories[cat] = np.array(df[['lat_center','lng_center', cat]])
-
+    #---------- create heatmaps for each category ---------------------
     heatmaps={}
     for category in categories.keys():
         if category=='livability':
@@ -30,14 +36,16 @@ def plot(df):
         else:
             heatmaps[category]=HeatMap(categories[category],
                             min_opacity=0.2,
-                            gradient={0:'Navy', 0.25:'Blue',0.5:'Green', 0.75:'Yellow',1: 'Red'},
+                            gradient={0:'Navy', 0.25:'Blue', 0.5:'Green', 0.75:'Yellow',1: 'Red'},
                             radius=20,
-                            name=category,
+                            name=category.split('_')[0],
                             show=False)
-    #create map with heatmaps
-    mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10) #hardcoded for Berlin
+    #--------- create map with heatmap overlayers ---------------------
+    mapObj = folium.Map(location=city_coords, zoom_start=10)
     for hm in heatmaps.values():
         mapObj.add_child(hm)
+    #---------- add city borderer as extra layer ----------------------
+    city_borders.add_to(mapObj)
     folium.LayerControl().add_to(mapObj)
     return mapObj
 
@@ -91,7 +99,8 @@ def show_map(cityname='Berlin'):
     heatmaps = create_heatmap(categories)
     ##-----plot heatmaps
     mapObj = plot_heatmaps(heatmaps)
-    return mapObj,heatmaps
+    pass
+    #return mapObj,heatmaps
 
 if __name__ == '__main__':
     print('Loading map...')
