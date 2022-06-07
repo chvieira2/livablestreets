@@ -10,7 +10,7 @@ import shapely.speedups
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points(file_name, lat='lat',lng='lon', location='Berlin'):
+def features_into_list_points(file_name, location, lat='lat',lng='lon'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
@@ -50,8 +50,8 @@ def feature_cat_mean_score(df):
     return df
 
 @simple_time_tracker
-def integrate_all_features_counts(df_grid=None, file_name = None,
-                                    stepsize = 10000, location = 'Berlin',
+def integrate_all_features_counts(stepsize, location,
+                                    df_grid=None, file_name = None,
                                     save_local=True, save_gcp=True):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
@@ -99,7 +99,7 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
     total_grids=len(df_grid)
     for index, row in df_grid.iterrows():
         print(f'{index+1}/{total_grids}', end='\r')
-        if row['grid_in_berlin']:
+        if row['grid_in_location']:
             polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
                                                      'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')
 
