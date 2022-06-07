@@ -13,7 +13,7 @@ def plot(df, city_coords:tuple, city_borders):
     Output: map object
     '''
     #----------------------take only data from inside city coundaries--------
-    df = df[df['grid_in_grid']==True]
+    df = df[df['grid_in_location']==True]
     # -------------- get all categories from df ----------------------------
     columns = df.columns
     columns_categories = [col for col in columns if col.split('_')[-1]=='mean']
