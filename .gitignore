@@ -4,6 +4,13 @@
 .DS_Store
 raw_data/
 
+*.json
+*.pbf
+
+df-*.geojson
+
+taglist.log
+Data.pickle
 # *.csv
 *30m.csv
 
