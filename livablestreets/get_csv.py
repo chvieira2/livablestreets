@@ -6,6 +6,7 @@ import pandas as pd
 # import csv
 from livablestreets.query_names import public_transport, bike_infraestructure, eating, night_life, culture, community, health_care, public_service, education, economic, comfort_sports, leisure_sports
 
+
 from livablestreets.utils import simple_time_tracker
 from google.cloud import storage
 from livablestreets.params import BUCKET_NAME
