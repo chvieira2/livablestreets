@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-# from sqlalchemy import column
 from livablestreets.utils import simple_time_tracker, get_file, save_file, min_max_scaler
+from livablestreets.FeatCount_blurrying import FeatCount_blurrying
 from shapely.geometry import Point, Polygon
 import matplotlib.path as mplPath
 import geopandas as gpd
@@ -142,17 +142,17 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
     df_grid['social_eating'] = social_eating_in_polygon
     df_grid['social_night_life'] = social_night_life_in_polygon
 
-    ## Create the livability score
+    ## Blurry count information
     # Remove polygons to save space
     df_grid = df_grid.drop(columns=['polygon'])
 
-    # MinMax normalize all features
-    df_grid = min_max_scaler(df_grid)
-    print('Features were MinMax scaled')
+    # Apply blurrying function
+    df_grid = FeatCount_blurrying(df=df_grid)
 
+    ## Create the livability score
     # Calculate the mean per category
     df_grid= feature_cat_mean_score(df_grid)
-    print('Category mean was calculated')
+    print('Categories mean were calculated')
 
     save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
@@ -166,8 +166,6 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(stepsize = 3000, file_name='Berlin_grid_3000m.csv')
+    df_grid = integrate_all_features_counts(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 100, file_name='Berlin_grid_100m.csv')
-
-    print('This shouldnt run add_features_to_grid.py')
