@@ -99,7 +99,8 @@ def show_map(cityname='Berlin'):
     heatmaps = create_heatmap(categories)
     ##-----plot heatmaps
     mapObj = plot_heatmaps(heatmaps)
-    return mapObj,heatmaps
+    pass
+    #return mapObj,heatmaps
 
 if __name__ == '__main__':
     print('Loading map...')

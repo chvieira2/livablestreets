@@ -106,6 +106,7 @@ if submitted:
     weights=tuple([weight_dict[i] for i in weights_inputs])
     #check weights
     print(f'Weights entered by user: {weights}')
+
     city = LivabilityMap(weights=weights, location=st.session_state.input_city)
     city.calc_livability()
     df = city.df_grid_Livability
