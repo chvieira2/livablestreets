@@ -42,4 +42,4 @@ memoized-property
 # termcolor
 typing_extensions
 matplotlib
-skimage
+scikit-image
