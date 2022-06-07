@@ -36,7 +36,7 @@ def plot(df, city_coords:tuple, city_borders):
         else:
             heatmaps[category]=HeatMap(categories[category],
                             min_opacity=0.2,
-                            gradient={0:'Navy', 0.25:'Blue',0.5:'Green', 0.75:'Yellow',1: 'Red'},
+                            gradient={0:'Navy', 0.25:'Blue', 0.5:'Green', 0.75:'Yellow',1: 'Red'},
                             radius=20,
                             name=category.split('_')[0],
                             show=False)
