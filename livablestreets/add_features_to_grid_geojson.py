@@ -51,8 +51,8 @@ def feature_cat_mean_score(df):
 
 @simple_time_tracker
 def integrate_all_features_counts(df_grid=None, file_name = None,
-                                    stepsize = 10000, location = 'berlin',
-                                    save_local=True, save_gcp=True):
+                                    stepsize = 3000, location = 'berlin',
+                                    save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
 
@@ -67,19 +67,22 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
     print('created polygons')
 
     # Get the list of points
-
     df_master = master_query_complex()
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cef5caa62277c6125a94621c9b3f83eb70c90bb
     total_grids=len(df_grid)
     print(df_grid.iloc[1])
 
-    for index, row in df_grid.iterrows():
-        print(row['grid_in_location'])
-        print(f'{index+1}/{total_grids}', end='\r')
+    for index_grid, row_grid in df_grid.iterrows():
+        point_in_polygon = []
+        print(f'{index_grid+1}/{total_grids}', end='\r')
 
+<<<<<<< HEAD
         polygon_row = row['grid_in_location']
         file_name = []
         category = []
@@ -113,6 +116,37 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
             # df_grid[filter_name] = point_in_polygon
 
         # print(type(point_in_polygon), point_in_polygon)
+=======
+        if row_grid['grid_in_location']:
+            polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
+                                                    'geometry':df_grid.loc[index_grid, 'polygon']}, index=[1]), crs='wgs84')
+
+            for index_points, row_points in df_master.iterrows():
+                filter_name = index_points
+                category = row_points['category']
+
+                points = features_into_list_points(f'shapes-{category}-{filter_name}.geojson' , location=location)
+                print(f'created points lists: filter_name')
+
+                print(points['coordinates'])
+
+
+            print(type(point_in_polygon), point_in_polygon)
+
+            df_grid[filter_name] = point_in_polygon
+>>>>>>> 2cef5caa62277c6125a94621c9b3f83eb70c90bb
+
+
+
+
+            point_in_polygon.append(point_in_grid_counter(polygon, points))
+
+
+
+        else:
+            point_in_polygon.append(np.NaN)
+
+
 
     ## Create the livability score
     # Remove polygons to save space
@@ -141,5 +175,3 @@ if __name__ == '__main__':
     df_grid = integrate_all_features_counts(stepsize = 3000, file_name='berlin_grid_3000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 1000, file_name='berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 100, file_name='berlin_grid_100m.csv')
-
-    print('This shouldnt run add_features_to_grid.py')
