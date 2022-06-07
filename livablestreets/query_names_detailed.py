@@ -20,13 +20,6 @@ public_transport_rail = { 'public_transport':['stop_position','station','stop_ar
 
 bike_infraestructure =  {'amenity':['bicycle_parking', 'bicycle_repair_station', 'bicycle_rental']}
 
-# Ways
-cycle_paths = {'bicycle':['designated'],
-              'highway':['cycleway'],
-              'cycleway':['lane','opposite','opposite_lane','track','opposite_track','share_busway']}
-
-pedestrian = {'highway':['pedestrian','footway','living_street','corridor'],
-                'foot':['designated']}
 
 # Distance and sigma
 
@@ -34,9 +27,7 @@ pedestrian = {'highway':['pedestrian','footway','living_street','corridor'],
 mobility = {
             'public_transport_bus' : [public_transport_bus, 'bus', 200 , 'Node', 'Point', 'Point' , 'mobility' ] ,
             'public_transport_rail' : [public_transport_rail, 'rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
-            'bike_infraestructure' : [bike_infraestructure, 'bike' , 50 , 'Node', 'Point', 'Point' , 'mobility' ] ,
-            'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ]
+            'bike_infraestructure' : [bike_infraestructure, 'bike' , 50 , 'Node', 'Point', 'Point' , 'mobility' ]
             }
 
 '''-------------------------social life---------------------------'''
@@ -115,6 +106,17 @@ leisure_spots = {'leisure':['bird_hide','dog_park', 'firepit', 'pitch', 'picnic_
 
 leisure_mass = {'leisure':['bandstand', 'swimming_pool', 'stadium', 'sports_centre', 'fitness_centre']}
 
+
+# Distance and sigma
+
+comfort = {
+            'comfort_spots' : [ comfort_spots, 'comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_spots' : [ leisure_spots, 'leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_mass' : [ leisure_mass, 'leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] }
+
+
+
+'''--------------------------complex query--------------------------'''
 # Ways
 
 green = {'landuse':['grass','forest','orchard','allotments','cementery','flowerbed', 'meadow','greenfield', 'recreation_ground','village_green'],
@@ -124,20 +126,33 @@ green = {'landuse':['grass','forest','orchard','allotments','cementery','flowerb
 water = {'natural':['water','beach'],
          'amenity':['fountain']}
 
-# Distance and sigma
+# Ways
+cycle_paths = {'bicycle':['designated'],
+              'highway':['cycleway'],
+              'cycleway':['lane','opposite','opposite_lane','track','opposite_track','share_busway']}
 
-comfort = {
-            'comfort_spots' : [ comfort_spots, 'comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_spots' : [ leisure_spots, 'leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_mass' : [ leisure_mass, 'leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+pedestrian = {'highway':['pedestrian','footway','living_street','corridor'],
+                'foot':['designated']}
+
+
+complex = {
+            'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             'green' : [ green,'green', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
             'water' : [ water,'water', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ]
             }
 
+'''--------------------------negative query--------------------------'''
 
-'''--------------------------master query--------------------------'''
+negative = {}
 
 
+
+
+'''--------------------------  definitions  --------------------------'''
+
+columns = ['query_string','name','distance','geomtype','jsontype','shapelytype','category']
+columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
 
 
 def master_query():
@@ -148,9 +163,41 @@ def master_query():
         master_q.update(activities)
         master_q.update(comfort)
 
-        columns = ['query_string','name','distance','geomtype','jsontype','shapelytype','category']
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
         return query_df
+
+def master_query_complex():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+        master_q.update(complex)
+
+        query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        return query_df
+
+def master_query_advanced():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+        master_q.update(complex)
+
+        query_df1 = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        query_df1['whitefilter'] = ''
+        query_df1['blackfilter'] = ''
+
+        master_neg = {negative}
+        query_df2 = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns_wb)
+
+        query_df3 = query_df1.append(query_df2)
+
+        return query_df3
+
 
 if __name__ == "__main__":
     print(master_query())
