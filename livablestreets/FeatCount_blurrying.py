@@ -54,7 +54,7 @@ def FeatCount_blurrying(df, slice = None, sigma_list = [10,10,10,10,10,10,10,10,
 
 
 if __name__ == '__main__':
-    df = get_file(file_name='FeatCount_Berlin_grid_1000m.csv', local_file_path=f'data/Berlin/WorkingTables', gcp_file_path = f'data/berlin/WorkingTables')
+    df = get_file(file_name='FeatCount_berlin_grid_1000m.csv', local_file_path=f'data/berlin/WorkingTables', gcp_file_path = f'data/berlin/WorkingTables')
 
     df = FeatCount_blurrying(df, slice = None, sigma_list = [0,0,0,0,8,0,0,9,0,0])
 
