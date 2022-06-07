@@ -31,7 +31,7 @@ class LivabilityMap(object):
     def stepsize_input(self):
         """ Function that asks the user for their input.
         for now it automatically returns 3000"""
-        self.stepsize = 3000
+        self.stepsize = 100
 
     def weights_input(self):
         """ Function that asks the user for their input.
@@ -39,7 +39,7 @@ class LivabilityMap(object):
         self.weights = (1,1,1,1)
 
 
-    @memoized_property
+    @simple_time_tracker
     def generate_grid(self):
         """ Function that puts together everything"""
 
@@ -77,7 +77,7 @@ class LivabilityMap(object):
     def get_features(self):
         get_all(location=self.location)
 
-    @memoized_property
+    @simple_time_tracker
     def add_FeatCount_grid(self):
         """ Add features to grid """
         ## Makes sure that df_grid exists
@@ -155,6 +155,6 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'Berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'Berlin', stepsize= 3000)
+    city = LivabilityMap(location = 'london', stepsize= 3000)
     city.calc_livability()
     print(city.df_grid_Livability.describe())
