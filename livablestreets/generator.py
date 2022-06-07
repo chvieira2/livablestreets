@@ -7,12 +7,13 @@ from livablestreets.osm_query import query_params_osm
 from memoized_property import memoized_property
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 100, weights = (1,1,1,1)):
+    def __init__(self, location, stepsize = 1000, weights = (1,1,1,1)):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
+        self.location = location.lower()
         self.location = location.lower()
         self.stepsize = stepsize
         self.weights = weights
@@ -22,22 +23,6 @@ class LivabilityMap(object):
         create_dir(path = f'livablestreets/data/{self.location}')
         create_dir(path = f'livablestreets/data/{self.location}/Features')
         create_dir(path = f'livablestreets/data/{self.location}/WorkingTables')
-
-    def location_input(self):
-        """ Function that asks the user for their input.
-        for now it automatically returns Berlin"""
-        self.location = 'Berlin'
-
-    def stepsize_input(self):
-        """ Function that asks the user for their input.
-        for now it automatically returns 3000"""
-        self.stepsize = 100
-
-    def weights_input(self):
-        """ Function that asks the user for their input.
-        for now it automatically returns (1,1,1,1)"""
-        self.weights = (1,1,1,1)
-
 
     @simple_time_tracker
     def generate_grid(self):
@@ -112,12 +97,6 @@ class LivabilityMap(object):
         else:
             self.weights = imputed_weights
 
-
-        # Create folder for location if it doesn't exist
-        create_dir(path = f'livablestreets/data/{self.location}')
-        create_dir(path = f'livablestreets/data/{self.location}/Features')
-        create_dir(path = f'livablestreets/data/{self.location}/WorkingTables')
-
         ## Calculate livability
         if self.df_grid_Livability is None:
             try :
@@ -152,9 +131,9 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'Berlin')
+    # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'london', stepsize= 3000)
+    city = LivabilityMap(location = 'berlin', stepsize= 100)
     city.calc_livability()
     print(city.df_grid_Livability.describe())

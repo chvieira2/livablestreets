@@ -13,7 +13,9 @@ def plot(df, city_coords:tuple, city_borders):
     Output: map object
     '''
     #----------------------take only data from inside city coundaries--------
+    print(len(df))
     df = df[df['grid_in_location']==True]
+    print(len(df))
     # -------------- get all categories from df ----------------------------
     columns = df.columns
     columns_categories = [col for col in columns if col.split('_')[-1]=='mean']
@@ -86,11 +88,11 @@ def plot_heatmaps(heatmaps):
 
 
 def show_map(cityname='Berlin'):
-    df = get_file('Livability_Berlin_grid_100m.csv', local_file_path='data/Berlin/WorkingTables',
-                  gcp_file_path = 'data/Berlin/WorkingTables',
+    df = get_file('Livability_berlin_grid_100m.csv', local_file_path='data/berlin/WorkingTables',
+                  gcp_file_path = 'data/berlin/WorkingTables',
                   save_local=True)
     #----select only the data for inside the grid--------
-    df = df[df['grid_in_berlin']==True]
+    df = df[df['grid_in_location']==True]
     ##----Get all categories that end with _mean and if present 'livability'
     column_categories = get_category_names(df)
     ##----Create df for each category returned as a dictionary with {cat_name: df}
