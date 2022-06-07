@@ -71,8 +71,8 @@ def integrate_all_features_counts(stepsize, location,
     points_activities_education = features_into_list_points('activities_education.csv', location=location)
     points_activities_health_care = features_into_list_points('activities_health_care.csv', location=location)
     points_activities_public_service = features_into_list_points('activities_public_service.csv', location=location)
-    points_comfort_leisure_sports = features_into_list_points('comfort_leisure_sports.csv', location=location)
-    points_comfort_sports = features_into_list_points('comfort_sports.csv', location=location)
+    points_comfort_leisure_spots = features_into_list_points('comfort_leisure_spots.csv', location=location)
+    points_comfort_spots = features_into_list_points('comfort_spots.csv', location=location)
     # points_comfort_trees = features_into_list_points('comfort_trees.csv', location=location)
     points_mobility_public_transport = features_into_list_points('mobility_public_transport.csv', location=location)
     points_social_community = features_into_list_points('social_community.csv', location=location)
@@ -87,8 +87,8 @@ def integrate_all_features_counts(stepsize, location,
     activities_education_in_polygon = []
     activities_health_care_in_polygon = []
     activities_public_service_in_polygon = []
-    comfort_leisure_sports_in_polygon = []
-    comfort_sports_in_polygon = []
+    comfort_leisure_spots_in_polygon = []
+    comfort_spots_in_polygon = []
     # comfort_trees_in_polygon = []
     mobility_public_transport_in_polygon = []
     social_community_in_polygon = []
@@ -107,8 +107,8 @@ def integrate_all_features_counts(stepsize, location,
             activities_education_in_polygon.append(point_in_grid_counter(polygon, points_activities_education))
             activities_health_care_in_polygon.append(point_in_grid_counter(polygon, points_activities_health_care))
             activities_public_service_in_polygon.append(point_in_grid_counter(polygon, points_activities_public_service))
-            comfort_leisure_sports_in_polygon.append(point_in_grid_counter(polygon, points_comfort_leisure_sports))
-            comfort_sports_in_polygon.append(point_in_grid_counter(polygon, points_comfort_sports))
+            comfort_leisure_spots_in_polygon.append(point_in_grid_counter(polygon, points_comfort_leisure_spots))
+            comfort_spots_in_polygon.append(point_in_grid_counter(polygon, points_comfort_spots))
             # comfort_trees_in_polygon.append(point_in_grid_counter(polygon, points_comfort_trees))
             mobility_public_transport_in_polygon.append(point_in_grid_counter(polygon, points_mobility_public_transport))
             social_community_in_polygon.append(point_in_grid_counter(polygon, points_social_community))
@@ -120,8 +120,8 @@ def integrate_all_features_counts(stepsize, location,
             activities_education_in_polygon.append(0)
             activities_health_care_in_polygon.append(0)
             activities_public_service_in_polygon.append(0)
-            comfort_leisure_sports_in_polygon.append(0)
-            comfort_sports_in_polygon.append(0)
+            comfort_leisure_spots_in_polygon.append(0)
+            comfort_spots_in_polygon.append(0)
             # comfort_trees_in_polygon.append(0)
             mobility_public_transport_in_polygon.append(0)
             social_community_in_polygon.append(0)
@@ -133,8 +133,8 @@ def integrate_all_features_counts(stepsize, location,
     df_grid['activities_education'] = activities_education_in_polygon
     df_grid['activities_health_care'] = activities_health_care_in_polygon
     df_grid['activities_public_service'] = activities_public_service_in_polygon
-    df_grid['comfort_leisure_sports'] = comfort_leisure_sports_in_polygon
-    df_grid['comfort_sports'] = comfort_sports_in_polygon
+    df_grid['comfort_leisure_spots'] = comfort_leisure_spots_in_polygon
+    df_grid['comfort_spots'] = comfort_spots_in_polygon
     # df_grid['comfort_trees'] = comfort_trees_in_polygon
     df_grid['mobility_public_transport'] = mobility_public_transport_in_polygon
     df_grid['social_community'] = social_community_in_polygon

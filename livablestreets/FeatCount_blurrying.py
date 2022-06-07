@@ -38,7 +38,7 @@ def FeatCount_blurrying(df, slice = None, sigma_list = [10,10,10,10,10,10,10,10,
         # Creates a 1D matrix from the list of values in that column
         matrix_to_blurry = np.array(df[feature_names[index]])
         # Changes the matrix to 2D using the dimensions given by lat and lng start limits
-        matrix_to_blurry = matrix_to_blurry.reshape(len(lat_start_limits),len(lng_start_limits))
+        matrix_to_blurry = matrix_to_blurry.reshape(len(lat_start_limits),len(lng_start_limits),1)
         # Apply blurrying function to 2D matrix
         matrix_to_blurry = blur_matrix(matrix_to_blurry,sigma_list[index])
         # MinMax scale blurred feature

@@ -137,6 +137,6 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'london', stepsize= 1000)
+    city = LivabilityMap(location = 'berlin', stepsize= 2000)
     city.calc_livability()
     print(city.df_grid_Livability.describe())
