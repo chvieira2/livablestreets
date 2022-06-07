@@ -92,25 +92,6 @@ def get_shape_of_location(location):
     print(f'Obtained shape file for {location}')
     return gdf
 
-def get_shape_of_location_Berlin(location):
-    """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
-
-    if location in ['Berlin', 'berlin', 'BER', 'ber']:
-        # Use geopandas package to work with the shape file of Berlin
-        # geojson for all berlin neighbourhoods was downloaded from here: https://daten.odis-berlin.de/de/dataset/bezirksgrenzen/
-        gdf = gdp.read_file(f'livablestreets/data/{location}/bezirksgrenzen.geojson')
-
-        # gdf.dissolve will colapse all neighborhoods into a single shape of the whole berlin
-        gdf = gdf.dissolve()
-
-        # Clean table to keep only relevant info
-        gdf = gdf.drop(columns=['Gemeinde_name', "Gemeinde_schluessel","gml_id", "Land_name","Land_schluessel","Schluessel_gesamt"])
-        gdf['Location'] = 'Berlin'
-        gdf = gdf.set_index("Location")
-
-        print(f'Obtained shape file for {location}')
-        return gdf
-
 def calculate_features_from_centroid(df, location, location_polygon = None):
     """ Iterates through all rows of grid squares and measures the distance (in km) to the location centroid (geographic center), angle (in degrees) and if point belongs to polygon shape """
 
@@ -160,7 +141,7 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
         else:
             foo_angles.append(np.degrees(angle))
 
-    df['grid_in_berlin'] = foo_boolean
+    df['grid_in_location'] = foo_boolean
     df['degrees_to_centroid'] = foo_angles
 
     print(f'Identified grids inside and outside of {location}')

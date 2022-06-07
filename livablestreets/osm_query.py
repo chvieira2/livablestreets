@@ -4,7 +4,7 @@ import requests
 
 overpass_url = "http://overpass-api.de/api/interpreter"
 
-location = 'area["ISO3166-2"="DE-BE"]->.berlin'
+location = 'area["ISO3166-2"="DE-BE"]->.city'
 # study_area = f'{city}->.city'
 
 #example query list:
