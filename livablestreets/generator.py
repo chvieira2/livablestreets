@@ -3,10 +3,8 @@ from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
 from livablestreets.get_csv import get_all
-
-
-# from livablestreets.get_csv import get_all
 from livablestreets.osm_query import query_params_osm
+from memoized_property import memoized_property
 
 class LivabilityMap(object):
     def __init__(self, location, stepsize = 100, weights = (1,1,1,1)):
@@ -41,7 +39,7 @@ class LivabilityMap(object):
         self.weights = (1,1,1,1)
 
 
-    @simple_time_tracker
+    @memoized_property
     def generate_grid(self):
         """ Function that puts together everything"""
 
@@ -75,11 +73,11 @@ class LivabilityMap(object):
 
         return self.df_grid
 
-    @simple_time_tracker
+    @memoized_property
     def get_features(self):
         get_all(location=self.location)
 
-    @simple_time_tracker
+    @memoized_property
     def add_FeatCount_grid(self):
         """ Add features to grid """
         ## Makes sure that df_grid exists
