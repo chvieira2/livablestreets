@@ -1,3 +1,4 @@
+import pandas as pd
 
 # 4 categories with key, values list for openstreetmap feature extraction
 # dictionaries determinating geometry type (node or ways)
@@ -19,28 +20,15 @@ public_transport_rail = { 'public_transport':['stop_position','station','stop_ar
 
 bike_infraestructure =  {'amenity':['bicycle_parking', 'bicycle_repair_station', 'bicycle_rental']}
 
-# Ways
-cycle_paths = {'bicycle':['designated'],
-              'highway':['cycleway'],
-              'cycleway':['lane','opposite','opposite_lane','track','opposite_track','share_busway']}
-
-pedestrian = {'highway':['pedestrian','footway','living_street','corridor'],
-                'foot':['designated']}
 
 # Distance and sigma
 
-mobility = {
-            'node' : [ public_transport_bus , public_transport_rail, bike_infraestructure ],
-            'way' : [ pedestrian, cycle_paths ]
-            }
 
-mobility_distance = {
-                    'public_transport_bus' : 200 ,
-                    'public_transport_rail' : 500 ,
-                    'bike_infraestructure' : 50 ,
-                    'pedestrian' : 100 ,
-                    'cycle_paths' : 100
-                    }
+mobility = {
+            'public_transport_bus' : [public_transport_bus, 'bus', 200 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'public_transport_rail' : [public_transport_rail, 'rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'bike_infraestructure' : [bike_infraestructure, 'bike' , 50 , 'Node', 'Point', 'Point' , 'mobility' ]
+            }
 
 '''-------------------------social life---------------------------'''
 
@@ -62,16 +50,11 @@ community = {'office': ['association','charity', 'coworking',
 # Distance and sigma
 
 social_life = {
-            'node' : [ eating, night_life, culture, community ],
-            'way' : []
-            }
-
-social_life_distance = {
-                    'eating' : 200 ,
-                    'night_life' : 300 ,
-                    'culture' : 500 ,
-                    'community' : 400 ,
-                    }
+                'eating' : [eating, 'eating', 200 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'night_life' : [night_life,'nightlife' , 300 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'culture' : [culture,'culture' ,  500 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'community' : [community,'community', 400 , 'Node', 'Point', 'Point' , 'social_life' ]
+                }
 
 '''------------------------activities-------------------------------'''
 
@@ -96,21 +79,17 @@ educational = { 'amenity' : ['kindergarten','language_school', 'library',]}
 economic = {'amenity':['atm', 'bank', 'bureau_de_change']}
 
 # Distance and sigma
-activities = {
-            'node' : [ health_regional, health_local, goverment, public_service, post, education, educational, economic],
-            'way' : []
-            }
 
-activities_distance = {
-                    'health_regional' : 1000 ,
-                    'health_local' : 300 ,
-                    'goverment' : 500 ,
-                    'public_service' : 400 ,
-                    'post' : 100,
-                    'education' : 500,
-                    'educational' : 200,
-                    'economic' : 100
-                    }
+activities = {
+            'health_regional' : [health_regional, 'health_regional', 1000 , 'Node','Point','Point', 'activities'] ,
+            'health_local' : [health_local, 'health_local', 300 , 'Node','Point','Point', 'activities'] ,
+            'goverment' : [goverment,'goverment', 500  , 'Node','Point','Point', 'activities'] ,
+            'public_service' : [public_service, 'public_service', 400 , 'Node','Point','Point', 'activities'] ,
+            'post' : [post, 'post', 100, 'Node','Point','Point', 'activities'] ,
+            'education' : [education, 'education', 500, 'Node','Point','Point', 'activities'] ,
+            'educational' : [educational, 'educational', 200, 'Node','Point','Point', 'activities'] ,
+            'economic' : [economic, 'economic', 100 , 'Node','Point','Point', 'activities']
+            }
 
 '''-----------------------------comfort--------------------------'''
 
@@ -123,40 +102,115 @@ comfort_spots = {'amenity':['bbq','bench','dog_toilet',
                       'toilets', 'water_point', 'watering_place', 'fountain']}
 
 leisure_spots = {'leisure':['bird_hide','dog_park', 'firepit', 'pitch', 'picnic_table'],
-                 'historic': ['']}
+                 'historic': [True]}
 
 leisure_mass = {'leisure':['bandstand', 'swimming_pool', 'stadium', 'sports_centre', 'fitness_centre']}
 
-# Ways
-
-green = {'landuse':['grass','forest','orchard','allotments','cementery','flowerbed', 'meadow','greenfield', 'recreation_ground','village_green'],
-         'leisure':['park','playground','garden','swimming_area','playground', 'nature_reserve', 'marina'],
-         'natural':['heath','shrubbery','wood','grassland']}
-
-water = {'natural':['water','beach'],
-         'amenity':['fountain']}
 
 # Distance and sigma
+
 comfort = {
-            'node' : [ comfort_spots, leisure_spots, leisure_mass],
-            'way' : [ green, water ]
+            'comfort_spots' : [ comfort_spots, 'comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_spots' : [ leisure_spots, 'leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_mass' : [ leisure_mass, 'leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] }
+
+
+
+'''--------------------------complex query--------------------------'''
+# Ways
+
+green = {'landuse':['grass','forest','orchard']}
+green1 = {'landuse':['allotments','cementery','flowerbed', 'meadow','greenfield', 'recreation_ground','village_green']}
+green2 = {'leisure':['park','playground','garden','swimming_area','playground', 'nature_reserve', 'marina']}
+green3 = {'natural':['heath','shrubbery','wood','grassland']}
+
+water = {'natural':['water','beach']}
+
+# Ways
+pedestrian = {'highway':['pedestrian']}
+# pedestrian1 = {'highway': ['footway']}
+pedestrian2 = {'highway':['living_street','corridor']}
+pedestrian3 = {'foot':['designated']}
+
+cycle_paths = {'bicycle':['designated']}
+cycle_paths1 = {'highway':['cycleway'],
+              'cycleway':['lane','opposite','opposite_lane']}
+cycle_paths2 = {'cycleway':['track','opposite_track','share_busway']}
+
+
+
+
+complex = {
+            'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'pedestrian1' : [pedestrian1,'pedestrian1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'pedestrian2' : [pedestrian2,'pedestrian2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'pedestrian3' : [pedestrian3,'pedestrian3' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'cycle_paths1' : [cycle_paths1,'cyclpath1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'cycle_paths2' : [cycle_paths2,'cyclpath2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'green' : [ green,'green', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green1' : [ green1,'green1', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green2' : [ green2,'green2', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green3' : [ green3,'green3', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'water' : [ water,'water', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ]
             }
 
-comfort_distance = {
-                    'comfort_spots' : 100 ,
-                    'leisure_spots' : 200 ,
-                    'leisure_mass' : 500 ,
-                    'green' : 500 ,
-                    'water' : 500
-                    }
+'''--------------------------negative query--------------------------'''
+
+negative = {}
 
 
-'''--------------------------master query--------------------------'''
 
 
-master_query = {
-                mobility : mobility_distance ,
-                social_life : social_life_distance,
-                activities : activities_distance,
-                comfort : comfort_distance
-                }
+'''--------------------------  definitions  --------------------------'''
+
+columns = ['query_string','name','distance','geomtype','jsontype','shapelytype','category']
+columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
+
+
+def master_query():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+
+        query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        return query_df
+
+def master_query_complex():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+        master_q.update(complex)
+
+        query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        return query_df
+
+def master_query_advanced():
+
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+        master_q.update(complex)
+
+        query_df1 = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        query_df1['whitefilter'] = ''
+        query_df1['blackfilter'] = ''
+
+        master_neg = {negative}
+        query_df2 = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns_wb)
+
+        query_df3 = query_df1.append(query_df2)
+
+        return query_df3
+
+
+if __name__ == "__main__":
+    print(master_query())
