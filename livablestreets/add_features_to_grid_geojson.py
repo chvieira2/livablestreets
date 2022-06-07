@@ -17,9 +17,8 @@ def features_into_list_points(file_name, location='berlin'):
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    geojson_feature = get_file(file_name, local_file_path=f'data/{location}/Features',
-                            gcp_file_path = f'data/{location}/Features')
-    return gpd.GeoDataFrame(geojson_feature)
+    geojson_feature = gpd.read_file(f'livablestreets/data/{location}/Features/{file_name}')
+    return gpd.GeoDataFrame(geojson_feature).to_crs('wgs84')
 
 def grid_to_polygon(df_grid):
     """Receives a dataframe with coordinates columns and adds a column of respective polygons"""
@@ -35,6 +34,8 @@ def grid_to_polygon(df_grid):
 def point_in_grid_counter(polygon, points):
     """Receives a shapely Polygon object and a list of points (a list of list of lat and lng pairs)
         and returns the number of points inside that polygon"""
+    print(type(points), type(polygon))
+
     pointInPolys = gpd.tools.sjoin(points, polygon, predicate="within", how='inner')
     return len(pointInPolys)
 
@@ -71,33 +72,47 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
 
 
 
-    point_in_polygon = []
+
     total_grids=len(df_grid)
+    print(df_grid.iloc[1])
 
     for index, row in df_grid.iterrows():
         print(row['grid_in_location'])
         print(f'{index+1}/{total_grids}', end='\r')
 
-        for index_q, row_q in df_master.iterrows():
-            filter_name = index_q
-            category = row_q['category']
+        polygon_row = row['grid_in_location']
+        file_name = []
+        category = []
+        points = []
+        polygon = []
+        point_in_polygon = []
+        index_grid = index
 
-            points = features_into_list_points(f'shapes-{category}-{filter_name}.geojson' , location=location)
-            print(f'created points lists: filter_name')
+        if polygon_row:
+            print('sdasdasdas as asd')
 
-            print(points['coordinates'])
 
-            if row['grid_in_location']:
-                print('sdasdasdas as asd')
+            for index_q, row_q in df_master.iterrows():
+                filter_name = index_q
+                category = row_q['category']
+
+                points = features_into_list_points(f'shapes-{category}-{filter_name}.geojson' , location=location)
+
+                print(f'created points lists: filter_name')
+                print(type(points))
+                print(polygon_row)
                 polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
                                                         'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')
 
                 point_in_polygon.append(point_in_grid_counter(polygon, points))
-            else:
-                point_in_polygon.append(np.NaN)
-            print(type(point_in_polygon), point_in_polygon)
+                print('-------------->', type(point_in_polygon), point_in_polygon)
+                df_grid[filter_name] = ''
+                df_grid[filter_name].iloc[index_grid] = point_in_grid_counter(polygon, points)
+        else:
+            point_in_polygon.append(np.NaN)
+            # df_grid[filter_name] = point_in_polygon
 
-            df_grid[filter_name] = point_in_polygon
+        # print(type(point_in_polygon), point_in_polygon)
 
     ## Create the livability score
     # Remove polygons to save space
