@@ -29,14 +29,15 @@ def get_bike_infraestructure(location):
     print(new_querie)
     df_bike_infraestructure = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_bike_infraestructure['coor'] = list(zip(df_bike_infraestructure.lat, df_bike_infraestructure.lon))
-    df_bike_infraestructure.to_csv('../livablestreets/data/{location}/Features/mobility_bike_infraestructure.csv', index=False)
+    # df_bike_infraestructure.to_csv('../livablestreets/data/{location}/Features/mobility_bike_infraestructure.csv', index=False)
     return df_bike_infraestructure
 
 def get_eating(location):
     new_querie = query_params_osm(location = location, keys = eating, features = 'nodes')
     df_eating = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_eating['coor'] = list(zip(df_eating.lat, df_eating.lon))
-    df_eating.to_csv('../livablestreets/data/{location}/Features/social_eating.csv', index=False)
+    print(df_eating)
+    df_eating.to_csv(f'../livablestreets/data/{location}/Features/social_eating.csv', index=False)
     return df_eating
 
 def get_night_life(location):
@@ -124,5 +125,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    get_all('london')
+    print(get_eating('London'))
     # print(get_night_life(location))
