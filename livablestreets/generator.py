@@ -70,7 +70,10 @@ class LivabilityMap(object):
             self.generate_grid()
 
         ## Get features for a given location
-        # self.get_features()
+        try:
+            get_file('activities_economic.csv', local_file_path='data/{self.location}/WorkingTables', gcp_file_path = 'data/{self.location}/WorkingTables', save_local=True)
+        except FileNotFoundError:
+            self.get_features()
 
         ## Integrates features count to grid
         if self.df_grid_FeatCount is None:
@@ -134,6 +137,6 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'berlin', stepsize= 100)
+    city = LivabilityMap(location = 'london', stepsize= 1000)
     city.calc_livability()
     print(city.df_grid_Livability.describe())
