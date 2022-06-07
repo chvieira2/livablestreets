@@ -25,15 +25,15 @@ def get_pbf_json(country= 'germany',city = 'berlin'):
 
     city_name = f'{city}-latest'
 
-    if not os.path.exists(f'livablestreets/data/{city}/Features/{city_name}.osm.pbf'):
+    if not os.path.exists(f'livablestreets/data/{city}/{city_name}.osm.pbf'):
         filename, headers = urllib.request.urlretrieve(
             f'https://download.geofabrik.de/europe/{country}/{city_name}.osm.pbf',
-            filename=f'livablestreets/data/{city}/Features/{city_name}.osm.pbf')
+            filename=f'livablestreets/data/{city}/{city_name}.osm.pbf')
         PBF_inputfile = filename
 
     #gets the path for PBF
-    PBF_inputfile = os.path.join(os.getcwd(), f'livablestreets/data/{city}/Features/{city_name}.osm.pbf')
-    JSON_outputfile = os.path.join(os.getcwd(), f'livablestreets/data/{city}/Features/{city_name}.json')
+    PBF_inputfile = os.path.join(os.getcwd(), f'livablestreets/data/{city}/{city_name}.osm.pbf')
+    JSON_outputfile = os.path.join(os.getcwd(), f'livablestreets/data/{city}/{city_name}.json')
 
 
     return PBF_inputfile, JSON_outputfile
