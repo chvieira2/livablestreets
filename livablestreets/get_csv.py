@@ -14,15 +14,8 @@ from livablestreets.osm_query import query_params_osm
 
 def get_public_transp(location, public_transport):
     for querie in public_transport:
-<<<<<<< HEAD
-<<<<<<< HEAD
-        new_querie = query_params_osm(location = location, querie, 'nodes')
-=======
         new_querie = query_params_osm(location = location, keys = querie, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
         new_querie = query_params_osm(location = location, keys = querie, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
 
     df_public_transport = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_public_transport['coor'] = list(zip(df_public_transport.lat, df_public_transport.lon))
@@ -30,90 +23,42 @@ def get_public_transp(location, public_transport):
     return df_public_transport
 
 def get_bike_infraestructure(location, bike_infraestructure):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, bike_infraestructure, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = bike_infraestructure, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = bike_infraestructure, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_bike_infraestructure = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_bike_infraestructure['coor'] = list(zip(df_bike_infraestructure.lat, df_bike_infraestructure.lon))
     df_bike_infraestructure.to_csv('../livablestreets/data/Features/mobility_bike_infraestructure.csv', index=False)
     return df_bike_infraestructure
 
 def get_eating(location, eating):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, eating, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = eating, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = eating, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_eating = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_eating['coor'] = list(zip(df_eating.lat, df_eating.lon))
     df_eating.to_csv('../livablestreets/data/Features/social_eating.csv', index=False)
     return df_eating
 
 def get_night_life(location, night_life):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, night_life, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = night_life, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = night_life, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_night_life = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_night_life['coor'] = list(zip(df_night_life.lat, df_night_life.lon))
     df_night_life.to_csv('../livablestreets/data/Features/social_night_life.csv', index=False)
     return df_night_life
 
 def get_culture(location, culture):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, culture, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = culture, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = culture, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_culture = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_culture['coor'] = list(zip(df_culture.lat, df_culture.lon))
     df_culture.to_csv('../livablestreets/data/Features/social_culture.csv', index=False)
     return df_culture
 
 def get_community(location, community):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, community, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = community, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = community, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_community = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_community['coor'] = list(zip(df_community.lat, df_community.lon))
     df_community.to_csv('../livablestreets/data/Features/social_community.csv', index=False)
     return df_community
 
 def get_health_care(location, health_care):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, health_care, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = health_care, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = health_care, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_health_care = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_health_care['coor'] = list(zip(df_health_care.lat, df_health_care.lon))
     df_health_care.to_csv('../livablestreets/data/Features/activities_health_care.csv', index=False)
@@ -127,60 +72,28 @@ def get_public_service(location, public_service):
     return df_public_service
 
 def get_education(location, education):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, education, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = education, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = education, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_education = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_education['coor'] = list(zip(df_education.lat, df_education.lon))
     df_education.to_csv('../livablestreets/data/Features/activities_education.csv', index=False)
     return df_education
 
 def get_economic(location, economic):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, economic, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = economic, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = economic, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_economic = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_economic['coor'] = list(zip(df_economic.lat, df_economic.lon))
     df_economic.to_csv('../livablestreets/data/Features/activities_economic.csv', index=False)
     return df_economic
 
 def get_comfort_sports(location, comfort_sports):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, comfort_sports, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = comfort_sports, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = comfort_sports, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_comfort_sports = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_comfort_sports['coor'] = list(zip(df_comfort_sports.lat, df_comfort_sports.lon))
     df_comfort_sports.to_csv('../livablestreets/data/Features/comfort_sports.csv', index=False)
     return df_comfort_sports
 
 def get_leisure_sports(location, leisure_sports):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    new_querie = query_params_osm(location = location, leisure_sports, 'nodes')
-=======
     new_querie = query_params_osm(location = location, keys = leisure_sports, features = 'nodes')
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    new_querie = query_params_osm(location = location, keys = leisure_sports, features = 'nodes')
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
     df_leisure_sports = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_leisure_sports['coor'] = list(zip(df_leisure_sports.lat, df_leisure_sports.lon))
     df_leisure_sports.to_csv('../livablestreets/data/Features/comfort_leisure_sports.csv', index=False)
@@ -205,14 +118,5 @@ if __name__ == "__main__":
 
     # print(get_eating(eating))
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    print(get_all('Berlin'))
-=======
     # get_all(location = 'Berlin')
     get_bike_infraestructure(location = 'Berlin', bike_infraestructure= bike_infraestructure)
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    # get_all(location = 'Berlin')
-    get_bike_infraestructure(location = 'Berlin', bike_infraestructure= bike_infraestructure)
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
