@@ -157,7 +157,38 @@ complex = {
 
 '''--------------------------negative query--------------------------'''
 
-negative = {}
+
+street_motorway = {'highway':['motorway']}
+street_motorway_wf = [(('',''),('','')),]
+street_motorway_bf = [('',''),]
+
+
+street_primary = {'highway':['primary']}
+street_primary_wf = [(('',''),('','')),]
+street_primary_bf = [('',''),]
+
+
+street_secondary = {'highway':['secondary']}
+street_secondary_wf = [(('',''),('','')),]
+street_secondary_bf = [('',''),]
+
+
+street_terteary = {'highway':['terteary']}
+street_terteary_wf = [(('',''),('','')),]
+street_terteary_bf = [('',''),]
+
+
+
+negative = {
+            'street_motorway' : [street_motorway,'street_motorway' ,
+             300 , 'Way', 'Line', 'lineString' , 'negative', street_motorway_wf, street_motorway_bf ] ,
+             'street_primary' : [street_primary,'street_primary' ,
+             200 , 'Way', 'Line', 'lineString' , 'negative', street_primary_wf, street_primary_bf ] ,
+             'street_secondary' : [street_secondary,'street_secondary' ,
+             100 , 'Way', 'Line', 'lineString' , 'negative', street_secondary_wf, street_secondary_bf ] ,
+             'street_terteary' : [street_terteary,'street_terteary' ,
+             50 , 'Way', 'Line', 'lineString' , 'negative', street_terteary_wf, street_terteary_bf ] ,
+}
 
 
 
@@ -177,39 +208,29 @@ def master_query():
         master_q.update(comfort)
 
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        # query_df['whitefilter'] = [(('',''),('','')),]
+        # query_df['blackfilter'] = [('',''),]
+
         return query_df
 
 def master_query_complex():
 
         master_q = {}
-        master_q.update(mobility)
-        master_q.update(social_life)
-        master_q.update(activities)
-        master_q.update(comfort)
         master_q.update(complex)
 
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
+        # query_df['whitefilter'] = [(('',''),('','')),]
+        # query_df['blackfilter'] = [('',''),]
         return query_df
 
-def master_query_advanced():
+def master_query_negative():
 
-        master_q = {}
-        master_q.update(mobility)
-        master_q.update(social_life)
-        master_q.update(activities)
-        master_q.update(comfort)
-        master_q.update(complex)
+        master_neg = {}
+        master_neg.update(negative)
 
-        query_df1 = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
-        query_df1['whitefilter'] = ''
-        query_df1['blackfilter'] = ''
+        query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns_wb)
 
-        master_neg = {negative}
-        query_df2 = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns_wb)
-
-        query_df3 = query_df1.append(query_df2)
-
-        return query_df3
+        return query_df
 
 
 if __name__ == "__main__":

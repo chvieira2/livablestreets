@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 
 from esy.osmfilter import run_filter
 from esy.osmfilter import export_geojson
@@ -13,8 +14,7 @@ from shapely.geometry import mapping
 from geojson import dump
 
 
-from livablestreets.query_names_detailed import master_query
-from livablestreets.query_names_detailed import master_query_complex
+from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
 from livablestreets.query_osmfilter import data_from_pbf
 
 
@@ -104,6 +104,12 @@ def run_filter(query_df, country= 'germany' , city_name= 'berlin'):
             with open(f'livablestreets/data/{city_name}/Features/shapes-{category}-{filter_name}.geojson', 'w') as f:
                 dump(gjson, f)
 
+            df = pd.DataFrame(gjson["coordinates"], columns=['lng','lat'])
+            print(df.iloc[1])
+            # gdf = gjson.explode(index_parts=True)
+            # print(gdf['coordinates'])
+            df.to_csv(f'livablestreets/data/{city_name}/Features/shapes-{category}-{filter_name}.csv', index=False)
+
 
 
 if __name__ == "__main__":
@@ -112,8 +118,8 @@ if __name__ == "__main__":
     # uncomment the desired one:
 
     # df = master_query()
-    df = master_query_complex()
-    # df = master_query_advanced()
+    # df = master_query_complex()
+    df = master_query_negative()
 
     # uncomment to create slice:
     # new = df.iloc[14:22]

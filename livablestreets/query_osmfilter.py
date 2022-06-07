@@ -10,7 +10,7 @@ def data_from_pbf(index, stri, pbf, json):
     prefilter = {Node: string, Way: string, Relation: {}}
     blackfilter = [("",""),]
     whitefilter = [(('',''),('','')),]
-    
+
     [Data, E] = run_filter(name,
                             PBF_inputfile,
                             JSON_outputfile,
@@ -18,7 +18,7 @@ def data_from_pbf(index, stri, pbf, json):
                             whitefilter,
                             blackfilter,
                             NewPreFilterData=True,
-                            CreateElements=True,
+                            CreateElements=False,
                             LoadElements=False,
                             verbose=True)
     return Data
