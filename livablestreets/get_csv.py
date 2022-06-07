@@ -37,6 +37,7 @@ def get_eating(location):
     df_eating = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_eating['coor'] = list(zip(df_eating.lat, df_eating.lon))
     df_eating.to_csv('livablestreets/data/{location}/Features/social_eating.csv', index=False)
+
     return df_eating
 
 def get_night_life(location):
