@@ -5,7 +5,7 @@ import pandas as pd
 # import json
 # import csv
 from livablestreets.query_names import public_transport, bike_infraestructure, eating, night_life, culture, community, health_care, public_service, education, economic, comfort_sports, leisure_sports
-from osm_query import query_params_osm
+
 
 from livablestreets.utils import simple_time_tracker
 from google.cloud import storage
