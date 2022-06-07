@@ -27,7 +27,7 @@ def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
     df[columns] = scaler.fit_transform(df[columns])
     return df
 
-def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/Berlin/WorkingTables', save_local=True):
+def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     try:
         local_path = f'livablestreets/{local_file_path}/{file_name}'
