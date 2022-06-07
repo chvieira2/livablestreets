@@ -9,7 +9,8 @@ raw_data/
 
 df-*.geojson
 
-
+taglist.log
+Data.pickle
 # *.csv
 *30m.csv
 
