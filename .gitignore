@@ -4,6 +4,12 @@
 .DS_Store
 raw_data/
 
+*.json
+*.pbf
+
+df-*.geojson
+
+
 # *.csv
 *30m.csv
 
