@@ -2,16 +2,16 @@ from livablestreets.utils import save_file, min_max_scaler, get_file
 import pandas as pd
 import numpy as np
 
-def livability_score(df, weights = [1,1,1,1],
-                     columns_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean'],
+def livability_score(df, weights = (1,1,1,1),
+                     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean'],
                      stepsize = 100, location = 'berlin',
                      save_local=True, save_gcp=True):
     """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
         Category_mean values Have been already MinMax scaled
         """
-    new_cols = [col + '_weighted' for col in columns_interest]
+    new_cols = [col + '_weighted' for col in categories_interest]
     df_foo = df.copy()
-    df_foo[new_cols] = df_foo[columns_interest].mul(weights)
+    df_foo[new_cols] = df_foo[categories_interest].mul(weights)
     df['livability'] = df_foo[new_cols].sum(axis=1)
     df = min_max_scaler(df, columns = ['livability'])
 

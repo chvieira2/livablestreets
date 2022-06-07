@@ -40,12 +40,12 @@ def point_in_grid_counter(polygon, points):
     return len(pointInPolys)
 
 def feature_cat_mean_score(df):
-    """ Receives a dataframe and looks for columns containing the field indicator (activities, comfort, mobility, social)
-        Calculate the row-wise mean of columns in that field and add it to a new column called field_mean"""
+    """ Receives a dataframe and looks for columns containing the categories indicator (activities, comfort, mobility, social)
+        Calculate the row-wise mean of columns in that categories and add it to a new column called categories_mean"""
 
-    for field in ('activities', 'comfort', 'mobility', 'social'):
-        columns_interest = [column for column in df.columns if f"{field}_" in column]
-        df[f"{field}_mean"] = df[columns_interest].mean(axis=1)
+    for categories in ('activities', 'comfort', 'mobility', 'social'):
+        columns_interest = [column for column in df.columns if f"{categories}_" in column]
+        df[f"{categories}_mean"] = df[columns_interest].mean(axis=1)
 
     return df
 
@@ -116,18 +116,18 @@ def integrate_all_features_counts(stepsize, location,
             social_eating_in_polygon.append(point_in_grid_counter(polygon, points_social_eating))
             social_night_life_in_polygon.append(point_in_grid_counter(polygon, points_social_night_life))
         else:
-            activities_economic_in_polygon.append(np.NaN)
-            activities_education_in_polygon.append(np.NaN)
-            activities_health_care_in_polygon.append(np.NaN)
-            activities_public_service_in_polygon.append(np.NaN)
-            comfort_leisure_sports_in_polygon.append(np.NaN)
-            comfort_sports_in_polygon.append(np.NaN)
-            # comfort_trees_in_polygon.append(np.NaN)
-            mobility_public_transport_in_polygon.append(np.NaN)
-            social_community_in_polygon.append(np.NaN)
-            social_culture_in_polygon.append(np.NaN)
-            social_eating_in_polygon.append(np.NaN)
-            social_night_life_in_polygon.append(np.NaN)
+            activities_economic_in_polygon.append(0)
+            activities_education_in_polygon.append(0)
+            activities_health_care_in_polygon.append(0)
+            activities_public_service_in_polygon.append(0)
+            comfort_leisure_sports_in_polygon.append(0)
+            comfort_sports_in_polygon.append(0)
+            # comfort_trees_in_polygon.append(0)
+            mobility_public_transport_in_polygon.append(0)
+            social_community_in_polygon.append(0)
+            social_culture_in_polygon.append(0)
+            social_eating_in_polygon.append(0)
+            social_night_life_in_polygon.append(0)
 
     df_grid['activities_economic'] = activities_economic_in_polygon
     df_grid['activities_education'] = activities_education_in_polygon
@@ -166,6 +166,6 @@ def integrate_all_features_counts(stepsize, location,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
+    df_grid = integrate_all_features_counts(location = 'berlin', stepsize = 1000, file_name='berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
     # df_grid = integrate_all_features_counts(stepsize = 100, file_name='Berlin_grid_100m.csv')
