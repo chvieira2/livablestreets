@@ -71,10 +71,6 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2cef5caa62277c6125a94621c9b3f83eb70c90bb
     total_grids=len(df_grid)
     print(df_grid.iloc[1])
 
@@ -82,14 +78,13 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
         point_in_polygon = []
         print(f'{index_grid+1}/{total_grids}', end='\r')
 
-<<<<<<< HEAD
-        polygon_row = row['grid_in_location']
+        polygon_row = row_grid['grid_in_location']
         file_name = []
         category = []
         points = []
         polygon = []
         point_in_polygon = []
-        index_grid = index
+        index_grid = index_grid
 
         if polygon_row:
             print('sdasdasdas as asd')
@@ -105,7 +100,7 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
                 print(type(points))
                 print(polygon_row)
                 polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
-                                                        'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')
+                                                        'geometry':df_grid.loc[index_q, 'polygon']}, index=[1]), crs='wgs84')
 
                 point_in_polygon.append(point_in_grid_counter(polygon, points))
                 print('-------------->', type(point_in_polygon), point_in_polygon)
@@ -116,35 +111,12 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
             # df_grid[filter_name] = point_in_polygon
 
         # print(type(point_in_polygon), point_in_polygon)
-=======
-        if row_grid['grid_in_location']:
-            polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
-                                                    'geometry':df_grid.loc[index_grid, 'polygon']}, index=[1]), crs='wgs84')
-
-            for index_points, row_points in df_master.iterrows():
-                filter_name = index_points
-                category = row_points['category']
-
-                points = features_into_list_points(f'shapes-{category}-{filter_name}.geojson' , location=location)
-                print(f'created points lists: filter_name')
-
-                print(points['coordinates'])
-
-
-            print(type(point_in_polygon), point_in_polygon)
-
-            df_grid[filter_name] = point_in_polygon
->>>>>>> 2cef5caa62277c6125a94621c9b3f83eb70c90bb
 
 
 
 
             point_in_polygon.append(point_in_grid_counter(polygon, points))
 
-
-
-        else:
-            point_in_polygon.append(np.NaN)
 
 
 
@@ -160,7 +132,10 @@ def integrate_all_features_counts(df_grid=None, file_name = None,
     df_grid= feature_cat_mean_score(df_grid)
     print('Category mean was calculated')
 
-    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv',
+            local_file_path=f'data/{location}/WorkingTables',
+            gcp_file_path = f'data/{location}/WorkingTables',
+            save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
