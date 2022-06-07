@@ -31,7 +31,7 @@ class LivabilityMap(object):
     def stepsize_input(self):
         """ Function that asks the user for their input.
         for now it automatically returns 3000"""
-        self.stepsize = 3000
+        self.stepsize = 100
 
     def weights_input(self):
         """ Function that asks the user for their input.
