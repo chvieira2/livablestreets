@@ -38,8 +38,6 @@ def get_pbf_json(country= 'germany',city = 'berlin'):
 
     return PBF_inputfile, JSON_outputfile
 
-
-
 def shapely_format(lis,shapelytype):
     # Returns the shapely format for the layer for use at Run_filter
 
@@ -62,11 +60,7 @@ def shapely_format(lis,shapelytype):
 
     return shapely_geom
 
-
-
-
-
-def run_filter(query_df, country= 'germany' , location= 'berlin'):
+def run_filter(query_df, country= 'germany', location= 'berlin'):
     # run filter from PBF file
     # get file paths
     PBF_inputfile, JSON_outputfile = get_pbf_json(country,location)
@@ -105,10 +99,11 @@ def run_filter(query_df, country= 'germany' , location= 'berlin'):
                 dump(gjson, f)
 
             df = pd.DataFrame(gjson["coordinates"], columns=['lng','lat'])
-            print(df.iloc[1])
+            # print(df.iloc[1])
             # gdf = gjson.explode(index_parts=True)
             # print(gdf['coordinates'])
             df.to_csv(f'livablestreets/data/{location}/Features/{category}_{filter_name}.csv', index=False)
+            print(f'Saved {category}_{filter_name}.csv')
 
 
 
