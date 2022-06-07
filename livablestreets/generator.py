@@ -1,5 +1,5 @@
 from livablestreets.create_grid import create_geofence, get_shape_of_location
-from livablestreets.add_features_to_grid import integrate_all_features_counts3
+from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
 from livablestreets.get_csv import get_all
@@ -94,7 +94,7 @@ class LivabilityMap(object):
             try :
                 self.df_grid_FeatCount = get_file(f'FeatCount_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
-                self.df_grid_FeatCount = integrate_all_features_counts3(df_grid = self.df_grid, stepsize=self.stepsize, location=self.location)
+                self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location=self.location)
         else:
             print('add_FeatCount_grid has already been called before')
 
@@ -163,19 +163,9 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-<<<<<<< HEAD
     # city = LivabilityMap(location = 'Berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    print(get_features())
-=======
     city = LivabilityMap(location = 'London')
     city.calc_livability()
     print(city.df_grid_Livability.describe())
->>>>>>> aaa9df5e7345cdbc47bf511cdbf86f9e95ef05ba
-=======
-    city = LivabilityMap(location = 'London')
-    city.calc_livability()
-    print(city.df_grid_Livability.describe())
->>>>>>> a259589d643af4edf5e1a666ac6f25e1994160d6
