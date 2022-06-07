@@ -1,0 +1,203 @@
+Overview OSM data
+===========
+Nodes:                            37199
+Ways:                              2591
+Relations:                            0
+===========
+
+
+
+
+Tag Count Relations:
+============
+total:                                          0
+============
+
+
+Tag Count Ways:
+============
+total:                                       4954
+============
+landuse                                      2588
+name                                         1046
+barrier                                       123
+addr:city                                      85
+addr:postcode                                  81
+description                                    76
+addr:street                                    76
+addr:country                                   75
+addr:housenumber                               74
+website                                        63
+addr:suburb                                    62
+operator                                       54
+source                                         37
+natural                                        34
+ref                                            32
+protection_title                               28
+meadow                                         22
+leisure                                        21
+note                                           18
+contact:website                                16
+fence_type                                     16
+access                                         15
+plots                                          14
+sport                                          13
+allotments                                     12
+height                                         11
+start_date                                     11
+wheelchair                                     11
+email                                          10
+phone                                          10
+attraction                                     10
+landcover                                       9
+contact:email                                   8
+name:signed                                     8
+surface                                         7
+tourism                                         6
+place                                           6
+noname                                          6
+horse                                           6
+area                                            6
+wikidata                                        5
+zoo                                             5
+short_name                                      5
+opening_hours                                   5
+layer                                           4
+postal_code                                     4
+wikipedia                                       4
+fee                                             4
+created_by                                      4
+fixme                                           4
+alt_name                                        4
+leaf_cycle                                      4
+leaf_type                                       4
+species:wikidata                                4
+operator:type                                   3
+name:etymology:wikidata                         3
+comment                                         3
+addr:inclusion                                  3
+amenity                                         3
+community_centre:for                            3
+heritage                                        2
+heritage:operator                               2
+heritage:website                                2
+lda:criteria                                    2
+name:etymology:wikipedia                        2
+ref:lda                                         2
+established                                     2
+fax                                             2
+boundary                                        2
+wetland                                         2
+contact:phone                                   2
+blind:description:de                            2
+old_name                                        2
+highway                                         2
+building                                        2
+proposed                                        2
+remark                                          2
+commemorates:wikidata                           1
+capacity                                        1
+short_protection_title                          1
+owner                                           1
+FIXME                                           1
+identity                                        1
+water_slide                                     1
+de:strassenschluessel                           1
+name:2017-03-12--                               1
+protect_class                                   1
+proposed:landuse                                1
+community_centre                                1
+club                                            1
+kerb                                            1
+sport_1                                         1
+material                                        1
+playground                                      1
+playground:theme                                1
+detail                                          1
+electrified                                     1
+frequency                                       1
+gauge                                           1
+maxspeed                                        1
+railway                                         1
+railway:lzb                                     1
+railway:pzb                                     1
+railway:radio                                   1
+railway:traffic_mode                            1
+source:maxspeed                                 1
+usage                                           1
+voltage                                         1
+workrules                                       1
+building:levels:underground                     1
+contact:mobile                                  1
+building:levels:top                             1
+genus                                           1
+
+
+Tag Count Nodes:
+============
+total:                                       1943
+============
+barrier                                       624
+access                                        231
+foot                                          108
+bicycle                                        86
+addr:country                                   84
+addr:city                                      83
+addr:housenumber                               83
+addr:street                                    83
+addr:suburb                                    83
+addr:postcode                                  82
+source                                         65
+created_by                                     55
+entrance                                       54
+motor_vehicle                                  18
+name                                           18
+motorcar                                       16
+motorcycle                                     14
+material                                       13
+horse                                          11
+opening_hours                                   7
+wheelchair                                      7
+traffic_calming                                 6
+swing_gate:type                                 5
+locked                                          5
+operator                                        5
+amenity                                         5
+backrest                                        5
+check_date                                      5
+colour                                          5
+direction                                       5
+leaf_cycle                                      4
+leaf_type                                       4
+natural                                         4
+bollard                                         4
+noexit                                          4
+emergency                                       3
+maxwidth                                        3
+bus                                             3
+public_transport                                3
+ref:BVG                                         3
+website                                         3
+vehicle                                         3
+highway                                         3
+source:addr                                     2
+addr:inclusion                                  2
+note                                            2
+seamark:small_craft_facility:category           2
+seamark:type                                    2
+couplings                                       2
+height                                          2
+lit                                             1
+dog                                             1
+flag:type                                       1
+man_made                                        1
+leisure                                         1
+ref                                             1
+description                                     1
+fee                                             1
+traffic_signals:direction                       1
+landuse                                         1
+crossing                                        1
+crossing:island                                 1
+tactile_paving                                  1
+traffic_signals:sound                           1

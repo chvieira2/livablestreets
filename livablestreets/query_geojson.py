@@ -81,17 +81,17 @@ def run_filter(query_df, country= 'germany' , city_name= 'berlin'):
         category = row['category']
         shapelytype = row['shapelytype']
 
-        if not os.path.exists(f'livablestreets/data/{city_name}/Features/{category}-{filter_name}.geojson'):
+        if not os.path.exists(f'livablestreets/data/{city_name}/Features/df-{category}-{filter_name}.geojson'):
             # initilize filter
             print(f'Filtering fetures: {filter_name} - {category}')
 
             # calls filter from query_osmfilter.py
             Data = data_from_pbf(filter_name, string, PBF_inputfile, JSON_outputfile)
-            export_geojson(Data[geometry],Data,filename=f'livablestreets/data/{city_name}/Features/{category}-{filter_name}.geojson',jsontype=jsontype)
+            export_geojson(Data[geometry],Data,filename=f'livablestreets/data/{city_name}/Features/df-{category}-{filter_name}.geojson',jsontype=jsontype)
 
         if not os.path.exists(f'livablestreets/data/{city_name}/Features/shapes-{category}-{filter_name}.geojson'):
             print(f'Exporting shapes of: {filter_name} - {category} as: {geometry}')
-            elements = gpd.read_file(f'livablestreets/data/{city_name}/Features/{category}-{filter_name}.geojson')
+            elements = gpd.read_file(f'livablestreets/data/{city_name}/Features/df-{category}-{filter_name}.geojson')
 
             # create list of features
             lis = []
