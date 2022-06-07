@@ -15,6 +15,7 @@ from livablestreets.osm_query import query_params_osm
 def get_public_transp(location, public_transport):
     for querie in public_transport:
         new_querie = query_params_osm(location = location, keys = querie, features = 'nodes')
+        new_querie = query_params_osm(location = location, keys = querie, features = 'nodes')
 
     df_public_transport = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_public_transport['coor'] = list(zip(df_public_transport.lat, df_public_transport.lon))
