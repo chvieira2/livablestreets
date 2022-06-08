@@ -60,8 +60,8 @@ def param_areas(keys):
 
 def query_params_osm(location, keys, features, limit=''):
 
-    # location_area = f'area[name={location}]->.city'
-    location_area = f'{{{{geocodeArea:{location}}}}}->.city'
+    location_area = f'area[name={location}]->.city'
+    # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
     # location_area = f'area({get_id_deambiguate(location)})->.city'
 
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}

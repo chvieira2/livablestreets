@@ -142,18 +142,18 @@ cycle_paths2 = {'cycleway':['track','opposite_track','share_busway']}
 
 
 complex = {
-            'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'pedestrian1' : [pedestrian1,'pedestrian1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'pedestrian2' : [pedestrian2,'pedestrian2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'pedestrian3' : [pedestrian3,'pedestrian3' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'cycle_paths1' : [cycle_paths1,'cyclpath1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'cycle_paths2' : [cycle_paths2,'cyclpath2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            # 'green' : [ green,'green', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'green1' : [ green1,'green1', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'green2' : [ green2,'green2', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'green3' : [ green3,'green3', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'water' : [ water,'water', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ]
+            # 'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'pedestrian1' : [pedestrian1,'pedestrian1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'pedestrian2' : [pedestrian2,'pedestrian2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'pedestrian3' : [pedestrian3,'pedestrian3' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'cycle_paths1' : [cycle_paths1,'cyclpath1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            # 'cycle_paths2' : [cycle_paths2,'cyclpath2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'green' : [ green,'green', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green1' : [ green1,'green1', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green2' : [ green2,'green2', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green3' : [ green3,'green3', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'water' : [ water,'water', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ]
             }
 
 '''--------------------------negative query--------------------------'''
@@ -207,7 +207,7 @@ columns = ['query_string','name','distance','geomtype','jsontype','shapelytype',
 columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
 
 
-def master_query(location = 'berlin', save_local=True, save_gcp=False):
+def master_query(save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(mobility)
@@ -219,11 +219,11 @@ def master_query(location = 'berlin', save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        # save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
-def master_query_complex(location, save_local=True, save_gcp=False):
+def master_query_complex(save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(complex)
@@ -232,18 +232,18 @@ def master_query_complex(location, save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        # save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
-def master_query_negative(location, save_local=True, save_gcp=False):
+def master_query_negative(save_local=True, save_gcp=False):
 
         master_neg = {}
         master_neg.update(negative)
 
         query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns)
 
-        save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        # save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
