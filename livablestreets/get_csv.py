@@ -1,6 +1,5 @@
 import pandas as pd
 # from pathlib import Path
-import pandas as pd
 # import requests
 # import json
 # import csv
@@ -21,7 +20,7 @@ def get_public_transp(location):
 
     df_public_transport = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_public_transport['coor'] = list(zip(df_public_transport.lat, df_public_transport.lon))
-    # df_public_transport.to_csv('../livablestreets/data/Features/mobility_public_transport.csv', index=False)
+    df_public_transport.to_csv('livablestreets/data/Features/mobility_public_transport.csv', index=False)
     return df_public_transport
 
 def get_bike_infraestructure(location):
@@ -29,7 +28,7 @@ def get_bike_infraestructure(location):
     print(new_querie)
     df_bike_infraestructure = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_bike_infraestructure['coor'] = list(zip(df_bike_infraestructure.lat, df_bike_infraestructure.lon))
-    # df_bike_infraestructure.to_csv('../livablestreets/data/{location}/Features/mobility_bike_infraestructure.csv', index=False)
+    df_bike_infraestructure.to_csv('livablestreets/data/{location}/Features/mobility_bike_infraestructure.csv', index=False)
     return df_bike_infraestructure
 
 def get_eating(location):
@@ -125,5 +124,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    print(get_eating('London'))
+    print(get_bike_infraestructure('London'))
     # print(get_night_life(location))
