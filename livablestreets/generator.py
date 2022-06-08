@@ -2,6 +2,7 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+<<<<<<< HEAD
 from livablestreets.get_csv import get_all
 from livablestreets.osm_query import query_params_osm
 
@@ -14,6 +15,14 @@ import pandas as pd
 
 class LivabilityMap(object):
     def __init__(self, location = 'berlin' , location_country = 'germany', stepsize = 1000, weights = (1,1,1,1)):
+=======
+# from livablestreets.get_csv import get_all
+from livablestreets.query_geojson import run_filter
+from livablestreets.query_names_detailed import master_query
+
+class LivabilityMap(object):
+    def __init__(self, location, location_country, stepsize = 1000, weights = (1,1,1,1)):
+>>>>>>> cb5096479ea660806434c380fcbf4b4c32d20e70
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
@@ -64,8 +73,9 @@ class LivabilityMap(object):
 
         return self.df_grid
 
-    @memoized_property
+    @simple_time_tracker
     def get_features(self):
+<<<<<<< HEAD
         # get_all(location=self.location)
 
         # get csv of cities of the world
@@ -77,6 +87,13 @@ class LivabilityMap(object):
         #launchs queries of gejson and csv files from local PBF
         df = master_query()
         run_filter(df, country.lower(), city)
+=======
+        df = master_query()
+        # df = master_query_complex()
+        # df = master_query_negative()
+        print(df)
+        run_filter(query_df=df, location=self.location)
+>>>>>>> cb5096479ea660806434c380fcbf4b4c32d20e70
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -123,7 +140,7 @@ class LivabilityMap(object):
 
             except FileNotFoundError:
                 self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights,
-                                    columns_interest = ['activities_mean',
+                                    categories_interest = ['activities_mean',
                                                         'comfort_mean',
                                                         'mobility_mean',
                                                         'social_mean'],
@@ -153,6 +170,6 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'berlin', stepsize= 2000)
+    city = LivabilityMap(location = 'munich', location_country='germany', stepsize= 10000)
     city.calc_livability()
     print(city.df_grid_Livability.describe())
