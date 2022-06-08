@@ -9,6 +9,7 @@ from geojson import dump
 
 import shapely.geometry as geometry
 from shapely.geometry import Point, mapping
+from config.config import ROOT_DIR
 
 
 
@@ -69,7 +70,7 @@ def save_geojson(location):
     city_shape = get_city_geojson(area_osm_id)
 
     # saves to file
-    with open(f'livablestreets/data/{location}/{location}_boundaries.geojson', 'w') as f:
+    with open(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson', 'w') as f:
         dump(mapping(city_shape), f)
 
 '''----------------------------------------------------'''
@@ -77,10 +78,10 @@ def save_geojson(location):
 def get_shape_of_location(location):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
     try:
-        gdf = gdp.read_file(f'livablestreets/data/{location}/{location}_boundaries.geojson')
+        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson')
     except:
         save_geojson(location)
-        gdf = gdp.read_file(f'livablestreets/data/{location}/{location}_boundaries.geojson')
+        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson')
 
 
     gdf['Location'] = location
@@ -199,7 +200,7 @@ def create_geofence(location, stepsize,
 
     print(f'Successfully created geofence of {location}')
 
-    save_file(df, file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df, file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df
 

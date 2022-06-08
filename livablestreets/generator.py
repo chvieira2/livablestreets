@@ -2,6 +2,7 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+from config.config import ROOT_DIR
 
 
 from livablestreets.query_names_detailed import master_query
@@ -24,9 +25,9 @@ class LivabilityMap(object):
         self.sigmas = None
 
         # Create folder for location if it doesn't exist
-        create_dir(path = f'livablestreets/data/{self.location}')
-        create_dir(path = f'livablestreets/data/{self.location}/Features')
-        create_dir(path = f'livablestreets/data/{self.location}/WorkingTables')
+        create_dir(path = f'{ROOT_DIR}/livablestreets/data/{self.location}')
+        create_dir(path = f'{ROOT_DIR}/livablestreets/data/{self.location}/Features')
+        create_dir(path = f'{ROOT_DIR}/livablestreets/data/{self.location}/WorkingTables')
 
     @simple_time_tracker
     def generate_grid(self):
@@ -67,13 +68,10 @@ class LivabilityMap(object):
 
                 ## Integrates features count to grid
         if self.query_df is None:
-            try :
-                self.query_df = get_file(f'master_query_{self.location}.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
-            except FileNotFoundError:
-                # launchs queries of gejson and csv files from local PBF
-                self.query_df = master_query(location=self.location)
-                # self.query_df = master_query_complex(location=self.location)
-                # self.query_df = master_query_negative(location=self.location)
+            # launchs queries of gejson and csv files from local PBF
+            self.query_df = master_query(location=self.location)
+            # self.query_df = master_query_complex(location=self.location)
+            # self.query_df = master_query_negative(location=self.location)
 
         distances = list(self.query_df['distance'])
         self.sigmas = [distance/self.stepsize for distance in distances]

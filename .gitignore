@@ -13,6 +13,8 @@ taglist.log
 Data.pickle
 *.csv
 *30m.csv
+!*00m.csv
+!*boundaries.geojson
 
 **/__pycache__/
 .env

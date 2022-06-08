@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import streamlit as st
 import folium
 from folium import GeoJson
@@ -6,12 +5,13 @@ import streamlit_folium as stf
 from folium.plugins import HeatMap
 import numpy as np
 import pandas as pd
+from config.config import ROOT_DIR
 from livablestreets.display_map import plot
 from livablestreets.generator import LivabilityMap
 #-----------------------page configuration-------------------------
 st.set_page_config(
     page_title="Livable Streets",
-    page_icon='random', # gives a random emoji //to be addressed for final ver
+    page_icon=':house:', # gives a random emoji //to be addressed for final ver
     layout="wide",
     initial_sidebar_state="auto")
 

@@ -219,7 +219,7 @@ def master_query(location = 'berlin', save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
@@ -232,7 +232,7 @@ def master_query_complex(location, save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
@@ -243,7 +243,7 @@ def master_query_negative(location, save_local=True, save_gcp=False):
 
         query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns)
 
-        save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
