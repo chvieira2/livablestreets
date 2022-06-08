@@ -14,10 +14,10 @@ wheel>=0.29
 # data science
 numpy
 pandas
-scikit-learn
+scikit-learn  # Only use .preprocessing MinMaxScaler()
 geopandas
 shapely
-geopy
+geopy # Only use .geocoders
 overpy
 geojson
 esy.osmfilter

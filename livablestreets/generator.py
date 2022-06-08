@@ -2,28 +2,25 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
-from livablestreets.get_csv import get_all
-from livablestreets.osm_query import query_params_osm
 
-from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
+
+from livablestreets.query_names_detailed import master_query
 from livablestreets.query_geojson import run_filter
 
-from memoized_property import memoized_property
 import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location = 'berlin' , location_country = 'germany', stepsize = 1000, weights = (1,1,1,1)):
+    def __init__(self, location, stepsize = 1000, weights = (1,1,1,1)):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
         self.location = location.lower()
-        self.location_country = location_country.lower()
         self.stepsize = stepsize
         self.weights = weights
-        self.sigmas = [0,0,0,0,8,0,0,9,0,0,0,0,0,0]
+        self.sigmas = None
 
         # Create folder for location if it doesn't exist
         create_dir(path = f'livablestreets/data/{self.location}')
@@ -76,7 +73,11 @@ class LivabilityMap(object):
 
         #launchs queries of gejson and csv files from local PBF
         df = master_query()
-        run_filter(df, country.lower(), city)
+        # df = master_query_complex()
+        # df = master_query_negative()
+        distances = list(df['distance'])
+        self.sigmas = [distance/self.stepsize for distance in distances]
+        run_filter(query_df=df, location=self.location)
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -86,9 +87,7 @@ class LivabilityMap(object):
             self.generate_grid()
 
         ## Get features for a given location
-        try:
-            get_file('activities_economic.csv', local_file_path='data/{self.location}/WorkingTables', gcp_file_path = 'data/{self.location}/WorkingTables', save_local=True)
-        except FileNotFoundError:
+        if self.sigmas is None:
             self.get_features()
 
         ## Integrates features count to grid
@@ -96,7 +95,7 @@ class LivabilityMap(object):
             try :
                 self.df_grid_FeatCount = get_file(f'FeatCount_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
-                self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location=self.location)
+                self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location=self.location, sigmas = self.sigmas)
         else:
             print('add_FeatCount_grid has already been called before')
 
@@ -127,8 +126,7 @@ class LivabilityMap(object):
                                                         'comfort_mean',
                                                         'mobility_mean',
                                                         'social_mean'],
-                                    stepsize = self.stepsize, location = self.location,
-                                    save_local=True, save_gcp=True)
+                                    stepsize = self.stepsize, location = self.location)
         else:
             print('livability_score has already been called before')
 
@@ -153,6 +151,6 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'munich', location_country='germany', stepsize= 10000)
+    city = LivabilityMap(location = 'berlin')
     city.calc_livability()
-    print(city.df_grid_Livability.describe())
+    print(city.df_grid_Livability.info())
