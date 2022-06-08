@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 import streamlit as st
 import folium
 from folium import GeoJson
@@ -86,8 +87,8 @@ with st.sidebar:
             </h4>""",
             unsafe_allow_html=True)
     form = st.form("calc_weights")
-    form.text_input(label='Select city', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
-
+    form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
+    form.text_input(label='Country name', key='input_country', type="default", on_change=None, placeholder='p.ex. Germany')
     form.select_slider(label='Different activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
     form.select_slider(label='Comfort', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
     form.select_slider(label='Mobility around the city', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
@@ -107,7 +108,9 @@ if submitted:
     #check weights
     print(f'Weights entered by user: {weights}')
 
-    city = LivabilityMap(weights=weights, location=st.session_state.input_city)
+    city = LivabilityMap(weights=weights,
+                         location=st.session_state.input_city,
+                         location_country=st.session_state.input_country)
     city.calc_livability()
     df = city.df_grid_Livability
     #city center position lat,lon
