@@ -1,4 +1,5 @@
 import pandas as pd
+from livablestreets.utils import save_file
 
 # 4 categories with key, values list for openstreetmap feature extraction
 # dictionaries determinating geometry type (node or ways)
@@ -206,7 +207,7 @@ columns = ['query_string','name','distance','geomtype','jsontype','shapelytype',
 columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
 
 
-def master_query():
+def master_query(location = 'berlin', save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(mobility)
@@ -218,9 +219,11 @@ def master_query():
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
+        save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+
         return query_df
 
-def master_query_complex():
+def master_query_complex(location, save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(complex)
@@ -228,14 +231,19 @@ def master_query_complex():
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
+
+        save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+
         return query_df
 
-def master_query_negative():
+def master_query_negative(location, save_local=True, save_gcp=False):
 
         master_neg = {}
         master_neg.update(negative)
 
         query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns)
+
+        save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 

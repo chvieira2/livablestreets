@@ -6,6 +6,8 @@ from livablestreets.params import BUCKET_NAME
 from google.cloud import storage
 from sklearn.preprocessing import MinMaxScaler
 import os
+import os
+from config.config import ROOT_DIR
 
 def create_dir(path):
     # Check whether the specified path exists or not
@@ -43,7 +45,8 @@ def min_max_scaler_own(df, columns = ['activities_economic', 'activities_educati
 def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     try:
-        local_path = f'{local_file_path}/{file_name}'
+        local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
+        print(local_path)
         df = pd.read_csv(local_path)
         print(f'===> Loaded {file_name} locally from: {local_path}')
     except FileNotFoundError:
@@ -60,7 +63,7 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
 def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
     # Save locally
     if save_local:
-        local_path = f'livablestreets/{local_file_path}/{file_name}'
+        local_path = f'{ROOT_DIR}/livablestreets/{local_file_path}/{file_name}'
         df_grid.to_csv(local_path, index=False)
         print(f"===> {file_name} saved locally in {local_path}")
 
@@ -147,5 +150,4 @@ def simple_time_tracker(method):
     return timed
 
 if __name__ == '__main__':
-    print(m_to_coord(10))
-    print(m_to_coord(10, direction='south'))
+    pd.read_csv('/home/carlo/code/chvieira2/livablestreets/livablestreets/data/berlin/WorkingTables/Livability_berlin_grid_1000m.csv').info()
