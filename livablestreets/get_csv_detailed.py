@@ -14,9 +14,10 @@ from livablestreets.query_names_detailed import master_query, master_query_compl
 from livablestreets.utils import create_dir
 
 import os
-import time
+# import time
+from config.config import ROOT_DIR
 
-'stupid github'
+
 
 # url api status
 url = 'http://overpass-api.de/api/status'
@@ -31,13 +32,11 @@ def get_csv(city, query_df):
         category = row['category']
         geomtype = row['geomtype']
 
-        cwd = os.getcwd()
+        outdir = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features'
+        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}')
+        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features')
 
-        outdir = f'{cwd}/data/{city.lower()}/Features'
-        create_dir(path = f'{cwd}/data/{city.lower()}')
-        create_dir(path = f'{cwd}/data/{city.lower()}/Features')
-
-        if not os.path.exists(path = f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
+        if not os.path.exists(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')
@@ -60,7 +59,7 @@ def get_csv(city, query_df):
 
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
 
-                    time.sleep(30)
+                    # time.sleep(30)
 
 
             if geomtype == 'Node':
@@ -78,7 +77,7 @@ def get_csv(city, query_df):
 
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
 
-                    time.sleep(5)
+                    # time.sleep(5)
 
     print(f'''Finally done ⊂(◉‿◉)つ sorry for the wait'
               ------------------------------------------------------------/''')
