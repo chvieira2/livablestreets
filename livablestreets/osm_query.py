@@ -1,11 +1,35 @@
 import requests
-# import json
-
+from geopy.geocoders import Nominatim
 
 overpass_url = "http://overpass-api.de/api/interpreter"
-
 #example query list:
 keys_values_osm = {'amenity':['bbq','cafe']}
+
+
+
+def get_id_deambiguate(location):
+
+    # Geocoding request via Nominatim
+    geolocator = Nominatim(user_agent="city_compare")
+    geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
+
+    # Searching for relation in result set
+    for r in geo_results:
+        print(r.address, r.raw.get("osm_type"))
+        if r.raw.get("osm_type") == "relation":
+            city = r
+            break
+
+
+    # Calculating area id
+    # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
+    # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
+    area_osm_id = int(city.raw.get("osm_id")) #for city
+    print(area_osm_id)
+    return area_osm_id
+
+
+
 
 
 def param_nodes(keys):
@@ -29,13 +53,14 @@ def param_areas(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""area['{k}'='{v}'](area.city);"""
+            osm_keys += f"""rel['{k}'='{v}'](area.city);"""
     return osm_keys
 
 
 def query_params_osm(location, keys, features, limit=''):
-#     location_area = f'area[{location}]->.{location}'
+
     location_area = f'area[name={location}]->.city'
+    # location_area = f'area({get_id_deambiguate(location)})->.city'
 
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
@@ -53,10 +78,11 @@ def query_params_osm(location, keys, features, limit=''):
         out_type = 'center'
 
     overpass_query = f"""
-                    [out:json][timeout:500];
+                    [out:json][timeout:900][maxsize:1073741824];
                     {location_area};
                     ({params}
                     );
+                    (._;>;);
                     out {limit} {out_type};
                     """
     response = requests.get(overpass_url,
