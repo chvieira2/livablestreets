@@ -7,11 +7,11 @@ raw_data/
 *.json
 *.pbf
 
-df-*.geojson
+*.geojson
 
 taglist.log
 Data.pickle
-# *.csv
+*.csv
 *30m.csv
 
 **/__pycache__/
