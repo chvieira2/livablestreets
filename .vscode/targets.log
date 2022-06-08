@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Mon Jun  6 12:57:48 2022
+# Make data base, printed on Wed Jun  8 11:40:21 2022
 
 # Variables
 
@@ -49,7 +48,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # makefile (from `Makefile', line 47)
 PYPI_USERNAME = <AUTHOR>
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-cdb9d11e-f983-42e9-8a8f-574147f5f5db.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/q5/_9wxskdx5t30nfq8r9d_3k380000gn/T/vscode-ipc-30b17191-87b0-4da4-bc95-a9bce98a159e.sock
 # environment
 VSCODE_CWD = /Users/ievab/code/ievabi/livablestreets
 # environment
@@ -119,7 +118,7 @@ USER = ievab
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = F5B5E0D9-FD4E-48AD-AB8E-01C08999B59A
+TERM_SESSION_ID = B1602207-BD42-4519-B376-E7C0104EE1AC
 # environment
 LESS = -R
 # automatic
@@ -149,7 +148,7 @@ TERM_PROGRAM_VERSION = 443
 # environment
 NVM_DIR = /Users/ievab/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.CE30D66B-5BC6-496A-B58C-A605C2042DCC
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.8672895979.8672895985.8D01A5BB-B91C-42A1-8340-06510C0F8E54
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -199,9 +198,9 @@ VSCODE_PID = 5045
 
 # Directories
 
-# . (device 16777220, inode 8674356718): 20 files, no impossibilities.
+# . (device 16777220, inode 8674356718): 21 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -222,7 +221,7 @@ black:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 11):
-	@black scripts/* livablestreets_app/*.py
+	@black scripts/* livablestreets/*.py
 	
 
 all: clean install test black check_code
@@ -259,7 +258,7 @@ pypi:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 12:57:21
+#  Last modified 2022-06-06 16:28:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -295,7 +294,7 @@ check_code:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 8):
-	@flake8 scripts/* livablestreets_app/*.py
+	@flake8 scripts/* livablestreets/*.py
 	
 
 heroku_create_app:
@@ -310,12 +309,12 @@ count_lines:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  commands to execute (from `Makefile', line 34):
 	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
 	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
 	@find ./scripts -name '*-*' -exec  wc -l {} \; | sort -n| awk \
- 
 	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
 	@find ./tests -name '*.py' -exec  wc -l {} \; | sort -n| awk \
@@ -367,8 +366,8 @@ clean:
 	@rm -f .coverage
 	@rm -fr */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
-	@rm -fr livablestreets_app-*.dist-info
-	@rm -fr livablestreets_app.egg-info
+	@rm -fr livablestreets-*.dist-info
+	@rm -fr livablestreets.egg-info
 	
 
 ftest:
@@ -408,6 +407,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jun  6 12:57:48 2022
+# Finished Make data base on Wed Jun  8 11:40:21 2022
 
  
