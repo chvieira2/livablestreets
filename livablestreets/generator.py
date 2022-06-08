@@ -5,7 +5,7 @@ from livablestreets.utils import simple_time_tracker, get_file, create_dir
 
 
 from livablestreets.query_names_detailed import master_query
-from livablestreets.query_geojson import run_filter
+from livablestreets.get_csv_detailed import get_csv
 
 import pandas as pd
 
@@ -32,18 +32,10 @@ class LivabilityMap(object):
     def generate_grid(self):
         """ Function that puts together everything"""
 
-        ## Gets input from user
-        if self.location is None:
-            self.location_input()
-
-        if self.stepsize is None:
-            self.stepsize_input()
-
-
         ## Creates the Geofance for the inputed location
         if self.df_grid is None:
             try :
-                self.df_grid = get_file(f'{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
+                self.df_grid = get_file(f'{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
                 self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=False)
         else:
@@ -72,13 +64,20 @@ class LivabilityMap(object):
         # # assigns country name to variable
         # country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
 
-        # launchs queries of gejson and csv files from local PBF
-        self.query_df = master_query()
-        # query_df = master_query_complex()
-        # query_df = master_query_negative()
+
+                ## Integrates features count to grid
+        if self.query_df is None:
+            try :
+                self.query_df = get_file(f'master_query_{self.location}.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
+            except FileNotFoundError:
+                # launchs queries of gejson and csv files from local PBF
+                self.query_df = master_query(location=self.location)
+                # self.query_df = master_query_complex(location=self.location)
+                # self.query_df = master_query_negative(location=self.location)
+
         distances = list(self.query_df['distance'])
         self.sigmas = [distance/self.stepsize for distance in distances]
-        run_filter(query_df=self.query_df, location=self.location)
+        get_csv(city=self.location, query_df = self.query_df)
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -94,7 +93,7 @@ class LivabilityMap(object):
         ## Integrates features count to grid
         if self.df_grid_FeatCount is None:
             try :
-                self.df_grid_FeatCount = get_file(f'FeatCount_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
+                self.df_grid_FeatCount = get_file(f'FeatCount_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
                 self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location=self.location, sigmas = self.sigmas)
         else:
@@ -119,7 +118,7 @@ class LivabilityMap(object):
         ## Calculate livability
         if self.df_grid_Livability is None:
             try :
-                self.df_grid_Livability = get_file(f'Livability_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
+                self.df_grid_Livability = get_file(f'Livability_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
 
             except FileNotFoundError:
                 self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights,
