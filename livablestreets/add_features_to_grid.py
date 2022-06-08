@@ -12,7 +12,7 @@ from config.config import ROOT_DIR
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points(file_name, location, lat='lat',lng='lon'):
+def features_into_list_points(file_name, location, lat='lat',lng='lng'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
