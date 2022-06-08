@@ -11,6 +11,8 @@ import pandas as pd
 from livablestreets.utils import simple_time_tracker
 from livablestreets.osm_query import query_params_osm
 from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.utils import create_dir
+
 import os
 import time
 
@@ -29,8 +31,11 @@ def get_csv(city):
         category = row['category']
         geomtype = row['geomtype']
         cwd = os.getcwd()
+        outdir = f'{cwd}/data/{city.lower()}/Features'
+        create_dir(path = f'{cwd}/data/{city.lower()}')
+        create_dir(path = f'{cwd}/data/{city.lower()}/Features')
 
-        if not os.path.exists(f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
+        if not os.path.exists(path = f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')
@@ -48,7 +53,8 @@ def get_csv(city):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
-                    df_new_querie.to_csv(f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv', index=False)
+                    df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
                     time.sleep(30)
 
@@ -63,7 +69,8 @@ def get_csv(city):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
-                    df_new_querie.to_csv(f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv', index=False)
+                    df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
                     time.sleep(5)
 
