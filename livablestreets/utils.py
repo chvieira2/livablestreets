@@ -3,7 +3,7 @@ import numpy as np
 import time
 import pandas as pd
 from livablestreets.params import BUCKET_NAME
-# from google.cloud import storage
+from google.cloud import storage
 from sklearn.preprocessing import MinMaxScaler
 import os
 
@@ -43,11 +43,11 @@ def min_max_scaler_own(df, columns = ['activities_economic', 'activities_educati
 def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     try:
-        local_path = f'livablestreets/{local_file_path}/{file_name}'
+        local_path = f'{local_file_path}/{file_name}'
         df = pd.read_csv(local_path)
         print(f'===> Loaded {file_name} locally from: {local_path}')
     except FileNotFoundError:
-        # Add Client() here
+        # client = storage.Client()
         gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
         df = pd.read_csv(gcp_path)
         print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
