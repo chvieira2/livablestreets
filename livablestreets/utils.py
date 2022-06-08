@@ -27,6 +27,19 @@ def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
     df[columns] = scaler.fit_transform(df[columns])
     return df
 
+def min_max_scaler_own(df, columns = ['activities_economic', 'activities_education',
+                                         'activities_health_care', 'activities_public_service',
+                                         'comfort_leisure_sports', 'comfort_sports',
+                                         'mobility_public_transport', 'social_community', 'social_culture',
+                                         'social_eating', 'social_night_life']):
+
+    """ Takes a dataframe and a list of columns and MinMax scale each column"""
+    for col in columns:
+        max_ = df[col].max(axis=0)
+        min_ = df[col].min(axis=0)
+        df[col] = df[col].apply(lambda x: (x-min_)/(max_-min_))
+    return df
+
 def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     try:
