@@ -16,6 +16,7 @@ from livablestreets.utils import create_dir
 import os
 import time
 
+'stupid github'
 
 # url api status
 url = 'http://overpass-api.de/api/status'
@@ -30,7 +31,7 @@ def get_csv(city):
         string = row['query_string']
         category = row['category']
         geomtype = row['geomtype']
-        
+
         cwd = os.getcwd()
 
         outdir = f'{cwd}/data/{city.lower()}/Features'
