@@ -13,7 +13,7 @@ taglist.log
 Data.pickle
 *.csv
 *30m.csv
-!Livability_*
+!Livability_*.csv
 
 **/__pycache__/
 .env
