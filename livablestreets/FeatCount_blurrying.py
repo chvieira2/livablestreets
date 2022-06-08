@@ -3,7 +3,6 @@ from skimage.filters import gaussian
 import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file
 import pandas as pd
-import os
 
 def blur_matrix(array,sigmapx):
 
