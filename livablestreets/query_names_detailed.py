@@ -159,35 +159,42 @@ complex = {
 
 
 street_motorway = {'highway':['motorway']}
-street_motorway_wf = [(('',''),('','')),]
-street_motorway_bf = [('',''),]
+# street_motorway_wf = [(('',''),('','')),]
+# street_motorway_bf = [('',''),]
 
 
 street_primary = {'highway':['primary']}
-street_primary_wf = [(('',''),('','')),]
-street_primary_bf = [('',''),]
+# street_primary_wf = [(('',''),('','')),]
+# street_primary_bf = [('',''),]
 
 
 street_secondary = {'highway':['secondary']}
-street_secondary_wf = [(('',''),('','')),]
-street_secondary_bf = [('',''),]
+# street_secondary_wf = [(('',''),('','')),]
+# street_secondary_bf = [('',''),]
 
 
 street_terteary = {'highway':['terteary']}
-street_terteary_wf = [(('',''),('','')),]
-street_terteary_bf = [('',''),]
+# street_terteary_wf = [(('',''),('','')),]
+# street_terteary_bf = [('',''),]
+
+railway = {'railway':['light_rail'],
+            'bridge':['viaduct']}
+# street_terteary_wf = [(('',''),('','')),]
+# street_terteary_bf = [('',''),]
 
 
 
 negative = {
             'street_motorway' : [street_motorway,'street_motorway' ,
-             300 , 'Way', 'Line', 'lineString' , 'negative', street_motorway_wf, street_motorway_bf ] ,
+             500 , 'Way', 'Line', 'lineString' , 'negative'], #, street_motorway_wf, street_motorway_bf ] ,
              'street_primary' : [street_primary,'street_primary' ,
-             200 , 'Way', 'Line', 'lineString' , 'negative', street_primary_wf, street_primary_bf ] ,
+             250 , 'Way', 'Line', 'lineString' , 'negative'],#, street_primary_wf, street_primary_bf ] ,
              'street_secondary' : [street_secondary,'street_secondary' ,
-             100 , 'Way', 'Line', 'lineString' , 'negative', street_secondary_wf, street_secondary_bf ] ,
+             100 , 'Way', 'Line', 'lineString' , 'negative'],#, street_secondary_wf, street_secondary_bf ] ,
              'street_terteary' : [street_terteary,'street_terteary' ,
-             50 , 'Way', 'Line', 'lineString' , 'negative', street_terteary_wf, street_terteary_bf ] ,
+             50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
+             'railway' : [railway,'railway' ,
+             50 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
 }
 
 
