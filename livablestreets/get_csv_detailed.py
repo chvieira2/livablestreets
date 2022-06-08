@@ -17,6 +17,7 @@ from livablestreets.query_names_detailed import master_query
 
 
 import os
+from livablestreets.utils import create_dir
 
 
 
@@ -35,7 +36,14 @@ def get_csv(city):
         df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
         cwd = os.getcwd()
-        df_new_querie.to_csv(f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv', index=False)
+        outdir = f'{cwd}/data/{city.lower()}/Features'
+        # print(cwd)
+        # print(outdir)
+        # if not os.path.exists(outdir):
+        create_dir(path = f'{cwd}/data/{city.lower()}')
+        create_dir(path = f'{cwd}/data/{city.lower()}/Features')
+        if not os.path.exists(path = f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
+            df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
 
 if __name__ == "__main__":
@@ -44,4 +52,4 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    print(get_csv('Dresden'))
+    print(get_csv('Bremen'))
