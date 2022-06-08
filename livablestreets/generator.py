@@ -17,6 +17,7 @@ class LivabilityMap(object):
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
+        self.query_df = None
         self.location = location.lower()
         self.stepsize = stepsize
         self.weights = weights
@@ -44,7 +45,7 @@ class LivabilityMap(object):
             try :
                 self.df_grid = get_file(f'{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
-                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=True)
+                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=False)
         else:
             print('generate_grid has already been called before')
 
@@ -66,18 +67,18 @@ class LivabilityMap(object):
         # get_all(location=self.location)
 
         # get csv of cities of the world
-        df_cities = pd.read_csv('data/world-cities.csv')
-        city = self.location
-        # assigns country name to variable
-        country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
+        # df_cities = pd.read_csv('livablestreets/data/world-cities.csv')
+        # city = self.location
+        # # assigns country name to variable
+        # country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
 
-        #launchs queries of gejson and csv files from local PBF
-        df = master_query()
-        # df = master_query_complex()
-        # df = master_query_negative()
-        distances = list(df['distance'])
+        # launchs queries of gejson and csv files from local PBF
+        self.query_df = master_query()
+        # query_df = master_query_complex()
+        # query_df = master_query_negative()
+        distances = list(self.query_df['distance'])
         self.sigmas = [distance/self.stepsize for distance in distances]
-        run_filter(query_df=df, location=self.location)
+        run_filter(query_df=self.query_df, location=self.location)
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
