@@ -54,10 +54,12 @@ def get_csv(city):
                     df_new_querie = pd.DataFrame(flat_list)[['lat', 'lon']]
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
+
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
+
                     time.sleep(30)
 
 
@@ -70,10 +72,12 @@ def get_csv(city):
                     df_new_querie = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
+
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
                     print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
+
                     time.sleep(5)
 
     print(f'''Finally done ⊂(◉‿◉)つ sorry for the wait'
