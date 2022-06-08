@@ -2,12 +2,27 @@ from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+<<<<<<< HEAD
+from livablestreets.get_csv import get_all
+from livablestreets.osm_query import query_params_osm
+
+from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.query_geojson import run_filter
+
+from memoized_property import memoized_property
+import pandas as pd
+
+
+class LivabilityMap(object):
+    def __init__(self, location = 'berlin' , location_country = 'germany', stepsize = 1000, weights = (1,1,1,1)):
+=======
 # from livablestreets.get_csv import get_all
 from livablestreets.query_geojson import run_filter
 from livablestreets.query_names_detailed import master_query
 
 class LivabilityMap(object):
     def __init__(self, location, location_country, stepsize = 1000, weights = (1,1,1,1)):
+>>>>>>> cb5096479ea660806434c380fcbf4b4c32d20e70
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
@@ -60,11 +75,25 @@ class LivabilityMap(object):
 
     @simple_time_tracker
     def get_features(self):
+<<<<<<< HEAD
+        # get_all(location=self.location)
+
+        # get csv of cities of the world
+        df_cities = pd.read_csv('data/world-cities.csv')
+        city = self.location
+        # assigns country name to variable
+        country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
+
+        #launchs queries of gejson and csv files from local PBF
+        df = master_query()
+        run_filter(df, country.lower(), city)
+=======
         df = master_query()
         # df = master_query_complex()
         # df = master_query_negative()
         print(df)
         run_filter(query_df=df, location=self.location)
+>>>>>>> cb5096479ea660806434c380fcbf4b4c32d20e70
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
