@@ -74,7 +74,7 @@ class LivabilityMap(object):
             # self.query_df = master_query_negative()
 
         distances = list(self.query_df['distance'])
-        self.sigmas = [distance/self.stepsize for distance in distances]
+        self.sigmas = [(0.5*distance)/self.stepsize for distance in distances]
         get_csv(city=self.location, query_df = self.query_df)
 
     @simple_time_tracker
@@ -148,7 +148,7 @@ class LivabilityMap(object):
 if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
-    # print(city.df_grid_Livability.describe())
+    # print(city.df_grid_Livability.info())
     cities = ['berlin',
               'dresden',
               'cologne',
