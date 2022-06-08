@@ -54,7 +54,6 @@ st.markdown("""<h1 style='text-align: center; color: white'>
             unsafe_allow_html=True)
 
 #----Simple placeholder for the world map with arbitrary city coordenates------
-st.write(ROOT_DIR)
 placeholder_map = st.empty()
 placeholderMap = folium.Map(location=[37.6000, 10.0154],
                             #tiles="Stamen Terrain",
