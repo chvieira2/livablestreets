@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import streamlit as st
 import folium
 from folium import GeoJson
@@ -11,7 +10,7 @@ from livablestreets.generator import LivabilityMap
 #-----------------------page configuration-------------------------
 st.set_page_config(
     page_title="Livable Streets",
-    page_icon='random', # gives a random emoji //to be addressed for final ver
+    page_icon=':house:', # gives a random emoji //to be addressed for final ver
     layout="wide",
     initial_sidebar_state="auto")
 
