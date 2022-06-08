@@ -16,22 +16,26 @@ from livablestreets.osm_query import query_params_osm
 from livablestreets.query_names_detailed import master_query
 
 
+import os
+
 
 
 def get_csv(city):
-    query_df = master_query()
+    df = master_query()
+    query_df = df.iloc[2:]
     for index, row in query_df.iterrows():
         filter_name = index
         string = row['query_string']
         category = row['category']
 
-        new_querie = query_params_osm(location = city, keys = string, features = 'nodes')
+        new_querie = query_params_osm(location = city.capitalize(), keys = string, features = 'nodes')
         print(f'------------------------> {new_querie}')
 
         df_new_querie = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
         df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
-        df_new_querie.to_csv(f'livablestreets/data/{city.lower()}/Features/{category}_{filter_name}.csv', index=False)
+        cwd = os.getcwd()
+        df_new_querie.to_csv(f'{cwd}/data/{city.lower()}/Features/{category}_{filter_name}.csv', index=False)
 
 
 if __name__ == "__main__":
@@ -40,4 +44,4 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    print(get_csv('dresden'))
+    print(get_csv('Dresden'))
