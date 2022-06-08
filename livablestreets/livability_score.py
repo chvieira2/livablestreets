@@ -5,7 +5,7 @@ import numpy as np
 def livability_score(df, weights = (1,1,1,1),
                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean'],
                      stepsize = 100, location = 'berlin',
-                     save_local=True, save_gcp=True):
+                     save_local=True, save_gcp=False):
     """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
         Category_mean values Have been already MinMax scaled
         """

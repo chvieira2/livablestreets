@@ -209,4 +209,4 @@ def create_geofence(location, stepsize,
 
 
 if __name__ == '__main__':
-    print(create_geofence(location = 'berlin', stepsize = 1000))
+    print(create_geofence(location = 'berlin', stepsize = 3000))
