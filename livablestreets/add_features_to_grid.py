@@ -6,6 +6,7 @@ from shapely.geometry import Point, Polygon
 import matplotlib.path as mplPath
 import geopandas as gpd
 import shapely.speedups
+import os
 
 
 ## 79.36s to complete 1000m grids
@@ -50,64 +51,34 @@ def feature_cat_mean_score(df):
     return df
 
 @simple_time_tracker
-def integrate_all_features_counts(stepsize, location,
-                                    df_grid=None, file_name = None,
-                                    save_local=True, save_gcp=True):
+def integrate_all_features_counts(stepsize, location, sigmas,
+                                    df_grid=None,
+                                    save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
-
     # shapely.speedups makes some of the spatial queries running faster
     # shapely.speedups.enable()
 
     # Get grid and create polygons
     if df_grid is None:
-        df_grid = get_file(file_name=file_name, local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
+        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
-    # Get the list of points
-    points_activities_economic = features_into_list_points('activities_economic.csv', location=location)
-    points_activities_education = features_into_list_points('activities_education.csv', location=location)
-    points_activities_educational = features_into_list_points('activities_educational.csv', location=location)
-    points_activities_goverment = features_into_list_points('activities_goverment.csv', location=location)
-    points_activities_health_local = features_into_list_points('activities_health_local.csv', location=location)
-    points_activities_health_regional = features_into_list_points('activities_health_regional.csv', location=location)
-    points_activities_post = features_into_list_points('activities_post.csv', location=location)
-    points_activities_public_service = features_into_list_points('activities_public_service.csv', location=location)
-    points_comfort_comfort_spots = features_into_list_points('comfort_comfort_spots.csv', location=location)
-    points_comfort_leisure_mass = features_into_list_points('comfort_leisure_mass.csv', location=location)
-    points_comfort_leisure_spots = features_into_list_points('comfort_leisure_spots.csv', location=location)
-    points_mobility_bike_infrastructure = features_into_list_points('mobility_bike_infraestructure.csv', location=location)
-    points_mobility_public_transport_bus = features_into_list_points('mobility_public_transport_bus.csv', location=location)
-    points_mobility_public_transport_rail = features_into_list_points('mobility_public_transport_rail.csv', location=location)
-    points_social_life_community = features_into_list_points('social_life_community.csv', location=location)
-    points_social_life_culture = features_into_list_points('social_life_culture.csv', location=location)
-    points_social_life_eating = features_into_list_points('social_life_eating.csv', location=location)
-    points_social_life_night_life = features_into_list_points('social_life_night_life.csv', location=location)
+    # Get list of features file
+    directory = f'livablestreets/data/{location}/Features'
 
-    print('created points lists')
+    feature_names = [feature_name.replace(".csv", "") for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") or feature_name.startswith("social_life_")) and feature_name.endswith(".csv")]
 
-    # Iterates through the polygons and ask how many points are inside
-    activities_economic_in_polygon = []
-    activities_education_in_polygon = []
-    activities_educational_in_polygon = []
-    activities_goverment_in_polygon = []
-    activities_health_local_in_polygon = []
-    activities_health_regional_in_polygon = []
-    activities_post_in_polygon = []
-    activities_public_service_in_polygon = []
-    comfort_comfort_spots_in_polygon = []
-    comfort_leisure_mass_in_polygon = []
-    comfort_leisure_spots_in_polygon = []
-    mobility_bike_infrastructure_in_polygon = []
-    mobility_public_transport_bus_in_polygon = []
-    mobility_public_transport_rail_in_polygon = []
-    social_life_community_in_polygon = []
-    social_life_culture_in_polygon = []
-    social_life_eating_in_polygon = []
-    social_life_night_life_in_polygon = []
+    # Get the dict of points and in_polygons values
+    dict_of_points = {}
+    dict_in_polygon = {}
+    for feature in feature_names:
+        dict_of_points[f"points_{feature}"] = features_into_list_points(f'{feature}.csv', location=location)
+        dict_in_polygon[f"{feature}_in_polygon"] = []
 
+    # Iterate through grids and collects counts of features per grid
     total_grids=len(df_grid)
     for index, row in df_grid.iterrows():
         print(f'{index+1}/{total_grids}', end='\r')
@@ -115,69 +86,23 @@ def integrate_all_features_counts(stepsize, location,
             polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
                                                      'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')
 
-            activities_economic_in_polygon.append(point_in_grid_counter(polygon, points_activities_economic))
-            activities_education_in_polygon.append(point_in_grid_counter(polygon, points_activities_education))
-            activities_educational_in_polygon.append(point_in_grid_counter(polygon, points_activities_educational))
-            activities_goverment_in_polygon.append(point_in_grid_counter(polygon, points_activities_goverment))
-            activities_health_local_in_polygon.append(point_in_grid_counter(polygon, points_activities_health_local))
-            activities_health_regional_in_polygon.append(point_in_grid_counter(polygon, points_activities_health_regional))
-            activities_post_in_polygon.append(point_in_grid_counter(polygon, points_activities_post))
-            activities_public_service_in_polygon.append(point_in_grid_counter(polygon, points_activities_public_service))
-            comfort_comfort_spots_in_polygon.append(point_in_grid_counter(polygon, points_comfort_comfort_spots))
-            comfort_leisure_mass_in_polygon.append(point_in_grid_counter(polygon, points_comfort_leisure_mass))
-            comfort_leisure_spots_in_polygon.append(point_in_grid_counter(polygon, points_comfort_leisure_spots))
-            mobility_bike_infrastructure_in_polygon.append(point_in_grid_counter(polygon, points_mobility_bike_infrastructure))
-            mobility_public_transport_bus_in_polygon.append(point_in_grid_counter(polygon, points_mobility_public_transport_bus))
-            mobility_public_transport_rail_in_polygon.append(point_in_grid_counter(polygon, points_mobility_public_transport_rail))
-            social_life_community_in_polygon.append(point_in_grid_counter(polygon, points_social_life_community))
-            social_life_culture_in_polygon.append(point_in_grid_counter(polygon, points_social_life_culture))
-            social_life_eating_in_polygon.append(point_in_grid_counter(polygon, points_social_life_eating))
-            social_life_night_life_in_polygon.append(point_in_grid_counter(polygon, points_social_life_night_life))
+            for feature in feature_names:
+                dict_in_polygon[f'{feature}_in_polygon'].append(point_in_grid_counter(polygon, dict_of_points[f'points_{feature}']))
         else:
-            activities_economic_in_polygon.append(0)
-            activities_education_in_polygon.append(0)
-            activities_educational_in_polygon.append(0)
-            activities_goverment_in_polygon.append(0)
-            activities_health_local_in_polygon.append(0)
-            activities_health_regional_in_polygon.append(0)
-            activities_post_in_polygon.append(0)
-            activities_public_service_in_polygon.append(0)
-            comfort_comfort_spots_in_polygon.append(0)
-            comfort_leisure_mass_in_polygon.append(0)
-            comfort_leisure_spots_in_polygon.append(0)
-            mobility_bike_infrastructure_in_polygon.append(0)
-            mobility_public_transport_bus_in_polygon.append(0)
-            mobility_public_transport_rail_in_polygon.append(0)
-            social_life_community_in_polygon.append(0)
-            social_life_culture_in_polygon.append(0)
-            social_life_eating_in_polygon.append(0)
-            social_life_night_life_in_polygon.append(0)
+            for feature in feature_names:
+                dict_in_polygon[f'{feature}_in_polygon'].append(0)
 
-    df_grid['activities_economic'] = activities_economic_in_polygon
-    df_grid['activities_education'] = activities_education_in_polygon
-    df_grid['activities_educational'] = activities_educational_in_polygon
-    df_grid['activities_goverment'] = activities_goverment_in_polygon
-    df_grid['activities_health_local'] = activities_health_local_in_polygon
-    df_grid['activities_health_regional'] = activities_health_regional_in_polygon
-    df_grid['activities_post'] = activities_post_in_polygon
-    df_grid['activities_public_service'] = activities_public_service_in_polygon
-    df_grid['comfort_comfort_spots'] = comfort_comfort_spots_in_polygon
-    df_grid['comfort_leisure_mass'] = comfort_leisure_mass_in_polygon
-    df_grid['comfort_leisure_spots'] = comfort_leisure_spots_in_polygon
-    df_grid['mobility_bike_infrastructure'] = mobility_bike_infrastructure_in_polygon
-    df_grid['mobility_public_transport_bus'] = mobility_public_transport_bus_in_polygon
-    df_grid['mobility_public_transport_rail'] = mobility_public_transport_rail_in_polygon
-    df_grid['social_life_community'] = social_life_community_in_polygon
-    df_grid['social_life_culture'] = social_life_culture_in_polygon
-    df_grid['social_life_eating'] = social_life_eating_in_polygon
-    df_grid['social_life_night_life'] = social_life_night_life_in_polygon
+    for feature in feature_names:
+        df_grid[feature] = dict_in_polygon[f'{feature}_in_polygon']
+
+
 
     ## Blurry count information
     # Remove polygons to save space
     df_grid = df_grid.drop(columns=['polygon'])
 
     # Apply blurrying function
-    #df_grid = FeatCount_blurrying(df=df_grid)
+    df_grid = FeatCount_blurrying(df=df_grid, feature_names = feature_names, sigmas_list=sigmas)
 
     ## Create the livability score
     # Calculate the mean per category
@@ -196,6 +121,7 @@ def integrate_all_features_counts(stepsize, location,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(location = 'berlin', stepsize = 1000, file_name='berlin_grid_1000m.csv')
-    # df_grid = integrate_all_features_counts(stepsize = 1000, file_name='Berlin_grid_1000m.csv')
-    # df_grid = integrate_all_features_counts(stepsize = 100, file_name='Berlin_grid_100m.csv')
+    df_grid = integrate_all_features_counts(location = 'berlin', stepsize = 3000)
+    print(df_grid.info())
+    # df_grid = integrate_all_features_counts(stepsize = 1000)
+    # df_grid = integrate_all_features_counts(stepsize = 100)
