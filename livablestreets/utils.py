@@ -3,7 +3,7 @@ import numpy as np
 import time
 import pandas as pd
 from livablestreets.params import BUCKET_NAME
-from google.cloud import storage
+# from google.cloud import storage
 from sklearn.preprocessing import MinMaxScaler
 import os
 
@@ -35,7 +35,6 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
         print(f'===> Loaded {file_name} locally from: {local_path}')
     except FileNotFoundError:
         # Add Client() here
-        client = storage.Client()
         gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
         df = pd.read_csv(gcp_path)
         print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
@@ -45,7 +44,7 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
 
     return df
 
-def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=True):
+def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
     # Save locally
     if save_local:
         local_path = f'livablestreets/{local_file_path}/{file_name}'
@@ -54,11 +53,11 @@ def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', g
 
     # Save on GCP
     if save_gcp:
-        client = storage.Client().bucket(BUCKET_NAME)
+        # client = storage.Client().bucket(BUCKET_NAME)
         storage_location = f'{gcp_file_path}/{file_name}'
-        blob = client.blob(storage_location)
-        local_path = f'livablestreets/{local_file_path}/{file_name}'
-        blob.upload_from_filename(local_path)
+        # blob = client.blob(storage_location)
+        # local_path = f'livablestreets/{local_file_path}/{file_name}'
+        # blob.upload_from_filename(local_path)
         print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
 
 
