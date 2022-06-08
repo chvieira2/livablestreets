@@ -36,7 +36,7 @@ def param_areas(keys):
 def query_params_osm(location, keys, features, limit=''):
 #     location_area = f'area[{location}]->.{location}'
     location_area = f'area[name={location}]->.city'
-  
+
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
@@ -53,7 +53,7 @@ def query_params_osm(location, keys, features, limit=''):
         out_type = 'center'
 
     overpass_query = f"""
-                    [out:json];
+                    [out:json][timeout:500];
                     {location_area};
                     ({params}
                     );
