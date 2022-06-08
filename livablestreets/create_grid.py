@@ -1,10 +1,7 @@
 import numpy as np
 import pandas as pd
-from livablestreets.utils import m_to_coord
+from livablestreets.utils import m_to_coord, haversine_vectorized, save_file, simple_time_tracker
 import geopandas as gdp
-from livablestreets.utils import haversine_vectorized, save_file
-from livablestreets.utils import simple_time_tracker, create_dir
-
 from geopy.geocoders import Nominatim
 from shapely.ops import linemerge, unary_union, polygonize
 import overpy
