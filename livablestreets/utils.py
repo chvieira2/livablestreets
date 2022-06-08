@@ -63,7 +63,7 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
 def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
     # Save locally
     if save_local:
-        local_path = f'{ROOT_DIR}/livablestreets/{local_file_path}/{file_name}'
+        local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
         df_grid.to_csv(local_path, index=False)
         print(f"===> {file_name} saved locally in {local_path}")
 
