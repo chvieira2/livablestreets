@@ -20,7 +20,7 @@ def get_public_transp(location):
 
     df_public_transport = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
     df_public_transport['coor'] = list(zip(df_public_transport.lat, df_public_transport.lon))
-    df_public_transport.to_csv('livablestreets/data/Features/mobility_public_transport.csv', index=False)
+    df_public_transport.to_csv('livablestreets/data/itFeatures/mobility_public_transport.csv', index=False)
     return df_public_transport
 
 def get_bike_infraestructure(location):
@@ -125,4 +125,3 @@ if __name__ == "__main__":
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
     print(get_bike_infraestructure('London'))
-
