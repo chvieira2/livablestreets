@@ -128,7 +128,7 @@ water = {'natural':['water','beach']}
 
 # Ways
 pedestrian = {'highway':['pedestrian']}
-# pedestrian1 = {'highway': ['footway']}
+pedestrian1 = {'highway': ['footway']}
 pedestrian2 = {'highway':['living_street','corridor']}
 pedestrian3 = {'foot':['designated']}
 
@@ -142,7 +142,7 @@ cycle_paths2 = {'cycleway':['track','opposite_track','share_busway']}
 
 complex = {
             'pedestrian' : [pedestrian,'pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            # 'pedestrian1' : [pedestrian1,'pedestrian1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
+            'pedestrian1' : [pedestrian1,'pedestrian1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             'pedestrian2' : [pedestrian2,'pedestrian2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             'pedestrian3' : [pedestrian3,'pedestrian3' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
@@ -173,7 +173,7 @@ street_secondary = {'highway':['secondary']}
 # street_secondary_bf = [('',''),]
 
 
-street_terteary = {'highway':['terteary']}
+# street_terteary = {'highway':['terteary']}
 # street_terteary_wf = [(('',''),('','')),]
 # street_terteary_bf = [('',''),]
 
@@ -191,8 +191,8 @@ negative = {
              250 , 'Way', 'Line', 'lineString' , 'negative'],#, street_primary_wf, street_primary_bf ] ,
              'street_secondary' : [street_secondary,'street_secondary' ,
              100 , 'Way', 'Line', 'lineString' , 'negative'],#, street_secondary_wf, street_secondary_bf ] ,
-             'street_terteary' : [street_terteary,'street_terteary' ,
-             50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
+            #  'street_terteary' : [street_terteary,'street_terteary' ,
+            #  50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
              'railway' : [railway,'railway' ,
              50 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
 }
@@ -235,7 +235,7 @@ def master_query_negative():
         master_neg = {}
         master_neg.update(negative)
 
-        query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns_wb)
+        query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns)
 
         return query_df
 
