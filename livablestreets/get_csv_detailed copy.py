@@ -30,7 +30,9 @@ def get_csv(city):
         string = row['query_string']
         category = row['category']
         geomtype = row['geomtype']
+        
         cwd = os.getcwd()
+
         outdir = f'{cwd}/data/{city.lower()}/Features'
         create_dir(path = f'{cwd}/data/{city.lower()}')
         create_dir(path = f'{cwd}/data/{city.lower()}/Features')
