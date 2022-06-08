@@ -78,7 +78,7 @@ def query_params_osm(location, keys, features, limit=''):
         out_type = 'center'
 
     overpass_query = f"""
-                    [out:json][timeout:900][maxsize:1073741824];
+                    [out:json][timeout:900];
                     {location_area};
                     ({params}
                     );
