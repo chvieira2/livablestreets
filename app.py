@@ -6,6 +6,7 @@ import streamlit_folium as stf
 from folium.plugins import HeatMap
 import numpy as np
 import pandas as pd
+from config.config import ROOT_DIR
 from livablestreets.display_map import plot
 from livablestreets.generator import LivabilityMap
 #-----------------------page configuration-------------------------
@@ -54,6 +55,7 @@ st.markdown("""<h1 style='text-align: center; color: white'>
             unsafe_allow_html=True)
 
 #----Simple placeholder for the world map with arbitrary city coordenates------
+st.write(ROOT_DIR)
 placeholder_map = st.empty()
 placeholderMap = folium.Map(location=[37.6000, 10.0154],
                             #tiles="Stamen Terrain",
