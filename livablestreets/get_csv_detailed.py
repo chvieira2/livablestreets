@@ -13,7 +13,7 @@ from livablestreets.osm_query import query_params_osm
 
 
 
-from livablestreets.query_names_detailed import master_query
+from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
 
 
 import os
@@ -21,8 +21,8 @@ import os
 
 
 def get_csv(city):
-    df = master_query()
-    query_df = df.iloc[2:]
+    query_df = master_query()
+    # query_df = df.iloc[2:]
     for index, row in query_df.iterrows():
         filter_name = index
         string = row['query_string']
