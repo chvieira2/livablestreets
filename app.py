@@ -109,8 +109,7 @@ if submitted:
     print(f'Weights entered by user: {weights}')
 
     city = LivabilityMap(weights=weights,
-                         location=st.session_state.input_city,
-                         location_country=st.session_state.input_country)
+                         location=st.session_state.input_city)
     city.calc_livability()
     df = city.df_grid_Livability
     #city center position lat,lon
