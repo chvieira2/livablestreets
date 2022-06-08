@@ -125,4 +125,3 @@ if __name__ == "__main__":
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
     print(get_bike_infraestructure('London'))
-
