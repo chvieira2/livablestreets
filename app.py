@@ -88,7 +88,6 @@ with st.sidebar:
             unsafe_allow_html=True)
     form = st.form("calc_weights")
     form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
-    form.text_input(label='Country name', key='input_country', type="default", on_change=None, placeholder='p.ex. Germany')
     form.select_slider(label='Different activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
     form.select_slider(label='Comfort', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
     form.select_slider(label='Mobility around the city', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
