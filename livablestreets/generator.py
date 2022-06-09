@@ -5,7 +5,7 @@ from livablestreets.utils import simple_time_tracker, get_file, create_dir
 from config.config import ROOT_DIR
 
 
-from livablestreets.query_names_detailed import master_query
+from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
 from livablestreets.get_csv_detailed import get_csv
 
 import pandas as pd
@@ -140,6 +140,36 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.info())
+
+
+    cities = [
+            'berlin',
+            'dresden',
+            'montpellier',
+            'paris',
+            'utrecht']
+
+    cities2 = [
+            'kiel',
+            'budapest',
+            'milano',
+            'napoli',
+            'dublin']
+
+    cities3 = [
+            'zagreb',
+            'lisboa',
+            'erfurt',
+            'riga',
+            'Nairobi']
+
+    cities4 = [
+            'london',
+            'Portland',
+            'Montevideo',
+            'Quito',
+            'Cairo',
+            'Melbourne']
 
 
     cities = [

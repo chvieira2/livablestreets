@@ -7,17 +7,16 @@ from shapely.geometry import Point, Polygon
 import geopandas as gpd
 # import shapely.speedups
 import os
-from config.config import ROOT_DIR
 
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points(file_name, location, lat='lat',lng='lon'):
+def features_into_list_points(file_name, location, lat='lat',lng='lng'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location}/Features') #, gcp_file_path = f'data/{location}/Features')
+    df_feature = get_file(file_name, local_file_path=f'data/{location}/Features', gcp_file_path = f'data/{location}/Features')
     print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
@@ -62,13 +61,13 @@ def integrate_all_features_counts(stepsize, location, sigmas,
 
     # Get grid and create polygons
     if df_grid is None:
-        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
+        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
     # Get list of features file
-    directory = f'{ROOT_DIR}/livablestreets/data/{location}/Features'
+    directory = f'livablestreets/data/{location}/Features'
 
     feature_names = [feature_name.replace(".csv", "") for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") or feature_name.startswith("social_life_")) and feature_name.endswith(".csv")]
 
@@ -110,7 +109,7 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     df_grid= feature_cat_mean_score(df_grid)
     print('Categories mean were calculated')
 
-    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
