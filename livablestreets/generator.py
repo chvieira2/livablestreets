@@ -38,7 +38,7 @@ class LivabilityMap(object):
             try :
                 self.df_grid = get_file(f'{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
-                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=True)
+                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=False)
         else:
             print('generate_grid has already been called before')
 
@@ -136,7 +136,7 @@ class LivabilityMap(object):
                                                 'mobility_mean',
                                                 'social_mean'],
                             stepsize = self.stepsize, location = self.location,
-                            save_local=True, save_gcp=True)
+                            save_local=True, save_gcp=False)
             print(f'Livability has been updated with weights {self.weights}')
 
         return self.df_grid_Livability
@@ -151,7 +151,7 @@ if __name__ == '__main__':
     # print(city.df_grid_Livability.info())
     cities = ['berlin',
               'dresden',
-              'cologne',
+              'köln',
               'munich',
               'Barcelona'#,
             #   'madrid',
