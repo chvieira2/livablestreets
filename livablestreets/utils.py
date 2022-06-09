@@ -3,7 +3,7 @@ import numpy as np
 import time
 import pandas as pd
 from livablestreets.params import BUCKET_NAME
-from google.cloud import storage
+# from google.cloud import storage
 from sklearn.preprocessing import MinMaxScaler
 import os
 import os
@@ -50,6 +50,7 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
     df = pd.read_csv(local_path)
     print(f'===> Loaded {file_name} locally from: {local_path}')
     # except FileNotFoundError:
+<<<<<<< HEAD
     #     # client = storage.Client()
     #     gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
     #     df = pd.read_csv(gcp_path)
@@ -57,6 +58,17 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
     #     if save_local:
     #         df.to_csv(local_path, index=False)
     #         print(f'===> Saved {file_name} locally at: {local_path}')
+=======
+
+        # # client = storage.Client()
+        # gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
+        # df = pd.read_csv(gcp_path)
+        # print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
+        # if save_local:
+        #     df.to_csv(local_path, index=False)
+        #     print(f'===> Saved {file_name} locally at: {local_path}')
+
+>>>>>>> c16f66627ad014f234a93985f645d32a309bcf1d
 
     return df
 
@@ -69,12 +81,21 @@ def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', g
 
     # Save on GCP
     # if save_gcp:
+<<<<<<< HEAD
     #     client = storage.Client().bucket(BUCKET_NAME)
     #     storage_location = f'{gcp_file_path}/{file_name}'
     #     blob = client.blob(storage_location)
     #     local_path = f'livablestreets/{local_file_path}/{file_name}'
     #     blob.upload_from_filename(local_path)
     #     print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
+=======
+        # client = storage.Client().bucket(BUCKET_NAME)
+        # storage_location = f'{gcp_file_path}/{file_name}'
+        # blob = client.blob(storage_location)
+        # local_path = f'livablestreets/{local_file_path}/{file_name}'
+        # blob.upload_from_filename(local_path)
+        # print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
+>>>>>>> c16f66627ad014f234a93985f645d32a309bcf1d
 
 
 def coord_to_m(start_lat,
