@@ -44,23 +44,23 @@ def min_max_scaler_own(df, columns = ['activities_economic', 'activities_educati
 
 def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
-    try:
-        local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
-        print(local_path)
-        df = pd.read_csv(local_path)
-        print(f'===> Loaded {file_name} locally from: {local_path}')
-    except FileNotFoundError:
-        # client = storage.Client()
-        gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
-        df = pd.read_csv(gcp_path)
-        print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
-        if save_local:
-            df.to_csv(local_path, index=False)
-            print(f'===> Saved {file_name} locally at: {local_path}')
+    # try:
+    local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
+    print(local_path)
+    df = pd.read_csv(local_path)
+    print(f'===> Loaded {file_name} locally from: {local_path}')
+    # except FileNotFoundError:
+    #     # client = storage.Client()
+    #     gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
+    #     df = pd.read_csv(gcp_path)
+    #     print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
+    #     if save_local:
+    #         df.to_csv(local_path, index=False)
+    #         print(f'===> Saved {file_name} locally at: {local_path}')
 
     return df
 
-def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=True):
+def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
     # Save locally
     if save_local:
         local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
@@ -68,13 +68,13 @@ def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', g
         print(f"===> {file_name} saved locally in {local_path}")
 
     # Save on GCP
-    if save_gcp:
-        client = storage.Client().bucket(BUCKET_NAME)
-        storage_location = f'{gcp_file_path}/{file_name}'
-        blob = client.blob(storage_location)
-        local_path = f'livablestreets/{local_file_path}/{file_name}'
-        blob.upload_from_filename(local_path)
-        print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
+    # if save_gcp:
+    #     client = storage.Client().bucket(BUCKET_NAME)
+    #     storage_location = f'{gcp_file_path}/{file_name}'
+    #     blob = client.blob(storage_location)
+    #     local_path = f'livablestreets/{local_file_path}/{file_name}'
+    #     blob.upload_from_filename(local_path)
+    #     print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
 
 
 def coord_to_m(start_lat,
