@@ -12,7 +12,7 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 1000, weights = (1,1,1,1)):
+    def __init__(self, location, stepsize = 100, weights = (1,1,1,1)):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
@@ -38,7 +38,7 @@ class LivabilityMap(object):
             try :
                 self.df_grid = get_file(f'{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
             except FileNotFoundError:
-                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=False)
+                self.df_grid = create_geofence(stepsize = self.stepsize, location = self.location, save_local=True, save_gcp=True)
         else:
             print('generate_grid has already been called before')
 
@@ -74,7 +74,7 @@ class LivabilityMap(object):
             # self.query_df = master_query_negative()
 
         distances = list(self.query_df['distance'])
-        self.sigmas = [distance/self.stepsize for distance in distances]
+        self.sigmas = [(0.5*distance)/self.stepsize for distance in distances]
         get_csv(city=self.location, query_df = self.query_df)
 
     @simple_time_tracker
@@ -148,7 +148,28 @@ class LivabilityMap(object):
 if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
-    # print(city.df_grid_Livability.describe())
-    city = LivabilityMap(location = 'dresden')
-    city.calc_livability()
-    print(city.df_grid_Livability.info())
+    # print(city.df_grid_Livability.info())
+    cities = ['berlin',
+              'dresden',
+              'cologne',
+              'munich',
+              'Barcelona',
+              'madrid',
+              'alicante',
+              'paris',
+              'London',
+              'rome',
+              'milan',
+              'erfurt',
+              'aukland',
+              'riga',
+              'rio de janeiro',
+              'sao paulo',
+              'buenos aires',
+              'tokyo',
+              'new york',
+              'seatle']
+    for city in cities:
+        map_city = LivabilityMap(location = city)
+        map_city.calc_livability()
+        print(map_city.df_grid_Livability.info())
