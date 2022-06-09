@@ -4,13 +4,14 @@ import numpy as np
 from config.config import ROOT_DIR
 
 
-def livability_score(df, weights = (1,1,1,1),
-                     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean'],
+def livability_score(df, weights = [1,1,1,1,1],
+                     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
                      stepsize = 100, location = 'berlin',
                      save_local=True, save_gcp=False):
     """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
         Category_mean values Have been already MinMax scaled
         """
+    weights[4] = (-1)*weights[4]
     new_cols = [col + '_weighted' for col in categories_interest]
     df_foo = df.copy()
     df_foo[new_cols] = df_foo[categories_interest].mul(weights)
