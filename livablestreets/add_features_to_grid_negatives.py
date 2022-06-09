@@ -1,22 +1,23 @@
 import pandas as pd
 import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file, save_file
-from livablestreets.FeatCount_blurrying import FeatCount_blurrying
+from livablestreets.FeatCount_blurrying_negatives import FeatCount_blurrying
 from shapely.geometry import Point, Polygon
 # import matplotlib.path as mplPath
 import geopandas as gpd
 # import shapely.speedups
 import os
+from config.config import ROOT_DIR
 
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points(file_name, location, lat='lat',lng='lng'):
+def features_into_list_points(file_name, location, lat='lat',lng='lon'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    df_feature = get_file(file_name, local_file_path=f'data/{location}/Features', gcp_file_path = f'data/{location}/Features')
+    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location}/Features') #, gcp_file_path = f'data/{location}/Features')
     print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
@@ -44,7 +45,7 @@ def feature_cat_mean_score(df):
     """ Receives a dataframe and looks for columns containing the categories indicator (activities, comfort, mobility, social)
         Calculate the row-wise mean of columns in that categories and add it to a new column called categories_mean"""
 
-    for categories in ('activities', 'comfort', 'mobility', 'social'):
+    for categories in ('activities', 'comfort', 'mobility', 'social', 'negative'):
         columns_interest = [column for column in df.columns if f"{categories}_" in column]
         df[f"{categories}_mean"] = df[columns_interest].mean(axis=1)
 
@@ -61,15 +62,19 @@ def integrate_all_features_counts(stepsize, location, sigmas,
 
     # Get grid and create polygons
     if df_grid is None:
-        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
+        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
     # Get list of features file
-    directory = f'livablestreets/data/{location}/Features'
+    directory = f'{ROOT_DIR}/livablestreets/data/{location}/Features'
 
-    feature_names = [feature_name.replace(".csv", "") for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") or feature_name.startswith("social_life_")) and feature_name.endswith(".csv")]
+    feature_names = [feature_name.replace(".csv", "") \
+                    for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") \
+                    or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") \
+                    or feature_name.startswith("social_life_" ) or feature_name.startswith("negative_") ) \
+                    and feature_name.endswith(".csv")]
 
     # Get the dict of points and in_polygons values
     dict_of_points = {}
@@ -102,14 +107,14 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     df_grid = df_grid.drop(columns=['polygon'])
 
     # Apply blurrying function
-    df_grid = FeatCount_blurrying(df=df_grid, feature_names = feature_names, sigmas_list=sigmas)
+    df_grid = FeatCount_blurrying(df=df_grid, sigmas_list=sigmas)
 
     ## Create the livability score
     # Calculate the mean per category
     df_grid= feature_cat_mean_score(df_grid)
     print('Categories mean were calculated')
 
-    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
