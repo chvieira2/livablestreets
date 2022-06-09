@@ -51,7 +51,7 @@ class LivabilityMap(object):
         centroid = list(centroid[0].coords)[0]
         self.location_centroid = centroid
 
-        self.path_location_geojson = f'livablestreets/data/{self.location}/{self.location}_boundaries.geojson'
+        self.path_location_geojson = f'{ROOT_DIR}/livablestreets/data/{self.location}/{self.location}_boundaries.geojson'
 
         return self.df_grid
 
@@ -149,6 +149,7 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.info())
+<<<<<<< HEAD
     cities = [
             # 'berlin',
             # 'dresden',
@@ -173,6 +174,40 @@ if __name__ == '__main__':
             #   'new york',
             # 'tokyo'
               ]
+=======
+
+    
+    cities = [
+            'berlin',
+            'dresden',
+            'montpellier',
+            'paris',
+            'utrecht']
+
+    cities2 = [
+            'budapest',
+            'kiel',
+            'milano',
+            'napoli',
+            'dublin']
+
+    cities3 = [
+            'zagreb',
+            'lisboa',
+            'erfurt',
+            'riga',
+            'Nairobi']
+
+    cities4 = [
+            'london',
+            'Portland',
+            'Montevideo',
+            'Quito',
+            'Cairo',
+            'Melbourne']
+
+
+>>>>>>> c16f66627ad014f234a93985f645d32a309bcf1d
     for city in cities:
         map_city = LivabilityMap(location = city)
         map_city.calc_livability()
