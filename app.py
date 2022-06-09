@@ -111,8 +111,9 @@ if submitted:
     weights_inputs = (st.session_state.weight_activity,
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
-               st.session_state.weight_social)
-    weights=tuple([weight_dict[i] for i in weights_inputs])
+               st.session_state.weight_social,
+               'Very important')
+    weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
 

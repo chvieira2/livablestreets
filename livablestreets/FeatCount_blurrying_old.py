@@ -4,8 +4,6 @@ import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file
 import pandas as pd
 
-from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
-
 def blur_matrix(array,sigmapx):
 
     truncate = sigmapx*3
@@ -14,14 +12,11 @@ def blur_matrix(array,sigmapx):
 
     return blurred_img.reshape(array.shape[0],array.shape[1])
 
-
-
 @simple_time_tracker
-def FeatCount_blurrying(df, slice = None, sigmas_list = None):
+def FeatCount_blurrying(df, feature_names = ['comfort_leisure_spots', 'activities_education', 'mobility_public_transport_bus', 'activities_economic', 'activities_goverment', 'social_life_eating', 'comfort_comfort_spots', 'social_life_culture', 'activities_public_service', 'social_life_community', 'comfort_leisure_mass', 'activities_educational', 'mobility_public_transport_rail', 'social_life_night_life', 'mobility_bike_infraestructure', 'activities_health_regional', 'activities_health_local', 'activities_post'],
+                        slice = None, sigmas_list = None):
     """ Receives a dataframe and the features columns for blurrying and returns the modified data frame
     """
-    df_master = master_query_negative()
-    feature_names = df_master['name'].tolist()
 
     # Check if slice exists, otherwise creates it
     if slice is None:
@@ -54,7 +49,7 @@ def FeatCount_blurrying(df, slice = None, sigmas_list = None):
 
 
 if __name__ == '__main__':
-    df = get_file(file_name='FeatCount_berlin_grid_1000m.csv', local_file_path=f'data/berlin/WorkingTables', gcp_file_path = f'data/berlin/WorkingTables')
+    df = get_file(file_name='FeatCount_berlin_grid_1000m.csv', local_file_path=f'livablestreets/data/berlin/WorkingTables', gcp_file_path = f'data/berlin/WorkingTables')
 
     df = FeatCount_blurrying(df)
 
