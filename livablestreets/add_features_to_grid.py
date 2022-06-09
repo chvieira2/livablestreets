@@ -17,7 +17,7 @@ def features_into_list_points(file_name, location, lat='lat',lng='lon'):
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location}/Features', gcp_file_path = f'data/{location}/Features')
+    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location}/Features') #, gcp_file_path = f'data/{location}/Features')
     print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
