@@ -54,7 +54,7 @@ def feature_cat_mean_score(df):
 @simple_time_tracker
 def integrate_all_features_counts(stepsize, location, sigmas,
                                     df_grid=None,
-                                    save_local=True, save_gcp=True):
+                                    save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
     # shapely.speedups makes some of the spatial queries running faster
@@ -68,7 +68,7 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     print('created polygons')
 
     # Get list of features file
-    directory = f'livablestreets/data/{location}/Features'
+    directory = f'{ROOT_DIR}/livablestreets/data/{location}/Features'
 
     feature_names = [feature_name.replace(".csv", "") for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") or feature_name.startswith("social_life_")) and feature_name.endswith(".csv")]
 
