@@ -149,6 +149,7 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'berlin')
     # city.calc_livability()
     # print(city.df_grid_Livability.info())
+
     
     cities = [
             'berlin',
@@ -178,6 +179,7 @@ if __name__ == '__main__':
             'Quito',
             'Cairo',
             'Melbourne']
+
 
     for city in cities:
         map_city = LivabilityMap(location = city)
