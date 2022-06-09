@@ -88,7 +88,7 @@ with st.sidebar:
             unsafe_allow_html=True)
     form = st.form("calc_weights")
     form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
-    form.select_slider(label='Different activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
+    form.select_slider(label='Activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
     form.select_slider(label='Comfort', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
     form.select_slider(label='Mobility around the city', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
     form.select_slider(label='Social aspects', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
@@ -107,9 +107,9 @@ if submitted:
     #check weights
     print(f'Weights entered by user: {weights}')
 
-    city = LivabilityMap(weights=weights,
-                         location=st.session_state.input_city)
+    city = LivabilityMap(location=st.session_state.input_city)
     city.calc_livability()
+    city.update_livability(imputed_weights=weights)
     df = city.df_grid_Livability
     #city center position lat,lon
     city.generate_grid()

@@ -103,15 +103,8 @@ class LivabilityMap(object):
         return self.df_grid_FeatCount
 
     @simple_time_tracker
-    def calc_livability(self, imputed_weights = None):
+    def calc_livability(self):
         """ Calculate the livability score given the weights"""
-
-        # Get weights
-        if imputed_weights is None:
-            if self.weights is None:
-                self.weights_input()
-        else:
-            self.weights = imputed_weights
 
         ## Calculate livability
         if self.df_grid_Livability is None:
@@ -119,28 +112,26 @@ class LivabilityMap(object):
                 self.df_grid_Livability = get_file(f'Livability_{self.location}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location}/WorkingTables', gcp_file_path = f'data/{self.location}/WorkingTables', save_local=True)
 
             except FileNotFoundError:
-                self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights,
-                                    categories_interest = ['activities_mean',
-                                                        'comfort_mean',
-                                                        'mobility_mean',
-                                                        'social_mean'],
-                                    stepsize = self.stepsize, location = self.location)
+                self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location = self.location)
         else:
             print('livability_score has already been called before')
 
+        return self.df_grid_Livability
+
+    def update_livability(self, imputed_weights):
+        self.weights = imputed_weights
+
+        # Check if livability has been calculated
+        if self.df_grid_Livability is None:
+            self.df_grid_Livability = self.calc_livability()
+
+        # update livability
         if imputed_weights is not None:
             self.df_grid_Livability = livability_score(self.df_grid_Livability,
                                                         weights = self.weights,
-                            columns_interest = ['activities_mean',
-                                                'comfort_mean',
-                                                'mobility_mean',
-                                                'social_mean'],
                             stepsize = self.stepsize, location = self.location,
                             save_local=True, save_gcp=False)
             print(f'Livability has been updated with weights {self.weights}')
-
-        return self.df_grid_Livability
-
 
 
 
@@ -181,6 +172,30 @@ if __name__ == '__main__':
             'Melbourne']
 
 
+    cities = [
+            # 'berlin',
+            # 'dresden',
+            # 'cologne',
+            # 'munich',
+            # 'Barcelona'#,
+            #   'madrid',
+            #   'alicante',
+            #   'paris',
+            #   'London',
+            #   'rome',
+            #   'milan',
+            #   'erfurt',
+            #   'aukland',
+            #   'riga',
+            #   'rio de janeiro',
+            #   'sao paulo',
+            #   'buenos aires',
+            # 'montevideo',
+            'London',
+            'seatle',
+            #   'new york',
+            # 'tokyo'
+              ]
     for city in cities:
         map_city = LivabilityMap(location = city)
         map_city.calc_livability()
