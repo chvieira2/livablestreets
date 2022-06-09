@@ -25,10 +25,17 @@ st.markdown(
             <style>
                 .css-18e3th9 {{
                     padding-top: 10px;
+                    padding-right: 10px;
+                    padding-bottom: 10px;
+                    padding-left: 10px;
                 }}
                 .css-1oe6wy4 {{
                     padding-top: 35px;
                 }}
+                .css-192cp98{{
+                    padding-top: 35px;
+                }}
+
                 iframe {{
                 width: 100%;
                 height: 500px;
@@ -48,10 +55,10 @@ st.markdown(
             ''', unsafe_allow_html=True)
 
 
-st.markdown("""<h1 style='text-align: center; color: white'>
-            Explore livability scores in city of your choice
-            </h1>""",
-            unsafe_allow_html=True)
+# st.markdown("""<h1 style='text-align: center; color: white'>
+#             Explore livability scores in city of your choice
+#             </h1>""",
+#             unsafe_allow_html=True)
 
 #----Simple placeholder for the world map with arbitrary city coordenates------
 placeholder_map = st.empty()
@@ -71,7 +78,13 @@ for city,coords in placeholder_cities.items():
                   popup=city,
                   icon=folium.Icon(color='green',
                                    icon='home')).add_to(placeholderMap)
-placeholder_map = stf.folium_static(placeholderMap)
+
+with placeholder_map.container():
+    st.markdown("""<h2 style='text-align: center; color: white'>
+            Explore livability scores in city of your choice
+            </h2>""",
+            unsafe_allow_html=True)
+    stf.folium_static(placeholderMap)
 
 
 #------------------------user inputs-----------------------------------
@@ -82,10 +95,6 @@ weight_dict={"Don't care":0,
              'Quite important':0.75,
              'Very important':1}
 with st.sidebar:
-    st.markdown("""<h4 style='text-align: center; color: white'>
-            Select city and features
-            </h4>""",
-            unsafe_allow_html=True)
     form = st.form("calc_weights")
     form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
     form.select_slider(label='Different activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
@@ -114,19 +123,21 @@ if submitted:
     #city center position lat,lon
     city.generate_grid()
     city_coords = [city.location_centroid[1],city.location_centroid[0]]
+    #for filling the polygon
+    style_function = {'fillColor': 'transparent',
+                 'lineColor': '#00FFFFFF'}
     # city borders map
     geojson_path=city.path_location_geojson
     file = open(geojson_path, encoding="utf8").read()
     city_borders = GeoJson(file,
                           name=city.location,
                           show=True,
+                          style_function=lambda x:style_function,
                           zoom_on_click=True)
+    print(city_borders)
     mapObj = plot(df, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
-        st.markdown("""<h6 style='text-align: center; color: white'>
-            Use the layers at the top right corner of the map to investigate
-            different features that contribute to livability!
-            </h6>""",
-            unsafe_allow_html=True)
+        col1,col2,col3=st.columns(3)
+        col2.header(f'Livability score in: {city.location.capitalize()}')
         stf.folium_static(mapObj)
