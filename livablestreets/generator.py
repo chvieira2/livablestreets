@@ -51,7 +51,7 @@ class LivabilityMap(object):
         centroid = list(centroid[0].coords)[0]
         self.location_centroid = centroid
 
-        self.path_location_geojson = f'livablestreets/data/{self.location}/{self.location}_boundaries.geojson'
+        self.path_location_geojson = f'{ROOT_DIR}/livablestreets/data/{self.location}/{self.location}_boundaries.geojson'
 
         return self.df_grid
 
