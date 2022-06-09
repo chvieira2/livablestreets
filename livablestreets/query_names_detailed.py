@@ -26,9 +26,9 @@ bike_infraestructure =  {'amenity':['bicycle_parking', 'bicycle_repair_station',
 
 
 mobility = {
-            'public_transport_bus' : [public_transport_bus, 'bus', 200 , 'Node', 'Point', 'Point' , 'mobility' ] ,
-            'public_transport_rail' : [public_transport_rail, 'rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
-            'bike_infraestructure' : [bike_infraestructure, 'bike' , 50 , 'Node', 'Point', 'Point' , 'mobility' ]
+            'public_transport_bus' : [public_transport_bus, 'mobility_public_transport_bus', 200 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'public_transport_rail' : [public_transport_rail, 'mobility_public_transport_rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
+            'bike_infraestructure' : [bike_infraestructure, 'mobility_bike_infraestructure' , 50 , 'Node', 'Point', 'Point' , 'mobility' ]
             }
 
 '''-------------------------social life---------------------------'''
@@ -51,10 +51,10 @@ community = {'office': ['association','charity', 'coworking',
 # Distance and sigma
 
 social_life = {
-                'eating' : [eating, 'eating', 200 , 'Node', 'Point', 'Point' , 'social_life' ] ,
-                'night_life' : [night_life,'nightlife' , 300 , 'Node', 'Point', 'Point' , 'social_life' ] ,
-                'culture' : [culture,'culture' ,  500 , 'Node', 'Point', 'Point' , 'social_life' ] ,
-                'community' : [community,'community', 400 , 'Node', 'Point', 'Point' , 'social_life' ]
+                'eating' : [eating, 'social_life_eating', 200 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'night_life' : [night_life,'social_life_night_life' , 300 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'culture' : [culture,'social_life_culture' ,  500 , 'Node', 'Point', 'Point' , 'social_life' ] ,
+                'community' : [community,'social_life_community', 400 , 'Node', 'Point', 'Point' , 'social_life' ]
                 }
 
 '''------------------------activities-------------------------------'''
@@ -82,14 +82,14 @@ economic = {'amenity':['atm', 'bank', 'bureau_de_change']}
 # Distance and sigma
 
 activities = {
-            'health_regional' : [health_regional, 'health_regional', 1000 , 'Node','Point','Point', 'activities'] ,
-            'health_local' : [health_local, 'health_local', 300 , 'Node','Point','Point', 'activities'] ,
-            'goverment' : [goverment,'goverment', 500  , 'Node','Point','Point', 'activities'] ,
-            'public_service' : [public_service, 'public_service', 400 , 'Node','Point','Point', 'activities'] ,
-            'post' : [post, 'post', 100, 'Node','Point','Point', 'activities'] ,
-            'education' : [education, 'education', 500, 'Node','Point','Point', 'activities'] ,
-            'educational' : [educational, 'educational', 200, 'Node','Point','Point', 'activities'] ,
-            'economic' : [economic, 'economic', 100 , 'Node','Point','Point', 'activities']
+            'health_regional' : [health_regional, 'activities_health_regional', 1000 , 'Node','Point','Point', 'activities'] ,
+            'health_local' : [health_local, 'activities_health_local', 300 , 'Node','Point','Point', 'activities'] ,
+            'goverment' : [goverment,'activities_goverment', 500  , 'Node','Point','Point', 'activities'] ,
+            'public_service' : [public_service, 'activities_public_service', 400 , 'Node','Point','Point', 'activities'] ,
+            'post' : [post, 'activities_post', 100, 'Node','Point','Point', 'activities'] ,
+            'education' : [education, 'activities_education', 500, 'Node','Point','Point', 'activities'] ,
+            'educational' : [educational, 'activities_educational', 200, 'Node','Point','Point', 'activities'] ,
+            'economic' : [economic, 'activities_economic', 100 , 'Node','Point','Point', 'activities']
             }
 
 '''-----------------------------comfort--------------------------'''
@@ -111,9 +111,9 @@ leisure_mass = {'leisure':['bandstand', 'swimming_pool', 'stadium', 'sports_cent
 # Distance and sigma
 
 comfort = {
-            'comfort_spots' : [ comfort_spots, 'comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_spots' : [ leisure_spots, 'leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_mass' : [ leisure_mass, 'leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] }
+            'comfort_spots' : [ comfort_spots, 'comfort_comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_spots' : [ leisure_spots, 'comfort_leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_mass' : [ leisure_mass, 'comfort_leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ] }
 
 
 
@@ -150,12 +150,12 @@ complex = {
             # 'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             # 'cycle_paths1' : [cycle_paths1,'cyclpath1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             # 'cycle_paths2' : [cycle_paths2,'cyclpath2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'green_forests' : [ green_forests,'green_forests', 800 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green_space' : [ green_space,'green_space', 300 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green_parks' : [ green_parks,'green_parks', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green_natural' : [ green_natural,'green_natural', 200 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'lakes' : [ lakes,'lakes', 200 , 'Node' ,'Line','multiPolygon', 'comfort' ],
-            'rivers' : [ rivers,'rivers', 300 , 'Node' ,'Line','multiPolygon', 'comfort' ]
+            'green_forests' : [ green_forests,'comfort_green_forests', 800 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_space' : [ green_space,'comfort_green_space', 300 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_parks' : [ green_parks,'comfort_green_parks', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_natural' : [ green_natural,'comfort_green_natural', 200 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'lakes' : [ lakes,'comfort_lakes', 200 , 'Way' ,'Line','multiPolygon', 'comfort' ],
+            'rivers' : [ rivers,'comfort_rivers', 300 , 'Way' ,'Line','multiPolygon', 'comfort' ]
             }
 
 '''--------------------------negative query--------------------------'''
@@ -171,19 +171,22 @@ railway = {'railway':['light_rail'],
 # street_terteary_wf = [(('',''),('','')),]
 # street_terteary_bf = [('',''),]
 
+industrial = {'building' : ['industrial']}
+retail = {'building' : ['retail']}
+supermarket = {'building' : ['supermarket']}
+warehouse = {'building' : ['warehouse']}
 
 
 negative = {
-            'street_motorway' : [street_motorway,'street_motorway' ,
-             500 , 'Way', 'Line', 'lineString' , 'negative'], #, street_motorway_wf, street_motorway_bf ] ,
-             'street_primary' : [street_primary,'street_primary' ,
-             250 , 'Way', 'Line', 'lineString' , 'negative'],#, street_primary_wf, street_primary_bf ] ,
-             'street_secondary' : [street_secondary,'street_secondary' ,
-             100 , 'Way', 'Line', 'lineString' , 'negative'],#, street_secondary_wf, street_secondary_bf ] ,
-            #  'street_terteary' : [street_terteary,'street_terteary' ,
-            #  50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
-             'railway' : [railway,'railway' ,
-             50 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
+            'street_motorway' : [street_motorway,'negative_street_motorway', 500 , 'Way', 'Line', 'lineString' , 'negative'], #, street_motorway_wf, street_motorway_bf ] ,
+             'street_primary' : [street_primary,'negative_street_primary', 250 , 'Way', 'Line', 'lineString' , 'negative'],#, street_primary_wf, street_primary_bf ] ,
+             'street_secondary' : [street_secondary,'negative_street_secondary', 100 , 'Way', 'Line', 'lineString' , 'negative'],#, street_secondary_wf, street_secondary_bf ] ,
+            #  'street_terteary' : [street_terteary,'street_terteary',50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
+             'railway' : [railway,'negative_railway' ,50 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
+             'industrial' : [industrial,'negative_industrial', 300 , 'Way' ,'Line','lineString', 'negative' ],
+             'retail' : [retail,'negative_retail', 200 , 'Way' ,'Line','lineString', 'negative' ],
+             'supermarket' : [supermarket,'negative_supermarket', 200 , 'Way' ,'Line','lineString', 'negative' ],
+             'warehouse' : [warehouse,'negative_warehouse', 200 , 'Way' ,'Line','lineString', 'negative' ],
 }
 
 
@@ -214,6 +217,10 @@ def master_query(save_local=True, save_gcp=False):
 def master_query_complex(save_local=True, save_gcp=False):
 
         master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
         master_q.update(complex)
 
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
@@ -226,10 +233,15 @@ def master_query_complex(save_local=True, save_gcp=False):
 
 def master_query_negative(save_local=True, save_gcp=False):
 
-        master_neg = {}
-        master_neg.update(negative)
+        master_q = {}
+        master_q.update(mobility)
+        master_q.update(social_life)
+        master_q.update(activities)
+        master_q.update(comfort)
+        master_q.update(complex)
+        master_q.update(negative)
 
-        query_df = pd.DataFrame.from_dict(master_neg, orient='index', columns = columns)
+        query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
 
         # save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
