@@ -68,7 +68,7 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     print('created polygons')
 
     # Get list of features file
-    directory = f'livablestreets/data/{location}/Features'
+    directory = f'{ROOT_DIR}/livablestreets/data/{location}/Features'
 
     feature_names = [feature_name.replace(".csv", "") for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") or feature_name.startswith("social_life_")) and feature_name.endswith(".csv")]
 
