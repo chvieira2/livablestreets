@@ -50,13 +50,15 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
     df = pd.read_csv(local_path)
     print(f'===> Loaded {file_name} locally from: {local_path}')
     # except FileNotFoundError:
-    #     # client = storage.Client()
-    #     gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
-    #     df = pd.read_csv(gcp_path)
-    #     print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
-    #     if save_local:
-    #         df.to_csv(local_path, index=False)
-    #         print(f'===> Saved {file_name} locally at: {local_path}')
+
+        # # client = storage.Client()
+        # gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
+        # df = pd.read_csv(gcp_path)
+        # print(f'===> Loaded {file_name} from GCP at: {gcp_path}')
+        # if save_local:
+        #     df.to_csv(local_path, index=False)
+        #     print(f'===> Saved {file_name} locally at: {local_path}')
+
 
     return df
 
