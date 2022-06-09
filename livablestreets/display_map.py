@@ -1,5 +1,5 @@
 import folium
-from folium.plugins import HeatMap
+from folium.plugins import HeatMap, Fullscreen
 import pandas as pd
 import numpy as np
 from livablestreets.utils import get_file
@@ -49,6 +49,10 @@ def plot(df, city_coords:tuple, city_borders):
     #---------- add city borderer as extra layer ----------------------
     city_borders.add_to(mapObj)
     folium.LayerControl().add_to(mapObj)
+    Fullscreen(position='topleft',
+               title='Full Screen',
+               title_cancel='Exit Full Screen',
+               force_separate_button=False).add_to(mapObj)
     return mapObj
 
 
