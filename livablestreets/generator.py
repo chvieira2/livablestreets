@@ -153,42 +153,42 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'dresden')
-    city.calc_livability()
-    print(city.df_grid_Livability.info())
+    # city = LivabilityMap(location = 'dresden')
+    # city.calc_livability()
+    # print(city.df_grid_Livability.info())
 
 
-    # cities = [
-    #         'berlin',
-    #         'dresden', [51.0763286,13.7726932]
-    #         'montpellier', geo:43.6100331,3.8741902
-    #         'paris', geo:48.8588657,2.3469411
-    #         'utrecht'] geo:51.8546693,4.4759326
+    cities = [
+            'berlin',
+            'dresden',
+            'montpellier',
+            'paris',
+            'utrecht']
 
-    # cities2 = [
-    #         'kiel', geo:54.3418225,10.125773
-    #         'budapest', geo:47.4814183,19.1300157
-    #         'milano', geo:45.4612932,9.1594985
-    #         'napoli', geo:40.853658,14.242934
-    #         'dublin'] geo:53.0978939,-8.1676402
+    cities2 = [
+            'kiel',
+            'budapest',
+            'milano',
+            'napoli',
+            'dublin']
+            
+    cities3 = [
+            'zagreb',
+            'lisboa',
+            'erfurt',
+            'Tallinn',
+            'Nairobi']
 
-    # cities3 = [
-    #         'zagreb', geo:45.8426723,15.964395
-    #         'lisboa', geo:38.7440789,-9.1580842
-    #         'erfurt', geo:50.9851833,11.0149019
-    #         'Tallinn', 59.4400774, 24.7592786
-    #         'Nairobi']geo:-1.3039015,36.8774125
-
-    # cities4 = [
-    #         'london',
-    #         'Portland', geo:45.5427086,-122.654387
-    #         'Montevideo', geo:-34.8933651,-56.183324
-    #         'Quito',geo:-0.1697022,-78.5562927
-    #         'Cairo', 30.0443879, 31.2357257
-    #         'Melbourne'] geo:-37.8274865,144.970266
+    cities4 = [
+            'london',
+            'Portland',
+            'Montevideo',
+            'Quito',
+            'Cairo',
+            'Melbourne']
 
 
-    # for city in cities2:
-    #     map_city = LivabilityMap(location = city)
-    #     map_city.calc_livability()
-    #     print(map_city.df_grid_Livability.info())
+    for city in cities2:
+        map_city = LivabilityMap(location = city)
+        map_city.calc_livability()
+        print(map_city.df_grid_Livability.info())
