@@ -120,12 +120,14 @@ comfort = {
 '''--------------------------complex query--------------------------'''
 # Ways
 
-green = {'landuse':['grass','forest','orchard']}
-green1 = {'landuse':['allotments','cementery','flowerbed', 'meadow','greenfield', 'recreation_ground','village_green']}
-green2 = {'leisure':['park','playground','garden','swimming_area','playground', 'nature_reserve', 'marina']}
-green3 = {'natural':['heath','shrubbery','wood','grassland']}
+green_forests = {'landuse':['wood','forest','orchard']}
+green_space = {'landuse':['allotments','cementery','flowerbed', 'meadow','greenfield', 'recreation_ground','village_green']}
+green_parks = {'leisure':['park','playground','garden','swimming_area','playground', 'nature_reserve', 'marina']}
+green_natural = {'natural':['heath','shrubbery','grass','grassland']}
 
-water = {'natural':['water','beach']}
+
+lakes = {'natural':['water','beach']}
+rivers = {'waterway':['river']}
 
 # Ways
 pedestrian = {'highway':['pedestrian']}
@@ -134,8 +136,7 @@ pedestrian2 = {'highway':['living_street','corridor']}
 pedestrian3 = {'foot':['designated']}
 
 cycle_paths = {'bicycle':['designated']}
-cycle_paths1 = {'highway':['cycleway'],
-              'cycleway':['lane','opposite','opposite_lane']}
+cycle_paths1 = {'highway':['cycleway'], 'cycleway':['lane','opposite','opposite_lane']}
 cycle_paths2 = {'cycleway':['track','opposite_track','share_busway']}
 
 
@@ -149,34 +150,21 @@ complex = {
             # 'cycle_paths' : [cycle_paths,'cyclpath' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             # 'cycle_paths1' : [cycle_paths1,'cyclpath1' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
             # 'cycle_paths2' : [cycle_paths2,'cyclpath2' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
-            'green' : [ green,'green', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green1' : [ green1,'green1', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green2' : [ green2,'green2', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'green3' : [ green3,'green3', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
-            'water' : [ water,'water', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ]
+            'green_forests' : [ green_forests,'green_forests', 800 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_space' : [ green_space,'green_space', 300 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_parks' : [ green_parks,'green_parks', 500 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_natural' : [ green_natural,'green_natural', 200 , 'Node' ,'Line','multiPolygon', 'comfort' ] ,
+            'lakes' : [ lakes,'lakes', 200 , 'Node' ,'Line','multiPolygon', 'comfort' ],
+            'rivers' : [ rivers,'rivers', 300 , 'Node' ,'Line','multiPolygon', 'comfort' ]
             }
 
 '''--------------------------negative query--------------------------'''
 
 
 street_motorway = {'highway':['motorway']}
-# street_motorway_wf = [(('',''),('','')),]
-# street_motorway_bf = [('',''),]
-
-
 street_primary = {'highway':['primary']}
-# street_primary_wf = [(('',''),('','')),]
-# street_primary_bf = [('',''),]
-
-
 street_secondary = {'highway':['secondary']}
-# street_secondary_wf = [(('',''),('','')),]
-# street_secondary_bf = [('',''),]
-
-
 # street_terteary = {'highway':['terteary']}
-# street_terteary_wf = [(('',''),('','')),]
-# street_terteary_bf = [('',''),]
 
 railway = {'railway':['light_rail'],
             'bridge':['viaduct']}
