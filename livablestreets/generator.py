@@ -155,43 +155,47 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'london')
-    city.calc_livability()
-    print(city.df_grid_Livability.info())
+    # city = LivabilityMap(location = 'london')
+    # city.calc_livability()
+    # print(city.df_grid_Livability.info())
 
 
-    # cities = [
-    #         'berlin',
-    #         'dresden',
-    #         'montpellier',
-    #         'paris',
-    #         'utrecht']
+    cities = [
+            'berlin',
+            'dresden',
+            'montpellier',
+            'paris',
+            'utrecht',
+            'budapest',
+            'erfurt',
+            'kiel',
+            'milano',
+            'strasbourg']
 
-    # cities2 = [
-    #         'kiel',
-    #         'budapest',
-    #         'milano',
-    #         'napoli',
-    #         'dublin']
+    cities2 = [
+            'kiel',
+            'budapest',
+            'milano',
+            'napoli',
+            'dublin']
 
-    # cities3 = [
-    #         'zagreb',
-    #         'lisboa',
-    #         'erfurt',
-    #         'Tallinn',
-    #         'Nairobi']
+    cities3 = [
+            'zagreb',
+            'lisboa',
+            'erfurt',
+            'Tallinn',
+            'Nairobi']
 
-    # cities4 = [
-    #         'london',
-    #         'Portland',
-    #         'Montevideo',
-    #         'Quito',
-    #         'Cairo',
-    #         'Melbourne']
+    cities4 = [
+            'london',
+            'Portland',
+            'Montevideo',
+            'Quito',
+            'Cairo',
+            'Melbourne']
 
-    cities5 =['strasbourg']
 
-    # for city in cities:
-    #     map_city = LivabilityMap(location = city)
-    #     map_city.calc_livability()
-    #     print(map_city.df_grid_Livability.info())
+    for city in cities:
+        map_city = LivabilityMap(location = city)
+        map_city.calc_livability()
+        print(map_city.df_grid_Livability.info())

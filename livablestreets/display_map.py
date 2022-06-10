@@ -30,12 +30,12 @@ def plot(df, city_coords:tuple, city_borders):
             heatmaps[category]=HeatMap(categories[category],
                             min_opacity=0,
                             max_opacity=0,
-                            gradient={
-                                      0:'White',
-                                      0.33:'Blue',
-                                      0.66:'Green',
-                                      1: 'Orange'
-                                      },
+                            # gradient={
+                            #           0:'White',
+                            #           0.33:'Blue',
+                            #           0.66:'Green',
+                            #           1: 'Orange'
+                            #           },
                             radius=15,
                             name=category,
                             show=True)
@@ -43,17 +43,17 @@ def plot(df, city_coords:tuple, city_borders):
             heatmaps[category]=HeatMap(categories[category],
                             min_opacity=0,
                             max_opacity=0,
-                            gradient={
-                                      0:'White',
-                                      0.33:'Blue',
-                                      0.66:'Green',
-                                      1: 'Orange'
-                                      },
+                            # gradient={
+                            #           0:'White',
+                            #           0.33:'Blue',
+                            #           0.66:'Green',
+                            #           1: 'Orange'
+                            #           },
                             radius=15,
                             name=category.split('_')[0],
                             show=False)
     #--------- create map with heatmap overlayers ---------------------
-    mapObj = folium.Map(location=city_coords, zoom_start=10, max_zoom = 14)
+    mapObj = folium.Map(location=city_coords, zoom_start=10, max_zoom = 15)
     for hm in heatmaps.values():
         mapObj.add_child(hm)
     #---------- add city borderer as extra layer ----------------------
