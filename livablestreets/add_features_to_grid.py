@@ -52,7 +52,7 @@ def feature_cat_mean_score(df):
     return df
 
 @simple_time_tracker
-def integrate_all_features_counts(stepsize, location, sigmas,
+def integrate_all_features_counts(stepsize, location_name, sigmas,
                                     df_grid=None,
                                     save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
@@ -62,13 +62,13 @@ def integrate_all_features_counts(stepsize, location, sigmas,
 
     # Get grid and create polygons
     if df_grid is None:
-        df_grid = get_file(file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables')
+        df_grid = get_file(file_name=f'{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables')
     print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
     # Get list of features file
-    directory = f'{ROOT_DIR}/livablestreets/data/{location}/Features'
+    directory = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
 
     feature_names = [feature_name.replace(".csv", "") \
                     for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") \
@@ -80,7 +80,7 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     dict_of_points = {}
     dict_in_polygon = {}
     for feature in feature_names:
-        dict_of_points[f"points_{feature}"] = features_into_list_points(f'{feature}.csv', location=location)
+        dict_of_points[f"points_{feature}"] = features_into_list_points(f'{feature}.csv', location=location_name)
         dict_in_polygon[f"{feature}_in_polygon"] = []
 
     # Iterate through grids and collects counts of features per grid
@@ -114,7 +114,7 @@ def integrate_all_features_counts(stepsize, location, sigmas,
     df_grid= feature_cat_mean_score(df_grid)
     print('Categories mean were calculated')
 
-    save_file(df_grid, file_name=f'FeatCount_{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df_grid, file_name=f'FeatCount_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df_grid
 
