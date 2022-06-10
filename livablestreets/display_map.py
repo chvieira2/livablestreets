@@ -13,9 +13,7 @@ def plot(df, city_coords:tuple, city_borders):
     Output: map object
     '''
     #----------------------take only data from inside city coundaries--------
-    print(len(df))
     df = df[df['grid_in_location']==True]
-    print(len(df))
     # -------------- get all categories from df ----------------------------
     columns = df.columns
     columns_categories = [col for col in columns if col.split('_')[-1]=='mean']
@@ -30,21 +28,32 @@ def plot(df, city_coords:tuple, city_borders):
     for category in categories.keys():
         if category=='livability':
             heatmaps[category]=HeatMap(categories[category],
-                            min_opacity=0.2,
-                            blur=15,
-                            #gradient={0:'Blue',0.25:'Orange',0.75:'Yellow',1: 'Red'},
-                            radius=20,
+                            min_opacity=0,
+                            max_opacity=0,
+                            gradient={
+                                      0:'White',
+                                      0.33:'Blue',
+                                      0.66:'Green',
+                                      1: 'Orange'
+                                      },
+                            radius=15,
                             name=category,
                             show=True)
         else:
             heatmaps[category]=HeatMap(categories[category],
-                            min_opacity=0.2,
-                            #gradient={0:'Blue', 0.5:'Green', 0.75:'Yellow',1: 'Red'},
-                            radius=20,
+                            min_opacity=0,
+                            max_opacity=0,
+                            gradient={
+                                      0:'White',
+                                      0.33:'Blue',
+                                      0.66:'Green',
+                                      1: 'Orange'
+                                      },
+                            radius=15,
                             name=category.split('_')[0],
                             show=False)
     #--------- create map with heatmap overlayers ---------------------
-    mapObj = folium.Map(location=city_coords, zoom_start=10)
+    mapObj = folium.Map(location=city_coords, zoom_start=10, max_zoom = 14)
     for hm in heatmaps.values():
         mapObj.add_child(hm)
     #---------- add city borderer as extra layer ----------------------
