@@ -189,6 +189,7 @@ if __name__ == '__main__':
     #         'Cairo',
     #         'Melbourne']
 
+    cities5 =['strasbourg']
 
     # for city in cities:
     #     map_city = LivabilityMap(location = city)
