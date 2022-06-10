@@ -64,38 +64,38 @@ def get_city_geojson(area_osm_id):
     city_shape = geometry.MultiPolygon(polygons)
     return city_shape
 
-def save_geojson(location):
+def save_geojson(location, location_name):
     # converts to geojson
     area_osm_id = get_id_deambiguate(location)
     city_shape = get_city_geojson(area_osm_id)
 
     # saves to file
-    with open(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson', 'w') as f:
+    with open(f'{ROOT_DIR}/livablestreets/data/{location_name}/{location_name}_boundaries.geojson', 'w') as f:
         dump(mapping(city_shape), f)
 
 '''----------------------------------------------------'''
 
-def get_shape_of_location(location):
+def get_shape_of_location(location, location_name):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
     try:
-        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson')
+        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location_name}/{location_name}_boundaries.geojson')
     except:
-        save_geojson(location)
-        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location}/{location}_boundaries.geojson')
+        save_geojson(location=location, location_name=location_name)
+        gdf = gdp.read_file(f'{ROOT_DIR}/livablestreets/data/{location_name}/{location_name}_boundaries.geojson')
 
 
-    gdf['Location'] = location
+    gdf['Location'] = location_name
     gdf = gdf.set_index("Location")
 
-    print(f'Obtained shape file for {location}')
+    print(f'Obtained shape file for {location_name}')
     return gdf
 
-def calculate_features_from_centroid(df, location, location_polygon = None):
+def calculate_features_from_centroid(df, location, location_name, location_polygon = None):
     """ Iterates through all rows of grid squares and measures the distance (in km) to the location centroid (geographic center), angle (in degrees) and if point belongs to polygon shape """
 
     # get location shape location_polygon
     if location_polygon is None:
-        gdf_shape_location = get_shape_of_location(location)
+        gdf_shape_location = get_shape_of_location(location=location, location_name=location_name)
         polygon = gdf_shape_location['geometry']
 
     # Obtain shape's centroid
@@ -148,12 +148,12 @@ def calculate_features_from_centroid(df, location, location_polygon = None):
     return df
 
 @simple_time_tracker
-def create_geofence(location, stepsize,
+def create_geofence(location, location_name, stepsize,
                     north_lat=None, south_lat=None, east_lng=None, west_lng=None,
                     save_local=True, save_gcp=False):
     # Obtain location max bounds
     if north_lat is None:
-        east_lng, north_lat, west_lng, south_lat = get_shape_of_location(location)['geometry'].total_bounds
+        east_lng, north_lat, west_lng, south_lat = get_shape_of_location(location, location_name=location_name)['geometry'].total_bounds
 
     print(f'Bounds coordinates are north_lat:{north_lat}, south_lat:{south_lat}, east_lng:{east_lng}, west_lng:{west_lng}')
 
@@ -196,11 +196,11 @@ def create_geofence(location, stepsize,
     print(f'Created grid table with dimensions: {df.shape}')
 
     # Calculate distance and angle from centroid. Also check which grids belong to the Location map
-    df = calculate_features_from_centroid(df, location = location)
+    df = calculate_features_from_centroid(df, location = location, location_name=location_name)
 
     print(f'Successfully created geofence of {location}')
 
-    save_file(df, file_name=f'{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df, file_name=f'{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df
 
