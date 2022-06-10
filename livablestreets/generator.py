@@ -153,9 +153,9 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'dresden')
-    # city.calc_livability()
-    # print(city.df_grid_Livability.info())
+    city = LivabilityMap(location = 'Rīga')
+    city.calc_livability()
+    print(city.df_grid_Livability.info())
 
 
     cities = [
@@ -171,6 +171,11 @@ if __name__ == '__main__':
             'milano',
             'napoli',
             'dublin']
+
+    rerun = [
+            'milano',
+            'paris',
+            'stockholm']
 
     cities3 = [
             'zagreb',
@@ -188,7 +193,7 @@ if __name__ == '__main__':
             'Melbourne']
 
 
-    for city in cities2:
-        map_city = LivabilityMap(location = city)
-        map_city.calc_livability()
-        print(map_city.df_grid_Livability.info())
+    # for city in rerun:
+    #     map_city = LivabilityMap(location = city)
+    #     map_city.calc_livability()
+    #     print(map_city.df_grid_Livability.info())
