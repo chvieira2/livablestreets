@@ -112,7 +112,7 @@ if submitted:
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Very important')
+               'Average')
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
