@@ -187,8 +187,10 @@ if __name__ == '__main__':
             'Cairo',
             'Melbourne']
 
+    cities5 =['strasbourg']
 
-    for city in cities2:
+
+    for city in cities5:
         map_city = LivabilityMap(location = city)
         map_city.calc_livability()
         print(map_city.df_grid_Livability.info())
