@@ -6,7 +6,7 @@ from config.config import ROOT_DIR
 
 def livability_score(df, weights = [1,1,1,1,1],
                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
-                     stepsize = 100, location = 'berlin',
+                     stepsize = 100, location_name = 'berlin',
                      save_local=True, save_gcp=False):
     """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
         Category_mean values Have been already MinMax scaled
@@ -17,8 +17,9 @@ def livability_score(df, weights = [1,1,1,1,1],
     df_foo[new_cols] = df_foo[categories_interest].mul(weights)
     df['livability'] = df_foo[new_cols].sum(axis=1)
     df = min_max_scaler(df, columns = ['livability'])
+    df = df[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
 
-    save_file(df, file_name=f'Livability_{location}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+    save_file(df, file_name=f'Livability_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
     return df
 
