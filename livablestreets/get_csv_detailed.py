@@ -24,7 +24,7 @@ url = 'http://overpass-api.de/api/status'
 
 
 
-def get_csv(city, query_df):
+def get_csv(location, location_name, query_df):
 
     for index, row in query_df.iterrows():
         filter_name = index
@@ -32,22 +32,22 @@ def get_csv(city, query_df):
         category = row['category']
         geomtype = row['geomtype']
 
-        outdir = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features'
-        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}')
-        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features')
+        outdir = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
+        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{location_name}')
+        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features')
 
-        if not os.path.exists(path = f'{ROOT_DIR}/livablestreets/data/{city.lower()}/Features/{category}_{filter_name}.csv'):
+        if not os.path.exists(path = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features/{category}_{filter_name}.csv'):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')
-                # new_querie = query_params_osm(location = city.capitalize(), keys = string, features = 'ways')
+                # new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'ways')
                 #print(new_querie['elements'])
 
                 retries = 1
                 success = False
                 while not success:
                     try:
-                        new_querie = query_params_osm(location = city.capitalize(), keys = string, features = 'ways')
+                        new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'ways')
                         success = True
                     except Exception as e:
                         wait = retries * 30
@@ -77,13 +77,13 @@ def get_csv(city, query_df):
 
             if geomtype == 'Node':
                 print(f'getting {filter_name} as nodes')
-                # new_querie = query_params_osm(location = city.capitalize(), keys = string, features = 'nodes')
+                # new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'nodes')
 
                 retries = 1
                 success = False
                 while not success:
                     try:
-                        new_querie = query_params_osm(location = city.capitalize(), keys = string, features = 'nodes')
+                        new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'nodes')
                         success = True
                     except Exception as e:
                         wait = retries * 30
