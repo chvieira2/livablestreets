@@ -198,7 +198,7 @@ columns = ['query_string','name','distance','geomtype','jsontype','shapelytype',
 columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
 
 
-def master_query(save_local=True, save_gcp=False):
+def master_query(location = None, save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(mobility)
@@ -210,11 +210,12 @@ def master_query(save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        # save_file(query_df, file_name=f'master_query_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        if location is not None:
+            save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
-def master_query_complex(save_local=True, save_gcp=False):
+def master_query_complex(location = None, save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(mobility)
@@ -227,11 +228,12 @@ def master_query_complex(save_local=True, save_gcp=False):
         # query_df['whitefilter'] = [(('',''),('','')),]
         # query_df['blackfilter'] = [('',''),]
 
-        # save_file(query_df, file_name=f'master_query_complex_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        if location is not None:
+            save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
-def master_query_negative(save_local=True, save_gcp=False):
+def master_query_negative(location = None, save_local=True, save_gcp=False):
 
         master_q = {}
         master_q.update(mobility)
@@ -243,7 +245,8 @@ def master_query_negative(save_local=True, save_gcp=False):
 
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
 
-        # save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        if location is not None:
+            save_file(query_df, file_name=f'master_query_negative_{location}.csv', local_file_path=f'livablestreets/data/{location}/WorkingTables', gcp_file_path = f'data/{location}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
         return query_df
 
