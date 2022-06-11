@@ -19,8 +19,8 @@ class LivabilityMap(object):
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
         self.query_df = None
-        self.location = location.lower()
-        self.location_name = self.location.replace(' ', '_').replace('õ','o').replace('ã','a')\
+        self.location = location.capitalize()
+        self.location_name = location.replace(' ', '_').replace('õ','o').replace('ã','a')\
             .replace('ä','ae').replace('ö','oe').replace('ü','ue').replace('ß','ss')
         self.stepsize = stepsize
         self.weights = weights
@@ -155,9 +155,9 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'london')
-    # city.calc_livability()
-    # print(city.df_grid_Livability.info())
+    city = LivabilityMap(location = 'lisboa')
+    city.calc_livability()
+    print(city.df_grid_Livability.info())
 
 
     cities = [
@@ -170,32 +170,13 @@ if __name__ == '__main__':
             'erfurt',
             'kiel',
             'milano',
-            'strasbourg']
-
-    cities2 = [
-            'kiel',
-            'budapest',
-            'milano',
-            'napoli',
-            'dublin']
-
-    cities3 = [
-            'zagreb',
+            'strasbourg',
             'lisboa',
-            'erfurt',
-            'Tallinn',
-            'Nairobi']
-
-    cities4 = [
-            'london',
-            'Portland',
-            'Montevideo',
-            'Quito',
-            'Cairo',
-            'Melbourne']
+            'cologne',
+            'São Paulo']
 
 
-    for city in cities:
-        map_city = LivabilityMap(location = city)
-        map_city.calc_livability()
-        print(map_city.df_grid_Livability.info())
+    # for city in cities:
+    #     map_city = LivabilityMap(location = city)
+    #     map_city.calc_livability()
+    #     print(map_city.df_grid_Livability.info())

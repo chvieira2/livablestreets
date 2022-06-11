@@ -40,18 +40,19 @@ def get_csv(location, location_name, query_df):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')
-                # new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'ways')
+                # new_querie = query_params_osm(location = location, keys = string, features = 'ways')
                 #print(new_querie['elements'])
 
                 retries = 1
                 success = False
                 while not success:
                     try:
-                        new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'ways')
+                        new_querie = query_params_osm(location = location, keys = string, features = 'ways')
                         success = True
                     except Exception as e:
                         wait = retries * 30
-                        print ('Error! Waiting %s secs and re-trying...' % wait)
+                        print ('''Could not connect to the Overpass API! Check the API status here: http://overpass-api.de/api/status\n
+                               Waiting %s secs and re-trying...''' % wait)
                         sys.stdout.flush()
                         time.sleep(wait)
                         retries += 1
@@ -70,24 +71,25 @@ def get_csv(location, location_name, query_df):
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
-                    print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
+                    # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
 
                     # time.sleep(30)
 
 
             if geomtype == 'Node':
                 print(f'getting {filter_name} as nodes')
-                # new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'nodes')
+                # new_querie = query_params_osm(location = location, keys = string, features = 'nodes')
 
                 retries = 1
                 success = False
                 while not success:
                     try:
-                        new_querie = query_params_osm(location = location.capitalize(), keys = string, features = 'nodes')
+                        new_querie = query_params_osm(location = location, keys = string, features = 'nodes')
                         success = True
                     except Exception as e:
                         wait = retries * 30
-                        print ('Error! Waiting %s secs and re-trying...' % wait)
+                        print ('''Could not connect to the Overpass API! Check the API status here: http://overpass-api.de/api/status\n
+                               Waiting %s secs and re-trying...''' % wait)
                         sys.stdout.flush()
                         time.sleep(wait)
                         retries += 1
@@ -102,12 +104,11 @@ def get_csv(location, location_name, query_df):
                     print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
-                    print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
+                    # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
 
                     # time.sleep(5)
 
-    print(f'''Finally done ⊂(◉‿◉)つ sorry for the wait'
-              ------------------------------------------------------------/''')
+    print(f'''Done saving features csv file ⊂(◉‿◉)つ sorry for the wait'\n------------------------------------------------------------/''')
 
 
 if __name__ == "__main__":
@@ -116,5 +117,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    query_df = master_query_complex()
-    print(get_csv('Berlin', query_df))
+    query_df = master_query_negative(location_name='rio_de_janeiro')
+    get_csv(location='riodejaneiro', location_name='rio_de_janeiro', query_df=query_df)
