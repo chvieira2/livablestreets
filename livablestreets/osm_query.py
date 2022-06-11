@@ -90,3 +90,10 @@ def query_params_osm(location, keys, features, limit=''):
     response = requests.get(overpass_url,
                             params={'data': overpass_query})
     return response.json()
+
+
+if __name__ == "__main__":
+
+    print(query_params_osm(location = 'Buenos_Aires',
+                     keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']},
+                     features = 'nodes'))
