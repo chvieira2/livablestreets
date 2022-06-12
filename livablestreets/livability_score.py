@@ -18,6 +18,7 @@ def livability_score(df, weights = [1,1,1,1,1],
     df['livability'] = df_foo[new_cols].sum(axis=1)
     df = min_max_scaler(df, columns = ['livability'])
     df = df[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
+    df = df[df['grid_in_location']]
 
     save_file(df, file_name=f'Livability_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 

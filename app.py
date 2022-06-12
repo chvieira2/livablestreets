@@ -81,7 +81,7 @@ for city,coords in placeholder_cities.items():
 
 with placeholder_map.container():
     st.markdown("""<h2 style='text-align: center; color: white'>
-            Explore livability scores in city of your choice
+            Explore livability scores in cities around the world
             </h2>""",
             unsafe_allow_html=True)
     stf.folium_static(placeholderMap)
@@ -117,28 +117,26 @@ if submitted:
     #check weights
     print(f'Weights entered by user: {weights}')
 
-    city = LivabilityMap(location=st.session_state.input_city)
+    city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
-    city.update_livability(imputed_weights=weights)
     df = city.df_grid_Livability
     #city center position lat,lon
-    city.generate_grid()
-    city_coords = [city.location_centroid[1],city.location_centroid[0]]
+    city_coords = [np.mean(df['lat_center']),np.mean(df['lng_center'])]
+
     #for filling the polygon
     style_function = {'fillColor': 'transparent',
                  'lineColor': '#00FFFFFF'}
     # city borders map
-    geojson_path=city.path_location_geojson
+    geojson_path=f'{ROOT_DIR}/livablestreets/data/{city.location_name}/{city.location_name}_boundaries.geojson'
     file = open(geojson_path, encoding="utf8").read()
     city_borders = GeoJson(file,
                           name=city.location,
                           show=True,
                           style_function=lambda x:style_function,
                           zoom_on_click=True)
-    print(city_borders)
     mapObj = plot(df, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
         col1,col2,col3=st.columns(3)
-        col2.header(f'Livability score in: {city.location.capitalize()}')
+        col2.header(f'Livability score in: {city.location}')
         stf.folium_static(mapObj)

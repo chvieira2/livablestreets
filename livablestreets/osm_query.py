@@ -29,10 +29,6 @@ def get_id_deambiguate(location):
     print(area_osm_id)
     return area_osm_id
 
-
-
-
-
 def param_nodes(keys):
     '''converts the dict into a string, returns a str'''
     osm_keys = ''
@@ -60,7 +56,7 @@ def param_areas(keys):
 
 def query_params_osm(location, keys, features, limit=''):
 
-    location_area = f'area[name={location}]->.city'
+    location_area = f'area[name="{location}"]->.city'
     # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
     # location_area = f'area({get_id_deambiguate(location)})->.city'
 
@@ -93,7 +89,6 @@ def query_params_osm(location, keys, features, limit=''):
 
 
 if __name__ == "__main__":
-
-    print(query_params_osm(location = 'Buenos_Aires',
+    print(query_params_osm(location = "Marica",
                      keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']},
                      features = 'nodes'))

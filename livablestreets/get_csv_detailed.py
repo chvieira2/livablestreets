@@ -51,7 +51,7 @@ def get_csv(location, location_name, query_df):
                         success = True
                     except Exception as e:
                         wait = retries * 30
-                        print ('''Could not connect to the Overpass API! Check the API status here: http://overpass-api.de/api/status\n
+                        print ('''Overpass API is busy! Check the API status here: http://overpass-api.de/api/status\n
                                Waiting %s secs and re-trying...''' % wait)
                         sys.stdout.flush()
                         time.sleep(wait)
@@ -68,12 +68,16 @@ def get_csv(location, location_name, query_df):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {category}_{filter_name}.csv ----------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
                     # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
 
                     # time.sleep(30)
+                else:
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {category}_{filter_name}.csv ----------------- ')
+                    empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
+                    empty_df.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
 
             if geomtype == 'Node':
@@ -87,8 +91,8 @@ def get_csv(location, location_name, query_df):
                         new_querie = query_params_osm(location = location, keys = string, features = 'nodes')
                         success = True
                     except Exception as e:
-                        wait = retries * 30
-                        print ('''Could not connect to the Overpass API! Check the API status here: http://overpass-api.de/api/status\n
+                        wait = retries * 5
+                        print ('''Overpass API is busy! Check the API status here: http://overpass-api.de/api/status\n
                                Waiting %s secs and re-trying...''' % wait)
                         sys.stdout.flush()
                         time.sleep(wait)
@@ -101,12 +105,16 @@ def get_csv(location, location_name, query_df):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n --------------- ʕᵔᴥᵔʔ saving csv ---------------------- ')
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {category}_{filter_name}.csv ----------------- ')
                     df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
                     # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
 
                     # time.sleep(5)
+                else:
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {category}_{filter_name}.csv ----------------- ')
+                    empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
+                    empty_df.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
 
     print(f'''Done saving features csv file ⊂(◉‿◉)つ sorry for the wait'\n------------------------------------------------------------/''')
 
@@ -117,5 +125,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    query_df = master_query_negative(location_name='rio_de_janeiro')
-    get_csv(location='riodejaneiro', location_name='rio_de_janeiro', query_df=query_df)
+    query_df = master_query_negative(location_name='nova_iguacu')
+    get_csv(location='Nova Iguaçu', location_name='nova_iguacu', query_df=query_df)

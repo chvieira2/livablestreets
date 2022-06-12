@@ -1,3 +1,4 @@
+from difflib import SequenceMatcher
 from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
@@ -15,16 +16,61 @@ class LivabilityMap(object):
     def __init__(self, location, stepsize = 100, weights = [1,1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
+
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
         self.query_df = None
-        self.location = location.capitalize()
-        self.location_name = location.replace(' ', '_').replace('õ','o').replace('ã','a')\
-            .replace('ä','ae').replace('ö','oe').replace('ü','ue').replace('ß','ss')
+        self.location_name = location.lower().replace(' ', '_')\
+            .replace('ã','a').replace('õ','o')\
+            .replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u')\
+            .replace('ç','c')\
+            .replace('à','a').replace('è','e').replace('ì','i').replace('ò','o').replace('ù','u')\
+            .replace('â','a').replace('ê','e').replace('î','i').replace('ô','o').replace('û','u')\
+            .replace('ä','ae').replace('ë','e').replace('ï','i').replace('ö','oe').replace('ü','ue')\
+            .replace('ß','ss').replace('ñ','n')\
+            .replace('ī','i').replace('å','a').replace('æ','ae').replace('ø','o').replace('ÿ','y')\
+            .replace('š','s').replace('ý','y')\
+            .replace('ş','s').replace('ğ','g')
         self.stepsize = stepsize
         self.weights = weights
         self.sigmas = None
+
+        ## Prepare location name used in query search. It has to be in local language and correctly capitalized. So it should be Rio de Janeiro, instead of Rio de janeiro, for example.
+
+        # Manually correct cities with minor spelling mistakes, like missing accentuation
+        if SequenceMatcher(None, location, "Rio de Janeiro").ratio() >= 0.6:
+            self.location = "Rio de Janeiro"
+        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
+            self.location = "São Paulo"
+        elif SequenceMatcher(None, location, "Maricá").ratio() >= 0.6:
+            self.location = "Maricá"
+        elif SequenceMatcher(None, location, "Nova Iguaçu").ratio() >= 0.6:
+            self.location = "Nova Iguaçu"
+        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
+            self.location = "São Paulo"
+        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
+            self.location = "São Paulo"
+        # I don't know why, but Rīga won't work even with correct name spelling
+        elif SequenceMatcher(None, location, "Rīga").ratio() >= 0.6:
+            self.location = "Rīga"
+
+        # Automatically capitalize cities with 3 strings in name where the second string is not capitalized, like Rio de Janeiro
+        elif len(location.split(' ')) == 3:
+            location = location.split(' ')
+            location[0], location[2] = location[0].capitalize(), location[2].capitalize()
+            self.location = ' '.join(location)
+
+        # Automatically capitalize city names
+        elif len(location.split(' ')) != 3:
+            location = location.split(' ')
+            location = [tag.capitalize() for tag in location]
+            self.location = ' '.join(location)
+
+        else:
+            self.location = location.capitalize()
+
+
 
         # Create folder for location if it doesn't exist
         create_dir(path = f'{ROOT_DIR}/livablestreets/data/{self.location_name}')
@@ -121,32 +167,15 @@ class LivabilityMap(object):
         return self.df_grid_Livability
 
     def update_livability(self, imputed_weights):
-        """ Calculate the livability score given the weights"""
+        """ Update the livability score given the weights"""
 
         # Get weights
-        if imputed_weights is None:
-            if self.weights is None:
-                self.weights_input()
-        else:
-            self.weights = imputed_weights
+        self.weights = imputed_weights
 
         ## Calculate livability
-        if self.df_grid_Livability is None:
-            try :
-                self.df_grid_Livability = get_file(f'Livability_{self.location_name}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location_name}/WorkingTables', gcp_file_path = f'data/{self.location_name}/WorkingTables', save_local=True)
+        self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
 
-            except FileNotFoundError:
-                self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights,
-                                    stepsize = self.stepsize, location_name = self.location_name)
-        else:
-            print('livability_score has already been called before')
-
-        if imputed_weights is not None:
-            self.df_grid_Livability = livability_score(self.df_grid_Livability,
-                                                        weights = self.weights,
-                            stepsize = self.stepsize, location_name = self.location_name,
-                            save_local=True, save_gcp=False)
-            print(f'Livability has been updated with weights {self.weights}')
+        print(f'Livability has been updated with weights {self.weights}')
 
         return self.df_grid_Livability
 
@@ -155,28 +184,39 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'lisboa')
-    city.calc_livability()
-    print(city.df_grid_Livability.info())
+    # city = LivabilityMap(location = 'Maricá')
+    # city.calc_livability()
+    # print(city.df_grid_Livability.info())
 
 
     cities = [
-            'berlin',
-            'dresden',
-            'montpellier',
-            'paris',
-            'utrecht',
-            'budapest',
-            'erfurt',
-            'kiel',
-            'milano',
-            'strasbourg',
-            'lisboa',
-            'cologne',
-            'São Paulo']
+            # 'berlin',
+            # 'dresden',
+            # 'montpellier',
+            # 'paris',
+            # 'utrecht',
+            # 'budapest',
+            # 'erfurt',
+            # 'kiel',
+            # 'milano',
+            # 'strasbourg',
+            # 'lisboa',
+            # 'São Paulo',
+
+            # 'Rio de Janeiro',
+            # 'Porto Alegre',
+            # 'Maricá',
+
+            # 'Nova Iguaçu',
+            # 'Miguel Pereira'
+            # 'Fortaleza',
+
+            'Manaus',
+            'Recife'
+            ]
 
 
-    # for city in cities:
-    #     map_city = LivabilityMap(location = city)
-    #     map_city.calc_livability()
-    #     print(map_city.df_grid_Livability.info())
+    for city in cities:
+        map_city = LivabilityMap(location = city)
+        map_city.calc_livability()
+        print(map_city.df_grid_Livability.info())
