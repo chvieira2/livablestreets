@@ -14,13 +14,14 @@ wheel>=0.29
 # data science
 numpy
 pandas
-scikit-learn  # Only use .preprocessing MinMaxScaler()
+scikit-learn  # Only used for .preprocessing MinMaxScaler()
 geopandas
 shapely
-geopy # Only use .geocoders
+geopy # Only used for .geocoders
 overpy
 geojson
 esy.osmfilter
+rtree
 
 # tests/linter
 black
@@ -44,3 +45,4 @@ six>=1.14
 typing_extensions
 matplotlib
 scikit-image
+difflib
