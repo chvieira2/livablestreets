@@ -34,6 +34,7 @@ def get_id_deambiguate(location):
     area_osm_id = int(city.raw.get("osm_id")) #for city
     return area_osm_id
 
+@simple_time_tracker
 def get_city_geojson(area_osm_id):
 
     #overpass query with overpy
@@ -73,8 +74,7 @@ def save_geojson(location, location_name):
     with open(f'{ROOT_DIR}/livablestreets/data/{location_name}/{location_name}_boundaries.geojson', 'w') as f:
         dump(mapping(city_shape), f)
 
-'''----------------------------------------------------'''
-
+@simple_time_tracker
 def get_shape_of_location(location, location_name):
     """ Receives a location and returns the shape, if that location is in the data base (raw_data)"""
     try:
@@ -90,6 +90,7 @@ def get_shape_of_location(location, location_name):
     print(f'Obtained shape file for {location_name}')
     return gdf
 
+@simple_time_tracker
 def calculate_features_from_centroid(df, location, location_name, location_polygon = None):
     """ Iterates through all rows of grid squares and measures the distance (in km) to the location centroid (geographic center), angle (in degrees) and if point belongs to polygon shape """
 
@@ -153,19 +154,20 @@ def create_geofence(location, location_name, stepsize,
                     save_local=True, save_gcp=False):
     # Obtain location max bounds
     if north_lat is None:
-        east_lng, north_lat, west_lng, south_lat = get_shape_of_location(location, location_name=location_name)['geometry'].total_bounds
+        east_lng, south_lat, west_lng, north_lat = get_shape_of_location(location, location_name=location_name)['geometry'].total_bounds
 
     print(f'Bounds coordinates are north_lat:{north_lat}, south_lat:{south_lat}, east_lng:{east_lng}, west_lng:{west_lng}')
 
     # Adjust setpsize
     if stepsize > 10: # This probably means that the step size is in meters and should be converted to degrees
-        stepsize_x = m_to_coord(stepsize, latitude=north_lat, direction='x')
+        stepsize_x = m_to_coord(stepsize, latitude=np.mean([north_lat,south_lat]), direction='x')
         stepsize_y = m_to_coord(stepsize, direction='y')
         print(f'Stepsize of {stepsize}m converted to step sizes of lat={stepsize_y} and lng={stepsize_x} degrees')
     else:
         stepsize_x = stepsize
         stepsize_y = stepsize
 
+    ## Build the grid table
     # Obtain start and end of each grid individually
     lat_start = []
     lat_end = []
@@ -174,7 +176,7 @@ def create_geofence(location, location_name, stepsize,
     lat_center = []
     lng_center = []
 
-    for y in np.arange(north_lat, south_lat-stepsize_y, stepsize_y)[::-1]:
+    for y in np.arange(south_lat, north_lat-stepsize_y, stepsize_y)[::-1]:
         for x in np.arange(east_lng, west_lng-stepsize_x, stepsize_x):
             lat_start.append(y)
             lat_end.append(y+stepsize_y)
@@ -207,4 +209,4 @@ def create_geofence(location, location_name, stepsize,
 
 
 if __name__ == '__main__':
-    print(create_geofence(location = 'berlin', stepsize = 3000))
+    print(create_geofence(location_name = 'milano', location='Milano', stepsize = 1000))

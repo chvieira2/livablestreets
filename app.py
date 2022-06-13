@@ -1,3 +1,4 @@
+from operator import index
 import streamlit as st
 import folium
 from folium import GeoJson
@@ -8,6 +9,9 @@ import pandas as pd
 from config.config import ROOT_DIR
 from livablestreets.display_map import plot
 from livablestreets.generator import LivabilityMap
+from livablestreets.params import preloaded_cities
+
+
 #-----------------------page configuration-------------------------
 st.set_page_config(
     page_title="Livable Streets",
@@ -94,13 +98,19 @@ weight_dict={"Don't care":0,
              'Average':0.5,
              'Quite important':0.75,
              'Very important':1}
+
 with st.sidebar:
     form = st.form("calc_weights")
-    form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
-    form.select_slider(label='Activity options', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
-    form.select_slider(label='Comfort', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
-    form.select_slider(label='Mobility around the city', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
-    form.select_slider(label='Social aspects', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
+
+    # City selection
+    form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=0)
+    # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
+
+    # Weights selection
+    form.select_slider(label='Activities and services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
+    form.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
+    form.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
+    form.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
 
 
     #Form submit button to generate the inputs from the user
@@ -122,6 +132,7 @@ if submitted:
     df = city.df_grid_Livability
     #city center position lat,lon
     city_coords = [np.mean(df['lat_center']),np.mean(df['lng_center'])]
+    print(f"""============ {city.location} coordinates: {city_coords} =============""")
 
     #for filling the polygon
     style_function = {'fillColor': 'transparent',

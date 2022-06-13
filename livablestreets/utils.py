@@ -106,6 +106,7 @@ def m_to_coord(m, latitude=52.52, direction='east'):
 
     # Coordinate offsets in radians
     if direction in ['x', 'east', 'west', 'e', 'w']:
+        latitude = math.pi*latitude/180 # Convert latitude to raians
         return abs(m/(111_111*math.cos(latitude)))
     elif direction in ['y', 'north', 'south', 'n', 's']:
         return abs(m/111_111)
@@ -150,4 +151,5 @@ def simple_time_tracker(method):
     return timed
 
 if __name__ == '__main__':
-    pd.read_csv('/home/carlo/code/chvieira2/livablestreets/livablestreets/data/berlin/WorkingTables/Livability_berlin_grid_1000m.csv').info()
+    print(m_to_coord(1000, latitude=np.mean([45.5358482,45.3867381]), direction='x'))
+    print([math.pi*(math.cos(x)/180) for x in np.arange(45,55,1)])

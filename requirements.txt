@@ -45,4 +45,4 @@ six>=1.14
 typing_extensions
 matplotlib
 scikit-image
-difflib
+# difflib

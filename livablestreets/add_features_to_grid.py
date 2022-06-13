@@ -67,6 +67,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
+
     # Get list of features file
     directory = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
 
@@ -126,7 +127,8 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(location = 'berlin', stepsize = 3000)
+    df_grid = integrate_all_features_counts(location_name = 'berlin', stepsize = 1000,
+                                            sigmas=[0.1, 0.25, 0.025, 0.1, 0.15, 0.25, 0.2, 0.5, 0.15, 0.25, 0.2, 0.05, 0.25, 0.1, 0.05, 0.05, 0.1, 0.25, 0.4, 0.15, 0.25, 0.1, 0.1, 0.15, 0.25, 0.125, 0.05, 0.025, 0.15, 0.1, 0.1, 0.1])
     print(df_grid.info())
     # df_grid = integrate_all_features_counts(stepsize = 1000)
     # df_grid = integrate_all_features_counts(stepsize = 100)
