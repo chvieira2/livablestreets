@@ -37,6 +37,7 @@ def FeatCount_blurrying(df, slice = None, sigmas_list = None):
 
     # Loop over features bluryying one by one and adding back to the df
     for index in range(len(feature_names)):
+
         # Creates a 1D matrix from the list of values in that column
         matrix_to_blurry = np.array(df[feature_names[index]])
         # Changes the matrix to 2D using the dimensions given by lat and lng start limits

@@ -1,8 +1,9 @@
-from difflib import SequenceMatcher
+# from difflib import SequenceMatcher
 from livablestreets.create_grid import create_geofence, get_shape_of_location
 from livablestreets.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
+from livablestreets.params import preloaded_cities
 from config.config import ROOT_DIR
 
 
@@ -13,7 +14,7 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 100, weights = [1,1,1,1,1]):
+    def __init__(self, location, stepsize = 1000, weights = [1,1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
 
@@ -38,25 +39,21 @@ class LivabilityMap(object):
 
         ## Prepare location name used in query search. It has to be in local language and correctly capitalized. So it should be Rio de Janeiro, instead of Rio de janeiro, for example.
 
-        # Manually correct cities with minor spelling mistakes, like missing accentuation
-        if SequenceMatcher(None, location, "Rio de Janeiro").ratio() >= 0.6:
-            self.location = "Rio de Janeiro"
-        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
-            self.location = "São Paulo"
-        elif SequenceMatcher(None, location, "Maricá").ratio() >= 0.6:
-            self.location = "Maricá"
-        elif SequenceMatcher(None, location, "Nova Iguaçu").ratio() >= 0.6:
-            self.location = "Nova Iguaçu"
-        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
-            self.location = "São Paulo"
-        elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
-            self.location = "São Paulo"
-        # I don't know why, but Rīga won't work even with correct name spelling
-        elif SequenceMatcher(None, location, "Rīga").ratio() >= 0.6:
-            self.location = "Rīga"
+        # # Manually correct cities with minor spelling mistakes, like missing accentuation
+        # if SequenceMatcher(None, location, "Rio de Janeiro").ratio() >= 0.6:
+        #     self.location = "Rio de Janeiro"
+        # elif SequenceMatcher(None, location, "São Paulo").ratio() >= 0.6:
+        #     self.location = "São Paulo"
+        # elif SequenceMatcher(None, location, "Maricá").ratio() >= 0.6:
+        #     self.location = "Maricá"
+        # elif SequenceMatcher(None, location, "Nova Iguaçu").ratio() >= 0.6:
+        #     self.location = "Nova Iguaçu"
+        # # I don't know why, but Rīga won't work even with correct name spelling
+        # elif SequenceMatcher(None, location, "Rīga").ratio() >= 0.6:
+        #     self.location = "Rīga"
 
         # Automatically capitalize cities with 3 strings in name where the second string is not capitalized, like Rio de Janeiro
-        elif len(location.split(' ')) == 3:
+        if len(location.split(' ')) == 3:
             location = location.split(' ')
             location[0], location[2] = location[0].capitalize(), location[2].capitalize()
             self.location = ' '.join(location)
@@ -189,34 +186,37 @@ if __name__ == '__main__':
     # print(city.df_grid_Livability.info())
 
 
-    cities = [
-            # 'berlin',
-            # 'dresden',
-            # 'montpellier',
-            # 'paris',
-            # 'utrecht',
-            # 'budapest',
-            # 'erfurt',
-            # 'kiel',
-            # 'milano',
-            # 'strasbourg',
-            # 'lisboa',
-            # 'São Paulo',
+    preloaded_cities = [
+            'berlin',
+            'dresden',
+            'montpellier',
+            'münchen',
 
-            # 'Rio de Janeiro',
-            # 'Porto Alegre',
-            # 'Maricá',
+            'paris',
+            'utrecht',
+            'budapest',
+            'erfurt',
+            'kiel',
+            'milano',
 
-            # 'Nova Iguaçu',
-            # 'Miguel Pereira'
-            # 'Fortaleza',
+            'strasbourg',
+            'lisboa',
+            'São Paulo',
 
-            'Manaus',
-            'Recife'
+            'Rio de Janeiro',
+            'Porto Alegre',
+            'Maricá',
+
+            'Nova Iguaçu',
+            'Miguel Pereira',
+            'Fortaleza',
+            'Recife',
+            'napoli',
+            'dublin'
             ]
 
 
-    for city in cities:
+    for city in preloaded_cities:
         map_city = LivabilityMap(location = city)
         map_city.calc_livability()
         print(map_city.df_grid_Livability.info())

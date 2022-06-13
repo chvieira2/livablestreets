@@ -50,7 +50,7 @@ def get_csv(location, location_name, query_df):
                         new_querie = query_params_osm(location = location, keys = string, features = 'ways')
                         success = True
                     except Exception as e:
-                        wait = retries * 30
+                        wait = retries * 5
                         print ('''Overpass API is busy! Check the API status here: http://overpass-api.de/api/status\n
                                Waiting %s secs and re-trying...''' % wait)
                         sys.stdout.flush()

@@ -1,15 +1,3 @@
-### MLFLOW configuration - - - - - - - - - - - - - - - - - - -
-
-MLFLOW_URI = "https://mlflow.lewagon.ai/"
-EXPERIMENT_NAME = "[DE] [Berlin] [livablestreets] models"
-
-### DATA & MODEL LOCATIONS  - - - - - - - - - - - - - - - - - - -
-
-PATH_TO_LOCAL_MODEL = 'model.joblib'
-
-AWS_BUCKET_TEST_PATH = "s3://wagon-public-datasets/taxi-fare-test.csv"
-
-
 ### GCP configuration - - - - - - - - - - - - - - - - - - -
 
 # /!\ you should fill these according to your account
@@ -46,3 +34,29 @@ MODEL_VERSION = 'v1'
 # not required here
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+#### Preloaded cities of choice ####
+preloaded_cities = ['Berlin',
+                    'Budapest',
+                    'Dresden',
+                    'Dublin',
+                    'Erfurt',
+                    'Fortaleza',
+                    'Kiel',
+                    'Lisboa',
+                    'Maricá',
+                    'Miguel Pereira',
+                    'Milano',
+                    'Montpellier',
+                    'München',
+                    'Napoli',
+                    'Nova Iguaçu',
+                    'Paris',
+                    'Porto Alegre',
+                    'Recife',
+                    'Rio de Janeiro',
+                    'São Paulo',
+                    'Strasbourg',
+                    'Utrecht']
