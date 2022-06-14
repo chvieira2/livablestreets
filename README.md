@@ -12,7 +12,7 @@ Moving to a new city can be tough. How do you decide which neighborhood to live?
 ### What is livability?
 In Urbanism, livability is a measurement of life quality and how good it feels to live in a place.
 
-In livablestreets, we assess the livability scores at street levels of cities all over the world by aggregating information on four main categories of living standards: access to Activities/Services, Comfort, Mobility, and Social Life.
+In livablestreets, we assess the livability scores at street level in cities all over the world by aggregating information on four main categories of living standards: access to Activities/Services, Comfort, Mobility, and Social Life.
 
 ### Behind the curtains
 1. Livablestreets is a Python application doing the hard work for you. Once the user inputs the name of the city of interest (and clicks on 'Calculate Livability), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
