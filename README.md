@@ -15,7 +15,7 @@ In Urbanism, livability is a measurement of life quality and how good it feels t
 In livablestreets, we assess the livability scores at street level in cities all over the world by aggregating information on four main categories of living standards: access to Activities/Services, Comfort, Mobility, and Social Life.
 
 ### Behind the curtains
-1. Livablestreets is a Python application doing the hard work for you. Once the user inputs the name of the city of interest (and clicks on 'Calculate Livability), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
+1. Livablestreets is a Python application doing the hard work for you. Once the user inputs the name of the city of interest (and clicks on "Calculate Livability"), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
 2. Features are first groupped in four pillars of living standards (Activities/Services, Comfort, Mobility, and Social Life). Next, we use the weights defined by the user for each pillar to calculate livability scores according to the user own needs.
 3. Finally, livability scores are displayed on the map of the city of interest as a heatmap (warmer colors indicate higher livability score).
 
