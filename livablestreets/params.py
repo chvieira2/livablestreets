@@ -38,7 +38,7 @@ MODEL_VERSION = 'v1'
 
 
 #### Preloaded cities of choice ####
-preloaded_cities = ['Berlin',
+preloaded_cities = sorted(['Berlin',
                     'Budapest',
                     'Dresden',
                     'Dublin',
@@ -46,8 +46,9 @@ preloaded_cities = ['Berlin',
                     'Fortaleza',
                     'Kiel',
                     'Lisboa',
+                    # 'London',
                     'Maricá',
-                    'Miguel Pereira',
+                    # 'Miguel Pereira',
                     'Milano',
                     'Montpellier',
                     'München',
@@ -57,6 +58,6 @@ preloaded_cities = ['Berlin',
                     'Porto Alegre',
                     'Recife',
                     'Rio de Janeiro',
-                    'São Paulo',
+                    # 'São Paulo',
                     'Strasbourg',
-                    'Utrecht']
+                    'Utrecht'])
