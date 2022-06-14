@@ -10,10 +10,12 @@ Not into reading? Watch our project on YouTube [here](www.youtube.com).
 Moving to a new city can be tough. How do you decide which neighborhood to live? Livablestreets is a web tool for exploring city livability at street level, and around the world. 
 
 ### What is livability?
-In Urbanism, livability is a measurement of life quality and how good it feels to live in a place. In livablestreets, we assess the livability scores at street levels of cities all over the world by aggregating information on four main categories of living standards: access to Activities/Services, Comfort, Mobility, and Social Life.
+In Urbanism, livability is a measurement of life quality and how good it feels to live in a place.
 
-### How does it work?
-1. Behind the curtains there is a Python application doing the hard work for you. Once the user inputs the name of the city of interest (and clicks on 'Calculate Livability), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
+In livablestreets, we assess the livability scores at street levels of cities all over the world by aggregating information on four main categories of living standards: access to Activities/Services, Comfort, Mobility, and Social Life.
+
+### Behind the curtains
+1. Livablestreets is a Python application doing the hard work for you. Once the user inputs the name of the city of interest (and clicks on 'Calculate Livability), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
 2. Features are first groupped in four pillars of living standards (Activities/Services, Comfort, Mobility, and Social Life). Next, we use the weights defined by the user for each pillar to calculate livability scores according to the user own needs.
 3. Finally, livability scores are displayed on the map of the city of interest as a heatmap (warmer colors indicate higher livability score).
 
@@ -22,6 +24,7 @@ The app works for any city, however the whole process can take several hours. Th
 
 ### Can I add more cities?
 Yes. However, we use a free service with limited capacity to host our application (Heroku). The easiest ways to add a city are: 1) to contact us; or 2) to run the app locally.
+
 If you run livablestreets locally, you are now free to add all cities of your interest. For that you should:
 1. Open to livablestreets/params.py, and include it in the list of preloaded cities ("preloaded_cities" variable). City name must be spelled in the local language (several language accent markers are supported). Save the file.
 2. Run livablestreets/generator.py file and wait. The calculation may take several hours for larger cities. We recommend you to do it overnight.
