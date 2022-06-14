@@ -26,10 +26,13 @@ In livablestreets, we assess the livability scores at street level in cities all
 5. To calculate livability scores according to the user own needs, we apply the weights for each pillar of living standards.
 6. Finally, livability scores are displayed on the map of the city of interest as a heatmap, where warmer colors indicate higher livability score.
 
-## Why can I only select a couple of cities?
+## Running it locally
+To run the app locally, simply download and install it. If you are on a linux and use pip, simply run "pip install -e ." (without the quote signs, and don't ignore the dot at the end) from the app folder in your terminal. Start it on streamlit by running "streamlit run app.py", and open the indicated Network URL.
+
+## Why can I only select from handful of cities?
 The app works for any city, however the whole process can take several hours. Therefore, we pre-calculated livability scores for several cities and uploaded it for you. Feel free to change the weights according to your own needs.
 
-Want more? Don't panic. You can still add more cities!
+Want more? Don't panic. You can add more cities!
 
 ## Can I add more cities?
 Yes. However, we use a free service with limited capacity to host our application (Heroku). The easiest ways to add a city are: 1) to contact us; or 2) to run the app locally.
@@ -38,6 +41,3 @@ If you run livablestreets locally, you are now free to add all cities of your in
 1. Open to livablestreets/params.py, and include it in the list of preloaded cities ("preloaded_cities" variable). City name must be spelled in the local language (several language accent markers are supported). Save the file.
 2. Run livablestreets/generator.py file and wait. The calculation may take several hours for larger cities. We recommend you to do it overnight.
 3. Once done, reload the app and your cities will be included as a choice in the drop down menu.
-
-## Running it locally
-To run the app locally, simply download and install it. If you are on a linux and use pip, simply run "pip install -e ." (without the quote signs, and don't ignore the dot at the end) from the app folder in your terminal. Start it on streamlit by running "streamlit run app.py", and open the indicated Network URL.
