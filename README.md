@@ -24,7 +24,7 @@ We believe livability is very individual, as each person has different needs. Be
 ## Behind the curtains
 1. Livablestreets is a Python application doing the hard work for you. It uses [Streamlit](https://streamlit.io/) for visualization and is hosted on [Heroku](https://www.heroku.com).
 2. Once the user inputs the name of the city of interest (and clicks on "Calculate Livability"), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
-3. The city map is virtually fragmented into squared grids. The grid dimensions define the spacial resolution of livability score and is set to 100m.
+3. The city map is virtually fragmented into squared grids. The grid dimensions define the spacial resolution of livability score and is set to 200m.
 4. Features are then groupped in four categories of living standards (Activities/Services, Comfort, Mobility, and Social Life).
 5. To calculate livability scores according to the user own needs, we apply the weights for each category of living standards.
 6. Finally, livability scores are displayed on the map of the city of interest as a heatmap, where warmer colors indicate higher livability score.
