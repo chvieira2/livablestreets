@@ -27,7 +27,7 @@ In livablestreets, we assess the livability scores at street level in cities all
 6. Finally, livability scores are displayed on the map of the city of interest as a heatmap, where warmer colors indicate higher livability score.
 
 ## Why can I only select a couple of cities?
-The app works for any city, however the whole process can take several hours. Therefore, we pre-calculated livability scores for several cities. Feel free to change the weights according to your own needs.
+The app works for any city, however the whole process can take several hours. Therefore, we pre-calculated livability scores for several cities and uploaded for. Feel free to change the weights according to your own needs.
 
 ## Can I add more cities?
 Yes. However, we use a free service with limited capacity to host our application (Heroku). The easiest ways to add a city are: 1) to contact us; or 2) to run the app locally.
