@@ -6,7 +6,7 @@ Add here [Livable Streets logo](https://livablestreets.herokuapp.com/)
 Not into reading? Watch our project on YouTube [here](www.youtube.com).
 
 
-### Find the Neighborhood You Love
+# Find the Neighborhood You Love
 Moving to a new city can be tough. How do you decide which neighborhood to live? Livablestreets is a web tool for exploring city livability at street level, and around the world.
 
 Besides helping you and I finding our next homes, we envision livablestreets as a virtual laboratory for Urbanists. In the future, users will be able to add and remove features (roads, buildings, parks, businesses, etc) to evaluate the impact on livability around cities. Interested? Get in contact!
