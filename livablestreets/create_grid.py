@@ -27,7 +27,6 @@ def get_id_deambiguate(location):
             city = r
             break
 
-
     # Calculating area id
     # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
     # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
