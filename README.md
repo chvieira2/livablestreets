@@ -1,4 +1,4 @@
-Add here [Livable Streets logo](https://livablestreets.herokuapp.com/)
+[[Livable Streets logo](https://github.com/chvieira2/livablestreets/blob/master/livablestreets_logo.png)](https://livablestreets.herokuapp.com/)
 
 [Livablestreets](https://livablestreets.herokuapp.com/) is co-created by [Carlos H. Vieira e Vieira](https://github.com/chvieira2), [Laia Grobe](https://github.com/Laiagdla), [Ieva Bidermane](https://github.com/ievabi) and [Nicolas Quiroga](https://github.com/nicoquiroga941) as conclusion project for the data science bootcamp at Le Wagon (batch 871) on June 2022.
 
