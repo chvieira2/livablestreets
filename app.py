@@ -93,11 +93,11 @@ with placeholder_map.container():
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care":0,
-             "Somewhat important":0.25,
-             'Average':0.5,
-             'Quite important':0.75,
-             'Very important':1}
+weight_dict={"Don't care much":0.25,
+             "Somewhat important":0.5,
+             'Average':1,
+             'Quite important':2,
+             'Very important':4}
 
 with st.sidebar:
     form = st.form("calc_weights")

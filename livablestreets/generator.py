@@ -14,7 +14,7 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 100, weights = [1,1,1,1,1]):
+    def __init__(self, location, stepsize = 200, weights = [1,1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
 
@@ -186,38 +186,40 @@ if __name__ == '__main__':
     # print(city.df_grid_Livability.info())
 
 
-    # preloaded_cities = [
-    #         'berlin',
-    #         'dresden',
+    preloaded_cities = [
+            # 'berlin',
+            # 'Buenos Aires',
+            # 'Santiago',
+            # 'dresden',
+            # 'montpellier',
+            # 'münchen',
 
-    #         'montpellier',
-    #         'münchen',
+            # 'paris',
+            # 'utrecht',
+            # 'budapest',
+            # 'strasbourg',
+            # 'lisboa',
+            # 'São Paulo',
 
-    #         'paris',
-    #         'utrecht',
-    #         'budapest',
+            # 'Rio de Janeiro',
+            # 'Porto Alegre',
+            # 'London',
+            # 'erfurt',
+            # 'kiel',
+            # 'milano',
 
-    #         'erfurt',
-    #         'kiel',
-    #         'milano',
+            # 'Nova Iguaçu',
+            # 'Fortaleza',
+            # 'Recife',
+            # 'napoli',
+            # 'dublin',
 
-    #         'strasbourg',
-    #         'lisboa',
-    #        # 'São Paulo',
-
-    #         'Rio de Janeiro',
-    #         'Porto Alegre',
-
-    #         'Maricá',
-            # #'London',
-
-    #         'Nova Iguaçu',
-    #         'Fortaleza',
-
-    #         'Recife',
-    #         'napoli',
-    #         'dublin'
-    #         ]
+            # 'San Jose',
+            # 'Palo Alto',
+            'Roma',
+            # 'New York',
+            # 'Vancouver'
+            ]
 
 
     for city in preloaded_cities:
