@@ -186,40 +186,40 @@ if __name__ == '__main__':
     # print(city.df_grid_Livability.info())
 
 
-    preloaded_cities = [
-            # 'berlin',
-            # 'Buenos Aires',
-            # 'Santiago',
-            # 'dresden',
-            # 'montpellier',
-            # 'münchen',
+    # preloaded_cities = [
+    #         'berlin',
+    #         'Buenos Aires',
+    #         'Santiago',
+    #         'dresden',
+    #         'montpellier',
+    #         'münchen',
 
-            # 'paris',
-            # 'utrecht',
-            # 'budapest',
-            # 'strasbourg',
-            # 'lisboa',
-            # 'São Paulo',
+    #         'paris',
+    #         'utrecht',
+    #         'budapest',
+    #         'strasbourg',
+    #         'lisboa',
+    #         'São Paulo',
 
-            # 'Rio de Janeiro',
-            # 'Porto Alegre',
-            # 'London',
-            # 'erfurt',
-            # 'kiel',
-            # 'milano',
+    #         'Rio de Janeiro',
+    #         'Porto Alegre',
+    #         # 'London',
+    #         'erfurt',
+    #         'kiel',
+    #         'milano',
 
-            # 'Nova Iguaçu',
-            # 'Fortaleza',
-            # 'Recife',
-            # 'napoli',
-            # 'dublin',
+    #         'Nova Iguaçu',
+    #         'Fortaleza',
+    #         'Recife',
+    #         'napoli',
+    #         'dublin',
 
-            # 'San Jose',
-            # 'Palo Alto',
-            'Roma',
-            # 'New York',
-            # 'Vancouver'
-            ]
+    #         'San Jose',
+    #         'Palo Alto',
+    #         'Roma',
+    #         'New York',
+    #         'Vancouver'
+    #         ]
 
 
     for city in preloaded_cities:
