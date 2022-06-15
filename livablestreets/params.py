@@ -38,29 +38,37 @@ MODEL_VERSION = 'v1'
 
 
 #### Preloaded cities of choice ####
-preloaded_cities = sorted(['Berlin',
-                    'Budapest',
-                    'Dresden',
-                    'Dublin',
-                    'Erfurt',
-                    'Fortaleza',
-                    'Kiel',
-                    'Lisboa',
-                    'London',
-                    'Milano',
-                    'Montpellier',
-                    'München',
-                    'Napoli',
-                    'Nova Iguaçu',
-                    'Paris',
-                    'Porto Alegre',
-                    'Recife',
-                    'Rio de Janeiro',
-                    'Roma',
-                    'São Paulo',
-                    'Strasbourg',
-                    'Utrecht',
-                    'San Jose',
-                    'Palo Alto',
-                    'New York',
-                    'Vancouver'])
+preloaded_cities = sorted([
+            'berlin',
+            'Buenos Aires',
+            'Santiago',
+            'dresden',
+            'montpellier',
+            'münchen',
+
+            'paris',
+            'utrecht',
+            'budapest',
+            'strasbourg',
+            'lisboa',
+            'São Paulo',
+
+            'Rio de Janeiro',
+            'Porto Alegre',
+            'London',
+            'erfurt',
+            'kiel',
+            'milano',
+
+            'Nova Iguaçu',
+            'Fortaleza',
+            'Recife',
+            'napoli',
+            'dublin',
+
+            'San Jose',
+            'Palo Alto',
+            'Roma',
+            'New York',
+            'Vancouver'
+                    ])
