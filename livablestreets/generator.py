@@ -14,7 +14,7 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 1000, weights = [1,1,1,1,1]):
+    def __init__(self, location, stepsize = 200, weights = [1,1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
 
@@ -181,7 +181,7 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'cordoba')
+    city = LivabilityMap(location = 'córdoba')
     city.calc_livability()
     print(city.df_grid_Livability.info())
 
