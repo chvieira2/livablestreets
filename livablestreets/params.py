@@ -70,5 +70,6 @@ preloaded_cities = sorted([
             'Palo Alto',
             'Roma',
             'New York',
-            'Vancouver'
+            'Vancouver',
+            'Cordoba'
                     ])
