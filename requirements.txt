@@ -46,3 +46,6 @@ typing_extensions
 matplotlib
 scikit-image
 # difflib
+
+## Scrapping
+scrapy
