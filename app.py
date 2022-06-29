@@ -19,7 +19,7 @@ import pandas as pd
 from config.config import ROOT_DIR
 from livablestreets.display_map import plot
 from livablestreets.generator import LivabilityMap
-from livablestreets.params import preloaded_cities
+from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.crawl_wggesucht import CrawlWgGesucht
 
 
