@@ -9,21 +9,6 @@ import os
 import os
 from config.config import ROOT_DIR
 
-dict_city_number = {
-            'Berlin': '8',
-            'Muenchen': '90',
-            'Stuttgart': '124',
-            'Koeln': '73',
-            'Hamburg': '55',
-            'Duesseldorf': '30',
-            'Bremen':'17',
-            'Leipzig':'77',
-            'Kiel':'71',
-            'Heidelberg':'59',
-            'Karlsruhe':'68',
-            'Hannover':'57'
-        }
-
 
 
 def create_dir(path):
