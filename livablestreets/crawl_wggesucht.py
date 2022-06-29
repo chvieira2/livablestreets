@@ -135,13 +135,13 @@ class CrawlWgGesucht(Crawler):
             soup = self.get_soup_from_url(url)
             new_findings = self.extract_data(soup)
 
-            # Try again with urllib library
+            # # Try again with urllib library
+            # if len(new_findings) == 0:
+            #     soup = self.get_soup_from_url_urllib(url)
+            #     new_findings = self.extract_data(soup)
             if len(new_findings) == 0:
-                soup = self.get_soup_from_url_urllib(url)
-                new_findings = self.extract_data(soup)
-                if len(new_findings) == 0:
-                    print('====== Stopped retrieving pages. Probably stuck at Recaptcha ======')
-                    break
+                print('====== Stopped retrieving pages. Probably stuck at Recaptcha ======')
+                break
 
             self.existing_findings = self.existing_findings + (new_findings)
 
