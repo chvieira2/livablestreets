@@ -17,11 +17,15 @@ pandas
 scikit-learn  # Only used for .preprocessing MinMaxScaler()
 geopandas
 shapely
-geopy # Only used for .geocoders
+geopy
 overpy
 geojson
 esy.osmfilter
 rtree
+
+# Data Sourcing
+requests
+bs4
 
 # tests/linter
 black
