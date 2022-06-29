@@ -9,14 +9,31 @@ import os
 import os
 from config.config import ROOT_DIR
 
+dict_city_number = {
+            'Berlin': '8',
+            'Muenchen': '90',
+            'Stuttgart': '124',
+            'Koeln': '73',
+            'Hamburg': '55',
+            'Duesseldorf': '30',
+            'Bremen':'17',
+            'Leipzig':'77',
+            'Kiel':'71',
+            'Heidelberg':'59',
+            'Karlsruhe':'68',
+            'Hannover':'57'
+        }
+
+
+
 def create_dir(path):
     # Check whether the specified path exists or not
     if os.path.exists(path):
-        print(f"The directory {path} already exists!")
+        print(f"The directory already exists")
     else:
         # Create a new directory because it does not exist
         os.makedirs(path)
-        print(f"The new directory {path} has been created!")
+        print(f"The new directory has been created!")
 
 def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
                                          'activities_health_care', 'activities_public_service',
@@ -48,7 +65,7 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
     local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
     print(local_path)
     df = pd.read_csv(local_path)
-    print(f'===> Loaded {file_name} locally from: {local_path}')
+    print(f'===> Loaded {file_name} locally')
     # except FileNotFoundError:
     #     # client = storage.Client()
     #     gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
@@ -60,12 +77,15 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
 
     return df
 
-def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
+def save_file(df, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
+    # Create directory for saving
+    create_dir(path = f'{ROOT_DIR}/{local_file_path}')
+
     # Save locally
     if save_local:
         local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
-        df_grid.to_csv(local_path, index=False)
-        print(f"===> {file_name} saved locally in {local_path}")
+        df.to_csv(local_path, index=False)
+        print(f"===> {file_name} saved locally")
 
     # Save on GCP
     # if save_gcp:

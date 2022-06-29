@@ -1,4 +1,14 @@
-from operator import index
+# -*- coding: utf-8 -*-
+
+"""Livablestreets - display life quality livability scores for cities at street level"""
+
+__author__ = "Carlos Henrique Vieira e Vieira, Laia Grobe, Nicolas Quiroga and Ieva Bidermane"
+__version__ = "1.0"
+__maintainer__ = "chvieira2"
+__email__ = "carloshvieira2@gmail.com"
+__status__ = "Production"
+
+
 import streamlit as st
 import folium
 from folium import GeoJson
@@ -10,6 +20,16 @@ from config.config import ROOT_DIR
 from livablestreets.display_map import plot
 from livablestreets.generator import LivabilityMap
 from livablestreets.params import preloaded_cities
+from livablestreets.crawl_wggesucht import CrawlWgGesucht
+
+
+def launch_search(location_name = 'berlin', page_number = 3,
+                    filters = ["wg-zimmer"], path_save = None):
+    """Starts the crawler"""
+
+    crawler = CrawlWgGesucht()
+    crawler.crawl_all_pages(location_name = location_name, page_number = page_number,
+                    filters = filters, path_save = path_save)
 
 
 #-----------------------page configuration-------------------------
