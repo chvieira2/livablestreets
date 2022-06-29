@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from livablestreets.utils import m_to_coord, haversine_vectorized, save_file, simple_time_tracker
+from livablestreets.string_utils import german_characters
 import geopandas as gdp
 from geopy.geocoders import Nominatim
 from shapely.ops import linemerge, unary_union, polygonize
@@ -19,7 +20,7 @@ def get_id_deambiguate(location):
     # Geocoding request via Nominatim
     geolocator = Nominatim(user_agent="city_compare")
     geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
-
+    print(geo_results)
     # Searching for relation in result set
     for r in geo_results:
         print(r.address, r.raw.get("osm_type"))
@@ -30,7 +31,11 @@ def get_id_deambiguate(location):
     # Calculating area id
     # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
     # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
-    area_osm_id = int(city.raw.get("osm_id")) #for city
+    try:
+        area_osm_id = int(city.raw.get("osm_id")) #for city
+    except UnboundLocalError:
+        print(f"OpenStreetMaps could not find a relation osm_type for {location}")
+        return get_id_deambiguate(german_characters(location))
     return area_osm_id
 
 @simple_time_tracker
@@ -208,4 +213,4 @@ def create_geofence(location, location_name, stepsize,
 
 
 if __name__ == '__main__':
-    print(create_geofence(location_name = 'milano', location='Milano', stepsize = 1000))
+    print(get_id_deambiguate('goettingen'))
