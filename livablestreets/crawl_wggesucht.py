@@ -8,8 +8,9 @@ import pandas as pd
 import numpy as np
 
 from livablestreets.abstract_crawler import Crawler
-from livablestreets.string_utils import remove_prefix, standardize_characters
-from livablestreets.utils import save_file, get_file, dict_city_number
+from livablestreets.string_utils import remove_prefix, standardize_characters, capitalize_city_name
+from livablestreets.utils import save_file, get_file
+from livablestreets.params import dict_city_number_wggesucht
 from livablestreets.geocoding_addresses import geocoding_df
 
 from config.config import ROOT_DIR
@@ -28,13 +29,12 @@ class CrawlWgGesucht(Crawler):
         self.existing_findings = []
 
         # The number after the name of the city is specific to the city
-        self.dict_city_number = dict_city_number
+        self.dict_city_number_wggesucht = dict_city_number_wggesucht
 
     def url_builder(self, location_name, page_number,
                     filters):
-
         # Make sure that the city name is correct
-        location_name = location_name.capitalize()
+        location_name_for_url = capitalize_city_name(standardize_characters(location_name, separator=' ')).replace(' ', '-')
 
         filter_code = []
 
@@ -50,10 +50,9 @@ class CrawlWgGesucht(Crawler):
         filter_code = '+'.join(filter_code)
         filter_code = ''.join(['.']+[filter_code]+['.1.'])
 
-
         return self.base_url +\
             "-und-".join(filters) +\
-                '-in-'+ location_name + '.' + self.dict_city_number.get(location_name) +\
+                '-in-'+ location_name_for_url + '.' + self.dict_city_number_wggesucht.get(location_name) +\
                     filter_code + str(page_number) + '.html'
 
     def get_soup_from_url(self, url, sleep_times = (1,2)):
@@ -119,7 +118,7 @@ class CrawlWgGesucht(Crawler):
         """Parse through all exposes in self.existing_findings to return a formated dataframe.
         """
         # Process city name to match url
-        location_name = location_name.capitalize()
+        location_name = capitalize_city_name(location_name)
 
         print(f'Processed location name. Searching for: {location_name}')
 
@@ -136,13 +135,13 @@ class CrawlWgGesucht(Crawler):
             soup = self.get_soup_from_url(url)
             new_findings = self.extract_data(soup)
 
-            # Try again with urllib library
+            # # Try again with urllib library
+            # if len(new_findings) == 0:
+            #     soup = self.get_soup_from_url_urllib(url)
+            #     new_findings = self.extract_data(soup)
             if len(new_findings) == 0:
-                soup = self.get_soup_from_url_urllib(url)
-                new_findings = self.extract_data(soup)
-                if len(new_findings) == 0:
-                    print('====== Stopped retrieving pages. Probably stuck at Recaptcha ======')
-                    break
+                print('====== Stopped retrieving pages. Probably stuck at Recaptcha ======')
+                break
 
             self.existing_findings = self.existing_findings + (new_findings)
 
@@ -162,7 +161,7 @@ class CrawlWgGesucht(Crawler):
         # Add new ads to older list and discard copies
         df = pd.concat([df,old_df]).drop_duplicates().reset_index(drop=True)
         print(f'''{len(df)-len(old_df)} new ads were added to the list.\n
-                    There are now {len(df)} ads for {location_name}.''')
+                    There are now {len(df)} ads in {location_name}_ads.csv.''')
 
         # Save updated list
         save_file(df = df, file_name=f'{location_name}_ads.csv',
@@ -172,10 +171,7 @@ class CrawlWgGesucht(Crawler):
                     filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
                     path_save = None):
         if path_save is None:
-            path_save = f'livablestreets/data/{location_name}/Ads'
-
-        # Lower and change German characters to international (ä=ae, ö=oe,ü=ue,ß=ss)
-        location_name = standardize_characters(location_name)
+            path_save = f'livablestreets/data/{standardize_characters(location_name)}/Ads'
 
         # Obtaining pages
         self.parse_urls(location_name = location_name, page_number = page_number,
@@ -184,92 +180,104 @@ class CrawlWgGesucht(Crawler):
         # Extracting info of interest from pages
         print(f"Crawling {len(self.existing_findings)} ads")
         entries = []
+
         for row in self.existing_findings:
-            # Ad title
-            title_row = row.find('h3', {"class": "truncate_title"})
-            title = title_row.text.strip()
-
-            # Ad url
-            ad_url = self.base_url + remove_prefix(title_row.find('a')['href'], "/")
-
-            # Ad image link
-            # image = re.match(r'background-image: url\((.*)\);', row.find('div', {"class": "card_image"}).find('a')['style'])[1]
-
-            # Room details and address
-            detail_string = row.find("div", {"class": "col-xs-11"}).text.strip().split("|")
-            details_array = list(map(lambda s: re.sub(' +', ' ',
-                                                    re.sub(r'\W', ' ', s.strip())),
-                                    detail_string))
-            rooms_tmp = re.findall(r'\d Zimmer', details_array[0])
-            rooms = rooms_tmp[0][:1] if rooms_tmp else 0
-            address = details_array[2] + ', ' + details_array[1]
-
-            # Flatmates
             try:
-                flatmates = row.find("div", {"class": "col-xs-11"}).find("span", {"class": "noprint"})['title']
-                flatmates_list = [int(n) for n in re.findall('[0-9]+', flatmates)]
-            except TypeError:
-                flatmates_list = [0,0,0,0]
+                test_text = row.find("div", {"class": "col-xs-9"})\
+            .find("span", {"class": "label_verified ml5"}).text
+                if 'Verifiziertes Unternehmen' in test_text:
+                    pass
+            except AttributeError:
 
-            # Price
-            numbers_row = row.find("div", {"class": "middle"})
-            price = numbers_row.find("div", {"class": "col-xs-3"}).text.strip()
+                # Ad title
+                title_row = row.find('h3', {"class": "truncate_title"})
+                title = title_row.text.strip()
 
-            # Size and ad dates
-            dates = re.findall(r'\d{2}.\d{2}.\d{4}',
-                            numbers_row.find("div", {"class": "text-center"}).text)
+                # Ad url
+                ad_url = self.base_url + remove_prefix(title_row.find('a')['href'], "/")
 
-            size = re.findall(r'\d{1,4}\sm²',
-                            numbers_row.find("div", {"class": "text-right"}).text)
-            if len(size) == 0:
-                size=['0']
+                # Ad image link
+                # image = re.match(r'background-image: url\((.*)\);', row.find('div', {"class": "card_image"}).find('a')['style'])[1]
 
-            if len(size) == 0:
-                size = [0]
+                # Room details and address
+                detail_string = row.find("div", {"class": "col-xs-11"}).text.strip().split("|")
+                details_array = list(map(lambda s: re.sub(' +', ' ',
+                                                        re.sub(r'\W', ' ', s.strip())),
+                                        detail_string))
+                rooms_tmp = re.findall(r'\d Zimmer', details_array[0])
+                rooms = rooms_tmp[0][:1] if rooms_tmp else 0
+                address = details_array[2] + ', ' + details_array[1]
 
-            ## Find publication date
-            # Minutes and hours are in color green (#218700), while days are in color grey (#898989)
-            try:
-                published_time = row.find("div", {"class": "col-xs-9"})\
-            .find("span", {"style": "color: #218700;"}).text
-            except:
-                published_time = row.find("div", {"class": "col-xs-9"})\
-            .find("span", {"style": "color: #898989;"}).text
+                # Flatmates
+                try:
+                    flatmates = row.find("div", {"class": "col-xs-11"}).find("span", {"class": "noprint"})['title']
+                    flatmates_list = [int(n) for n in re.findall('[0-9]+', flatmates)]
+                except TypeError:
+                    flatmates_list = [0,0,0,0]
 
-            # Format it for the date ignoring time
-            if 'Minuten' in published_time or 'Stunden' in published_time:
-                published_time = time.strftime("%d.%m.%Y", time.localtime())
-            else:
-                published_time = published_time.split(' ')[1]
+                # Price
+                numbers_row = row.find("div", {"class": "middle"})
+                price = numbers_row.find("div", {"class": "col-xs-3"}).text.strip()
 
-            # Create dataframe with info
-            details = {
-                'id': int(ad_url.split('.')[-2]),
-                # 'image': image,
-                'url': ad_url,
-                'title': title,
-                'price(euros)': price.split(' ')[0],
-                'size(sqm)': int(re.findall('[0-9]+', size[0])[0]),
-                'available rooms': rooms,
-                'WG size': flatmates_list[0],
-                'available spots': flatmates_list[0]-flatmates_list[1]-flatmates_list[2]-flatmates_list[3],
-                'male flatmates': flatmates_list[1],
-                'female flatmates': flatmates_list[2],
-                'diverse flatmates': flatmates_list[3],
-                'published on': published_time,
-                'address': address,
-                'crawler': 'WG-Gesucht'
-            }
-            if len(dates) == 2:
-                details['available from'] = dates[0]
-                details['available to'] = dates[1]
-            elif len(dates) == 1:
-                details['available from'] = dates[0]
-                details['available to'] = 'open end'
+                # Size and ad dates
+                dates = re.findall(r'\d{2}.\d{2}.\d{4}',
+                                numbers_row.find("div", {"class": "text-center"}).text)
 
-                entries.append(details)
+                size = re.findall(r'\d{1,4}\sm²',
+                                numbers_row.find("div", {"class": "text-right"}).text)
+                if len(size) == 0:
+                    size=['0']
 
-            # self.__log__.debug('extracted: %s', entries)
+                if len(size) == 0:
+                    size = [0]
+
+                ## Find publication date
+                # Minutes and hours are in color green (#218700), while days are in color grey (#898989)
+                try:
+                    published_time = row.find("div", {"class": "col-xs-9"})\
+                .find("span", {"style": "color: #218700;"}).text
+                except:
+                    published_time = row.find("div", {"class": "col-xs-9"})\
+                .find("span", {"style": "color: #898989;"}).text
+
+                # Format it for the date ignoring time
+                if 'Minut' in published_time or 'Stund' in published_time or 'Sekund' in published_time:
+                    published_time = time.strftime("%d.%m.%Y", time.localtime())
+                elif 'Tag' in published_time:
+                    day_diff = int(re.find('[0-9]+', published_time))
+                    past_day = int(time.strftime("%d", time.localtime())) - day_diff
+                    published_time = f"{str(past_day)}."+time.strftime(f"%m.%Y", time.localtime())
+                else:
+                    published_time = published_time.split(' ')[1]
+
+                # Create dataframe with info
+                details = {
+                    'id': int(ad_url.split('.')[-2]),
+                    # 'image': image,
+                    'url': ad_url,
+                    'title': title,
+                    'price(euros)': price.split(' ')[0],
+                    'size(sqm)': int(re.findall('[0-9]+', size[0])[0]),
+                    'available rooms': rooms,
+                    'WG size': flatmates_list[0],
+                    'available spots': flatmates_list[0]-flatmates_list[1]-flatmates_list[2]-flatmates_list[3],
+                    'male flatmates': flatmates_list[1],
+                    'female flatmates': flatmates_list[2],
+                    'diverse flatmates': flatmates_list[3],
+                    'published on': published_time,
+                    'address': address,
+                    'crawler': 'WG-Gesucht'
+                }
+                if len(dates) == 2:
+                    details['available from'] = dates[0]
+                    details['available to'] = dates[1]
+                elif len(dates) == 1:
+                    details['available from'] = dates[0]
+                    details['available to'] = 'open end'
+
+                    entries.append(details)
+
+                # self.__log__.debug('extracted: %s', entries)
 
         # Reset existing_findings
         self.existing_findings = []
@@ -281,15 +289,15 @@ class CrawlWgGesucht(Crawler):
             df = geocoding_df(df=df, column='address')
 
             # Save info as df in csv format
-            self.save_df(df=df, location_name=location_name)
+            self.save_df(df=df, location_name=standardize_characters(location_name))
         else:
             print('===== Stuck on Recaptch =====')
         return df
 
 if __name__ == "__main__":
     test = CrawlWgGesucht()
-    test.crawl_all_pages(location_name = 'berlin', page_number = 3,
-                    filters = ["wg-zimmer"])
-    # for city in list(dict_city_number.keys()):
-    #     test.crawl_all_pages(location_name = city, page_number = 50,
+    # test.crawl_all_pages(location_name = 'Frankfurt am Main', page_number = 1,
     #                 filters = ["wg-zimmer"])
+    for city in list(dict_city_number_wggesucht.keys()):
+        test.crawl_all_pages(location_name = city, page_number = 5,
+                    filters = ["wg-zimmer"])
