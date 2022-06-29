@@ -6,6 +6,12 @@ def remove_prefix(text, prefix):
         return text[len(prefix):]
     return text
 
+def german_characters(word):
+    return word.replace('_', ' ')\
+            .replace('ae','ä').replace('oe','ö').replace('ue','ü')\
+            .replace('ss','ß')
+
+
 def standardize_characters(word, separator = '_'):
     return word.lower().replace(' ', separator)\
             .replace('ã','a').replace('õ','o')\
