@@ -17,11 +17,15 @@ pandas
 scikit-learn  # Only used for .preprocessing MinMaxScaler()
 geopandas
 shapely
-geopy # Only used for .geocoders
+geopy
 overpy
 geojson
 esy.osmfilter
 rtree
+
+# Data Sourcing
+requests
+bs4
 
 # tests/linter
 black
@@ -46,3 +50,6 @@ typing_extensions
 matplotlib
 scikit-image
 # difflib
+
+# My own package for obtaining wg-gesucht ads
+housing_crawler
