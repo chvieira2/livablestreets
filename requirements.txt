@@ -26,6 +26,7 @@ rtree
 # Data Sourcing
 requests
 bs4
+random_user_agent
 
 # tests/linter
 black
