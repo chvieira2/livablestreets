@@ -12,12 +12,12 @@ from config.config import ROOT_DIR
 
 ## 79.36s to complete 1000m grids
 ### With sjoin
-def features_into_list_points(file_name, location, lat='lat',lng='lon'):
+def features_into_list_points(file_name, location_name, lat='lat',lng='lon'):
     """ Receives a file name, download it from GCP (or local if exists).
         Iterates through column pairs and returns the corresponding points """
     # Get the feature df, create a list of points out for each feature
 
-    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location}/Features') #, gcp_file_path = f'data/{location}/Features')
+    df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location_name}/Features') #, gcp_file_path = f'data/{location_name}/Features')
     print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
@@ -77,11 +77,11 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
                     or feature_name.startswith("social_life_" ) or feature_name.startswith("negative_") ) \
                     and feature_name.endswith(".csv")]
 
-    # Get the dict of points and in_polygons values
+    # Get the dict of points and create in_polygons keys
     dict_of_points = {}
     dict_in_polygon = {}
     for feature in feature_names:
-        dict_of_points[f"points_{feature}"] = features_into_list_points(f'{feature}.csv', location=location_name)
+        dict_of_points[f"points_{feature}"] = features_into_list_points(f'{feature}.csv', location_name=location_name)
         dict_in_polygon[f"{feature}_in_polygon"] = []
 
     # Iterate through grids and collects counts of features per grid
@@ -96,7 +96,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
                 dict_in_polygon[f'{feature}_in_polygon'].append(point_in_grid_counter(polygon, dict_of_points[f'points_{feature}']))
         else:
             for feature in feature_names:
-                dict_in_polygon[f'{feature}_in_polygon'].append(0)
+                dict_in_polygon[f'{feature}_in_polygon'].append(np.nan)
 
     for feature in feature_names:
         df_grid[feature] = dict_in_polygon[f'{feature}_in_polygon']
