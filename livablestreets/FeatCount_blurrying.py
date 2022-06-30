@@ -31,7 +31,7 @@ def FeatCount_blurrying(df, slice = None, sigmas_list = None):
     feature_names = [feature_names[index] for index in slice]
 
 
-    #set the limits of the df for getting the shape of the 2d matrix to be created
+    # set the limits of the df for getting the shape of the 2d matrix to be created
     lat_start_limits = df['lat_start'].unique()
     lng_start_limits = df['lng_end'].unique()
 
@@ -46,10 +46,10 @@ def FeatCount_blurrying(df, slice = None, sigmas_list = None):
         matrix_to_blurry = blur_matrix(matrix_to_blurry,sigmas_list[index])
         # Reshapes it back to 1D and MinMax scale blurred feature
         scaler = MinMaxScaler(feature_range=(0, 1))
-        matrix_to_blurry =scaler.fit_transform(matrix_to_blurry.reshape(len(df), 1))
+        matrix_to_blurry = scaler.fit_transform(matrix_to_blurry.reshape(len(df), 1))
 
         # Adds new values back to the original dataframe
-        df[feature_names[index]] = list(matrix_to_blurry)
+        df[feature_names[index]] = [value[0] for value in list(matrix_to_blurry)]
 
     return df
 
