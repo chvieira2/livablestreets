@@ -17,6 +17,7 @@ def fix_addresses(df, column = 'address'):
 
 def geocoding_df(df, column = 'address'):
 
+    print("Geocoding addresses")
     df = fix_addresses(df=df, column = column)
 
     locator = Nominatim(user_agent='myGeocoder')
