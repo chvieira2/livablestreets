@@ -40,11 +40,11 @@ MODEL_VERSION = 'v1'
 #### Preloaded cities of choice ####
 dict_city_number_wggesucht = {
             'Berlin': '8',
-            'Muenchen': '90',
+            'München': '90',
             'Stuttgart': '124',
-            'Koeln': '73',
+            'Köln': '73',
             'Hamburg': '55',
-            'Duesseldorf': '30',
+            'Düsseldorf': '30',
             'Bremen':'17',
             'Leipzig':'77',
             'Kiel':'71',
@@ -56,14 +56,14 @@ dict_city_number_wggesucht = {
             'Bonn':'13',
             'Darmstadt': '23',
             'Frankfurt am Main':'41',
-            'Goettingen':'49',
-            'Muenster':'91',
+            'Göttingen':'49',
+            'Münster':'91',
             'Mainz':'84',
             'Mannheim':'85',
-            'Nuernberg':'96',
+            'Nürnberg':'96',
             'Regensburg':'111',
-            'Tuebingen':'127',
-            'Wuerzburg':'141'
+            'Tübingen':'127',
+            'Würzburg':'141'
         }
 
 
@@ -76,28 +76,20 @@ preloaded_cities = sorted(set([
             'München',
 
             'Paris',
-            'Utrecht',
             'Budapest',
-            'Strasbourg',
             'Lisboa',
             'São Paulo',
 
             'Rio de Janeiro',
             'Porto Alegre',
             'London',
-            'Erfurt',
             'Kiel',
             'Milano',
 
-            'Nova Iguaçu',
-            'Fortaleza',
-            'Recife',
-            'Napoli',
             'Dublin',
 
             'San Jose',
             'Palo Alto',
             'Roma',
-            'New York',
             'Vancouver'
                     ] + list(dict_city_number_wggesucht.keys())))

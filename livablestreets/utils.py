@@ -48,7 +48,6 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
     """method to get the training data (or a portion of it) from google cloud bucket"""
     # try:
     local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
-    print(local_path)
     df = pd.read_csv(local_path)
     print(f'===> Loaded {file_name} locally')
     # except FileNotFoundError:
