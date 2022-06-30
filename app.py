@@ -123,7 +123,7 @@ with st.sidebar:
     form = st.form("calc_weights")
 
     # City selection
-    form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=0)
+    form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=preloaded_cities.index('Berlin'))
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
     # Weights selection
