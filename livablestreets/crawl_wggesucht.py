@@ -332,6 +332,18 @@ if __name__ == "__main__":
     test = CrawlWgGesucht()
     # test.crawl_all_pages(location_name = 'Frankfurt am Main', page_number = 1,
     #                 filters = ["wg-zimmer"])
-    for city in list(dict_city_number_wggesucht.keys())[0:]:
-        test.crawl_all_pages(location_name = city, page_number = 50,
-                    filters = ["wg-zimmer"])
+    today = time.strftime(f"%d.%m.%Y", time.localtime())
+    day_stop_search = '31.07.2022'
+    while today != day_stop_search:
+        today = time.strftime(f"%d.%m.%Y", time.localtime())
+
+        # Check if between 00 and 8am, and sleep in case it is
+        hour_of_search = int(time.strftime(f"%H", time.localtime()))
+        print(hour_of_search)
+        while hour_of_search >= 0 and hour_of_search <= 8:
+            print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
+            time.sleep(3600)
+
+        for city in list(dict_city_number_wggesucht.keys())[0:]:
+            test.crawl_all_pages(location_name = city, page_number = 5,
+                        filters = ["wg-zimmer"])

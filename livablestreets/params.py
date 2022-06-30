@@ -70,7 +70,7 @@ dict_city_number_wggesucht = {
 preloaded_cities = sorted(set([
             'Berlin',
             'Buenos Aires',
-            'Santiago',
+            # 'Santiago', # Santiago de Chile?
             'Dresden',
             'Montpellier',
             'München',
