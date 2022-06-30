@@ -20,7 +20,6 @@ def get_id_deambiguate(location):
     # Geocoding request via Nominatim
     geolocator = Nominatim(user_agent="city_compare")
     geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
-    print(geo_results)
     # Searching for relation in result set
     for r in geo_results:
         print(r.address, r.raw.get("osm_type"))
@@ -213,4 +212,5 @@ def create_geofence(location, location_name, stepsize,
 
 
 if __name__ == '__main__':
-    print(get_id_deambiguate('goettingen'))
+    geolocator = Nominatim(user_agent="city_compare")
+    print(geolocator.geocode('Köln', exactly_one=False, limit=3))
