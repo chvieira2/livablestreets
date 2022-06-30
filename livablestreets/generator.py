@@ -157,11 +157,11 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'Frankfurt am MAin')
-    # city.calc_livability()
-    # print(city.df_grid_Livability.info())
+    city = LivabilityMap(location = 'Bonn')
+    city.calc_livability()
+    print(city.df_grid_Livability.info())
 
-    for city in preloaded_cities:
-        map_city = LivabilityMap(location = city)
-        map_city.calc_livability()
-        print(map_city.df_grid_Livability.info())
+    # for city in preloaded_cities:
+    #     map_city = LivabilityMap(location = city)
+    #     map_city.calc_livability()
+    #     print(map_city.df_grid_Livability.info())
