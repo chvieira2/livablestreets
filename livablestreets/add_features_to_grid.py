@@ -18,7 +18,6 @@ def features_into_list_points(file_name, location_name, lat='lat',lng='lon'):
     # Get the feature df, create a list of points out for each feature
 
     df_feature = get_file(file_name, local_file_path=f'livablestreets/data/{location_name}/Features') #, gcp_file_path = f'data/{location_name}/Features')
-    print(f'loaded {file_name}')
     df_feature = df_feature[[lat,lng]].copy()
     df_feature['coords'] = list(zip(df_feature[lat],df_feature[lng]))
     df_feature['coords'] = df_feature['coords'].apply(Point)
@@ -104,11 +103,14 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
 
 
     ## Blurry count information
-    # Remove polygons to save space
+    # Remove polygon column to save space
     df_grid = df_grid.drop(columns=['polygon'])
 
     # Apply blurrying function
     df_grid = FeatCount_blurrying(df=df_grid, sigmas_list=sigmas)
+
+    # Substitute NaN for 0 values before calculating livability score to prevent NaN in heat_map display error. This must be done after blurrying otherwise the '0' value will be blurried over as well
+    df_grid = df_grid.fillna(0.0)
 
     ## Create the livability score
     # Calculate the mean per category
@@ -127,7 +129,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(location_name = 'berlin', stepsize = 1000,
+    df_grid = integrate_all_features_counts(location_name = 'aachen', stepsize = 2000,
                                             sigmas=[0.1, 0.25, 0.025, 0.1, 0.15, 0.25, 0.2, 0.5, 0.15, 0.25, 0.2, 0.05, 0.25, 0.1, 0.05, 0.05, 0.1, 0.25, 0.4, 0.15, 0.25, 0.1, 0.1, 0.15, 0.25, 0.125, 0.05, 0.025, 0.15, 0.1, 0.1, 0.1])
     print(df_grid.info())
     # df_grid = integrate_all_features_counts(stepsize = 1000)
