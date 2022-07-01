@@ -56,7 +56,7 @@ class CrawlWgGesucht(Crawler):
                 '-in-'+ location_name_for_url + '.' + self.dict_city_number_wggesucht.get(location_name) +\
                     filter_code + str(page_number) + '.html'
 
-    def get_soup_from_url(self, url, sleep_times = (1,2)):
+    def get_soup_from_url(self, url, sess, sleep_times = (1,2)):
         """
         Creates a Soup object from the HTML at the provided URL
 
@@ -74,11 +74,6 @@ class CrawlWgGesucht(Crawler):
         print('Rotating agent')
         self.rotate_user_agent()
 
-        print('Opening session')
-        sess = requests.session()
-        # First page load to set filters; response is discarded
-        print('Making first call to set filters (this is ignored)')
-        sess.get(url, headers=self.HEADERS)
         # Second page load
         print(f"Connecting to page...")
         resp = sess.get(url, headers=self.HEADERS)
@@ -118,11 +113,11 @@ class CrawlWgGesucht(Crawler):
         print(f"Extracted {len(findings_list)} entries")
         return findings_list
 
-    def request_soup(self,url):
+    def request_soup(self,url, sess):
         '''
         Extract findings with requests library
         '''
-        soup = self.get_soup_from_url(url)
+        soup = self.get_soup_from_url(url, sess=sess)
         return self.extract_data(soup)
 
     def parse_urls(self, location_name, page_number, filters, sleep_time = 1800):
@@ -140,13 +135,20 @@ class CrawlWgGesucht(Crawler):
 
         print(f'Created {len(list_urls)} urls for crawling')
 
+        print('Opening session')
+        sess = requests.session()
+        # First page load to set filters; response is discarded
+        print('Making first call to set filters (this is ignored)')
+        sess.get(list_urls[0], headers=self.HEADERS)
+
+
         # Crawling each page and adding findings to self.new_findings list
         for url in list_urls:
             if sleep_time>0:
                 # Loop until reCAPTCH is gone
                 success = False
                 while not success:
-                    new_findings = self.request_soup(url)
+                    new_findings = self.request_soup(url, sess=sess)
                     if len(new_findings) == 0:
                         print(f'Sleeping for {sleep_time} to wait for reCAPTCH to disappear....')
                         time.sleep(sleep_time)
@@ -212,13 +214,12 @@ class CrawlWgGesucht(Crawler):
         for row in self.existing_findings:
 
             ### Exclude commercial offers from companies with several rooms in same building
-            # try:
-            #     test_text = row.find("div", {"class": "col-xs-9"})\
-            # .find("span", {"class": "label_verified ml5"}).text
-            #     if 'Verifiziertes Unternehmen' in test_text:
-            #         pass
-            # except AttributeError:
-            #     continue
+            try:
+                test_text = row.find("div", {"class": "col-xs-9"})\
+            .find("span", {"class": "label_verified ml5"}).text
+                landlord_type = test_text
+            except AttributeError:
+                landlord_type = 'Private'
 
             # Ad title and url
             title_row = row.find('h3', {"class": "truncate_title"})
@@ -304,6 +305,7 @@ class CrawlWgGesucht(Crawler):
                 'id': int(ad_url.split('.')[-2]),
                 'url': str(ad_url),
                 'type_offer': str(type_offer),
+                'landlord_type': str(landlord_type),
                 'title': str(title),
                 'price_euros': int(price),
                 'size_sqm': int(size),
@@ -366,5 +368,5 @@ if __name__ == "__main__":
             time.sleep(3600)
 
         for city in list(dict_city_number_wggesucht.keys())[0:]:
-            test.crawl_all_pages(location_name = city, page_number = 8,
+            test.crawl_all_pages(location_name = city, page_number = 10,
                         filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
