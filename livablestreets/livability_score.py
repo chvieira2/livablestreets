@@ -6,7 +6,7 @@ from config.config import ROOT_DIR
 
 def livability_score(df, weights = [1,1,1,1,1],
                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
-                     stepsize = 100, location_name = 'berlin',
+                     stepsize = 200, location_name = 'berlin',
                      save_local=True, save_gcp=False):
     """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
         Category_mean values Have been already MinMax scaled
