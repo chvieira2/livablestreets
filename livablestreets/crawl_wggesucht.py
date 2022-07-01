@@ -1,6 +1,7 @@
 import re
 import time
 import requests
+import json
 # import logging
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
@@ -8,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 from livablestreets.abstract_crawler import Crawler
-from livablestreets.string_utils import remove_prefix, standardize_characters, capitalize_city_name
+from livablestreets.string_utils import remove_prefix, standardize_characters, capitalize_city_name, german_characters
 from livablestreets.utils import save_file, get_file
 from livablestreets.params import dict_city_number_wggesucht
 from livablestreets.geocoding_addresses import geocoding_df
@@ -70,10 +71,13 @@ class CrawlWgGesucht(Crawler):
         time.sleep(sleeptime)
 
         # Setup an agent
+        print('Rotating agent')
         self.rotate_user_agent()
 
+        print('Opening session')
         sess = requests.session()
         # First page load to set filters; response is discarded
+        print('Making first call to set filters (this is ignored)')
         sess.get(url, headers=self.HEADERS)
         # Second page load
         print(f"Connecting to page...")
@@ -205,20 +209,16 @@ class CrawlWgGesucht(Crawler):
             old_df=pd.DataFrame({'url':[]})
 
         entries = []
-        total_findings=len(self.existing_findings)
-        for index in range(total_findings):
-            # Print the count of the for loop
-            print(f'{index+1}/{total_findings}', end='\r')
-            row = self.existing_findings[index]
+        for row in self.existing_findings:
 
-            # Exclude commercial offers from companies with several rooms in same building
-            try:
-                test_text = row.find("div", {"class": "col-xs-9"})\
-            .find("span", {"class": "label_verified ml5"}).text
-                if 'Verifiziertes Unternehmen' in test_text:
-                    pass
-            except AttributeError:
-                continue
+            ### Exclude commercial offers from companies with several rooms in same building
+            # try:
+            #     test_text = row.find("div", {"class": "col-xs-9"})\
+            # .find("span", {"class": "label_verified ml5"}).text
+            #     if 'Verifiziertes Unternehmen' in test_text:
+            #         pass
+            # except AttributeError:
+            #     continue
 
             # Ad title and url
             title_row = row.find('h3', {"class": "truncate_title"})
@@ -230,16 +230,25 @@ class CrawlWgGesucht(Crawler):
             if ad_url in old_df['url']:
                     pass
 
-            # Ad image link
-            # image = re.match(r'background-image: url\((.*)\);', row.find('div', {"class": "card_image"}).find('a')['style'])[1]
-
-            # Room details and address
+            ## Room details and address
             detail_string = row.find("div", {"class": "col-xs-11"}).text.strip().split("|")
             details_array = list(map(lambda s: re.sub(' +', ' ',
                                                     re.sub(r'\W', ' ', s.strip())),
                                     detail_string))
-            rooms_tmp = re.findall(r'\d Zimmer', details_array[0])
-            rooms = rooms_tmp[0][:1] if rooms_tmp else 0
+
+            # Offer type
+            type_offer = details_array[0]
+
+            # Number of rooms
+            rooms_tmp = re.findall(r"^\d*[., ]?\d*", details_array[0])[0] # Finds int or dec in beginning of word. Needed to deal with '2.5', '2,5' or '2 5' sized flats
+            rooms_tmp = float(rooms_tmp.replace(',','.').replace(' ','.'))
+            if 'WG' in type_offer:
+                type_offer = 'WG'
+                rooms = 1
+            else:
+                rooms = rooms_tmp if rooms_tmp>0 else 0
+
+            # Address
             address = details_array[2] + ', ' + details_array[1]
 
             # Flatmates
@@ -249,23 +258,25 @@ class CrawlWgGesucht(Crawler):
             except TypeError:
                 flatmates_list = [0,0,0,0]
 
-            # Price
+            ### Price, size and date
             numbers_row = row.find("div", {"class": "middle"})
-            price = numbers_row.find("div", {"class": "col-xs-3"}).text.strip()
 
-            # Size and ad dates
-            dates = re.findall(r'\d{2}.\d{2}.\d{4}',
+            # Price
+            price = numbers_row.find("div", {"class": "col-xs-3"}).text.strip().split(' ')[0]
+
+            # Offer availability dates
+            availability_dates = re.findall(r'\d{2}.\d{2}.\d{4}',
                             numbers_row.find("div", {"class": "text-center"}).text)
 
+            # Size
             size = re.findall(r'\d{1,4}\sm²',
                             numbers_row.find("div", {"class": "text-right"}).text)
             if len(size) == 0:
-                size=['0']
+                size = ['0']
 
-            if len(size) == 0:
-                size = [0]
+            size = re.findall('^\d+', size[0])[0]
 
-            ## Find publication date
+            ## Publication date
             # Minutes and hours are in color green (#218700), while days are in color grey (#898989)
             try:
                 published_time = row.find("div", {"class": "col-xs-9"})\
@@ -284,30 +295,35 @@ class CrawlWgGesucht(Crawler):
             else:
                 published_time = published_time.split(' ')[1]
 
-            # Create dataframe with info
+
+
+
+
+            ### Create dataframe with info
             details = {
                 'id': int(ad_url.split('.')[-2]),
-                # 'image': image,
                 'url': str(ad_url),
+                'type_offer': str(type_offer),
                 'title': str(title),
-                'price(euros)': price.split(' ')[0],
-                'size(sqm)': int(re.findall('[0-9]+', size[0])[0]),
-                'available rooms': rooms,
-                'WG size': flatmates_list[0],
-                'available spots': flatmates_list[0]-flatmates_list[1]-flatmates_list[2]-flatmates_list[3],
-                'male flatmates': flatmates_list[1],
-                'female flatmates': flatmates_list[2],
-                'diverse flatmates': flatmates_list[3],
-                'published on': published_time,
-                'address': address,
+                'price_euros': int(price),
+                'size_sqm': int(size),
+                'available_rooms': float(rooms),
+                'WG_size': int(flatmates_list[0]),
+                'available_spots_wg': int(flatmates_list[0]-flatmates_list[1]-flatmates_list[2]-flatmates_list[3]),
+                'male_flatmates': int(flatmates_list[1]),
+                'female_flatmates': int(flatmates_list[2]),
+                'diverse_flatmates': int(flatmates_list[3]),
+                'published_on': published_time,
+                'address': str(address),
+                'city': str(german_characters(location_name)),
                 'crawler': 'WG-Gesucht'
             }
-            if len(dates) == 2:
-                details['available from'] = dates[0]
-                details['available to'] = dates[1]
-            elif len(dates) == 1:
-                details['available from'] = dates[0]
-                details['available to'] = 'open end'
+            if len(availability_dates) == 2:
+                details['available from'] = str(availability_dates[0])
+                details['available to'] = str(availability_dates[1])
+            elif len(availability_dates) == 1:
+                details['available from'] = str(availability_dates[0])
+                details['available to'] = np.nan
 
             entries.append(details)
 
@@ -330,8 +346,11 @@ class CrawlWgGesucht(Crawler):
 
 if __name__ == "__main__":
     test = CrawlWgGesucht()
-    # test.crawl_all_pages(location_name = 'Frankfurt am Main', page_number = 1,
-    #                 filters = ["wg-zimmer"])
+
+    # test.crawl_all_pages(location_name = 'Aachen', page_number = 1,
+    #                 filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+
+
     today = time.strftime(f"%d.%m.%Y", time.localtime())
     day_stop_search = '31.07.2022'
     while today != day_stop_search:
@@ -341,9 +360,11 @@ if __name__ == "__main__":
         hour_of_search = int(time.strftime(f"%H", time.localtime()))
         print(hour_of_search)
         while hour_of_search >= 0 and hour_of_search <= 8:
+            hour_of_search = int(time.strftime(f"%H", time.localtime()))
+            print(hour_of_search)
             print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
             time.sleep(3600)
 
         for city in list(dict_city_number_wggesucht.keys())[0:]:
-            test.crawl_all_pages(location_name = city, page_number = 5,
-                        filters = ["wg-zimmer"])
+            test.crawl_all_pages(location_name = city, page_number = 8,
+                        filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
