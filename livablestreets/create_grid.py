@@ -212,5 +212,7 @@ def create_geofence(location, location_name, stepsize,
 
 
 if __name__ == '__main__':
-    geolocator = Nominatim(user_agent="city_compare")
-    print(geolocator.geocode('Köln', exactly_one=False, limit=3))
+    # geolocator = Nominatim(user_agent="city_compare")
+    # print(geolocator.geocode('Köln', exactly_one=False, limit=3))
+
+    create_geofence(stepsize = 2000, location = 'Aachen', location_name='aachen')
