@@ -190,9 +190,12 @@ class CrawlWgGesucht(Crawler):
         save_file(df = df, file_name=f'{location_name}_ads.csv',
                   local_file_path=f'livablestreets/data/{location_name}/Ads')
 
-    def crawl_all_pages(self, location_name, number_pages=3,
+    def crawl_all_pages(self, location_name, number_pages,
                     filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
                     path_save = None):
+        '''
+        Main crawling function. Function will first connect to all pages and save findings (ads) using the parse_url method. Next, it obtain older ads table to which newer ads will be added.
+        '''
         if path_save is None:
             path_save = f'livablestreets/data/{standardize_characters(location_name)}/Ads'
 
@@ -200,24 +203,25 @@ class CrawlWgGesucht(Crawler):
         self.parse_urls(location_name = location_name, number_pages = number_pages,
                     filters = filters)
 
-        # Extracting info of interest from pages
-        print(f"Crawling {len(self.existing_findings)} ads")
 
-
+        # Obtain older ads, or create empty table if there are no older ads
         try:
             old_df = get_file(file_name=f'{location_name}_ads.csv',
                             local_file_path=f'livablestreets/data/{location_name}/Ads')
         except FileNotFoundError:
             old_df=pd.DataFrame({'url':[]})
 
+
+        # Extracting info of interest from pages
+        print(f"Crawling {len(self.existing_findings)} ads")
         entries = []
         for row in self.existing_findings:
 
-            ### Exclude commercial offers from companies with several rooms in same building
+            ### Commercial offers from companies, often with several rooms in same building
             try:
                 test_text = row.find("div", {"class": "col-xs-9"})\
             .find("span", {"class": "label_verified ml5"}).text
-                landlord_type = test_text
+                landlord_type = test_text.replace(' ','').replace('"','')
             except AttributeError:
                 landlord_type = 'Private'
 
@@ -229,7 +233,7 @@ class CrawlWgGesucht(Crawler):
             # Save time by not parsing old ads
             # To check if add is old, check if the url already exist in the table
             if ad_url in old_df['url']:
-                    pass
+                pass
 
             ## Room details and address
             detail_string = row.find("div", {"class": "col-xs-11"}).text.strip().split("|")
@@ -251,6 +255,7 @@ class CrawlWgGesucht(Crawler):
 
             # Address
             address = details_array[2] + ', ' + details_array[1]
+            address = address.replace('"','')
 
             # Flatmates
             try:
@@ -277,26 +282,44 @@ class CrawlWgGesucht(Crawler):
 
             size = re.findall('^\d+', size[0])[0]
 
-            ## Publication date
-            # Minutes and hours are in color green (#218700), while days are in color grey (#898989)
+            ## Publication date and time
+            # Seconds, minutes and hours are in color green (#218700), while days are in color grey (#898989)
             try:
-                published_time = row.find("div", {"class": "col-xs-9"})\
+                published_date = row.find("div", {"class": "col-xs-9"})\
             .find("span", {"style": "color: #218700;"}).text
             except:
-                published_time = row.find("div", {"class": "col-xs-9"})\
+                published_date = row.find("div", {"class": "col-xs-9"})\
             .find("span", {"style": "color: #898989;"}).text
 
-            # Format it for the date ignoring time
-            if 'Minut' in published_time or 'Stund' in published_time or 'Sekund' in published_time:
-                published_time = time.strftime("%d.%m.%Y", time.localtime())
-            elif 'Tag' in published_time:
-                day_diff = int(re.findall('[0-9]+', published_time)[0])
-                past_day = int(time.strftime("%d", time.localtime())) - day_diff
-                published_time = f"{str(past_day)}."+time.strftime(f"%m.%Y", time.localtime())
+            # For ads published mins or secs ago, publication time is the time of the search
+            hour_of_search = int(time.strftime(f"%H", time.localtime()))
+            if 'Minut' in published_date or 'Sekund' in published_date:
+                published_date = time.strftime("%d.%m.%Y", time.localtime())
+                published_time = hour_of_search
+
+            # For ads published hours ago, publication time is the time of search minus the hours difference. That might lead to negative time of the day and that's corrected below. That could also lead to publication date of 00, and that's also corrected below.
+            elif 'Stund' in published_date:
+                hour_diff = int(re.findall('[0-9]+', published_date)[0])
+                published_time = hour_of_search - hour_diff
+                if published_time < 0:
+                    # Fix publication hour
+                    published_time = 24 + published_time
+                    # Fix publication date to the day before the day of the search
+                    published_date = time.strftime("%d.%m.%Y", time.localtime(time.mktime(time.localtime())-24*60*60))
+
+                else:
+                    published_date = time.strftime("%d.%m.%Y", time.localtime())
+
+            # For ads published days ago, publication time is NaN
+            elif 'Tag' in published_date:
+                day_diff = int(re.findall('[0-9]+', published_date)[0])
+                published_date = time.strftime("%d.%m.%Y", time.localtime(time.mktime(time.localtime())-day_diff*24*60*60))
+                published_time = np.nan
+
+            # For ads published at specified date (ads older than 5 days), publication time is NaN
             else:
-                published_time = published_time.split(' ')[1]
-
-
+                published_date = published_date.split(' ')[1]
+                published_time = np.nan
 
 
 
@@ -315,7 +338,8 @@ class CrawlWgGesucht(Crawler):
                 'male_flatmates': int(flatmates_list[1]),
                 'female_flatmates': int(flatmates_list[2]),
                 'diverse_flatmates': int(flatmates_list[3]),
-                'published_on': published_time,
+                'published_on': str(published_date),
+                'published_at': published_time,
                 'address': str(address),
                 'city': str(german_characters(location_name)),
                 'crawler': 'WG-Gesucht'
@@ -334,11 +358,12 @@ class CrawlWgGesucht(Crawler):
         # Reset existing_findings
         self.existing_findings = []
 
+        # Create the dataframe
         df = pd.DataFrame(entries)
 
         if len(df)>0:
             # Geocode coordinates of ad
-            df = geocoding_df(df=df, column='address')
+            # df = geocoding_df(df=df, column='address')
 
             # Save info as df in csv format
             self.save_df(df=df, location_name=standardize_characters(location_name))
@@ -346,47 +371,68 @@ class CrawlWgGesucht(Crawler):
             print('===== Something went wrong. No entries were found. =====')
         return df
 
-    def long_search(self):
+    def long_search(self, day_stop_search = None, pages_per_search = 20):
         '''
-        This method runs the search for ads constantly and saves results in .csv file until a defined date.
+        This method runs the search for ads until a defined date and saves results in .csv file.
         '''
         today = time.strftime(f"%d.%m.%Y", time.localtime())
-        day_stop_search = '31.07.2022'
+
+        ## If no stop date is given, stops by the end of current month
+        if day_stop_search is None:
+            current_month = int(time.strftime(f"%m", time.localtime()))
+            current_year = int(time.strftime(f"%Y", time.localtime()))
+            if current_month == 12:
+                next_month = 1
+                next_year = current_year + 1
+            else:
+                next_month = current_month + 1
+                next_year = current_year
+
+            if next_month <= 9:
+                day_stop_search = f'01.0{next_month}.{next_year}'
+            else:
+                day_stop_search = f'01.{next_month}.{next_year}'
+
+        print(f'Search will run from {today} until {day_stop_search}')
+
+        ## Loop until stop day is reached
         while today != day_stop_search:
             today = time.strftime(f"%d.%m.%Y", time.localtime())
 
-            # Check if between 00 and 8am, and sleep in case it is
+            # Check if between 00 and 8am, and sleep in case it is. This is because most ads are posted during the day and there's seldom need to run overnight.
             hour_of_search = int(time.strftime(f"%H", time.localtime()))
-            while hour_of_search >= 0 and hour_of_search <= 8:
+            while hour_of_search > 0 and hour_of_search < 8:
                 hour_of_search = int(time.strftime(f"%H", time.localtime()))
                 print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
                 time.sleep(3600)
 
-            for city in list(dict_city_number_wggesucht.keys())[0:]:
-                self.crawl_all_pages(location_name = city, number_pages = 10,
+            # Starts the search
+            cities_to_search = list(dict_city_number_wggesucht.keys())
+            for city in cities_to_search:
+                self.crawl_all_pages(location_name = city, number_pages = pages_per_search,
                             filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
 
 
 if __name__ == "__main__":
-    test = CrawlWgGesucht()
+    CrawlWgGesucht().long_search()
 
     # test.crawl_all_pages(location_name = 'Aachen', number_pages = 1,
     #                 filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
 
-    today = time.strftime(f"%d.%m.%Y", time.localtime())
-    day_stop_search = '31.07.2022'
-    while today != day_stop_search:
-        today = time.strftime(f"%d.%m.%Y", time.localtime())
+    # today = time.strftime(f"%d.%m.%Y", time.localtime())
+    # day_stop_search = '31.07.2022'
+    # while today != day_stop_search:
+    #     today = time.strftime(f"%d.%m.%Y", time.localtime())
 
-        # Check if between 00 and 8am, and sleep in case it is
-        hour_of_search = int(time.strftime(f"%H", time.localtime()))
-        while hour_of_search >= 0 and hour_of_search <= 8:
-            hour_of_search = int(time.strftime(f"%H", time.localtime()))
-            print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
-            time.sleep(3600)
+    #     # Check if between 00 and 8am, and sleep in case it is
+    #     hour_of_search = int(time.strftime(f"%H", time.localtime()))
+    #     while hour_of_search >= 0 and hour_of_search <= 8:
+    #         hour_of_search = int(time.strftime(f"%H", time.localtime()))
+    #         print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
+    #         time.sleep(3600)
 
-        for city in list(dict_city_number_wggesucht.keys())[0:]:
-            test.crawl_all_pages(location_name = city, page_number = 10,
-                        filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+    #     for city in list(dict_city_number_wggesucht.keys())[0:]:
+    #         test.crawl_all_pages(location_name = city, page_number = 10,
+    #                     filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
