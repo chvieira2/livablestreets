@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file, save_file
-from livablestreets.FeatCount_blurrying import FeatCount_blurrying
+from livablestreets.livability_map.FeatCount_blurrying import FeatCount_blurrying
 from shapely.geometry import Point, Polygon
 # import matplotlib.path as mplPath
 import geopandas as gpd

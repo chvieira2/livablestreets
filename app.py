@@ -17,10 +17,10 @@ from folium.plugins import HeatMap
 import numpy as np
 import pandas as pd
 from config.config import ROOT_DIR
-from livablestreets.display_map import plot
-from livablestreets.generator import LivabilityMap
+from livablestreets.livability_map.display_map import plot
+from livablestreets.livability_map.generator import LivabilityMap
 from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
-from livablestreets.crawl_wggesucht import CrawlWgGesucht
+from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
 
 
 def launch_search(location_name = 'berlin', page_number = 3,
