@@ -8,11 +8,11 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import numpy as np
 
-from livablestreets.abstract_crawler import Crawler
+from livablestreets.ads_crawler.abstract_crawler import Crawler
 from livablestreets.string_utils import remove_prefix, standardize_characters, capitalize_city_name, german_characters
 from livablestreets.utils import save_file, get_file
 from livablestreets.params import dict_city_number_wggesucht
-from livablestreets.geocoding_addresses import geocoding_df
+from livablestreets.ads_crawler.geocoding_addresses import geocoding_df
 
 from config.config import ROOT_DIR
 
@@ -120,7 +120,7 @@ class CrawlWgGesucht(Crawler):
         soup = self.get_soup_from_url(url, sess=sess)
         return self.extract_data(soup)
 
-    def parse_urls(self, location_name, page_number, filters, sleep_time = 1800):
+    def parse_urls(self, location_name, number_pages, filters, sleep_time = 1800):
         """Parse through all exposes in self.existing_findings to return a formated dataframe.
         """
         # Process city name to match url
@@ -131,7 +131,7 @@ class CrawlWgGesucht(Crawler):
 
         # Create list with all urls for crawling
         list_urls = [self.url_builder(location_name = location_name, page_number = page,
-                    filters = filters) for page in range(page_number)]
+                    filters = filters) for page in range(number_pages)]
 
         print(f'Created {len(list_urls)} urls for crawling')
 
@@ -190,14 +190,14 @@ class CrawlWgGesucht(Crawler):
         save_file(df = df, file_name=f'{location_name}_ads.csv',
                   local_file_path=f'livablestreets/data/{location_name}/Ads')
 
-    def crawl_all_pages(self, location_name, page_number=3,
+    def crawl_all_pages(self, location_name, number_pages=3,
                     filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
                     path_save = None):
         if path_save is None:
             path_save = f'livablestreets/data/{standardize_characters(location_name)}/Ads'
 
         # Obtaining pages
-        self.parse_urls(location_name = location_name, page_number = page_number,
+        self.parse_urls(location_name = location_name, number_pages = number_pages,
                     filters = filters)
 
         # Extracting info of interest from pages
@@ -346,10 +346,32 @@ class CrawlWgGesucht(Crawler):
             print('===== Something went wrong. No entries were found. =====')
         return df
 
+    def long_search(self):
+        '''
+        This method runs the search for ads constantly and saves results in .csv file until a defined date.
+        '''
+        today = time.strftime(f"%d.%m.%Y", time.localtime())
+        day_stop_search = '31.07.2022'
+        while today != day_stop_search:
+            today = time.strftime(f"%d.%m.%Y", time.localtime())
+
+            # Check if between 00 and 8am, and sleep in case it is
+            hour_of_search = int(time.strftime(f"%H", time.localtime()))
+            while hour_of_search >= 0 and hour_of_search <= 8:
+                hour_of_search = int(time.strftime(f"%H", time.localtime()))
+                print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
+                time.sleep(3600)
+
+            for city in list(dict_city_number_wggesucht.keys())[0:]:
+                self.crawl_all_pages(location_name = city, number_pages = 10,
+                            filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+
+
+
 if __name__ == "__main__":
     test = CrawlWgGesucht()
 
-    # test.crawl_all_pages(location_name = 'Aachen', page_number = 1,
+    # test.crawl_all_pages(location_name = 'Aachen', number_pages = 1,
     #                 filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
 
@@ -360,10 +382,8 @@ if __name__ == "__main__":
 
         # Check if between 00 and 8am, and sleep in case it is
         hour_of_search = int(time.strftime(f"%H", time.localtime()))
-        print(hour_of_search)
         while hour_of_search >= 0 and hour_of_search <= 8:
             hour_of_search = int(time.strftime(f"%H", time.localtime()))
-            print(hour_of_search)
             print(f'It is now {hour_of_search}am. Program sleeping between 00 and 08am.')
             time.sleep(3600)
 
