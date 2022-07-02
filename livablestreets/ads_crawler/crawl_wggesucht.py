@@ -138,7 +138,7 @@ class CrawlWgGesucht(Crawler):
         print('Opening session')
         sess = requests.session()
         # First page load to set filters; response is discarded
-        print('Making first call to set filters (this is ignored)')
+        print('Making first call to set filters')
         sess.get(list_urls[0], headers=self.HEADERS)
 
 
@@ -221,13 +221,14 @@ class CrawlWgGesucht(Crawler):
             try:
                 test_text = row.find("div", {"class": "col-xs-9"})\
             .find("span", {"class": "label_verified ml5"}).text
-                landlord_type = test_text.replace(' ','').replace('"','')
+                landlord_type = test_text.replace(' ','').replace('"','').replace('\n','').replace('\t','').replace(';','')
             except AttributeError:
                 landlord_type = 'Private'
 
             # Ad title and url
             title_row = row.find('h3', {"class": "truncate_title"})
-            title = title_row.text.strip()
+            title = title_row.text.strip().replace('"','').replace('\n',' ').replace('\t',' ')\
+                .replace(';','')
             ad_url = self.base_url + remove_prefix(title_row.find('a')['href'], "/")
 
             # Save time by not parsing old ads
@@ -254,7 +255,8 @@ class CrawlWgGesucht(Crawler):
                 rooms = rooms_tmp if rooms_tmp>0 else 0
 
             # Address
-            address = details_array[2] + ', ' + details_array[1]
+            address = details_array[2].replace('"','').replace('\n',' ').replace('\t',' ').replace(';','')\
+                + ', ' + details_array[1].replace('"','').replace('\n',' ').replace('\t',' ').replace(';','')
             address = address.replace('"','')
 
             # Flatmates
@@ -269,6 +271,11 @@ class CrawlWgGesucht(Crawler):
 
             # Price
             price = numbers_row.find("div", {"class": "col-xs-3"}).text.strip().split(' ')[0]
+            # Prevent n.a. entries in price
+            try:
+                int(price)
+            except ValueError:
+                price = 0
 
             # Offer availability dates
             availability_dates = re.findall(r'\d{2}.\d{2}.\d{4}',
