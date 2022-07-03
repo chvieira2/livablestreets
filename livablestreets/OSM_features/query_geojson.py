@@ -14,8 +14,8 @@ from shapely.geometry import mapping
 from geojson import dump
 
 
-from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
-from livablestreets.query_osmfilter import data_from_pbf
+from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.query_osmfilter import data_from_pbf
 
 
 def get_pbf_json(country= 'germany',city = 'berlin'):

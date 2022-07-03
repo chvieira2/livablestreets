@@ -9,8 +9,8 @@ import pandas as pd
 # from google.cloud import storage
 # from livablestreets.params import BUCKET_NAME
 from livablestreets.utils import simple_time_tracker
-from livablestreets.osm_query import query_params_osm
-from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.osm_query import query_params_osm
+from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
 from livablestreets.utils import create_dir
 
 import os, sys, time
