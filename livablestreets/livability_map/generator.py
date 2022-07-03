@@ -1,15 +1,15 @@
 # from difflib import SequenceMatcher
-from livablestreets.create_grid import create_geofence, get_shape_of_location
-from livablestreets.add_features_to_grid import integrate_all_features_counts
-from livablestreets.livability_score import livability_score
+from livablestreets.livability_map.create_grid import create_geofence, get_shape_of_location
+from livablestreets.livability_map.add_features_to_grid import integrate_all_features_counts
+from livablestreets.livability_map.livability_score import livability_score
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
 from livablestreets.params import preloaded_cities
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
 from config.config import ROOT_DIR
 
 
-from livablestreets.query_names_detailed import master_query, master_query_complex, master_query_negative
-from livablestreets.get_csv_detailed import get_csv
+from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.get_csv_detailed import get_csv
 
 import pandas as pd
 
