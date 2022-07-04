@@ -23,7 +23,7 @@ from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
 
 
-def launch_search(location_name = 'berlin', page_number = 3,
+def launch_flat_search(location_name = 'berlin', page_number = 3,
                     filters = ["wg-zimmer"], path_save = None):
     """Starts the crawler"""
 
