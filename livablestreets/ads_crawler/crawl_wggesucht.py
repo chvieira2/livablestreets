@@ -80,7 +80,10 @@ class CrawlWgGesucht(Crawler):
         print(f"Got response code {resp.status_code}")
 
         # Return soup object
+        if resp.status_code != 200:
+            return None
         return BeautifulSoup(resp.content, 'html.parser')
+
 
     def get_soup_from_url_urllib(self, url, sleep_times = (1,2)):
         """
@@ -118,6 +121,8 @@ class CrawlWgGesucht(Crawler):
         Extract findings with requests library
         '''
         soup = self.get_soup_from_url(url, sess=sess)
+        if soup is None:
+            return None
         return self.extract_data(soup)
 
     def parse_urls(self, location_name, number_pages, filters, sleep_time = 1800):
@@ -149,8 +154,11 @@ class CrawlWgGesucht(Crawler):
                 success = False
                 while not success:
                     new_findings = self.request_soup(url, sess=sess)
-                    if len(new_findings) == 0:
-                        print(f'Sleeping for {sleep_time} to wait for reCAPTCH to disappear....')
+                    if new_findings is None:
+                        pass
+                    elif len(new_findings) == 0:
+                        time_now = time.mktime(time.localtime())
+                        print(f'Sleeping until {time.strftime("%H:%M", time.localtime(time_now + sleep_time))} to wait for reCAPTCH to disappear....')
                         time.sleep(sleep_time)
                         sleep_time += sleep_time
                     else:
@@ -378,7 +386,7 @@ class CrawlWgGesucht(Crawler):
             print('===== Something went wrong. No entries were found. =====')
         return df
 
-    def long_search(self, day_stop_search = None, pages_per_search = 20):
+    def long_search(self, day_stop_search = None, pages_per_search = 20, start_search_from_index = 0):
         '''
         This method runs the search for ads until a defined date and saves results in .csv file.
         '''
@@ -415,7 +423,8 @@ class CrawlWgGesucht(Crawler):
 
             # Starts the search
             cities_to_search = list(dict_city_number_wggesucht.keys())
-            for city in cities_to_search:
+            for city in cities_to_search[start_search_from_index:]:
+                print(f'Starting search at {time.strftime(f"%d.%m.%Y %H:%M:%S", time.localtime())}')
                 self.crawl_all_pages(location_name = city, number_pages = pages_per_search,
                             filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
