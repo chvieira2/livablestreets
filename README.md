@@ -27,9 +27,9 @@ We believe livability is very individual, as each person has different needs. Be
 ## Behind the curtains
 1. Livablestreets is a Python application doing the hard work for you. It uses [Streamlit](https://streamlit.io/) for visualization and is hosted on [Heroku](https://www.heroku.com).
 2. Once the user inputs the name of the city of interest (and clicks on "Calculate Livability"), the app collects the geographical boundaries of the city of interest and information on ~200 features (bus stops, parks, trees, etc) from [OpenStreetsMap](www.openstreetmap.org) using the [Overpass API](http://overpass-api.de/).
-3. The city map is virtually fragmented into squared grids. The grid dimensions define the spacial resolution of livability score and is set to 200m.
-4. Features are then groupped in four categories of living standards (Activities/Services, Comfort, Mobility, and Social Life).
-5. To calculate livability scores according to the user own needs, we apply the weights for each category of living standards.
+3. The city map is virtually fragmented into squared grids. The grid dimensions define the spacial resolution of livability score and is set to 200 meters.
+4. Features are then grouped in four categories of living standards (Activities/Services, Comfort, Mobility, and Social Life) and 'spread' around the grid map using a gaussian blurring function.
+5. To calculate livability scores according to the user own needs, we apply the weights for each category of living standards as given by the user.
 6. Finally, livability scores are displayed on the map of the city of interest as a heatmap, where warmer colors indicate higher livability score.
 
 ## Running it locally
@@ -41,9 +41,9 @@ The app works for any city, however the whole process can take several hours. Th
 Want more? Don't panic. You can add more cities!
 
 ## Can I add more cities?
-Yes. However, we use a free service with limited capacity to host our application (Heroku). The easiest ways to add a city are: 1) to contact us; or 2) to run the app locally.
+Yes. However, we use a free service with limited capacity to host our application (Heroku). The easiest way to add a city are: 1) to contact us; or 2) to run the app locally.
 
 If you run livablestreets locally, you are now free to add all cities of your interest. For that you should:
-1. Open to livablestreets/params.py, and include it in the list of preloaded cities ("preloaded_cities" variable). City name must be spelled in the local language (several language accent markers are supported). Save the file.
-2. Run livablestreets/generator.py file and wait. The calculation may take several hours for larger cities. We recommend you to do it overnight.
+1. Open to livablestreets/params.py, and include it in the list of preloaded cities ("preloaded_cities" variable). City name must be as it is spelled in the local language (several language accent markers are supported). Save the file.
+2. Run livablestreets/generator.py file and wait. The calculation may take several hours for larger cities. We recommend that you to do it overnight.
 3. Once done, reload the app and your cities will be included as a choice in the drop down menu.
