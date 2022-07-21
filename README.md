@@ -7,7 +7,7 @@ Not into reading? Watch our project on YouTube [here](www.youtube.com).
 
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/chvieira2/Strapdown.js)](https://GitHub.com/chvieira2/StrapDown.js/commit/)
 
 
 # Find the Neighborhood You Love
