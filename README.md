@@ -6,6 +6,10 @@
 Not into reading? Watch our project on YouTube [here](www.youtube.com).
 
 
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+
+
 # Find the Neighborhood You Love
 Moving to a new city can be tough. How do you decide which neighborhood to live? Livablestreets is an open source web tool for exploring city livability at street level, and around the world.
 
