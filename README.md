@@ -6,8 +6,8 @@
 Not into reading? Watch our project on YouTube [here](www.youtube.com).
 
 
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![GitHub latest commit](https://badgen.net/github/last-commit/chvieira2/Strapdown.js)](https://GitHub.com/chvieira2/StrapDown.js/commit/)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/chvieira2/livablestreets/Strapdown.js)](https://GitHub.com/chvieira2/livablestreets/StrapDown.js/commit/)
 
 
 # Find the Neighborhood You Love
