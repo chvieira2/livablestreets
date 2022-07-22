@@ -1,4 +1,8 @@
 """Functions and classes related to processing/manipulating strings"""
+
+import re
+
+
 def remove_prefix(text, prefix):
     """Note that this method can just be replaced by str.removeprefix()
     if the project ever moves to Python 3.9+"""
@@ -7,9 +11,11 @@ def remove_prefix(text, prefix):
     return text
 
 def german_characters(word):
-    return word.replace('_', ' ')\
-            .replace('ae','ä').replace('oe','ö').replace('ue','ü')\
-            .replace('ss','ß')
+    word = word.replace('_', ' ')\
+            .replace('ae','ä').replace('oe','ö').replace('ue','ü')
+    if word != 'Düsseldorf':
+        word = word.replace('ss','ß')
+    return word
 
 
 def standardize_characters(word, separator = '_'):
@@ -42,3 +48,27 @@ def capitalize_city_name(word):
 
     else:
         return word.capitalize()
+
+def simplify_address(address):
+    street_houseN = address.split(',')[0]
+    street = re.findall('\D+', street_houseN) # \D matches non-digits
+    try:
+        street = street[0].strip()
+        street = ' '.join([word.capitalize().strip() for word in street.split(' ')])
+    except IndexError:
+        street = ''
+    try:
+        houseN = re.findall('\d+', street_houseN)[0]
+    except IndexError:
+        houseN = ''
+    city_neigh = address.split(',')[1].split(' ')
+    city = city_neigh[1].capitalize() # [0] is a initial space in the addess name]
+    neigh = ' '.join([n.capitalize() for n in city_neigh[2:]])
+    final_address = ' '.join([street, houseN]) + ', ' + ', '.join([neigh, city])
+    final_address = final_address.replace('str ', 'straße ').replace(' ,', ',')
+    # print(f'Simplified address: "{address}" to "{final_address}"')
+    return final_address.strip().replace('  ', ' ')
+
+if __name__ == "__main__":
+
+    simplify_address('darsr xsdd 44, trzc dhhgfhg')

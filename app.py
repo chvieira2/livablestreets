@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Livablestreets - display life quality livability scores for cities at street level"""
+"""Livablestreets - visualize life quality at street level for cities around the world"""
 
 __author__ = "Carlos Henrique Vieira e Vieira, Laia Grobe, Nicolas Quiroga and Ieva Bidermane"
 __version__ = "1.0"
@@ -10,6 +10,7 @@ __status__ = "Production"
 
 
 import streamlit as st
+from PIL import Image
 import folium
 from folium import GeoJson
 import streamlit_folium as stf
@@ -34,7 +35,7 @@ def launch_flat_search(location_name = 'berlin', page_number = 3,
 
 #-----------------------page configuration-------------------------
 st.set_page_config(
-    page_title="Livable Streets",
+    page_title="Livablestreets",
     page_icon=':house:', # gives a random emoji //to be addressed for final ver
     layout="wide",
     initial_sidebar_state="auto")
@@ -43,21 +44,20 @@ st.set_page_config(
 #.css-18e3th9 change top padding main container
 # .css-1oe6wy4 changed top paging sidebar
 # iframe changed the size of the map's iframe
-#mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10)
 st.markdown(
             f'''
             <style>
                 .css-18e3th9 {{
-                    padding-top: 10px;
-                    padding-right: 10px;
-                    padding-bottom: 10px;
-                    padding-left: 10px;
+                    padding-top: 15px;
+                    padding-right: 15px;
+                    padding-bottom: 15px;
+                    padding-left: 15px;
                 }}
                 .css-1oe6wy4 {{
-                    padding-top: 35px;
+                    padding-top: 15px;
                 }}
                 .css-192cp98{{
-                    padding-top: 35px;
+                    padding-top: 15px;
                 }}
 
                 iframe {{
@@ -79,11 +79,6 @@ st.markdown(
             ''', unsafe_allow_html=True)
 
 
-# st.markdown("""<h1 style='text-align: center; color: white'>
-#             Explore livability scores in city of your choice
-#             </h1>""",
-#             unsafe_allow_html=True)
-
 #----Simple placeholder for the world map with arbitrary city coordenates------
 placeholder_map = st.empty()
 placeholderMap = folium.Map(location=[37.6000, 10.0154],
@@ -104,11 +99,27 @@ for city,coords in placeholder_cities.items():
                                    icon='home')).add_to(placeholderMap)
 
 with placeholder_map.container():
-    st.markdown("""<h2 style='text-align: center; color: white'>
-            Explore livability scores in cities around the world
-            </h2>""",
-            unsafe_allow_html=True)
-    stf.folium_static(placeholderMap)
+
+    # Hacky way to center image: create three columns and place image in center
+    col1, col2 = st.columns([1,1.8])
+
+    with col1:
+        image = Image.open('livablestreets_logo.png')
+        st.image(image=image, width=300)
+    with col2:
+        st.write('\n')
+        st.markdown("""
+                # Welcome to <span style="color:tomato">Livablestreets</span>!
+                ## Explore life quality (livability) of streets in cities around the world.
+                For more information, please check our [GitHub page](https://github.com/chvieira2/livablestreets)
+                """, unsafe_allow_html=True)
+    st.markdown("""
+            ### Let's start:
+            - On the tab on your left (click the arrow on the top left if you can not see it), select the city of interest;
+            - Use the sliding bars to indicate how much each feature (activities and services/comfort/mobility/social life) are relevant for you;
+            - Press "Calculate Livability", and wait a few seconds for your result.
+            """)
+    # stf.folium_static(placeholderMap)
 
 
 #------------------------user inputs-----------------------------------
