@@ -124,11 +124,11 @@ with placeholder_map.container():
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care much":0.25,
-             "Somewhat important":0.5,
+weight_dict={"Don't care much":0.1,
+             "Somewhat important":0.34,
              'Average':1,
-             'Quite important':2,
-             'Very important':4}
+             'Quite important':3,
+             'Very important':9}
 
 with st.sidebar:
     form = st.form("calc_weights")
@@ -179,6 +179,7 @@ if submitted:
     mapObj = plot(df, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
-        col1,col2,col3=st.columns(3)
-        col2.header(f'Livability score in: {city.location}')
+        st.markdown(f"""
+                # Here's the livability map for <span style="color:tomato">{city.location}</span>
+                """, unsafe_allow_html=True)
         stf.folium_static(mapObj)
