@@ -68,28 +68,19 @@ dict_city_number_wggesucht = {
 
 
 preloaded_cities = sorted(set([
-            'Berlin',
-            'Buenos Aires',
-            # 'Santiago', # Santiago de Chile?
-            'Dresden',
-            'Montpellier',
-            'München',
-
-            'Paris',
             'Budapest',
-            'Lisboa',
-            'São Paulo',
-
-            'Rio de Janeiro',
-            'Porto Alegre',
-            'London',
-            'Kiel',
-            'Milano',
-
+            'Buenos Aires',
             'Dublin',
-
-            'San Jose',
+            'Lisboa',
+            'London',
+            'Milano',
+            'Montpellier',
             'Palo Alto',
+            'Paris',
+            'Porto Alegre',
+            'Rio de Janeiro',
             'Roma',
+            'San Jose',
+            'São Paulo',
             'Vancouver'
                     ] + list(dict_city_number_wggesucht.keys())))
