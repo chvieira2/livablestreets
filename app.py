@@ -190,7 +190,7 @@ if submitted:
             CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
                     filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
-            df = pd.read_csv(f"livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
+            df = pd.read_csv(f"{ROOT_DIR}/livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
             print(f'===> Loaded ads')
 
             ## Filter ads table
