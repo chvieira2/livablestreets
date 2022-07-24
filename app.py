@@ -181,14 +181,14 @@ if submitted:
         ## Add wg-gesucht ads
         if cbox_wggesucht:
             st.markdown("""
-                    Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.<br>
-                    If this is taking longer than 1-2 minutes, please try again later.
+                    Searching for flatshare offers...<br>
+                    If this is taking longer than 2-3 minutes, please try again later.
                     """, unsafe_allow_html=True)
 
             # Obtain recent ads
             ## TO DO include a filter for type of add
             CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
-                    filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+                    filters = ["wg-zimmer"])#,"1-zimmer-wohnungen","wohnungen","haeuser"])
 
             df = pd.read_csv(f"{ROOT_DIR}/livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
             print(f'===> Loaded ads')
@@ -216,3 +216,7 @@ if submitted:
 
         ## Display map
         stf.folium_static(mapObj)
+
+        st.markdown("""
+                    Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.
+                    """, unsafe_allow_html=True)
