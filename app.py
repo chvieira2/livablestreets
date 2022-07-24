@@ -9,12 +9,13 @@ __email__ = "carloshvieira2@gmail.com"
 __status__ = "Production"
 
 
+# from sqlalchemy import null
 import streamlit as st
 from PIL import Image
 import folium
 from folium import GeoJson
 import streamlit_folium as stf
-from folium.plugins import HeatMap
+from folium.plugins import HeatMap, MarkerCluster
 import numpy as np
 import pandas as pd
 from config.config import ROOT_DIR
@@ -22,16 +23,7 @@ from livablestreets.livability_map.display_map import plot
 from livablestreets.livability_map.generator import LivabilityMap
 from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
-
-
-def launch_flat_search(location_name = 'berlin', page_number = 3,
-                    filters = ["wg-zimmer"], path_save = None):
-    """Starts the crawler"""
-
-    crawler = CrawlWgGesucht()
-    crawler.crawl_all_pages(location_name = location_name, page_number = page_number,
-                    filters = filters, path_save = path_save)
-
+from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
 
 #-----------------------page configuration-------------------------
 st.set_page_config(
@@ -117,7 +109,7 @@ with placeholder_map.container():
             ### Let's start:
             - On the tab on your left (click the arrow on the top left if you can not see it), select the city of interest;
             - Use the sliding bars to indicate how much each feature (activities and services/comfort/mobility/social life) are relevant for you;
-            - Press "Calculate Livability", and wait a few seconds for your result.
+            - Press "Display livability map", and wait a few seconds for your result.
             """)
     # stf.folium_static(placeholderMap)
 
@@ -136,6 +128,7 @@ with st.sidebar:
     # City selection
     form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=preloaded_cities.index('Berlin'))
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
+    cbox_wggesucht = form.checkbox('Show flatshare offers? (only for cities in Germany)')
 
     # Weights selection
     form.select_slider(label='Activities and services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
@@ -145,15 +138,17 @@ with st.sidebar:
 
 
     #Form submit button to generate the inputs from the user
-    submitted = form.form_submit_button('Calculate Livability', on_click=None)
+    submitted = form.form_submit_button('Display livability map', on_click=None)
 
+
+## Page after submission
 if submitted:
     placeholder_map.empty()
     weights_inputs = (st.session_state.weight_activity,
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Average')
+               'Average') # Last weight 'average refers to negative features
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
@@ -182,4 +177,39 @@ if submitted:
         st.markdown(f"""
                 # Here's the livability map for <span style="color:tomato">{city.location}</span>
                 """, unsafe_allow_html=True)
+
+        ## Add wg-gesucht ads
+        if cbox_wggesucht:
+            st.markdown("""
+                    Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.<br>
+                    If this is taking longer than 1-2 minutes, please try again later.
+                    """, unsafe_allow_html=True)
+            # CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
+            #         filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+
+            df = pd.read_csv(f"livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
+            print(f'===> Loaded ads')
+
+            ## Filter ads table
+            # Remove ads without latitude and longitude
+            df = df.dropna(subset=['latitude'])
+
+            ## Add ads to map
+            for index,row in df.iterrows():
+                folium.Marker(location=[row.loc['latitude'], row.loc['longitude']],
+                              tooltip=f"""
+                              {row.loc['title']}<br>
+                              Price: {row.loc['price_euros']} €<br>
+                              Room size: {row.loc['size_sqm']} sqm<br>
+                              Address: {row.loc['address']}<br>
+                              Published on: {row.loc['published_on'] if np.isnan(row.loc['published_at']) else str(row.loc['published_on'])+' around '+str(int(row.loc['published_at']))+'h'}
+                              """,
+                              popup=f"""
+                              <a href="{row.loc['url']}">{row.loc['url']}</a>
+
+                              """,
+                                icon=folium.Icon(color='purple', icon='home'))\
+                    .add_to(mapObj)
+
+        ## Display map
         stf.folium_static(mapObj)
