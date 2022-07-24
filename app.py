@@ -128,6 +128,9 @@ with st.sidebar:
     # City selection
     form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=preloaded_cities.index('Berlin'))
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
+
+    ## Checkbox for wg-gesuch ads
+    # TO DO make clicking the box open more options: filters for search, number of pages, etc
     cbox_wggesucht = form.checkbox('Show flatshare offers? (only for cities in Germany)')
 
     # Weights selection
@@ -187,6 +190,7 @@ if submitted:
 
             # Obtain recent ads
             ## TO DO include a filter for type of add
+            ## TO DO find way to display text and map hide text when done. Use that to break apart 'crawl_all_pages function and display text of ongoing process while user waits for ads to load.
             CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
                     filters = ["wg-zimmer"])#,"1-zimmer-wohnungen","wohnungen","haeuser"])
 
