@@ -76,19 +76,19 @@ placeholder_map = st.empty()
 placeholderMap = folium.Map(location=[37.6000, 10.0154],
                             #tiles="Stamen Terrain",
                             zoom_start=2)
-placeholder_cities = {'Berlin' : [52.5200, 13.4050],
-                      'London' : [51.5072,0.1276],
-                      'New York' : [40.7128, -73.9352],
-                      'Tokyo' : [35.6762,139.6503],
-                      'Sao Paulo': [-23.5558, -46.6396],
-                      'Qatar': [25.3548,51.1839],
-                      'Marrakesh': [31.6295,7.9811]
-                      }
-for city,coords in placeholder_cities.items():
-    folium.Marker(coords,
-                  popup=city,
-                  icon=folium.Icon(color='green',
-                                   icon='home')).add_to(placeholderMap)
+# placeholder_cities = {'Berlin' : [52.5200, 13.4050],
+#                       'London' : [51.5072,0.1276],
+#                       'New York' : [40.7128, -73.9352],
+#                       'Tokyo' : [35.6762,139.6503],
+#                       'Sao Paulo': [-23.5558, -46.6396],
+#                       'Qatar': [25.3548,51.1839],
+#                       'Marrakesh': [31.6295,7.9811]
+#                       }
+# for city,coords in placeholder_cities.items():
+#     folium.Marker(coords,
+#                   popup=city,
+#                   icon=folium.Icon(color='green',
+#                                    icon='home')).add_to(placeholderMap)
 
 with placeholder_map.container():
 
@@ -116,8 +116,8 @@ with placeholder_map.container():
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care much":0.1,
-             "Somewhat important":0.34,
+weight_dict={"Don't care much":0.111111,
+             "Somewhat important":0.333334,
              'Average':1,
              'Quite important':3,
              'Very important':9}
@@ -184,8 +184,11 @@ if submitted:
                     Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.<br>
                     If this is taking longer than 1-2 minutes, please try again later.
                     """, unsafe_allow_html=True)
-            # CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
-            #         filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
+
+            # Obtain recent ads
+            ## TO DO include a filter for type of add
+            CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
+                    filters = ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"])
 
             df = pd.read_csv(f"livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
             print(f'===> Loaded ads')
