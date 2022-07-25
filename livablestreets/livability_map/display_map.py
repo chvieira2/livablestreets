@@ -35,7 +35,7 @@ def plot_map(df, city_coords:tuple, city_borders):
     steps = 1000
 
     ## For selecting colors https://carto.com/carto-colors/ or https://colorbrewer2.org/#type=sequential&scheme=PuBu&n=9
-    # colors = ['White','Blue','cyan','lime','yellow','Orange','red']
+    colors = ['blue','cyan','lime','yellow','Orange','red', 'darkred']
     # colors = ['#d3f2a3','#97e196','#6cc08b','#4c9b82','#217a79','#105965','#074050'] # Emrld
     # colors = ['#fde0c5','#facba6','#f8b58b','#f59e72','#f2855d','#ef6a4c','#eb4a40'] # Peach
     # colors = ['#d1eeea','#a8dbd9','#85c4c9','#68abb8','#4f90a6','#3b738f','#2a5674'] # Teal
@@ -51,7 +51,7 @@ def plot_map(df, city_coords:tuple, city_borders):
     #           '#a6dba0', '#5aae61', '#1b7837']# PRGn
     # colors = ['#e66101','#fdb863', '#b2abd2', '#5e3c99'] # PuOr
     # colors = ['#a6611a', '#dfc27d', '#80cdc1', '#018571'] # BrBG
-    colors = ['#d0d1e6', '#a6bddb', '#74a9cf', '#3690c0', '#0570b0', '#045a8d'] # PuBu
+    # colors = ['#d0d1e6', '#a6bddb', '#74a9cf', '#3690c0', '#0570b0', '#045a8d'] # PuBu
     colormap = branca.colormap.LinearColormap(colors=colors, index= np.arange(0, 1, 1/len(colors)), vmin=0.0, vmax=1.0, caption='Livability score').to_step(steps)
     colormap.add_to(mapObj)
 
@@ -69,7 +69,7 @@ def plot_map(df, city_coords:tuple, city_borders):
                             min_opacity=0,
                             max_opacity=0,
                             gradient=gradient_dict,
-                            radius=15,
+                            radius=12,
                             name=category,
                             show=True)
         else:
@@ -77,7 +77,7 @@ def plot_map(df, city_coords:tuple, city_borders):
                             min_opacity=0,
                             max_opacity=0,
                             gradient=gradient_dict,
-                            radius=15,
+                            radius=12,
                             name=category.split('_')[0],
                             show=False)
     #--------- add heatmap overlayers ---------------------

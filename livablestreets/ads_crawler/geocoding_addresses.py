@@ -6,7 +6,7 @@ import numpy as np
 import requests
 import urllib.parse
 
-def fix_weird_address(address, weird_patterns = ['Am S Bahnhof', 'xxx', 'xx', 'Nahe', 'nahe', 'Nähe','nähe','Close To', 'Nearby','nearby']):
+def fix_weird_address(address, weird_patterns = ['Am S Bahnhof', 'xxx', 'xx', 'Nahe', 'nahe', 'Nähe','nähe','Close To', 'Nearby','nearby', 'Close To', 'Close to', 'close to', 'close To']):
     ## Add here any other type of weird naming on addresses
     for weird in weird_patterns:
         address = address.replace(weird, '').strip().replace('  ', ' ')

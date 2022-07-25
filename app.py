@@ -227,5 +227,5 @@ if submitted:
         stf.folium_static(mapObj)
 
         st.markdown("""
-                    Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.
+                    Showing recently posted flatshare offers in your city. Be aware that the displayed locations are approximated.<br> This list is not comprehensive and more offers are available at [wg-gesucht.de](wg-gesucht.de).
                     """, unsafe_allow_html=True)
