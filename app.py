@@ -207,13 +207,13 @@ if submitted:
 
         ## Add wg-gesucht ads
         if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
-            st.markdown("""
+            start_placeholder = st.empty()
+            start_placeholder.markdown("""
                     Searching for flatshare offers...<br>
                     If this is taking longer than 2-3 minutes, please try again later.
                     """, unsafe_allow_html=True)
 
             # Obtain recent ads
-            ## TO DO include a filter for type of add
             ## TO DO find way to display text and map hide text when done. Use that to break apart 'crawl_all_pages function and display text of ongoing process while user waits for ads to load.
             CrawlWgGesucht().crawl_all_pages(location_name = city.location,
                                              number_pages = user_number_pages,
@@ -243,9 +243,9 @@ if submitted:
                                 icon=folium.Icon(color='purple', icon='home'))\
                     .add_to(mapObj)
 
-        ## Display map
-        stf.folium_static(mapObj)
-
-        st.markdown("""
+            ## Display map
+            start_placeholder.markdown("""
                     Showing recently posted flatshare offers in your city. Be aware that the displayed locations are approximated.<br> This list is not comprehensive and more offers are available at [wg-gesucht.de](wg-gesucht.de).
                     """, unsafe_allow_html=True)
+
+        stf.folium_static(mapObj)
