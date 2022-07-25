@@ -127,6 +127,10 @@ weight_dict={"Don't care much":-9,
              'Quite important':3,
              'Very important':9}
 
+user_number_pages_dict={"few":1,
+             "some":3,
+             'many':5}
+
 with st.sidebar:
     form = st.form("calc_weights")
 
@@ -134,16 +138,27 @@ with st.sidebar:
     form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=preloaded_cities.index('Berlin'))
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
-    ## Checkbox for wg-gesuch ads
-    # TO DO make clicking the box open more options: filters for search, number of pages, etc
-    cbox_wggesucht = form.checkbox('Show housing offers (Germany only)')
+
 
     # Weights selection
-    form.select_slider(label='Activities and services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
+    form.select_slider(label='Activities and Services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
     form.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
     form.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
     form.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
 
+    ## Checkbox for wg-gesuch ads
+    # TO DO make clicking the box open more options: filters for search, number of pages, etc
+    cbox_wggesucht = form.checkbox('Show housing offers (Germany only)?')
+    user_filters = form.multiselect(
+                'Search filters',
+                ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
+                ["wg-zimmer"])
+
+    # form.selectbox(label = 'Number of offers (affects loading time significantly)', key='user_number_pages', options = user_number_pages_dict.keys(), index='some')
+
+    user_number_pages = form.radio('Number of housing offers to display', user_number_pages_dict.keys())
+
+    user_number_pages = user_number_pages_dict.get(user_number_pages)
 
     #Form submit button to generate the inputs from the user
     submitted = form.form_submit_button('Display livability map', on_click=None)
@@ -196,8 +211,9 @@ if submitted:
             # Obtain recent ads
             ## TO DO include a filter for type of add
             ## TO DO find way to display text and map hide text when done. Use that to break apart 'crawl_all_pages function and display text of ongoing process while user waits for ads to load.
-            CrawlWgGesucht().crawl_all_pages(location_name = city.location, number_pages = 3,
-                    filters = ["wg-zimmer"])#,"1-zimmer-wohnungen","wohnungen","haeuser"])
+            CrawlWgGesucht().crawl_all_pages(location_name = city.location,
+                                             number_pages = user_number_pages,
+                                             filters = user_filters)
 
             df = pd.read_csv(f"{ROOT_DIR}/livablestreets/data/{standardize_characters(city.location)}/Ads/{standardize_characters(city.location)}_ads.csv")
             print(f'===> Loaded ads')
@@ -227,5 +243,5 @@ if submitted:
         stf.folium_static(mapObj)
 
         st.markdown("""
-                    Showing recently posted flatshare offers obtained from [wg-gesucht.de](wg-gesucht.de). Even more offers are available in their page. Be aware that the displayed locations are approximated.
+                    Showing recently posted flatshare offers in your city. Be aware that the displayed locations are approximated.<br> This list is not comprehensive and more offers are available at [wg-gesucht.de](wg-gesucht.de).
                     """, unsafe_allow_html=True)
