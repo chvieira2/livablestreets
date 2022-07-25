@@ -146,17 +146,21 @@ with st.sidebar:
     form.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
     form.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
 
+
+
     ## Checkbox for wg-gesuch ads
-    # TO DO make clicking the box open more options: filters for search, number of pages, etc
-    cbox_wggesucht = form.checkbox('Show housing offers (Germany only)?')
-    user_filters = form.multiselect(
+    expander = form.expander("Housing offers (German cities only)")
+
+    cbox_wggesucht = expander.checkbox('Display offers?')
+
+    user_filters = expander.multiselect(
                 'Search filters',
                 ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
                 ["wg-zimmer"])
 
     # form.selectbox(label = 'Number of offers (affects loading time significantly)', key='user_number_pages', options = user_number_pages_dict.keys(), index='some')
 
-    user_number_pages = form.radio('Number of housing offers to display', user_number_pages_dict.keys())
+    user_number_pages = expander.radio('Number of housing offers to display', user_number_pages_dict.keys())
 
     user_number_pages = user_number_pages_dict.get(user_number_pages)
 
