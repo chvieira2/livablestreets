@@ -60,7 +60,7 @@ social_life = {
 '''------------------------activities-------------------------------'''
 
 
-#Queries for acitvities
+#Queries for activities
 
 #Nodes
 health_regional = {'amenity':['hospital', 'clinic','nursing_home', 'social_facility']}
