@@ -34,7 +34,7 @@ def plot_map(df, city_coords:tuple, city_borders):
 
     steps = 1000
 
-
+    ## For selecting colors https://carto.com/carto-colors/ or https://colorbrewer2.org/#type=sequential&scheme=PuBu&n=9
     # colors = ['White','Blue','cyan','lime','yellow','Orange','red']
     # colors = ['#d3f2a3','#97e196','#6cc08b','#4c9b82','#217a79','#105965','#074050'] # Emrld
     # colors = ['#fde0c5','#facba6','#f8b58b','#f59e72','#f2855d','#ef6a4c','#eb4a40'] # Peach
@@ -59,7 +59,7 @@ def plot_map(df, city_coords:tuple, city_borders):
 
     gradient_dict=defaultdict(dict)
     for i in range(steps):
-        gradient_dict[1/steps*i] = colormap.rgb_hex_str(1/steps*i)
+        gradient_dict[1/steps*i] = colormap.rgb_hex_str(1/steps*i) # Convert to hex in case it is rgb or color name string ('blue', 'red', etc)
 
     #---------- create heatmaps for each category ---------------------
     heatmaps={}
