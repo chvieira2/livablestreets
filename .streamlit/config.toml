@@ -1,7 +1,2 @@
 [theme]
 base="dark"
-primaryColor="#0f7f17"
-backgroundColor="#85868a"
-secondaryBackgroundColor="#212125"
-# Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
-font = "sans serif"

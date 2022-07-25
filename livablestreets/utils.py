@@ -9,14 +9,16 @@ import os
 import os
 from config.config import ROOT_DIR
 
+
+
 def create_dir(path):
     # Check whether the specified path exists or not
     if os.path.exists(path):
-        print(f"The directory {path} already exists!")
+        pass
     else:
         # Create a new directory because it does not exist
         os.makedirs(path)
-        print(f"The new directory {path} has been created!")
+        print(f"The new directory has been created!")
 
 def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
                                          'activities_health_care', 'activities_public_service',
@@ -29,26 +31,12 @@ def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
     df[columns] = scaler.fit_transform(df[columns])
     return df
 
-def min_max_scaler_own(df, columns = ['activities_economic', 'activities_education',
-                                         'activities_health_care', 'activities_public_service',
-                                         'comfort_leisure_sports', 'comfort_sports',
-                                         'mobility_public_transport', 'social_community', 'social_culture',
-                                         'social_eating', 'social_night_life']):
-
-    """ Takes a dataframe and a list of columns and MinMax scale each column"""
-    for col in columns:
-        max_ = df[col].max(axis=0)
-        min_ = df[col].min(axis=0)
-        df[col] = df[col].apply(lambda x: (x-min_)/(max_-min_))
-    return df
-
 def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     # try:
     local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
-    print(local_path)
     df = pd.read_csv(local_path)
-    print(f'===> Loaded {file_name} locally from: {local_path}')
+    print(f'===> Loaded {file_name} locally')
     # except FileNotFoundError:
     #     # client = storage.Client()
     #     gcp_path = f"gs://{BUCKET_NAME}/{gcp_file_path}/{file_name}"
@@ -60,12 +48,15 @@ def get_file(file_name, local_file_path='data/berlin/WorkingTables', gcp_file_pa
 
     return df
 
-def save_file(df_grid, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
+def save_file(df, file_name, local_file_path='data/berlin/WorkingTables', gcp_file_path = 'data/berlin/WorkingTables', save_local=True, save_gcp=False):
+    # Create directory for saving
+    create_dir(path = f'{ROOT_DIR}/{local_file_path}')
+
     # Save locally
     if save_local:
         local_path = f'{ROOT_DIR}/{local_file_path}/{file_name}'
-        df_grid.to_csv(local_path, index=False)
-        print(f"===> {file_name} saved locally in {local_path}")
+        df.to_csv(local_path, index=False)
+        print(f"===> {file_name} saved locally")
 
     # Save on GCP
     # if save_gcp:

@@ -4,6 +4,8 @@ streamlit-folium
 
 #maps
 folium
+branca
+collections
 
 # # packaging
 pip>=9
@@ -17,11 +19,16 @@ pandas
 scikit-learn  # Only used for .preprocessing MinMaxScaler()
 geopandas
 shapely
-geopy # Only used for .geocoders
+geopy
 overpy
 geojson
 esy.osmfilter
 rtree
+
+# Data Sourcing
+requests
+bs4
+random_user_agent
 
 # tests/linter
 black

@@ -38,38 +38,49 @@ MODEL_VERSION = 'v1'
 
 
 #### Preloaded cities of choice ####
-preloaded_cities = sorted([
-            'Berlin',
-            'Buenos Aires',
-            'Santiago',
-            'Dresden',
-            'Montpellier',
-            'München',
+dict_city_number_wggesucht = {
+            'Berlin': '8',
+            'München': '90',
+            'Stuttgart': '124',
+            'Köln': '73',
+            'Hamburg': '55',
+            'Düsseldorf': '30',
+            'Bremen':'17',
+            'Leipzig':'77',
+            'Kiel':'71',
+            'Heidelberg':'59',
+            'Karlsruhe':'68',
+            'Hannover':'57',
+            'Dresden':'27',
+            'Aachen':'1',
+            'Bonn':'13',
+            'Darmstadt': '23',
+            'Frankfurt am Main':'41',
+            'Göttingen':'49',
+            'Münster':'91',
+            'Mainz':'84',
+            'Mannheim':'85',
+            'Nürnberg':'96',
+            'Regensburg':'111',
+            'Tübingen':'127',
+            'Würzburg':'141'
+        }
 
-            'Paris',
-            'Utrecht',
+
+preloaded_cities = sorted(set([
             'Budapest',
-            'Strasbourg',
-            'Lisboa',
-            'São Paulo',
-
-            'Rio de Janeiro',
-            'Porto Alegre',
-            'London',
-            'Erfurt',
-            'Kiel',
-            'Milano',
-
-            'Nova Iguaçu',
-            'Fortaleza',
-            'Recife',
-            'Napoli',
+            'Buenos Aires',
             'Dublin',
-
-            'San Jose',
+            'Lisboa',
+            'London',
+            'Milano',
+            'Montpellier',
             'Palo Alto',
+            'Paris',
+            'Porto Alegre',
+            'Rio de Janeiro',
             'Roma',
-            'New York',
-            'Vancouver',
-            'Cordoba'
-                    ])
+            'San Jose',
+            'São Paulo',
+            'Vancouver'
+                    ] + list(dict_city_number_wggesucht.keys())))
