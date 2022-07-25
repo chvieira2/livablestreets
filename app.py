@@ -19,7 +19,7 @@ from folium.plugins import HeatMap, MarkerCluster
 import numpy as np
 import pandas as pd
 from config.config import ROOT_DIR
-from livablestreets.livability_map.display_map import plot
+from livablestreets.livability_map.display_map import plot_map
 from livablestreets.livability_map.generator import LivabilityMap
 from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
@@ -106,18 +106,23 @@ with placeholder_map.container():
                 For more information, please check our [GitHub page](https://github.com/chvieira2/livablestreets)
                 """, unsafe_allow_html=True)
     st.markdown("""
-            ### Let's start:
-            - On the tab on your left (click the arrow on the top left if you can not see it), select the city of interest;
-            - Use the sliding bars to indicate how much each feature (activities and services/comfort/mobility/social life) are relevant for you;
-            - Press "Display livability map", and wait a few seconds for your result.
-            """)
+            ### Let's start:<br>
+            - Select your city of interest in the left side tab (click the arrow on the top left if you can not see the side tab);<br>
+            - Check the box to explore housing ads in your city of interest (only available for cities in Germany);<br>
+            - Use the sliding bars to indicate how much each feature is relevant to you:<br>
+            <span style="color:tomato">Activities and Services</span>: health care, education, public services, and banks<br>
+            <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
+            <span style="color:tomato">Mobility</span>: public transport and biking infrastructure<br>
+            <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
+            - Press "Display livability map" on the bottom, and explore the result.
+            """, unsafe_allow_html=True)
     # stf.folium_static(placeholderMap)
 
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care much":0.111111,
-             "Somewhat important":0.333334,
+weight_dict={"Don't care much":-9,
+             "Somewhat important":-3,
              'Average':1,
              'Quite important':3,
              'Very important':9}
@@ -131,7 +136,7 @@ with st.sidebar:
 
     ## Checkbox for wg-gesuch ads
     # TO DO make clicking the box open more options: filters for search, number of pages, etc
-    cbox_wggesucht = form.checkbox('Show flatshare offers? (only for cities in Germany)')
+    cbox_wggesucht = form.checkbox('Show housing offers (Germany only)')
 
     # Weights selection
     form.select_slider(label='Activities and services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
@@ -174,7 +179,7 @@ if submitted:
                           show=True,
                           style_function=lambda x:style_function,
                           zoom_on_click=True)
-    mapObj = plot(df, city_coords, city_borders)
+    mapObj = plot_map(df, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
         st.markdown(f"""
@@ -182,7 +187,7 @@ if submitted:
                 """, unsafe_allow_html=True)
 
         ## Add wg-gesucht ads
-        if cbox_wggesucht:
+        if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
             st.markdown("""
                     Searching for flatshare offers...<br>
                     If this is taking longer than 2-3 minutes, please try again later.
