@@ -4,6 +4,8 @@ streamlit-folium
 
 #maps
 folium
+branca
+collections
 
 # # packaging
 pip>=9
