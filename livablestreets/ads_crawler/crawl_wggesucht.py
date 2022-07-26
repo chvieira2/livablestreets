@@ -389,11 +389,11 @@ class CrawlWgGesucht(Crawler):
                         'longitude': np.nan if pd.isnull(lon) else float(lon)
                     }
                     if len(availability_dates) == 2:
-                        details['available from'] = str(availability_dates[0])
-                        details['available to'] = str(availability_dates[1])
+                        details['available_from'] = str(availability_dates[0])
+                        details['available_to'] = str(availability_dates[1])
                     elif len(availability_dates) == 1:
-                        details['available from'] = str(availability_dates[0])
-                        details['available to'] = np.nan
+                        details['available_from'] = str(availability_dates[0])
+                        details['available_to'] = np.nan
 
                     entries.append(details)
 

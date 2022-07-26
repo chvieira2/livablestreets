@@ -52,14 +52,14 @@ def plot_map(df, city_coords:tuple, city_borders):
     # colors = ['#e66101','#fdb863', '#b2abd2', '#5e3c99'] # PuOr
     # colors = ['#a6611a', '#dfc27d', '#80cdc1', '#018571'] # BrBG
     # colors = ['#d0d1e6', '#a6bddb', '#74a9cf', '#3690c0', '#0570b0', '#045a8d'] # PuBu
-    colormap = branca.colormap.LinearColormap(colors=colors, index= np.arange(0, 1, 1/len(colors)), vmin=0.0, vmax=1.0, caption='Livability score').to_step(steps)
+    colormap = branca.colormap.LinearColormap(colors=colors, index= np.arange(0, 100, 100/len(colors)), vmin=0.0, vmax=100.0, caption='Livability score (%)').to_step(steps)
     colormap.add_to(mapObj)
 
     # Prepare gradient dictionary with step separation
 
     gradient_dict=defaultdict(dict)
     for i in range(steps):
-        gradient_dict[1/steps*i] = colormap.rgb_hex_str(1/steps*i) # Convert to hex in case it is rgb or color name string ('blue', 'red', etc)
+        gradient_dict[1/steps*i] = colormap.rgb_hex_str(100/steps*i) # Convert to hex in case it is rgb or color name string ('blue', 'red', etc)
 
     #---------- create heatmaps for each category ---------------------
     heatmaps={}
