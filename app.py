@@ -200,7 +200,7 @@ if submitted:
 
         displayed_map = st.empty()
         with displayed_map:
-            stf.folium_static(mapObj)
+            stf.folium_static(mapObj, width=700, height=500)
 
         ## Add wg-gesucht ads
         if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
@@ -279,4 +279,4 @@ if submitted:
                     """, unsafe_allow_html=True)
 
         with displayed_map:
-            stf.folium_static(mapObj)
+            stf.folium_static(mapObj, width=500, height=500)

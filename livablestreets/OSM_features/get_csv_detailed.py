@@ -10,7 +10,7 @@ import pandas as pd
 # from livablestreets.params import BUCKET_NAME
 from livablestreets.utils import simple_time_tracker
 from livablestreets.OSM_features.osm_query import query_params_osm
-from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.query_names_detailed import master_query
 from livablestreets.utils import create_dir
 
 import os, sys, time
@@ -125,5 +125,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    query_df = master_query_negative(location_name='nova_iguacu')
+    query_df = master_query(location_name='nova_iguacu')
     get_csv(location='Nova Iguaçu', location_name='nova_iguacu', query_df=query_df)
