@@ -40,16 +40,6 @@ def point_in_grid_counter(polygon, points):
     pointInPolys = gpd.tools.sjoin(points, polygon, predicate="within", how='inner')
     return len(pointInPolys)
 
-def feature_cat_mean_score(df):
-    """ Receives a dataframe and looks for columns containing the categories indicator (activities, comfort, mobility, social)
-        Calculate the row-wise mean of columns in that categories and add it to a new column called categories_mean"""
-
-    for categories in ('activities', 'comfort', 'mobility', 'social', 'negative'):
-        columns_interest = [column for column in df.columns if f"{categories}_" in column]
-        df[f"{categories}_mean"] = df[columns_interest].mean(axis=1)
-
-    return df
-
 @simple_time_tracker
 def integrate_all_features_counts(stepsize, location_name, sigmas,
                                     df_grid=None,
@@ -109,13 +99,8 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     # Apply blurrying function
     df_grid = FeatCount_blurrying(df=df_grid, sigmas_list=sigmas)
 
-    # Substitute NaN for 0 values before calculating livability score to prevent NaN in heat_map display error. This must be done after blurrying otherwise the '0' value will be blurried over as well
+    # Substitute NaN for 0 values before calculating livability score to prevent NaN in heat_map display error. This must be done AFTER blurrying otherwise the '0' value will be blurried over as well
     df_grid = df_grid.fillna(0.0)
-
-    ## Create the livability score
-    # Calculate the mean per category
-    df_grid= feature_cat_mean_score(df_grid)
-    print('Categories mean were calculated')
 
     save_file(df_grid, file_name=f'FeatCount_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
 
@@ -129,7 +114,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
 
 
 if __name__ == '__main__':
-    df_grid = integrate_all_features_counts(location_name = 'aachen', stepsize = 2000,
+    df_grid = integrate_all_features_counts(location_name = 'berlin', stepsize = 5000,
                                             sigmas=[0.1, 0.25, 0.025, 0.1, 0.15, 0.25, 0.2, 0.5, 0.15, 0.25, 0.2, 0.05, 0.25, 0.1, 0.05, 0.05, 0.1, 0.25, 0.4, 0.15, 0.25, 0.1, 0.1, 0.15, 0.25, 0.125, 0.05, 0.025, 0.15, 0.1, 0.1, 0.1])
     print(df_grid.info())
     # df_grid = integrate_all_features_counts(stepsize = 1000)

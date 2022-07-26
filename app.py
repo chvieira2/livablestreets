@@ -106,11 +106,11 @@ with placeholder_map.container():
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care much":-9,
-             "Somewhat important":-3,
+weight_dict={"Don't care much":1/10,
+             "Somewhat important":1/3,
              'Average':1,
              'Quite important':3,
-             'Very important':9}
+             'Very important':10}
 
 user_number_pages_dict={"few":1,
              "some":3,
@@ -166,13 +166,13 @@ if submitted:
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Average') # Last weight 'average refers to negative features
+               'Average') # Last weight 'average' refers to negative features
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
 
     city = LivabilityMap(location=st.session_state.input_city, weights=weights)
-    city.calc_livability()
+    city.update_livability(imputed_weights= weights)
     df_liv = city.df_grid_Livability
     # Transform livability in percentage
     df_liv['livability'] = df_liv['livability']*100

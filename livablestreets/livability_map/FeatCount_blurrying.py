@@ -1,4 +1,3 @@
-from sklearn.preprocessing import MinMaxScaler
 from skimage.filters import gaussian
 import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file
@@ -13,8 +12,6 @@ def blur_matrix(array,sigmapx):
         array, sigma=(sigmapx, sigmapx), truncate= truncate, mode='wrap')
 
     return blurred_img.reshape(array.shape[0],array.shape[1])
-
-
 
 @simple_time_tracker
 def FeatCount_blurrying(df, slice = None, sigmas_list = None):
@@ -44,9 +41,8 @@ def FeatCount_blurrying(df, slice = None, sigmas_list = None):
         matrix_to_blurry = matrix_to_blurry.reshape(len(lat_start_limits),len(lng_start_limits))
         # Apply blurrying function to 2D matrix
         matrix_to_blurry = blur_matrix(matrix_to_blurry,sigmas_list[index])
-        # Reshapes it back to 1D and MinMax scale blurred feature
-        scaler = MinMaxScaler(feature_range=(0, 1))
-        matrix_to_blurry = scaler.fit_transform(matrix_to_blurry.reshape(len(df), 1))
+        # Reshapes it back to 1D
+        matrix_to_blurry = matrix_to_blurry.reshape(len(df), 1)
 
         # Adds new values back to the original dataframe
         df[feature_names[index]] = [value[0] for value in list(matrix_to_blurry)]

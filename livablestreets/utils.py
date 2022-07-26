@@ -23,10 +23,11 @@ def min_max_scaler(df, columns = ['activities_economic', 'activities_education',
                                          'activities_health_care', 'activities_public_service',
                                          'comfort_leisure_sports', 'comfort_sports',
                                          'mobility_public_transport', 'social_community', 'social_culture',
-                                         'social_eating', 'social_night_life']):
+                                         'social_eating', 'social_night_life'],
+                   min_val=0,max_val=1):
 
     """ Takes a dataframe and a list of columns and MinMax scale each column"""
-    scaler = MinMaxScaler()
+    scaler = MinMaxScaler(feature_range = (min_val, max_val))
     df[columns] = scaler.fit_transform(df[columns])
     return df
 
