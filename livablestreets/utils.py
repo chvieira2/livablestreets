@@ -10,7 +10,6 @@ import os
 from config.config import ROOT_DIR
 
 
-
 def create_dir(path):
     # Check whether the specified path exists or not
     if os.path.exists(path):
@@ -66,6 +65,27 @@ def save_file(df, file_name, local_file_path='data/berlin/WorkingTables', gcp_fi
     #     local_path = f'livablestreets/{local_file_path}/{file_name}'
     #     blob.upload_from_filename(local_path)
     #     print(f"===> {file_name} uploaded to bucket {BUCKET_NAME} inside {storage_location}")
+
+
+def get_liv_from_coord(lat, lon,liv_df):
+
+    # Calculate the 100 m square coordinates around given coordinates
+    lat_north = lat+m_to_coord(100, latitude=lat, direction='north')
+    lat_south = lat-m_to_coord(-100, latitude=lat, direction='south')
+    lon_east = lon+m_to_coord(100, latitude=lat, direction='east')
+    lon_west = lon-m_to_coord(-100, latitude=lat, direction='west')
+
+    # Filter possible grid locations
+    liv_df = liv_df[liv_df['lat_center'] <= lat_north]
+    liv_df = liv_df[liv_df['lat_center'] >= lat_south]
+    liv_df = liv_df[liv_df['lng_center'] <= lon_east]
+    liv_df = liv_df[liv_df['lng_center'] >= lon_west]
+
+    # return nan if there are no grid, mean of livability if there are multiple which equals the single value if there's only one grid
+    if len(liv_df) == 0:
+        return np.nan
+    else:
+        return round(float(liv_df['livability'].mean()),2)
 
 
 def coord_to_m(start_lat,
@@ -142,5 +162,4 @@ def simple_time_tracker(method):
     return timed
 
 if __name__ == '__main__':
-    print(m_to_coord(1000, latitude=np.mean([45.5358482,45.3867381]), direction='x'))
-    print([math.pi*(math.cos(x)/180) for x in np.arange(45,55,1)])
+    print(get_liv_from_coord(52.438432250000005, 13.309635608453753,None))

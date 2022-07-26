@@ -24,6 +24,7 @@ from livablestreets.livability_map.generator import LivabilityMap
 from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
 from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
+from livablestreets.utils import get_liv_from_coord
 
 #-----------------------page configuration-------------------------
 st.set_page_config(
@@ -73,22 +74,6 @@ st.markdown(
 
 #----Simple placeholder for the world map with arbitrary city coordenates------
 placeholder_map = st.empty()
-placeholderMap = folium.Map(location=[37.6000, 10.0154],
-                            #tiles="Stamen Terrain",
-                            zoom_start=2)
-# placeholder_cities = {'Berlin' : [52.5200, 13.4050],
-#                       'London' : [51.5072,0.1276],
-#                       'New York' : [40.7128, -73.9352],
-#                       'Tokyo' : [35.6762,139.6503],
-#                       'Sao Paulo': [-23.5558, -46.6396],
-#                       'Qatar': [25.3548,51.1839],
-#                       'Marrakesh': [31.6295,7.9811]
-#                       }
-# for city,coords in placeholder_cities.items():
-#     folium.Marker(coords,
-#                   popup=city,
-#                   icon=folium.Icon(color='green',
-#                                    icon='home')).add_to(placeholderMap)
 
 with placeholder_map.container():
 
@@ -97,7 +82,7 @@ with placeholder_map.container():
 
     with col1:
         image = Image.open('livablestreets_logo.png')
-        st.image(image=image, width=300)
+        st.image(image=image, width=275)
     with col2:
         st.write('\n')
         st.markdown("""
@@ -107,13 +92,13 @@ with placeholder_map.container():
                 """, unsafe_allow_html=True)
     st.markdown("""
             ### Let's start:<br>
-            - Select your city of interest in the left side tab (click the arrow on the top left if you can not see the side tab);<br>
-            - Check the box to explore housing ads in your city of interest (only available for cities in Germany);<br>
-            - Use the sliding bars to indicate how much each feature is relevant to you:<br>
+            - Select a city of interest in the left sidetab (click the arrow on the top left if you can not see the sidetab);<br>
+            - Set the relevance of each category of features by using the sliding bars:<br>
             <span style="color:tomato">Activities and Services</span>: health care, education, public services, and banks<br>
             <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
             <span style="color:tomato">Mobility</span>: public transport and biking infrastructure<br>
             <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
+            - If you are searching for housing (only available for cities in Germany) then open the indicated menu, check the box and set the search parameters;<br>
             - Press "Display livability map" on the bottom, and explore the result.
             """, unsafe_allow_html=True)
     # stf.folium_static(placeholderMap)
@@ -153,13 +138,19 @@ with st.sidebar:
 
     cbox_wggesucht = expander.checkbox('Display offers?')
 
+    # Search filter criterium
     user_filters = expander.multiselect(
                 'Search filters',
-                ["wg-zimmer","1-zimmer-wohnungen","wohnungen","haeuser"],
-                ["wg-zimmer"])
+                ["Room in flatshare","Single room flat","Flat","House"],
+                ["Room in flatshare"])
 
-    # form.selectbox(label = 'Number of offers (affects loading time significantly)', key='user_number_pages', options = user_number_pages_dict.keys(), index='some')
+    dict_filters = {"Room in flatshare":"wg-zimmer",
+                    "Single room flat":"1-zimmer-wohnungen",
+                    "Flat":"wohnungen",
+                    "House":"haeuser"}
+    user_filters = [dict_filters.get(filter) for filter in user_filters]
 
+    # Number of search pages
     user_number_pages = expander.radio('Number of housing offers to display', user_number_pages_dict.keys())
 
     user_number_pages = user_number_pages_dict.get(user_number_pages)
@@ -182,9 +173,11 @@ if submitted:
 
     city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
-    df = city.df_grid_Livability
+    df_liv = city.df_grid_Livability
+    # Transform livability in percentage
+    df_liv['livability'] = df_liv['livability']*100
     #city center position lat,lon
-    city_coords = [np.mean(df['lat_center']),np.mean(df['lng_center'])]
+    city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
     print(f"""============ {city.location} coordinates: {city_coords} =============""")
 
     #for filling the polygon
@@ -198,18 +191,22 @@ if submitted:
                           show=True,
                           style_function=lambda x:style_function,
                           zoom_on_click=True)
-    mapObj = plot_map(df, city_coords, city_borders)
+    mapObj = plot_map(df_liv, city_coords, city_borders)
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
         st.markdown(f"""
                 # Here's the livability map for <span style="color:tomato">{city.location}</span>
                 """, unsafe_allow_html=True)
 
+        displayed_map = st.empty()
+        with displayed_map:
+            stf.folium_static(mapObj)
+
         ## Add wg-gesucht ads
         if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
             start_placeholder = st.empty()
             start_placeholder.markdown("""
-                    Searching for flatshare offers...<br>
+                    Searching for housing offers...<br>
                     If this is taking longer than 2-3 minutes, please try again later.
                     """, unsafe_allow_html=True)
 
@@ -228,24 +225,58 @@ if submitted:
 
             ## Add ads to map
             for index,row in df.iterrows():
-                folium.Marker(location=[row.loc['latitude'], row.loc['longitude']],
-                              tooltip=f"""
+                if 'WG' in row.loc['type_offer']:
+                    tooltip = f"""
                               {row.loc['title']}<br>
-                              Price: {row.loc['price_euros']} €<br>
-                              Room size: {row.loc['size_sqm']} sqm<br>
                               Address: {row.loc['address']}<br>
-                              Published on: {row.loc['published_on'] if np.isnan(row.loc['published_at']) else str(row.loc['published_on'])+' around '+str(int(row.loc['published_at']))+'h'}
-                              """,
+                              Rent (month): {row.loc['price_euros']} €<br>
+                              Room size: {row.loc['size_sqm']} sqm<br>
+                              Capacity: {row.loc['WG_size']} people<br>
+                              Published on: {row.loc['published_on']}<br>
+                              Available from: {row.loc['available_from']}<br>
+                              Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
+                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              row.loc['longitude'],liv_df = df_liv))}%
+                              """
+                elif '1 Zimmer Wohnung' in row.loc['type_offer']:
+                    tooltip = f"""
+                              {row.loc['title']}<br>
+                              Address: {row.loc['address']}<br>
+                              Rent (month): {row.loc['price_euros']} €<br>
+                              Property size: {row.loc['size_sqm']} sqm<br>
+                              Published on: {row.loc['published_on']}<br>
+                              Available from: {row.loc['available_from']}<br>
+                              Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
+                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              row.loc['longitude'],liv_df = df_liv))}%
+                              """
+                else:
+                    tooltip = f"""
+                              {row.loc['title']}<br>
+                              Address: {row.loc['address']}<br>
+                              Rent (month): {row.loc['price_euros']} €<br>
+                              Property size: {row.loc['size_sqm']} sqm<br>
+                              Rooms: {row.loc['available_rooms']} rooms<br>
+                              Published on: {row.loc['published_on']}<br>
+                              Available from: {row.loc['available_from']}<br>
+                              Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
+                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              row.loc['longitude'],liv_df = df_liv))}%
+                              """
+
+
+                folium.Marker(location=[row.loc['latitude'], row.loc['longitude']],
+                              tooltip=tooltip,
                               popup=f"""
                               <a href="{row.loc['url']}">{row.loc['url']}</a>
-
                               """,
                                 icon=folium.Icon(color='purple', icon='home'))\
                     .add_to(mapObj)
 
             ## Display map
             start_placeholder.markdown("""
-                    Showing recently posted flatshare offers in your city. Be aware that the displayed locations are approximated.<br> This list is not comprehensive and more offers are available at [wg-gesucht.de](wg-gesucht.de).
+                    Showing recently posted housing offers in your city. Be aware that the displayed locations are approximated.<br> This list is not comprehensive and more offers are available at [wg-gesucht.de](wg-gesucht.de).
                     """, unsafe_allow_html=True)
 
-        stf.folium_static(mapObj)
+        with displayed_map:
+            stf.folium_static(mapObj)
