@@ -8,7 +8,7 @@ from livablestreets.string_utils import standardize_characters, capitalize_city_
 from config.config import ROOT_DIR
 
 
-from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.query_names_detailed import master_query
 from livablestreets.OSM_features.get_csv_detailed import get_csv
 
 import pandas as pd
@@ -90,9 +90,7 @@ class LivabilityMap(object):
                 ## Integrates features count to grid
         if self.query_df is None:
             # launchs queries of gejson and csv files from local PBF
-            # self.query_df = master_query(location_name=self.location_name)
-            # self.query_df = master_query_complex(location_name=self.location_name)
-            self.query_df = master_query_negative(location_name=self.location_name)
+            self.query_df = master_query(location_name=self.location_name)
 
         distances = list(self.query_df['distance'])
         self.sigmas = [(0.5*distance)/self.stepsize for distance in distances]

@@ -14,7 +14,7 @@ from shapely.geometry import mapping
 from geojson import dump
 
 
-from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.query_names_detailed import master_query
 from livablestreets.OSM_features.query_osmfilter import data_from_pbf
 
 
@@ -113,8 +113,6 @@ if __name__ == "__main__":
     # uncomment the desired one:
 
     df = master_query()
-    # df = master_query_complex()
-    # df = master_query_negative()
     print(df)
 
     # uncomment to create slice:

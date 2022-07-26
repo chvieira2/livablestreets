@@ -4,7 +4,7 @@ import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file
 import pandas as pd
 
-from livablestreets.OSM_features.query_names_detailed import master_query, master_query_complex, master_query_negative
+from livablestreets.OSM_features.query_names_detailed import master_query
 
 def blur_matrix(array,sigmapx):
 
@@ -20,7 +20,7 @@ def blur_matrix(array,sigmapx):
 def FeatCount_blurrying(df, slice = None, sigmas_list = None):
     """ Receives a dataframe and the features columns for blurrying and returns the modified data frame
     """
-    df_master = master_query_negative()
+    df_master = master_query()
     feature_names = df_master['name'].tolist()
 
     # Check if slice exists, otherwise creates it
