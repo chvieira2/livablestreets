@@ -137,6 +137,7 @@ class LivabilityMap(object):
 
         return self.df_grid_Livability
 
+    @simple_time_tracker
     def update_livability(self, imputed_weights):
         """ Update the livability score given the weights"""
 
