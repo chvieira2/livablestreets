@@ -67,7 +67,7 @@ def plot_map(df, city_coords:tuple, city_borders):
                             min_opacity=0,
                             max_opacity=0,
                             gradient=gradient_dict,
-                            radius=12,
+                            radius=10,
                             name=category,
                             show=True)
         else:
@@ -75,7 +75,7 @@ def plot_map(df, city_coords:tuple, city_borders):
                             min_opacity=0,
                             max_opacity=0,
                             gradient=gradient_dict,
-                            radius=12,
+                            radius=10,
                             name=category.split('_')[0],
                             show=False)
     #--------- add heatmap overlayers ---------------------

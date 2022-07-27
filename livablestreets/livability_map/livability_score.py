@@ -14,7 +14,6 @@ def feature_cat_mean_score(df):
 
     return df
 
-#def livability_score(df, weights = [1,1,1,1,1],
 def livability_score_old(df, weights = [1,1,1,1,1],
                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
                      stepsize = 200, location_name = 'berlin',
@@ -195,41 +194,59 @@ def convert_feature_impact(df, column, stepsize = 200):
     # - if the value is smaller than the scale, take as if it was zero (to avoid bugs with possible negative values)
     # - if the value is larger than the scale, take as if it was the max value in the scale (to avoid extrapolating the model beyond the scale)
     # Convert values in between the scale using the polynomial curve
-    converted_values = [value*y[0] if value <= x[0] else value*y[-1] if value >= x[-1] else value*predict(value) for value in values]
+    converted_values = [y[0] if value <= x[0] else y[-1] if value >= x[-1] else predict(value) for value in values]
 
     return converted_values
 
-# def livability_score_ind_weights(df, weights = [1,1,1,1,1],
+def update_livability(df_livability, weights = [1,1,1,1,1], categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']):
+
+    ## Calculate livability as the weighted sum
+
+    # Create weighted values for the mean of each category by multiplying to inputed weights
+    new_cols = [col + '_weighted' for col in categories_interest]
+    df_livability[new_cols] = df_livability[categories_interest].mul(weights)
+
+    # Calculate livability as the sum of all 4 categories
+    df_livability['livability'] = df_livability[new_cols].sum(axis=1)
+
+    # MinMax scale it for displaying across cities. Might not be necessary once the values had been converted to a unified scale
+    df_livability = min_max_scaler(df_livability, columns = ['livability'])
+
+    # Trim unnecessary columns for saving smaller file
+    df_livability = df_livability[df_livability['grid_in_location']]
+    df_livability = df_livability[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
+
+    return df_livability
+
 def livability_score(df, weights = [1,1,1,1,1],
-                     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
-                     indiv_factors_mapping = {'activities_economic':2,
-                                        'activities_education':2,
-                                        'activities_educational':2,
-                                        'activities_goverment':0.5,
-                                        'activities_health_local':4, 'activities_health_regional':2,
-                                        'activities_post':0.5,
-                                        'activities_public_service':1,
-                                        'comfort_comfort_spots':1,
-                                        'comfort_green_forests':4,
-                                        'comfort_green_natural':4,
-                                        'comfort_green_parks':4,
-                                        'comfort_green_space':2,
-                                        'comfort_lakes':8,
-                                        'comfort_leisure_mass':1,
-                                        'comfort_leisure_spots':0.5,
-                                        'comfort_rivers':8,
-                                        'mobility_bike_infraestructure':2,
-                                        'mobility_public_transport_bus':4,
-                                        'mobility_public_transport_rail':2, 'negative_industrial':4,
-                                        'negative_railway':8,
-                                        'negative_retail':1,
-                                        'negative_street_motorway':4, 'negative_street_primary':2, 'negative_street_secondary':2,
-                                        'negative_supermarket':1,
-                                        'negative_warehouse':1,
-                                        'social_life_community':0.5,
-                                        'social_life_culture':2,
+                     indiv_factors_mapping = {'activities_economic':4,
+                                        'activities_education':4,
+                                        'activities_educational':4,
+                                        'activities_goverment':1,
+                                        'activities_health_local':8, 'activities_health_regional':4,
+                                        'activities_post':1,
+                                        'activities_public_service':2,
+                                        'comfort_comfort_spots':2,
+                                        'comfort_green_forests':8,
+                                        'comfort_green_natural':8,
+                                        'comfort_green_parks':8,
+                                        'comfort_green_space':4,
+                                        'comfort_lakes':16,
+                                        'comfort_leisure_mass':2,
+                                        'comfort_leisure_spots':1,
+                                        'comfort_rivers':4,
+                                        'mobility_bike_infraestructure':4,
+                                        'mobility_public_transport_bus':8,
+                                        'mobility_public_transport_rail':4, 'negative_industrial':8,
+                                        'negative_railway':16,
+                                        'negative_retail':2,
+                                        'negative_street_motorway':8, 'negative_street_primary':4, 'negative_street_secondary':4,
+                                        'negative_supermarket':4,
+                                        'negative_warehouse':4,
+                                        'social_life_community':1,
+                                        'social_life_culture':4,
                                         'social_life_eating':8,
-                                        'social_life_night_life':2},
+                                        'social_life_night_life':4},
                      stepsize = 200, location_name = 'berlin',
                      save_local=True):
     """ Calculates the livability score in each grid by taking the weighted sum of all feature values after normalization by a specific factor. The logic here is that not all features matter the same for livability, therefore they are corrected by an individual factor. At the same time, the user can input weights for each category to define which ones matter the most for them (weighted sum of categories = livability).
@@ -242,37 +259,24 @@ def livability_score(df, weights = [1,1,1,1,1],
         df_converted[col] = convert_feature_impact(df_converted, col, stepsize = stepsize)
 
 
-
     ## Correct features by individual factors
-    df_factored = df_converted.copy()
     # Use a common denominator approach to multiply by the feature weights without changing the scale
     # In practice, I multiply all columns by the multiplication of all factors (common factor), then I divided each column by the common factor divided by the individual factor
     # This is all done in a for loop to garantee that the mapping is correct, as dictionaries are not ordered
-    common_factor = np.prod(list(indiv_factors_mapping.values()))
-    for col in columns_of_interest:
-        mod_factor = common_factor*(common_factor/indiv_factors_mapping.get(col))
-        df_factored[col] = df_factored[col].mul(mod_factor)
 
+    # df_factored = min_max_scaler(df_converted, columns = columns_of_interest)
+    df_factored = df_converted.copy()
+
+    for col in columns_of_interest:
+        mod_factor = indiv_factors_mapping.get(col)
+        df_factored[col] = df_factored[col].mul(mod_factor)
 
 
     ## Calculate livability as the weighted sum
     # Calculate the mean per category. This is important cause some categories have more features than others, so sum wouldn't work
     df_foo= feature_cat_mean_score(df_factored)
 
-    # Create weighted values for the mean of each category by multiplying to inputed weights
-    new_cols = [col + '_weighted' for col in categories_interest]
-    df_foo[new_cols] = df_foo[categories_interest].mul(weights)
-
-    # Calculate livability as the sum of all 4 categories
-    df['livability'] = df_foo[new_cols].sum(axis=1)
-
-    # MinMax scale it for displaying across cities. Might not be necessary once the values had been converted to a unified scale
-    df = min_max_scaler(df, columns = ['livability'])
-
-    # Trim unnecessary columns for saving smaller file
-    df = df[df['grid_in_location']]
-    df = df[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
-
+    df = update_livability(df_foo, weights=weights)
 
     save_file(df, file_name=f'Livability_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', save_local=save_local)
 
@@ -280,5 +284,5 @@ def livability_score(df, weights = [1,1,1,1,1],
 
 
 if __name__ == '__main__':
-    df_grid = get_file(file_name='FeatCount_berlin_grid_200m.csv', local_file_path=f'/livablestreets/data/berlin/WorkingTables')
-    df = livability_score(df = df_grid, stepsize = 200, location_name = 'berlin')
+    df_grid = get_file(file_name='FeatCount_montpellier_grid_500m.csv', local_file_path=f'/livablestreets/data/montpellier/WorkingTables')
+    df = livability_score(df = df_grid, stepsize = 200, location_name = 'montpellier')
