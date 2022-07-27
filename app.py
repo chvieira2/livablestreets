@@ -24,7 +24,7 @@ from livablestreets.livability_map.generator import LivabilityMap
 from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
 from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
-from livablestreets.utils import get_liv_from_coord
+from livablestreets.utils import get_liv_from_coord, min_max_scaler
 
 #-----------------------page configuration-------------------------
 st.set_page_config(
@@ -93,24 +93,25 @@ with placeholder_map.container():
     st.markdown("""
             ### Let's start:<br>
             - Select a city of interest in the left sidetab (click the arrow on the top left if you can not see the sidetab);<br>
-            - Set the relevance of each category of features by using the sliding bars:<br>
+            - Set the relevance of each features category by using the sliding bars:<br>
             <span style="color:tomato">Activities and Services</span>: health care, education, public services, and banks<br>
             <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
             <span style="color:tomato">Mobility</span>: public transport and biking infrastructure<br>
             <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
             - If you are searching for housing (only available for cities in Germany) then open the indicated menu, check the box and set the search parameters;<br>
-            - Press "Display livability map" on the bottom, and explore the result.
+            - Press "Display livability map" on the bottom, and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects the livability.
+
             """, unsafe_allow_html=True)
     # stf.folium_static(placeholderMap)
 
 
 #------------------------user inputs-----------------------------------
 #inputs for weights for users
-weight_dict={"Don't care much":-9,
-             "Somewhat important":-3,
+weight_dict={"Don't care much":1/10,
+             "Somewhat important":1/3,
              'Average':1,
              'Quite important':3,
-             'Very important':9}
+             'Very important':10}
 
 user_number_pages_dict={"few":1,
              "some":3,
@@ -166,7 +167,7 @@ if submitted:
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Average') # Last weight 'average refers to negative features
+               'Average') # Last weight 'average' refers to negative features
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
@@ -176,6 +177,11 @@ if submitted:
     df_liv = city.df_grid_Livability
     # Transform livability in percentage
     df_liv['livability'] = df_liv['livability']*100
+
+    # MinMax scale all columns for display
+    categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']
+    df_liv = min_max_scaler(df_liv, columns = categories_interest)
+    df_liv['negative_mean'] = 1 - df_liv['negative_mean']
     #city center position lat,lon
     city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
     print(f"""============ {city.location} coordinates: {city_coords} =============""")
@@ -195,7 +201,7 @@ if submitted:
     #Used to fill the placeholder of the world map with according one of the selected city
     with placeholder_map.container():
         st.markdown(f"""
-                # Here's the livability map for <span style="color:tomato">{city.location}</span>
+                # Here's the livability map for <span style="color:tomato">{city.location}</span><br>
                 """, unsafe_allow_html=True)
 
         displayed_map = st.empty()

@@ -1,7 +1,7 @@
 # from difflib import SequenceMatcher
 from livablestreets.livability_map.create_grid import create_geofence, get_shape_of_location
 from livablestreets.livability_map.add_features_to_grid import integrate_all_features_counts
-from livablestreets.livability_map.livability_score import livability_score
+from livablestreets.livability_map.livability_score import livability_score, update_livability
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
 from livablestreets.params import preloaded_cities
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
@@ -130,6 +130,9 @@ class LivabilityMap(object):
             try :
                 self.df_grid_Livability = get_file(f'Livability_{self.location_name}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location_name}/WorkingTables', gcp_file_path = f'data/{self.location_name}/WorkingTables', save_local=True)
 
+                # Updated livability score with weights
+                self.df_grid_Livability = update_livability(self.df_grid_Livability, self.weights)
+
             except FileNotFoundError:
                 self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
         else:
@@ -137,29 +140,12 @@ class LivabilityMap(object):
 
         return self.df_grid_Livability
 
-    def update_livability(self, imputed_weights):
-        """ Update the livability score given the weights"""
-
-        # Get weights
-        self.weights = imputed_weights
-
-        ## Calculate livability
-        self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
-
-        print(f'Livability has been updated with weights {self.weights}')
-
-        return self.df_grid_Livability
-
-
-
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'Aachen')
-    # city.calc_livability()
-    # print(city.df_grid_Livability.info())
+    # city = LivabilityMap(location = 'Montpellier').calc_livability()
 
+    print(preloaded_cities)
     for city in preloaded_cities:#[::-1]:
         map_city = LivabilityMap(location = city, stepsize = 200)
         map_city.calc_livability()
-        print(map_city.df_grid_Livability.info())
