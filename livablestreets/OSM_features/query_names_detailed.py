@@ -182,7 +182,7 @@ negative = {
              'street_primary' : [street_primary,'negative_street_primary', 250 , 'Way', 'Line', 'lineString' , 'negative'],#, street_primary_wf, street_primary_bf ] ,
              'street_secondary' : [street_secondary,'negative_street_secondary', 100 , 'Way', 'Line', 'lineString' , 'negative'],#, street_secondary_wf, street_secondary_bf ] ,
             #  'street_terteary' : [street_terteary,'street_terteary',50 , 'Way', 'Line', 'lineString' , 'negative'], #, street_terteary_wf, street_terteary_bf ] ,
-             'railway' : [railway,'negative_railway' ,50 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
+             'railway' : [railway,'negative_railway' ,500 , 'Way', 'Line', 'lineString' , 'negative'], #, railway_wf, railway_bf ] ,
              'industrial' : [industrial,'negative_industrial', 300 , 'Way' ,'Line','lineString', 'negative' ],
              'retail' : [retail,'negative_retail', 200 , 'Way' ,'Line','lineString', 'negative' ],
              'supermarket' : [supermarket,'negative_supermarket', 200 , 'Way' ,'Line','lineString', 'negative' ],

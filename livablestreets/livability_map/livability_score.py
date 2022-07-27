@@ -86,24 +86,24 @@ def convert_feature_impact(df, column, stepsize = 200):
         y = [0, 4, 2, 1, 0, -1]
         degree = 3
     if column == 'comfort_green_forests':
-        x = [val*3 for val in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
-        y = [0, 2, 3, 4, 3, 2, 1, 1, 0, 0, -1]
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [0, 3, 4, 3, 2, 2]
         degree = 4
     if column == 'comfort_green_natural':
-        x = [val*3 for val in [0, 1, 2, 3, 4, 5, 6, 7]]
-        y = [-0.5, 4, 3, 2, 1, 0, -1, -1]
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [-0.5, 3, 4, 3, 2, 1]
         degree = 4
     if column == 'comfort_green_parks':
-        x = [val*3 for val in [0, 1, 2, 3, 4, 5, 6, 7]]
-        y = [-0.5, 4, 3, 2, 1, 0, -1, -1]
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [-0.5, 3, 4, 2, 1, 0]
         degree = 4
     if column == 'comfort_green_space':
-        x = [val*3 for val in [0, 1, 2, 3, 4, 5, 6, 7, 8]]
-        y = [0, 2, 4, 3, 2, 1, 0, -1, -1]
-        degree = 3
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [0, 3, 4, 2, 1, 0]
+        degree = 4
     if column == 'comfort_lakes':
-        x = [val*3 for val in [0, 1, 2, 3, 4, 5, 6, 7, 8]]
-        y = [0, 4, 4, 3, 2, 1, 0, -1, -1]
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [0, 4, 4, 3, 2, 2]
         degree = 4
     if column == 'comfort_leisure_mass':
         x = [0, 1, 2, 3, 4, 5]
@@ -114,8 +114,8 @@ def convert_feature_impact(df, column, stepsize = 200):
         y = [0, 4, 1, 0, -1, -1]
         degree = 4
     if column == 'comfort_rivers':
-        x = [0, 1, 2, 3, 4, 5, 6, 7]
-        y = [0, 4, 3, 2, 1, 0, -1, -1]
+        x = [val*3 for val in [0, 1, 2, 3, 4, 5]]
+        y = [0, 4, 4, 3, 2, 2]
         degree = 4
 
     ################### Mobility ######################
@@ -135,11 +135,11 @@ def convert_feature_impact(df, column, stepsize = 200):
     ################### Negative ######################
     if column == 'negative_industrial':
         x = [0, 1, 2, 3, 4]
-        y = [0, -2, -2, -4, -4]
+        y = [0, -2, -3, -4, -4]
         degree = 2
     if column == 'negative_railway':
         x = [0, 1, 2, 3, 4]
-        y = [0, -2, -2, -4, -4]
+        y = [0, -3, -4, -4, -4]
         degree = 2
     if column == 'negative_retail':
         x = [0, 1, 2, 3, 4]
@@ -147,15 +147,15 @@ def convert_feature_impact(df, column, stepsize = 200):
         degree = 3
     if column == 'negative_street_motorway':
         x = [0, 1, 2, 3, 4]
-        y = [0, -2, -2, -4, -4]
+        y = [0, -3, -4, -4, -4]
         degree = 2
     if column == 'negative_street_primary':
         x = [0, 1, 2, 3, 4]
-        y = [0, -2, -2, -4, -4]
+        y = [0, -3, -4, -4, -4]
         degree = 2
     if column == 'negative_street_secondary':
         x = [0, 1, 2, 3, 4]
-        y = [0, -2, -2, -4, -4]
+        y = [0, -3, -4, -4, -4]
         degree = 2
     if column == 'negative_supermarket':
         x = [0, 1, 2, 3, 4]
@@ -202,34 +202,34 @@ def convert_feature_impact(df, column, stepsize = 200):
 # def livability_score_ind_weights(df, weights = [1,1,1,1,1],
 def livability_score(df, weights = [1,1,1,1,1],
                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
-                     indiv_factors_mapping = {'activities_economic':1,
-                                        'activities_education':1,
-                                        'activities_educational':1,
-                                        'activities_goverment':0.25,
-                                        'activities_health_local':2, 'activities_health_regional':1,
+                     indiv_factors_mapping = {'activities_economic':2,
+                                        'activities_education':2,
+                                        'activities_educational':2,
+                                        'activities_goverment':0.5,
+                                        'activities_health_local':4, 'activities_health_regional':2,
                                         'activities_post':0.5,
-                                        'activities_public_service':0.5,
-                                        'comfort_comfort_spots':0.25,
-                                        'comfort_green_forests':0.5,
-                                        'comfort_green_natural':0.5,
+                                        'activities_public_service':1,
+                                        'comfort_comfort_spots':1,
+                                        'comfort_green_forests':4,
+                                        'comfort_green_natural':4,
                                         'comfort_green_parks':4,
                                         'comfort_green_space':2,
-                                        'comfort_lakes':1,
-                                        'comfort_leisure_mass':0.5,
-                                        'comfort_leisure_spots':0.25,
-                                        'comfort_rivers':1,
+                                        'comfort_lakes':8,
+                                        'comfort_leisure_mass':1,
+                                        'comfort_leisure_spots':0.5,
+                                        'comfort_rivers':8,
                                         'mobility_bike_infraestructure':2,
                                         'mobility_public_transport_bus':4,
-                                        'mobility_public_transport_rail':1, 'negative_industrial':2,
-                                        'negative_railway':4,
-                                        'negative_retail':0.5,
-                                        'negative_street_motorway':2, 'negative_street_primary':1, 'negative_street_secondary':1,
-                                        'negative_supermarket':0.5,
+                                        'mobility_public_transport_rail':2, 'negative_industrial':4,
+                                        'negative_railway':8,
+                                        'negative_retail':1,
+                                        'negative_street_motorway':4, 'negative_street_primary':2, 'negative_street_secondary':2,
+                                        'negative_supermarket':1,
                                         'negative_warehouse':1,
-                                        'social_life_community':1,
-                                        'social_life_culture':1,
-                                        'social_life_eating':4,
-                                        'social_life_night_life':0.5},
+                                        'social_life_community':0.5,
+                                        'social_life_culture':2,
+                                        'social_life_eating':8,
+                                        'social_life_night_life':2},
                      stepsize = 200, location_name = 'berlin',
                      save_local=True):
     """ Calculates the livability score in each grid by taking the weighted sum of all feature values after normalization by a specific factor. The logic here is that not all features matter the same for livability, therefore they are corrected by an individual factor. At the same time, the user can input weights for each category to define which ones matter the most for them (weighted sum of categories = livability).
@@ -271,7 +271,7 @@ def livability_score(df, weights = [1,1,1,1,1],
 
     # Trim unnecessary columns for saving smaller file
     df = df[df['grid_in_location']]
-    df = df[['lat_center','lng_center'] + categories_interest + ['livability']]
+    df = df[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
 
 
     save_file(df, file_name=f'Livability_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', save_local=save_local)
