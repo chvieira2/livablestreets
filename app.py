@@ -175,16 +175,21 @@ if submitted:
     city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
     df_liv = city.df_grid_Livability
-    # Transform livability in percentage
-    df_liv['livability'] = df_liv['livability']*100
+    # Transform livability for visualization
+    # df_liv['livability'] = df_liv['livability'].apply(lambda x: np.sqrt(x))
+    df_liv = min_max_scaler(df_liv, columns = ['livability'], min_val=-0.3, max_val=1)
 
     # MinMax scale all columns for display
     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']
     df_liv = min_max_scaler(df_liv, columns = categories_interest)
     df_liv['negative_mean'] = 1 - df_liv['negative_mean']
     #city center position lat,lon
-    city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
+    # city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
+    row_max_liv = df_liv[df_liv['livability'] == max(df_liv['livability'])].head(1)
+    city_coords = [float(row_max_liv['lat_center']),float(row_max_liv['lng_center'])]
+
     print(f"""============ {city.location} coordinates: {city_coords} =============""")
+
 
     #for filling the polygon
     style_function = {'fillColor': 'transparent',

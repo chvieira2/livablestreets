@@ -146,6 +146,12 @@ if __name__ == '__main__':
     # city = LivabilityMap(location = 'Montpellier').calc_livability()
 
     print(preloaded_cities)
+    problem_city = []
     for city in preloaded_cities:#[::-1]:
-        map_city = LivabilityMap(location = city, stepsize = 200)
-        map_city.calc_livability()
+        try:
+            map_city = LivabilityMap(location = city, stepsize = 200)
+            map_city.calc_livability()
+        except:
+            problem_city.append(city)
+
+    print(f'Cities with problem: {problem_city}')
