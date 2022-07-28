@@ -68,19 +68,42 @@ dict_city_number_wggesucht = {
 
 
 preloaded_cities = sorted(set([
+            'Amsterdam',
+            'Barcelona',
+            # 'Belfast', # Wrong location in US
+            'Boston',
+            'Bratislava',
+            # 'Bruxelles', # no features
             'Budapest',
             'Buenos Aires',
+            # 'Copenhagen', # wrong location in US
             'Dublin',
             'Lisboa',
             'London',
+            'Los Angeles',
+            'Madrid',
+            'Marseille',
+            'Miami',
             'Milano',
             'Montpellier',
+            'Montréal',
+            # 'Moscow', # no features
+            'New York',
+            'Oslo',
             'Palo Alto',
             'Paris',
             'Porto Alegre',
+            # 'Québec', # This gives me the whole province
             'Rio de Janeiro',
             'Roma',
+            'San Francisco',
             'San Jose',
             'São Paulo',
-            'Vancouver'
+            # 'Stockholm', # no features
+            'Tallinn',
+            'Vancouver',
+            'Warszawa',
+            'Wien',
+            'Zagreb',
+            'Zürich'
                     ] + list(dict_city_number_wggesucht.keys())))

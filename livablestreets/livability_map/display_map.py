@@ -28,12 +28,13 @@ def plot_map(df, city_coords:tuple, city_borders):
 
 
     # ---------- create map with color legend -----------
-    mapObj = folium.Map(location=city_coords, zoom_start=10, max_zoom = 15, width='75%', height='100%')
+    mapObj = folium.Map(location=city_coords, zoom_start=11.5, max_zoom = 15, width='75%', height='100%')
 
     steps = 1000
 
     ## For selecting colors https://carto.com/carto-colors/ or https://colorbrewer2.org/#type=sequential&scheme=PuBu&n=9
-    colors = ['blue','cyan','lime','yellow','Orange','red', 'darkred']
+    colors = ['white','blue','lime','yellow','red','magenta','purple']
+    # colors = ['white','blue','lime','yellow', 'orange','red', 'brown']
     # colors = ['#d3f2a3','#97e196','#6cc08b','#4c9b82','#217a79','#105965','#074050'] # Emrld
     # colors = ['#fde0c5','#facba6','#f8b58b','#f59e72','#f2855d','#ef6a4c','#eb4a40'] # Peach
     # colors = ['#d1eeea','#a8dbd9','#85c4c9','#68abb8','#4f90a6','#3b738f','#2a5674'] # Teal
@@ -120,7 +121,7 @@ def create_heatmap(data:dict):
     return heatmaps
 ##-----plot heatmaps
 def plot_heatmaps(heatmaps):
-    mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=10) #hardcoded for Berlin
+    mapObj = folium.Map(location=[52.5200, 13.4050], zoom_start=11.5) #hardcoded for Berlin
     for hm in heatmaps.values():
         mapObj.add_child(hm)
     folium.LayerControl().add_to(mapObj)
