@@ -1,3 +1,5 @@
+import pandas as pd
+
 ### GCP configuration - - - - - - - - - - - - - - - - - - -
 
 # /!\ you should fill these according to your account
@@ -107,3 +109,93 @@ preloaded_cities = sorted(set([
             'Zagreb',
             'Zürich'
                     ] + list(dict_city_number_wggesucht.keys())))
+
+
+
+##### Conversion values for OSM features
+indiv_factors_mapping = {'activities_economic':2,
+                        'activities_education':4,
+                        'activities_educational':2,
+                        'activities_goverment':1,
+                        'activities_health_local':4,
+                        'activities_health_regional':2,
+                        'activities_post':1,
+                        'activities_public_service':2,
+                        'comfort_comfort_spots':2,
+                        'comfort_green_forests':4,
+                        'comfort_green_natural':2,
+                        'comfort_green_parks':4,
+                        'comfort_green_space':2,
+                        'comfort_lakes':4,
+                        'comfort_leisure_mass':2,
+                        'comfort_leisure_spots':1,
+                        'comfort_rivers':2,
+                        'mobility_bike_infraestructure':1,
+                        'mobility_public_transport_bus':4,
+                        'mobility_public_transport_rail':2,
+                        'negative_industrial':4,
+                        'negative_railway':4,
+                        'negative_retail':1,
+                        'negative_street_motorway':4,
+                        'negative_street_primary':2,
+                        'negative_street_secondary':1,
+                        'negative_supermarket':1,
+                        'negative_warehouse':1,
+                        'social_life_community':1,
+                        'social_life_culture':2,
+                        'social_life_eating':4,
+                        'social_life_night_life':4}
+
+
+
+conversion_formulas_OSM_features = pd.DataFrame(
+                [['activities_economic',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],
+                 ['activities_education',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],
+                 ['activities_educational',[0, 1, 2, 3, 4, 5], [0, 4, 1, 0, -1, -1], 4],
+                 ['activities_goverment',[0, 1, 2, 3, 4, 5], [0, 4, 2, 0, 0, -1], 4],
+                 ['activities_health_local',[0, 1, 2, 3, 4, 5], [-1, 2, 4, 2, 0, -1], 3],
+                 ['activities_health_regional',[0, 1, 2, 3, 4, 5], [-0.5, 4, 0, 0, -1, -1], 4],
+                 ['activities_post',[0, 1, 2, 3, 4, 5], [0, 4, 2, 0, 0, -1], 4],
+                 ['activities_public_service',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 0, 0, -1], 4],
+
+                 ['comfort_comfort_spots',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 3],
+                 ['comfort_green_forests',[0, 1, 2, 3, 4, 5], [0, 3, 4, 3, 2, 2], 4],
+                 ['comfort_green_natural',[0, 3, 6, 9, 12, 15], [0, 3, 4, 3, 2, 1], 4],
+                 ['comfort_green_parks',[0, 3, 6, 9, 12, 15], [-0.5, 3, 4, 2, 1, 0], 4],
+                 ['comfort_green_space',[0, 2, 4, 6, 8, 10], [-0.5, 3, 4, 2, 1, 0], 4],
+                 ['comfort_lakes',[0, 1, 2, 3], [0, 4, 4, 4], 3],
+                 ['comfort_leisure_mass',[0, 1, 2, 3, 4, 5], [0, 4, 1, 0, -1, -1], 4],
+                 ['comfort_leisure_spots',[0, 2, 4, 6, 8], [0, 4, 2, 0, 0], 3],
+                 ['comfort_rivers',[0, 1, 2, 3], [0, 4, 4, 4], 3],
+
+            ['mobility_bike_infraestructure',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 4],
+            ['mobility_public_transport_bus',[0, 1, 2, 3, 4, 5], [-0.5, 4, 4, 1, 0, -1], 4],
+            ['mobility_public_transport_rail',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 4],
+
+                 ['negative_industrial',[0, 1, 2, 3, 4], [0, -2, -3, -4, -4], 2],
+                 ['negative_railway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['negative_retail',[0, 1, 2, 3, 4], [0, 0.5, -1, -2, -2], 3],
+                 ['negative_street_motorway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['negative_street_primary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['negative_street_secondary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['negative_supermarket',[0, 1, 2, 3, 4], [0, 0.5, -1, -2, -2], 3],
+                 ['negative_warehouse',[0, 1, 2, 3, 4], [0, -2, -2, -4, -4], 2],
+
+                 ['social_life_community',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],
+                 ['social_life_culture',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],
+                 ['social_life_eating',[0,1,2,3,4,5,6,7,8], [-1,2,4,4,2,1,0,0,-1], 5],
+                 ['social_life_night_life',[0,1,2,3,4,5,6], [-0.5, 2, 4, 1, 0, -1, -1], 4],
+                 ],
+                columns = ['feature', 'x', 'y', 'poly_degree'])
+
+mins = []
+maxs = []
+for _, row in conversion_formulas_OSM_features.iterrows():
+    mapping_factor = indiv_factors_mapping[row['feature']]
+    min_val_row = min(row['y'])
+    max_val_row = max(row['y'])
+    mins.append(min_val_row * mapping_factor)
+    maxs.append(max_val_row * mapping_factor)
+
+conversion_formulas_OSM_features['min_val'] = mins
+conversion_formulas_OSM_features['max_val'] = maxs

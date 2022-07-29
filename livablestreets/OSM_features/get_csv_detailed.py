@@ -1,17 +1,8 @@
 import pandas as pd
-# from pathlib import Path
-# import requests
-# import json
-# import csv
-# from livablestreets.query_names import public_transport, bike_infraestructure, eating, night_life, culture, community, health_care, public_service, education, economic, comfort_sports, leisure_sports
-
-
 # from google.cloud import storage
 # from livablestreets.params import BUCKET_NAME
-from livablestreets.utils import simple_time_tracker
 from livablestreets.OSM_features.osm_query import query_params_osm
 from livablestreets.OSM_features.query_names_detailed import master_query
-from livablestreets.utils import create_dir
 
 import os, sys, time
 # import time
@@ -26,15 +17,13 @@ url = 'http://overpass-api.de/api/status'
 
 def get_csv(location, location_name, query_df):
 
-    for index, row in query_df.iterrows():
-        filter_name = index
-        string = row['query_string']
-        category = row['category']
+    for _, row in query_df.iterrows():
+        filter_name = row['name']
+        string = eval(row['query_string'])
         geomtype = row['geomtype']
-
         outdir = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
 
-        if not os.path.exists(path = f'{outdir}/{category}_{filter_name}.csv'):
+        if not os.path.exists(path = f'{outdir}/{filter_name}.csv'):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')
@@ -66,16 +55,16 @@ def get_csv(location, location_name, query_df):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {category}_{filter_name}.csv ----------------- ')
-                    df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {filter_name}.csv ----------------- ')
+                    df_new_querie.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
                     # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
 
                     # time.sleep(30)
                 else:
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {category}_{filter_name}.csv ----------------- ')
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {filter_name}.csv ----------------- ')
                     empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
-                    empty_df.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+                    empty_df.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
 
             if geomtype == 'Node':
@@ -103,16 +92,16 @@ def get_csv(location, location_name, query_df):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {category}_{filter_name}.csv ----------------- ')
-                    df_new_querie.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {filter_name}.csv ----------------- ')
+                    df_new_querie.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
                     # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
 
                     # time.sleep(5)
                 else:
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {category}_{filter_name}.csv ----------------- ')
+                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {filter_name}.csv ----------------- ')
                     empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
-                    empty_df.to_csv(f'{outdir}/{category}_{filter_name}.csv', index=False)
+                    empty_df.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
     print(f'''Done saving features csv file ⊂(◉‿◉)つ sorry for the wait'\n------------------------------------------------------------/''')
 
@@ -123,5 +112,5 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
-    query_df = master_query(location_name='nova_iguacu')
-    get_csv(location='Nova Iguaçu', location_name='nova_iguacu', query_df=query_df)
+    query_df = master_query()
+    get_csv(location='Berlin', location_name='berlin', query_df=query_df)

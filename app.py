@@ -175,9 +175,6 @@ if submitted:
     city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
     df_liv = city.df_grid_Livability
-    # Transform livability for visualization
-    # df_liv['livability'] = df_liv['livability'].apply(lambda x: np.sqrt(x))
-    df_liv = min_max_scaler(df_liv, columns = ['livability'], min_val=-0.3) # Added min_val here to better display discrepancy of low and high livability areas
 
     # MinMax scale all columns for display
     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']

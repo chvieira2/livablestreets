@@ -33,25 +33,22 @@ def param_areas(keys):
     return osm_keys
 
 def query_params_osm(location, keys, features, limit=''):
-
-    location_area = f'area[name="{location}"]->.city'
-    ## To Do search for city ID instead of city name
-    # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
-    # location_area = f'area({get_id_deambiguate(location)})->.city'
-
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
     limit = number (optional query limit)'''
-
+    location_area = f'area[name="{location}"]->.city'
+    ## To Do search for city ID instead of city name
+    # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
+    # location_area = f'area({get_id_deambiguate(location)})->.city'
     if features == 'ways':
-        params = param_ways(keys)
+        params = param_ways(dict(keys))
         out_type = 'geom'
     if features == 'areas':
-        params = param_areas(keys)
+        params = param_areas(dict(keys))
         out_type = 'geom'
     if features == 'nodes':
-        params = param_nodes(keys)
+        params = param_nodes(dict(keys))
         out_type = 'center'
 
     overpass_query = f"""
@@ -68,7 +65,7 @@ def query_params_osm(location, keys, features, limit=''):
 
 
 if __name__ == "__main__":
-    print(param_nodes(keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']}))
-    # print(query_params_osm(location = "Berlin",
-    #                 keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']},
-    #                 features = 'nodes'))
+    # print(param_nodes(keys = {'amenity': ['atm', 'bank', 'bureau_de_change']}))
+    print(query_params_osm(location = "Copenhagen",
+                    keys = {'amenity': ['atm', 'bank', 'bureau_de_change']},
+                    features = 'nodes'))

@@ -7,7 +7,6 @@ from livablestreets.params import preloaded_cities
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
 from config.config import ROOT_DIR
 
-
 from livablestreets.OSM_features.query_names_detailed import master_query
 from livablestreets.OSM_features.get_csv_detailed import get_csv
 
@@ -127,7 +126,6 @@ class LivabilityMap(object):
     @simple_time_tracker
     def calc_livability(self):
         """ Calculate the livability score given the weights"""
-
         ## Calculate livability
         if self.df_grid_Livability is None:
             try :
@@ -146,7 +144,7 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'Copenhagen').calc_livability()
+    # city = LivabilityMap(location = 'Copenhagen').calc_livability()
 
     print(preloaded_cities)
     problem_city = []
