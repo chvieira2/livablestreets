@@ -52,7 +52,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     # Get grid and create polygons
     if df_grid is None:
         df_grid = get_file(file_name=f'{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables')
-    print('loaded grid')
+        print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 

@@ -33,10 +33,8 @@ def get_csv(location, location_name, query_df):
         geomtype = row['geomtype']
 
         outdir = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
-        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{location_name}')
-        # create_dir(path = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features')
 
-        if not os.path.exists(path = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features/{category}_{filter_name}.csv'):
+        if not os.path.exists(path = f'{outdir}/{category}_{filter_name}.csv'):
 
             if geomtype != 'Node':
                 print(f'getting {filter_name} as ways')

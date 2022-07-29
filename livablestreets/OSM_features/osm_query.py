@@ -1,5 +1,5 @@
 import requests
-from geopy.geocoders import Nominatim
+from livablestreets.livability_map.create_grid import get_id_deambiguate
 
 overpass_url = "http://overpass-api.de/api/interpreter"
 # https://dev.overpass-api.de/overpass-doc/de/full_data/osm_types.html
@@ -7,27 +7,6 @@ overpass_url = "http://overpass-api.de/api/interpreter"
 keys_values_osm = {'amenity':['bbq','cafe']}
 
 
-
-def get_id_deambiguate(location):
-
-    # Geocoding request via Nominatim
-    geolocator = Nominatim(user_agent="city_compare")
-    geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
-
-    # Searching for relation in result set
-    for r in geo_results:
-        print(r.address, r.raw.get("osm_type"))
-        if r.raw.get("osm_type") == "relation":
-            city = r
-            break
-
-
-    # Calculating area id
-    # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
-    # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
-    area_osm_id = int(city.raw.get("osm_id")) #for city
-    print(area_osm_id)
-    return area_osm_id
 
 def param_nodes(keys):
     '''converts the dict into a string, returns a str'''
@@ -53,10 +32,10 @@ def param_areas(keys):
             osm_keys += f"""rel['{k}'='{v}'](area.city);"""
     return osm_keys
 
-
 def query_params_osm(location, keys, features, limit=''):
 
     location_area = f'area[name="{location}"]->.city'
+    ## To Do search for city ID instead of city name
     # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
     # location_area = f'area({get_id_deambiguate(location)})->.city'
 
@@ -89,6 +68,7 @@ def query_params_osm(location, keys, features, limit=''):
 
 
 if __name__ == "__main__":
-    print(query_params_osm(location = "Marica",
-                     keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']},
-                     features = 'nodes'))
+    print(param_nodes(keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']}))
+    # print(query_params_osm(location = "Berlin",
+    #                 keys = {'amenity': ['bus_station'], 'bus_bay': '', 'highway': ['bus_stop']},
+    #                 features = 'nodes'))

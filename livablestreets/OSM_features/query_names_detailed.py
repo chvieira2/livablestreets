@@ -197,7 +197,7 @@ negative = {
 columns = ['query_string','name','distance','geomtype','jsontype','shapelytype','category']
 columns_wb = ['query_string', 'name','distance','geomtype','jsontype','shapelytype','category','whitefilter','blackfilter']
 
-def master_query(location_name = None, save_local=True, save_gcp=False):
+def master_query(save_local=True):
 
         master_q = {}
         master_q.update(mobility)
@@ -209,8 +209,7 @@ def master_query(location_name = None, save_local=True, save_gcp=False):
 
         query_df = pd.DataFrame.from_dict(master_q, orient='index', columns = columns)
 
-        if location_name is not None:
-            save_file(query_df, file_name=f'master_query_{location_name}.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
+        save_file(query_df, file_name=f'master_query.csv', local_file_path=f'livablestreets/data', save_local=save_local)
 
         return query_df
 

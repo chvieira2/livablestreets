@@ -89,8 +89,11 @@ class LivabilityMap(object):
 
                 ## Integrates features count to grid
         if self.query_df is None:
-            # launchs queries of gejson and csv files from local PBF
-            self.query_df = master_query(location_name=self.location_name)
+            try :
+                self.query_df = get_file(f'master_query.csv', local_file_path=f'livablestreets/data', save_local=False)
+            except FileNotFoundError:
+                self.query_df = master_query(save_local=True)
+
 
         distances = list(self.query_df['distance'])
         self.sigmas = [(0.5*distance)/self.stepsize for distance in distances]
@@ -143,7 +146,7 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'Montpellier').calc_livability()
+    city = LivabilityMap(location = 'Copenhagen').calc_livability()
 
     print(preloaded_cities)
     problem_city = []

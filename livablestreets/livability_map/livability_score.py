@@ -234,7 +234,7 @@ def livability_score(df, weights = [1,1,1,1,1],
                                         'comfort_lakes':4,
                                         'comfort_leisure_mass':2,
                                         'comfort_leisure_spots':1,
-                                        'comfort_rivers':4,
+                                        'comfort_rivers':2,
                                         'mobility_bike_infraestructure':1,
                                         'mobility_public_transport_bus':4,
                                         'mobility_public_transport_rail':2, 'negative_industrial':4,
@@ -249,7 +249,7 @@ def livability_score(df, weights = [1,1,1,1,1],
                                         'social_life_night_life':4},
                      stepsize = 200, location_name = 'berlin',
                      save_local=True):
-    """ Calculates the livability score in each grid by taking the weighted sum of all feature values after normalization by a specific factor. The logic here is that not all features matter the same for livability, therefore they are corrected by an individual factor. At the same time, the user can input weights for each category to define which ones matter the most for them (weighted sum of categories = livability).
+    """ Calculates the livability score in each grid by taking the weighted sum of all feature values after normalization by a specific factor. The logic here is that not all features matter the same for livability, therefore they are corrected by an individual factor. At the same time, the user can input weights for each category to define which ones matter the most for them (weighted sum of categories = livability). Finally, livability score is normalized to the maximum and minimum possible scores. In the end, livability is an absolute measurement related to the maximum and minimum possible values.
         """
 
     ## Convert values into non-linear scale (more of a feature doesn't mean better)
