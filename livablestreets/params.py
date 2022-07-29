@@ -121,26 +121,30 @@ indiv_factors_mapping = {'activities_economic':2,
                         'activities_health_regional':2,
                         'activities_post':1,
                         'activities_public_service':2,
+
                         'comfort_comfort_spots':2,
                         'comfort_green_forests':4,
                         'comfort_green_natural':2,
                         'comfort_green_parks':4,
                         'comfort_green_space':2,
-                        'comfort_lakes':4,
+                        'comfort_lakes':2,
                         'comfort_leisure_mass':2,
                         'comfort_leisure_spots':1,
                         'comfort_rivers':2,
-                        'mobility_bike_infraestructure':1,
-                        'mobility_public_transport_bus':4,
-                        'mobility_public_transport_rail':2,
+
+                        'mobility_bike_infraestructure':4,
+                        'mobility_public_transport_bus':2,
+                        'mobility_public_transport_rail':1,
+
                         'negative_industrial':4,
                         'negative_railway':4,
-                        'negative_retail':1,
-                        'negative_street_motorway':4,
-                        'negative_street_primary':2,
-                        'negative_street_secondary':1,
-                        'negative_supermarket':1,
+                        'negative_retail':2, # Any commercial place? Very werid. Changing curve messes up with everything...
+                        'negative_street_motorway':4, # Highways
+                        'negative_street_primary':2, # Same as seconday? Mains treets
+                        'negative_street_secondary':2, # Same as primary? Mains treets
+                        'negative_supermarket':0, # Weird. Decided to exclude completly
                         'negative_warehouse':1,
+
                         'social_life_community':1,
                         'social_life_culture':2,
                         'social_life_eating':4,
@@ -174,7 +178,7 @@ conversion_formulas_OSM_features = pd.DataFrame(
 
                  ['negative_industrial',[0, 1, 2, 3, 4], [0, -2, -3, -4, -4], 2],
                  ['negative_railway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
-                 ['negative_retail',[0, 1, 2, 3, 4], [0, 0.5, -1, -2, -2], 3],
+                 ['negative_retail',[0, 1, 2, 3, 4], [-1, 0, 4, 2, -1], 4],
                  ['negative_street_motorway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
                  ['negative_street_primary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
                  ['negative_street_secondary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],

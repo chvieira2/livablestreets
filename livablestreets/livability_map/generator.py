@@ -77,16 +77,6 @@ class LivabilityMap(object):
 
     @simple_time_tracker
     def get_features(self):
-        # get_all(location=self.location)
-
-        # get csv of cities of the world
-        # df_cities = pd.read_csv('livablestreets/data/world-cities.csv')
-        # city = self.location
-        # # assigns country name to variable
-        # country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
-
-
-                ## Integrates features count to grid
         if self.query_df is None:
             try :
                 self.query_df = get_file(f'master_query.csv', local_file_path=f'livablestreets/data', save_local=False)
@@ -126,18 +116,19 @@ class LivabilityMap(object):
     @simple_time_tracker
     def calc_livability(self):
         """ Calculate the livability score given the weights"""
-        ## Calculate livability
-        if self.df_grid_Livability is None:
-            try :
-                self.df_grid_Livability = get_file(f'Livability_{self.location_name}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location_name}/WorkingTables', gcp_file_path = f'data/{self.location_name}/WorkingTables', save_local=True)
+        self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
+        # ## Calculate livability
+        # if self.df_grid_Livability is None:
+        #     try :
+        #         self.df_grid_Livability = get_file(f'Livability_{self.location_name}_grid_{self.stepsize}m.csv', local_file_path=f'livablestreets/data/{self.location_name}/WorkingTables', gcp_file_path = f'data/{self.location_name}/WorkingTables', save_local=True)
 
-                # Updated livability score with weights
-                self.df_grid_Livability = update_livability(self.df_grid_Livability, self.weights)
+        #         # Updated livability score with weights
+        #         self.df_grid_Livability = update_livability(self.df_grid_Livability, self.weights)
 
-            except FileNotFoundError:
-                self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
-        else:
-            print('livability_score has already been called before')
+        #     except FileNotFoundError:
+        #         self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
+        # else:
+        #     print('livability_score has already been called before')
 
         return self.df_grid_Livability
 
