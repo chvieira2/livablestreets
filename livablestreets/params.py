@@ -121,29 +121,28 @@ indiv_factors_mapping = {'activities_economic':2,
                         'activities_health_regional':2,
                         'activities_post':1,
                         'activities_public_service':2,
+                        'activities_retail':4,
+                        'activities_supermarket':2,
 
                         'comfort_comfort_spots':2,
                         'comfort_green_forests':4,
                         'comfort_green_natural':2,
-                        'comfort_green_parks':4,
+                        'comfort_green_parks':2,
                         'comfort_green_space':2,
-                        'comfort_lakes':2,
+                        'comfort_lakes':4,
                         'comfort_leisure_mass':2,
                         'comfort_leisure_spots':1,
-                        'comfort_rivers':2,
+                        'comfort_rivers':4,
+                        'comfort_railway':4,
+                        'comfort_street_motorway':4, # Highways
+                        'comfort_industrial':4,
+                        'comfort_warehouse':1,
 
                         'mobility_bike_infraestructure':4,
-                        'mobility_public_transport_bus':2,
-                        'mobility_public_transport_rail':1,
-
-                        'negative_industrial':4,
-                        'negative_railway':4,
-                        'negative_retail':2, # Any commercial place? Very werid. Changing curve messes up with everything...
-                        'negative_street_motorway':4, # Highways
-                        'negative_street_primary':2, # Same as seconday? Mains treets
-                        'negative_street_secondary':2, # Same as primary? Mains treets
-                        'negative_supermarket':0, # Weird. Decided to exclude completly
-                        'negative_warehouse':1,
+                        'mobility_public_transport_bus':4,
+                        'mobility_public_transport_rail':2,
+                        'mobility_street_primary':2, # Main roads in the city?
+                        'mobility_street_secondary':2, # Other type of main roads?
 
                         'social_life_community':1,
                         'social_life_culture':2,
@@ -161,6 +160,8 @@ conversion_formulas_OSM_features = pd.DataFrame(
                  ['activities_health_regional',[0, 1, 2, 3, 4, 5], [-0.5, 4, 0, 0, -1, -1], 4],
                  ['activities_post',[0, 1, 2, 3, 4, 5], [0, 4, 2, 0, 0, -1], 4],
                  ['activities_public_service',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 0, 0, -1], 4],
+                 ['activities_retail',[0, 1, 2, 4, 5], [-4, 0, 4, -4, -4], 4],
+                 ['activities_supermarket',[0, 1, 2, 3, 4, 5], [-1, 2, 4, 2, 0, -1], 3],
 
                  ['comfort_comfort_spots',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 3],
                  ['comfort_green_forests',[0, 1, 2, 3, 4, 5], [0, 3, 4, 3, 2, 2], 4],
@@ -171,19 +172,17 @@ conversion_formulas_OSM_features = pd.DataFrame(
                  ['comfort_leisure_mass',[0, 1, 2, 3, 4, 5], [0, 4, 1, 0, -1, -1], 4],
                  ['comfort_leisure_spots',[0, 2, 4, 6, 8], [0, 4, 2, 0, 0], 3],
                  ['comfort_rivers',[0, 1, 2, 3], [0, 4, 4, 4], 3],
+                 ['comfort_railway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['comfort_street_motorway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
+                 ['comfort_industrial',[0, 1, 2, 3, 4], [0, -2, -3, -4, -4], 2],
+                 ['comfort_warehouse',[0, 1, 2, 3, 4], [0, -2, -2, -4, -4], 2],
 
             ['mobility_bike_infraestructure',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 4],
             ['mobility_public_transport_bus',[0, 1, 2, 3, 4, 5], [-0.5, 4, 4, 1, 0, -1], 4],
             ['mobility_public_transport_rail',[0, 1, 2, 3, 4, 5], [-0.5, 4, 2, 1, 0, -1], 4],
+                 ['mobility_street_primary',[0, 1, 2, 3, 4], [-1, 4, 2, -1, -2], 4],
+                 ['mobility_street_secondary',[0, 1, 2, 3, 4], [-1, 4, 2, -1, -2], 4],
 
-                 ['negative_industrial',[0, 1, 2, 3, 4], [0, -2, -3, -4, -4], 2],
-                 ['negative_railway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
-                 ['negative_retail',[0, 1, 2, 3, 4], [-1, 0, 4, 2, -1], 4],
-                 ['negative_street_motorway',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
-                 ['negative_street_primary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
-                 ['negative_street_secondary',[0, 1, 2, 3, 4], [0, -3, -4, -4, -4], 2],
-                 ['negative_supermarket',[0, 1, 2, 3, 4], [0, 0.5, -1, -2, -2], 3],
-                 ['negative_warehouse',[0, 1, 2, 3, 4], [0, -2, -2, -4, -4], 2],
 
                  ['social_life_community',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],
                  ['social_life_culture',[0, 1, 2, 3, 4, 5], [-0.5, 4, 1, 0, -1, -1], 4],

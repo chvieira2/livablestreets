@@ -63,7 +63,8 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     feature_names = [feature_name.replace(".csv", "") \
                     for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") \
                     or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") \
-                    or feature_name.startswith("social_life_" ) or feature_name.startswith("negative_") ) \
+                    or feature_name.startswith("social_" )
+                    ) \
                     and feature_name.endswith(".csv")]
 
     # Get the dict of points and create in_polygons keys
@@ -76,7 +77,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     # Iterate through grids and collects counts of features per grid
     total_grids=len(df_grid)
     for index, row in df_grid.iterrows():
-        print(f'{index+1}/{total_grids}', end='\r')
+        print(f'{index+1}/{total_grids} grids for {location_name}', end='\r')
         if row['grid_in_location']:
             polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
                                                      'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')

@@ -15,35 +15,6 @@ def feature_cat_mean_score(df):
 
     return df
 
-def livability_score_old(df, weights = [1,1,1,1,1],
-                     categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean'],
-                     stepsize = 200, location_name = 'berlin',
-                     save_local=True, save_gcp=False):
-    """ Calculates the livability score in each grid by taking the weighted sum of all category_mean values.
-        """
-    columns_of_interest = [col for col in df.columns if any(x in col for x in ['activities_', 'comfort_', 'mobility_', 'social_', 'negative_']) and col not in categories_interest]
-
-    # Convert values of each feature
-    # for c in columns_of_interest:
-    #     df[c] = convert_feature_impact(df, c, stepsize = stepsize)
-
-
-    # Calculate the mean per category
-    df = min_max_scaler(df, columns = columns_of_interest)
-    df_foo= feature_cat_mean_score(df)
-
-    # weights[4] = (-1)*weights[4]
-    new_cols = [col + '_weighted' for col in categories_interest]
-    df_foo[new_cols] = df_foo[categories_interest].mul(weights)
-    df['livability'] = df_foo[new_cols].sum(axis=1)
-    df = min_max_scaler(df, columns = ['livability'])
-    df = df[['lat_center','lng_center', 'grid_in_location'] + categories_interest + ['livability']]
-    df = df[df['grid_in_location']]
-
-    save_file(df, file_name=f'Livability_{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables', save_local=save_local, save_gcp=save_gcp)
-
-    return df
-
 def convert_feature_impact(df, column, stepsize = 200):
 
     conversion_factor = conversion_formulas_OSM_features[conversion_formulas_OSM_features['feature'] == column]
@@ -56,8 +27,8 @@ def convert_feature_impact(df, column, stepsize = 200):
     model = np.polyfit(x, y, poly_degree)
     predict = np.poly1d(model)
 
-    # Obtain values to be converted normalized to a grid of 100 meters. This makes the normalization intuitive: number of features is a 100mx100m square, which is roughly a city block.
-    values = [val/int(stepsize/100) for val in list(df[column])] # Divide by stepsize/100 to unify measurement over a 100 meters area
+    # Obtain values to be converted normalized to a grid of 100 meters. This makes the normalization intuitive: number of features in a 100mx100m square, which is roughly a city block.
+    values = [val/int(stepsize/100) for val in list(df[column])] # Divide by stepsize/100 to unify measurement over a 100x100 meters area
 
     # Convert values with the following rule:
     # - if the value is smaller than the scale, take as if it was zero (to avoid bugs with possible negative values)
@@ -67,7 +38,8 @@ def convert_feature_impact(df, column, stepsize = 200):
 
     return converted_values
 
-def update_livability(df_livability, weights = [1,1,1,1,1], categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']):
+def update_livability(df_livability, weights = [1,1,1,1],
+                      categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean']):
 
     ## Calculate livability as the weighted sum
 
@@ -81,7 +53,7 @@ def update_livability(df_livability, weights = [1,1,1,1,1], categories_interest 
     ## Scale values to absolut scale between min and max livability score
     # Get mins and max per category according to weights
     mins, maxs = [], []
-    for cat in ['activities_', 'comfort_', 'mobility_', 'social_', 'negative_']:
+    for cat in ['activities_', 'comfort_', 'mobility_', 'social_']:
         # Filter df for features in the category
         foo = conversion_formulas_OSM_features[[str(feat_name).startswith(cat) for feat_name in list(conversion_formulas_OSM_features['feature'])]]
         mins.append(foo['min_val'].mean())
@@ -110,7 +82,7 @@ def update_livability(df_livability, weights = [1,1,1,1,1], categories_interest 
 
     return df_livability
 
-def livability_score(df, weights = [1,1,1,1,1],
+def livability_score(df, weights = [1,1,1,1],
                      stepsize = 200, location_name = 'berlin',
                      save_local=True):
     """ Calculates the livability score in each grid by taking the weighted sum of all feature values after normalization by a specific factor. The logic here is that not all features matter the same for livability, therefore they are corrected by an individual factor. At the same time, the user can input weights for each category to define which ones matter the most for them (weighted sum of categories = livability). Finally, livability score is normalized to the maximum and minimum possible scores. In the end, livability is an absolute measurement related to the maximum and minimum possible values.

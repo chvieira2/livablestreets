@@ -19,9 +19,15 @@ def get_csv(location, location_name, query_df):
 
     for _, row in query_df.iterrows():
         filter_name = row['name']
-        string = eval(row['query_string'])
         geomtype = row['geomtype']
         outdir = f'{ROOT_DIR}/livablestreets/data/{location_name}/Features'
+
+        # for some unknown reason, 'query_string from Node features are saved as dict and from Ways are saved as string of dictionary and need to be eval to become a dict.
+        if isinstance(row['query_string'], str):
+            string = eval(row['query_string'])
+        else:
+            string = row['query_string']
+
 
         if not os.path.exists(path = f'{outdir}/{filter_name}.csv'):
 

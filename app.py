@@ -167,7 +167,8 @@ if submitted:
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Average') # Last weight 'average' refers to negative features
+            #    'Average' # Last weight 'average' refers to negative features
+               )
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
@@ -177,9 +178,8 @@ if submitted:
     df_liv = city.df_grid_Livability
 
     # MinMax scale all columns for display
-    categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']
+    categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean']
     df_liv = min_max_scaler(df_liv, columns = categories_interest)
-    df_liv['negative_mean'] = 1 - df_liv['negative_mean']
     #city center position lat,lon
     # city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
     row_max_liv = df_liv[df_liv['livability'] == max(df_liv['livability'])].head(1)
@@ -219,7 +219,6 @@ if submitted:
                     """, unsafe_allow_html=True)
 
             # Obtain recent ads
-            ## TO DO find way to display text and map hide text when done. Use that to break apart 'crawl_all_pages function and display text of ongoing process while user waits for ads to load.
             CrawlWgGesucht().crawl_all_pages(location_name = city.location,
                                              number_pages = user_number_pages,
                                              filters = user_filters)

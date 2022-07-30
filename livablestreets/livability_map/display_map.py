@@ -18,7 +18,7 @@ def plot_map(df, city_coords:tuple, city_borders):
     categories = create_category_array(df)
 
     # ---------- create color legend -----------
-    mapObj = folium.Map(location=city_coords, zoom_start=11.5, max_zoom = 15, width='75%', height='100%')
+    mapObj = folium.Map(location=city_coords, zoom_start=12, max_zoom = 15, width='75%', height='100%')
 
     steps = 1000
 
