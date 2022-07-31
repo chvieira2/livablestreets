@@ -6,7 +6,7 @@ overpass_url = "http://overpass-api.de/api/interpreter"
 #example query list:
 keys_values_osm = {'amenity':['bbq','cafe']}
 
-
+# Consider using node(around.indianairports:5000)[‘tourism’=’hotel’]; to search features over the border of countries
 
 def param_nodes(keys):
     '''converts the dict into a string, returns a str'''
@@ -38,9 +38,18 @@ def query_params_osm(location, keys, features, limit=''):
     feat = nodes, ways or areas (geometry type)
     limit = number (optional query limit)'''
     location_area = f'area[name="{location}"]->.city'
-    ## To Do search for city ID instead of city name
+
+    # Use:
+    # area[name="Germany"]['admin_level'='2']->.country;
+    # area[name="Berlin"](area.country)->.city;
+    # For selecting within country
+
+    # "name:en" instead of name, for searching names in english.
+
+    ## Maybe search for city ID instead of city name
     # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
     # location_area = f'area({get_id_deambiguate(location)})->.city'
+
     if features == 'ways':
         params = param_ways(dict(keys))
         out_type = 'geom'
@@ -59,6 +68,18 @@ def query_params_osm(location, keys, features, limit=''):
                     (._;>;);
                     out {limit} {out_type};
                     """
+
+    ## Code trying to get features beyond border cities:
+    # [out:json][timeout:900];
+    # area[name="Germany"]['admin_level'='2']->.country;
+    # area[name="Berlin"](area.country)->.city;
+    # (
+    #  way['waterway'='river'](area.city);
+    #  way['waterway'='river'](around.city:5000);
+    # );
+    # (._;>;);
+    # out geom;
+
     response = requests.get(overpass_url,
                             params={'data': overpass_query})
     return response.json()

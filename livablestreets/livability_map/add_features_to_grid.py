@@ -46,7 +46,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
                                     save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
-    # shapely.speedups makes some of the spatial queries running faster
+    # shapely.speedups makes some of the spatial queries run faster
     # shapely.speedups.enable()
 
     # Get grid and create polygons

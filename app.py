@@ -125,19 +125,20 @@ with st.sidebar:
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
 
+    expander_weights = form.expander("Options")
 
     # Weights selection
-    form.select_slider(label='Activities and Services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
-    form.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
-    form.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
-    form.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
+    expander_weights.select_slider(label='Activities and Services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
+    expander_weights.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
+    expander_weights.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
+    expander_weights.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
 
 
 
     ## Checkbox for wg-gesuch ads
     expander = form.expander("Housing offers (German cities only)")
 
-    cbox_wggesucht = expander.checkbox('Display offers?')
+    cbox_wggesucht = expander.checkbox('Display housing offers?')
 
     # Search filter criterium
     user_filters = expander.multiselect(

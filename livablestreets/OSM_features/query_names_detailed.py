@@ -47,8 +47,8 @@ mobility = {
             'public_transport_rail' : [public_transport_rail, 'mobility_public_transport_rail', 500 , 'Node', 'Point', 'Point' , 'mobility' ] ,
             'bike_infraestructure' : [bike_infraestructure, 'mobility_bike_infraestructure' , 50 , 'Node', 'Point', 'Point' , 'mobility' ],
 
-            'street_primary' : [street_primary,'mobility_street_primary', 250 , 'Way', 'Line', 'lineString' , 'mobility'],#, street_primary_wf, street_primary_bf ] ,
-            'street_secondary' : [street_secondary,'mobility_street_secondary', 250 , 'Way', 'Line', 'lineString' , 'mobility']#, street_secondary_wf, street_secondary_bf ] ,
+            'street_primary' : [street_primary,'mobility_street_primary', 100 , 'Way', 'Line', 'lineString' , 'mobility'],#, street_primary_wf, street_primary_bf ] ,
+            'street_secondary' : [street_secondary,'mobility_street_secondary', 100 , 'Way', 'Line', 'lineString' , 'mobility']#, street_secondary_wf, street_secondary_bf ] ,
             #  'street_terteary' : [street_terteary,'mobility_street_terteary',50 , 'Way', 'Line', 'lineString' , 'mobility'], #, street_terteary_wf, street_terteary_bf ] ,
 
             # 'pedestrian' : [pedestrian,'mobility_pedestrian' , 100 , 'Way', 'Line', 'lineString' , 'mobility' ] ,
@@ -79,7 +79,7 @@ social_life = {
                 'eating' : [eating, 'social_life_eating', 200 , 'Node', 'Point', 'Point' , 'social_life' ] ,
                 'night_life' : [night_life,'social_life_night_life' , 300 , 'Node', 'Point', 'Point' , 'social_life' ] ,
                 'culture' : [culture,'social_life_culture' ,  500 , 'Node', 'Point', 'Point' , 'social_life' ] ,
-                'community' : [community,'social_life_community', 400 , 'Node', 'Point', 'Point' , 'social_life' ]
+                'community' : [community,'social_life_community', 100 , 'Node', 'Point', 'Point' , 'social_life' ]
                 }
 
 '''------------------------activities-------------------------------'''
@@ -112,15 +112,15 @@ supermarket = {'building' : ['supermarket']}
 
 activities = {
             'health_regional' : [health_regional, 'activities_health_regional', 1000 , 'Node','Point','Point', 'activities'] ,
-            'health_local' : [health_local, 'activities_health_local', 300 , 'Node','Point','Point', 'activities'] ,
-            'goverment' : [goverment,'activities_goverment', 500  , 'Node','Point','Point', 'activities'] ,
+            'health_local' : [health_local, 'activities_health_local', 200 , 'Node','Point','Point', 'activities'] ,
+            'goverment' : [goverment,'activities_goverment', 1000 , 'Node','Point','Point', 'activities'] ,
             'public_service' : [public_service, 'activities_public_service', 1000 , 'Node','Point','Point', 'activities'] ,
-            'post' : [post, 'activities_post', 200, 'Node','Point','Point', 'activities'] ,
-            'education' : [education, 'activities_education', 500, 'Node','Point','Point', 'activities'] ,
+            'post' : [post, 'activities_post', 300, 'Node','Point','Point', 'activities'] ,
+            'education' : [education, 'activities_education', 300, 'Node','Point','Point', 'activities'] ,
             'educational' : [educational, 'activities_educational', 200, 'Node','Point','Point', 'activities'] ,
             'economic' : [economic, 'activities_economic', 200 , 'Node','Point','Point', 'activities'],
-             'retail' : [retail,'activities_retail', 200 , 'Way' ,'Line','lineString', 'activities' ],
-             'supermarket' : [supermarket,'activities_supermarket', 500 , 'Way' ,'Line','lineString', 'activities' ],
+             'retail' : [retail,'activities_retail', 2 , 'Way' ,'Line','lineString', 'activities' ],
+             'supermarket' : [supermarket,'activities_supermarket', 300 , 'Way' ,'Line','lineString', 'activities' ],
             }
 
 '''-----------------------------comfort--------------------------'''
@@ -155,21 +155,21 @@ railway = {'railway':['light_rail'],
 # Distance and sigma
 
 comfort = {
-            'comfort_spots' : [ comfort_spots, 'comfort_comfort_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_spots' : [ leisure_spots, 'comfort_leisure_spots', 200 , 'Node' , 'Point', 'Point', 'comfort' ] ,
-            'leisure_mass' : [ leisure_mass, 'comfort_leisure_mass', 500 , 'Node' , 'Point', 'Point', 'comfort' ],
+            'comfort_spots' : [ comfort_spots, 'comfort_comfort_spots', 50 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_spots' : [ leisure_spots, 'comfort_leisure_spots', 100 , 'Node' , 'Point', 'Point', 'comfort' ] ,
+            'leisure_mass' : [ leisure_mass, 'comfort_leisure_mass', 300 , 'Node' , 'Point', 'Point', 'comfort' ],
 
-            'street_motorway' : [street_motorway,'comfort_street_motorway', 300 , 'Way', 'Line', 'lineString' , 'comfort'], #, street_motorway_wf, street_motorway_bf ] ,
-            'railway' : [railway,'comfort_railway' ,300 , 'Way', 'Line', 'lineString' , 'comfort'], #, railway_wf, railway_bf ] ,
-            'industrial' : [industrial,'comfort_industrial', 300 , 'Way' ,'Line','lineString', 'comfort' ],
-            'warehouse' : [warehouse,'comfort_warehouse', 200 , 'Way' ,'Line','lineString', 'comfort' ],
+            'street_motorway' : [street_motorway,'comfort_street_motorway', 100 , 'Way', 'Line', 'lineString' , 'comfort'], #, street_motorway_wf, street_motorway_bf ] ,
+            'railway' : [railway,'comfort_railway' ,100 , 'Way', 'Line', 'lineString' , 'comfort'], #, railway_wf, railway_bf ] ,
+            'industrial' : [industrial,'comfort_industrial', 200 , 'Way' ,'Line','lineString', 'comfort' ],
+            'warehouse' : [warehouse,'comfort_warehouse', 100 , 'Way' ,'Line','lineString', 'comfort' ],
 
-            'green_forests' : [ green_forests,'comfort_green_forests', 800 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'green_space' : [ green_space,'comfort_green_space', 300 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
-            'green_parks' : [ green_parks,'comfort_green_parks', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_forests' : [ green_forests,'comfort_green_forests', 500 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_space' : [ green_space,'comfort_green_space', 150 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
+            'green_parks' : [ green_parks,'comfort_green_parks', 300 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
             'green_natural' : [ green_natural,'comfort_green_natural', 200 , 'Way' ,'Line','multiPolygon', 'comfort' ] ,
             'lakes' : [ lakes,'comfort_lakes', 200 , 'Way' ,'Line','multiPolygon', 'comfort' ],
-            'rivers' : [ rivers,'comfort_rivers', 300 , 'Way' ,'Line','multiPolygon', 'comfort' ]
+            'rivers' : [ rivers,'comfort_rivers', 200 , 'Way' ,'Line','multiPolygon', 'comfort' ]
              }
 
 
@@ -192,6 +192,11 @@ def master_query(save_local=True):
 
         return query_df
 
+
+#### For the future:
+## Consider using minimal from point (center of grid) to a path. Look at:
+# object.project(other[, normalized=False])
+# Returns the distance along this geometric object to a point nearest the other object.
 
 if __name__ == "__main__":
     print(master_query())

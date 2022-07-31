@@ -100,7 +100,7 @@ class LivabilityMap(object):
         if self.sigmas is None:
             self.get_features()
 
-        self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location_name=self.location_name, sigmas = self.sigmas)
+        # self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location_name=self.location_name, sigmas = self.sigmas)
         ## Integrates features count to grid
         if self.df_grid_FeatCount is None:
             try :
@@ -118,7 +118,7 @@ class LivabilityMap(object):
     @simple_time_tracker
     def calc_livability(self):
         """ Calculate the livability score given the weights"""
-        self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
+        # self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
         ## Calculate livability
         if self.df_grid_Livability is None:
             try :
@@ -139,7 +139,7 @@ class LivabilityMap(object):
 if __name__ == '__main__':
     # city = LivabilityMap(location = 'Regensburg').calc_livability()
 
-    cities = preloaded_cities[44:]#[::-1]
+    cities = preloaded_cities#[::-1]
     # cities = list(dict_city_number_wggesucht.keys())
     print(cities)
     problem_city = []
