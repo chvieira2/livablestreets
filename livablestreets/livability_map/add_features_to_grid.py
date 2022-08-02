@@ -46,13 +46,13 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
                                     save_local=True, save_gcp=False):
     """ Receives the name of the file that is obtained from GCP (or local if available).
         Calls external function to create the grid polygon for each grid"""
-    # shapely.speedups makes some of the spatial queries running faster
+    # shapely.speedups makes some of the spatial queries run faster
     # shapely.speedups.enable()
 
     # Get grid and create polygons
     if df_grid is None:
         df_grid = get_file(file_name=f'{location_name}_grid_{stepsize}m.csv', local_file_path=f'livablestreets/data/{location_name}/WorkingTables', gcp_file_path = f'data/{location_name}/WorkingTables')
-    print('loaded grid')
+        print('loaded grid')
     df_grid=grid_to_polygon(df_grid)
     print('created polygons')
 
@@ -63,7 +63,8 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     feature_names = [feature_name.replace(".csv", "") \
                     for feature_name in os.listdir(directory) if (feature_name.startswith("activities_") \
                     or feature_name.startswith("comfort_") or feature_name.startswith("mobility_") \
-                    or feature_name.startswith("social_life_" ) or feature_name.startswith("negative_") ) \
+                    or feature_name.startswith("social_" )
+                    ) \
                     and feature_name.endswith(".csv")]
 
     # Get the dict of points and create in_polygons keys
@@ -76,7 +77,7 @@ def integrate_all_features_counts(stepsize, location_name, sigmas,
     # Iterate through grids and collects counts of features per grid
     total_grids=len(df_grid)
     for index, row in df_grid.iterrows():
-        print(f'{index+1}/{total_grids}', end='\r')
+        print(f'{index+1}/{total_grids} grids for {location_name}', end='\r')
         if row['grid_in_location']:
             polygon = gpd.GeoDataFrame(pd.DataFrame({'index_value':1,
                                                      'geometry':df_grid.loc[index, 'polygon']}, index=[1]), crs='wgs84')

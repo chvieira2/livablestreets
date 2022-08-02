@@ -88,7 +88,7 @@ with placeholder_map.container():
         st.markdown("""
                 # Welcome to <span style="color:tomato">Livablestreets</span>!
                 ## Explore life quality (livability) of streets in cities around the world.
-                For more information, please check our [GitHub page](https://github.com/chvieira2/livablestreets)
+                For more information, please check [GitHub](https://github.com/chvieira2/livablestreets) and [YouTube](https://youtu.be/KkeSt6GFsLI?t=1950).
                 """, unsafe_allow_html=True)
     st.markdown("""
             ### Let's start:<br>
@@ -96,10 +96,10 @@ with placeholder_map.container():
             - Set the relevance of each features category by using the sliding bars:<br>
             <span style="color:tomato">Activities and Services</span>: health care, education, public services, and banks<br>
             <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
-            <span style="color:tomato">Mobility</span>: public transport and biking infrastructure<br>
+            <span style="color:tomato">Mobility</span>: public transport, roads, and biking infrastructure<br>
             <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
-            - If you are searching for housing (only available for cities in Germany) then open the indicated menu, check the box and set the search parameters;<br>
-            - Press "Display livability map" on the bottom, and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects the livability.
+            - If you are searching for housing then open the indicated menu, check the box and set the search parameters (only available for cities in Germany);<br>
+            - Press "Display livability map", and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects livability.
 
             """, unsafe_allow_html=True)
     # stf.folium_static(placeholderMap)
@@ -125,19 +125,20 @@ with st.sidebar:
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
 
+    expander_weights = form.expander("Options")
 
     # Weights selection
-    form.select_slider(label='Activities and Services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
-    form.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
-    form.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
-    form.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
+    expander_weights.select_slider(label='Activities and Services:', options=list(weight_dict.keys()), value='Average', key='weight_activity', help=None, on_change=None)
+    expander_weights.select_slider(label='Comfort:', options=list(weight_dict.keys()), value='Average', key='weight_comfort', help=None, on_change=None)
+    expander_weights.select_slider(label='Mobility:', options=list(weight_dict.keys()), value='Average', key='weight_mobility', help=None, on_change=None)
+    expander_weights.select_slider(label='Social life:', options=list(weight_dict.keys()), value='Average', key='weight_social', help=None, on_change=None)
 
 
 
     ## Checkbox for wg-gesuch ads
     expander = form.expander("Housing offers (German cities only)")
 
-    cbox_wggesucht = expander.checkbox('Display offers?')
+    cbox_wggesucht = expander.checkbox('Display housing offers?')
 
     # Search filter criterium
     user_filters = expander.multiselect(
@@ -167,7 +168,8 @@ if submitted:
                st.session_state.weight_comfort,
                st.session_state.weight_mobility,
                st.session_state.weight_social,
-               'Average') # Last weight 'average' refers to negative features
+            #    'Average' # Last weight 'average' refers to negative features
+               )
     weights=[weight_dict[i] for i in weights_inputs]
     #check weights
     print(f'Weights entered by user: {weights}')
@@ -175,14 +177,10 @@ if submitted:
     city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
     df_liv = city.df_grid_Livability
-    # Transform livability for visualization
-    # df_liv['livability'] = df_liv['livability'].apply(lambda x: np.sqrt(x))
-    df_liv = min_max_scaler(df_liv, columns = ['livability'], min_val=-0.3, max_val=1)
 
     # MinMax scale all columns for display
-    categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean', 'negative_mean']
+    categories_interest = ['activities_mean', 'comfort_mean', 'mobility_mean', 'social_mean']
     df_liv = min_max_scaler(df_liv, columns = categories_interest)
-    df_liv['negative_mean'] = 1 - df_liv['negative_mean']
     #city center position lat,lon
     # city_coords = [np.mean(df_liv['lat_center']),np.mean(df_liv['lng_center'])]
     row_max_liv = df_liv[df_liv['livability'] == max(df_liv['livability'])].head(1)
@@ -222,7 +220,6 @@ if submitted:
                     """, unsafe_allow_html=True)
 
             # Obtain recent ads
-            ## TO DO find way to display text and map hide text when done. Use that to break apart 'crawl_all_pages function and display text of ongoing process while user waits for ads to load.
             CrawlWgGesucht().crawl_all_pages(location_name = city.location,
                                              number_pages = user_number_pages,
                                              filters = user_filters)
@@ -291,3 +288,7 @@ if submitted:
 
         with displayed_map:
             stf.folium_static(mapObj, width=500, height=500)
+
+        st.markdown(f"""
+                The livability score is only as good as the data available for calculating it. Be aware that the sourced data from OpenStreetMap differs in quality according to location.
+                """)

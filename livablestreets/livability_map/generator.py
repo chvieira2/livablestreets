@@ -3,10 +3,9 @@ from livablestreets.livability_map.create_grid import create_geofence, get_shape
 from livablestreets.livability_map.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_map.livability_score import livability_score, update_livability
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
-from livablestreets.params import preloaded_cities
+from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
 from config.config import ROOT_DIR
-
 
 from livablestreets.OSM_features.query_names_detailed import master_query
 from livablestreets.OSM_features.get_csv_detailed import get_csv
@@ -15,7 +14,7 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 200, weights = [1,1,1,1,1]):
+    def __init__(self, location, stepsize = 200, weights = [1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
@@ -78,22 +77,16 @@ class LivabilityMap(object):
 
     @simple_time_tracker
     def get_features(self):
-        # get_all(location=self.location)
-
-        # get csv of cities of the world
-        # df_cities = pd.read_csv('livablestreets/data/world-cities.csv')
-        # city = self.location
-        # # assigns country name to variable
-        # country = df_cities.loc[df_cities['name'] == city.capitalize()].country.values.flatten()[0]
-
-
-                ## Integrates features count to grid
         if self.query_df is None:
-            # launchs queries of gejson and csv files from local PBF
-            self.query_df = master_query(location_name=self.location_name)
+            try :
+                self.query_df = get_file(f'master_query.csv', local_file_path=f'livablestreets/data', save_local=False)
+            except FileNotFoundError:
+                self.query_df = master_query(save_local=True)
+
 
         distances = list(self.query_df['distance'])
-        self.sigmas = [(0.5*distance)/self.stepsize for distance in distances]
+        # Transform sigmas (divided by two but can be adjusted if necessary) from meters to number of grids
+        self.sigmas = [(distance)/self.stepsize for distance in distances]
         get_csv(location=self.location, location_name = self.location_name, query_df = self.query_df)
 
     @simple_time_tracker
@@ -107,6 +100,7 @@ class LivabilityMap(object):
         if self.sigmas is None:
             self.get_features()
 
+        # self.df_grid_FeatCount = integrate_all_features_counts(df_grid = self.df_grid, stepsize=self.stepsize, location_name=self.location_name, sigmas = self.sigmas)
         ## Integrates features count to grid
         if self.df_grid_FeatCount is None:
             try :
@@ -124,7 +118,7 @@ class LivabilityMap(object):
     @simple_time_tracker
     def calc_livability(self):
         """ Calculate the livability score given the weights"""
-
+        # self.df_grid_Livability = livability_score(self.add_FeatCount_grid(), weights = self.weights, stepsize = self.stepsize, location_name = self.location_name)
         ## Calculate livability
         if self.df_grid_Livability is None:
             try :
@@ -143,11 +137,13 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    # city = LivabilityMap(location = 'Montpellier').calc_livability()
+    # city = LivabilityMap(location = 'Regensburg').calc_livability()
 
-    print(preloaded_cities)
+    cities = preloaded_cities[::-1]
+    # cities = list(dict_city_number_wggesucht.keys())
+    print(cities)
     problem_city = []
-    for city in preloaded_cities:#[::-1]:
+    for city in cities:
         try:
             map_city = LivabilityMap(location = city, stepsize = 200)
             map_city.calc_livability()

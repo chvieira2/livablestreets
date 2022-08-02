@@ -17,7 +17,11 @@ def blur_matrix(array,sigmapx):
 def FeatCount_blurrying(df, slice = None, sigmas_list = None):
     """ Receives a dataframe and the features columns for blurrying and returns the modified data frame
     """
-    df_master = master_query()
+    try :
+        df_master = get_file(f'master_query.csv', local_file_path=f'livablestreets/data', save_local=False)
+    except FileNotFoundError:
+        df_master = master_query(save_local=True)
+
     feature_names = df_master['name'].tolist()
 
     # Check if slice exists, otherwise creates it
