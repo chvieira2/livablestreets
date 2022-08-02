@@ -236,6 +236,7 @@ if submitted:
 
             ## Add ads to map
             for index,row in df.iterrows():
+                livability = get_liv_from_coord(row.loc['latitude'],row.loc['longitude'],liv_df = df_liv)
                 if 'WG' in row.loc['type_offer']:
                     tooltip = f"""
                               {row.loc['title']}<br>
@@ -246,8 +247,7 @@ if submitted:
                               Published on: {row.loc['published_on']}<br>
                               Available from: {'' if pd.isnull(row.loc['available_from']) else row.loc['available_from']}<br>
                               Available until: {'' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
-                              row.loc['longitude'],liv_df = df_liv))}%
+                              Location livability score: {int(0 if pd.isnull(livability) else 100*livability)}%
                               """
                 elif '1 Zimmer Wohnung' in row.loc['type_offer']:
                     tooltip = f"""
@@ -258,8 +258,7 @@ if submitted:
                               Published on: {row.loc['published_on']}<br>
                               Available from: {row.loc['available_from']}<br>
                               Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
-                              row.loc['longitude'],liv_df = df_liv))}%
+                              Location livability score: {int(0 if pd.isnull(livability) else 100*livability)}%
                               """
                 else:
                     tooltip = f"""
@@ -271,8 +270,7 @@ if submitted:
                               Published on: {row.loc['published_on']}<br>
                               Available from: {row.loc['available_from']}<br>
                               Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
-                              row.loc['longitude'],liv_df = df_liv))}%
+                              Location livability score: {int(0 if pd.isnull(livability) else 100*livability)}%
                               """
 
 
