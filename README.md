@@ -20,11 +20,11 @@ In the end, the livability score is calculated as the weighted mean of the four 
 ## Behind the curtains
 1. Once the user inputs the name of the city of interest, the app collects the geographical boundary and virtually fragments it into a matrix grid of squared tiles. The tile dimension defines the spacial resolution of livability score and is set to 200 meters as standard.
 2. Next step is to count the number of ~200 features (bus stops, parks, trees, etc) in each tile of the grid. This step is by far the one taking most calculation.
-3. The amount of all features per grid is the basis for calculating the livability score, but it needs to be processed before we can do it. These are the 3 processing steps:
-- **Blurry**: For all features, the absolut count per tile is diluted across neighboring tiles by applying an image analysis tool (gaussian blurrying). That's how we make a feature have a range of impact besides its own 200 x 200 meters tile.
-- **Transform**: Livability won't necessarily scale with the feature density in the area. Therefore we apply a polynomial transformation of the count of features. For example, having two bars in the proximity of your home could be a good idea, while having 20 bars will probably negatively impact life quality.
-- **Scaling**: Features do not impact life quality equally. To reflect that fact, each feature is scaled by a factor that determines the relevance of that feature to life quality. This factor was manually curated by us. 
-4. Once blurred, transformed and scaled, features are grouped in four categories of living standards (Activities/Services, Comfort, Mobility, and Social Life). We then apply the weights inputed by the user for each category to calculate livability scores according to the user own needs. 
+3. The absolut count of each feature per tile (feature density) is the basis for calculating the livability score, but it needs to be processed before we can do it. These are the 3 processing steps:
+- **Blurry**: Feature density is first diluted across neighboring tiles by applying gaussian blurrying, a tool from image analysis. That's how we make features have a range of impact besides its own 200 x 200 meters tile.
+- **Transform**: Livability won't necessarily scale with the feature density. For example, having two bars in the proximity of your home could be a good idea, while having 20 bars will probably impact life quality differently. Therefore we apply a polynomial transformation on the blurried feature density. 
+- **Scaling**: Features do not impact life quality equally. To reflect that fact, the blurried and transformed feature density is scaled by a factor that determines the relevance of that feature to life quality. This factor was manually curated by us.
+4. Once blurred, transformed and scaled, features are grouped in four categories of living standards by taking the mean value (Activities/Services, Comfort, Mobility, and Social Life). The category value is then again scaled with the weights inputed by the user for each category to calculate livability scores according to the user own needs.
 5. Finally, livability scores are displayed on the map of the city of interest.
 
 ## Displaying housing offers
