@@ -163,4 +163,6 @@ def simple_time_tracker(method):
     return timed
 
 if __name__ == '__main__':
-    print(get_liv_from_coord(52.438432250000005, 13.309635608453753,None))
+
+    df_liv = get_file(f'Livability_berlin_grid_200m.csv', local_file_path=f'livablestreets/data/berlin/WorkingTables')
+    print(get_liv_from_coord(52.438432250000005, 13.309635608453753,df_liv))

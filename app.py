@@ -210,13 +210,16 @@ if submitted:
         displayed_map = st.empty()
         with displayed_map:
             stf.folium_static(mapObj, width=700, height=500)
+        st.markdown(f"""
+            The livability score is only as good as the data available for calculating it. Be aware that the sourced data from OpenStreetMap that is used for calculating the livability score differs in quality around the world.
+            """)
 
         ## Add wg-gesucht ads
         if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
             start_placeholder = st.empty()
             start_placeholder.markdown("""
                     Searching for housing offers...<br>
-                    If this is taking longer than 2-3 minutes, please try again later.
+                    If this is taking longer than 3-5 minutes, please try again later.
                     """, unsafe_allow_html=True)
 
             # Obtain recent ads
@@ -241,9 +244,9 @@ if submitted:
                               Room size: {row.loc['size_sqm']} sqm<br>
                               Capacity: {row.loc['WG_size']} people<br>
                               Published on: {row.loc['published_on']}<br>
-                              Available from: {row.loc['available_from']}<br>
-                              Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              Available from: {'' if pd.isnull(row.loc['available_from']) else row.loc['available_from']}<br>
+                              Available until: {'' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
+                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
                               row.loc['longitude'],liv_df = df_liv))}%
                               """
                 elif '1 Zimmer Wohnung' in row.loc['type_offer']:
@@ -255,7 +258,7 @@ if submitted:
                               Published on: {row.loc['published_on']}<br>
                               Available from: {row.loc['available_from']}<br>
                               Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
                               row.loc['longitude'],liv_df = df_liv))}%
                               """
                 else:
@@ -268,7 +271,7 @@ if submitted:
                               Published on: {row.loc['published_on']}<br>
                               Available from: {row.loc['available_from']}<br>
                               Available until: {'open end' if pd.isnull(row.loc['available_to']) else row.loc['available_to']}<br>
-                              Location livability score: {int(get_liv_from_coord(row.loc['latitude'],
+                              Location livability score: {int(100*get_liv_from_coord(row.loc['latitude'],
                               row.loc['longitude'],liv_df = df_liv))}%
                               """
 
@@ -288,7 +291,3 @@ if submitted:
 
         with displayed_map:
             stf.folium_static(mapObj, width=500, height=500)
-
-        st.markdown(f"""
-                The livability score is only as good as the data available for calculating it. Be aware that the sourced data from OpenStreetMap differs in quality according to location.
-                """)
