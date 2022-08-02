@@ -88,7 +88,7 @@ with placeholder_map.container():
         st.markdown("""
                 # Welcome to <span style="color:tomato">Livablestreets</span>!
                 ## Explore life quality (livability) of streets in cities around the world.
-                For more information, please check our [GitHub page](https://github.com/chvieira2/livablestreets)
+                For more information, please check [GitHub](https://github.com/chvieira2/livablestreets) and [YouTube](https://youtu.be/KkeSt6GFsLI?t=1950).
                 """, unsafe_allow_html=True)
     st.markdown("""
             ### Let's start:<br>
@@ -98,8 +98,8 @@ with placeholder_map.container():
             <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
             <span style="color:tomato">Mobility</span>: public transport, roads, and biking infrastructure<br>
             <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
-            - If you are searching for housing (only available for cities in Germany) then open the indicated menu, check the box and set the search parameters;<br>
-            - Press "Display livability map" on the bottom, and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects the livability.
+            - If you are searching for housing then open the indicated menu, check the box and set the search parameters (only available for cities in Germany);<br>
+            - Press "Display livability map", and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects livability.
 
             """, unsafe_allow_html=True)
     # stf.folium_static(placeholderMap)
