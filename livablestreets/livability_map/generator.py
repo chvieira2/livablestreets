@@ -139,7 +139,7 @@ class LivabilityMap(object):
 if __name__ == '__main__':
     # city = LivabilityMap(location = 'Regensburg').calc_livability()
 
-    cities = preloaded_cities#[::-1]
+    cities = preloaded_cities[::-1]
     # cities = list(dict_city_number_wggesucht.keys())
     print(cities)
     problem_city = []

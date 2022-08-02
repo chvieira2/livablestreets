@@ -96,7 +96,7 @@ with placeholder_map.container():
             - Set the relevance of each features category by using the sliding bars:<br>
             <span style="color:tomato">Activities and Services</span>: health care, education, public services, and banks<br>
             <span style="color:tomato">Comfort</span>: parks, green spaces, water points, leisure areas, and sports<br>
-            <span style="color:tomato">Mobility</span>: public transport and biking infrastructure<br>
+            <span style="color:tomato">Mobility</span>: public transport, roads, and biking infrastructure<br>
             <span style="color:tomato">Social life</span>: eating out, night life, culture, and community spaces<br>
             - If you are searching for housing (only available for cities in Germany) then open the indicated menu, check the box and set the search parameters;<br>
             - Press "Display livability map" on the bottom, and explore the result. Use the toggle between layers icon on the top right corner of the map for more details on how each feature category affects the livability.
@@ -288,3 +288,7 @@ if submitted:
 
         with displayed_map:
             stf.folium_static(mapObj, width=500, height=500)
+
+        st.markdown(f"""
+                The livability score is only as good as the data available for calculating it. Be aware that the sourced data from OpenStreetMap differs in quality according to location.
+                """)
