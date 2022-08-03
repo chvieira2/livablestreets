@@ -98,6 +98,7 @@ preloaded_cities = sorted(set([
             # 'Québec', # This gives me the whole province
             'Rio de Janeiro',
             'Roma',
+            'Salt Lake City',
             'San Francisco',
             'San Jose',
             'São Paulo',
