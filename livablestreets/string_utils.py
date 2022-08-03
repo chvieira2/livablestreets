@@ -35,19 +35,20 @@ def capitalize_city_name(word):
     '''Automatically capitalize cities with 3 strings in name where the second string is not capitalized, like Rio de Janeiro or Frankfurt am Main
     '''
 
-    if len(word.split(' ')) == 3:
+    if word.lower() == 'salt lake city':
+        return 'Salt Lake City'
+
+    elif len(word.split(' ')) == 3:
         word = word.split(' ')
         word[0], word[2] = word[0].capitalize(), word[2].capitalize()
         return ' '.join(word)
 
-    # Automatically capitalize city names
-    elif len(word.split(' ')) != 3:
+    # Automatically capitalize city names with single word, 2 words, or above 3 words capitalize first and last
+    else:# len(word.split(' ')) != 3:
         word = word.split(' ')
-        word = [tag.capitalize() for tag in word]
+        word[0] = word[0].capitalize()
+        word[-1] = word[-1].capitalize()
         return ' '.join(word)
-
-    else:
-        return word.capitalize()
 
 def simplify_address(address):
     street_houseN = address.split(',')[0]
