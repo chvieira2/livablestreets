@@ -109,12 +109,14 @@ def calculate_features_from_centroid(df, location, location_name, location_polyg
 
     # get location shape location_polygon
     if location_polygon is None:
-        gdf_shape_location = get_shape_of_location(location=location, location_name=location_name)
+        gdf_shape_location = get_shape_of_location(location=location,
+                                                   location_name=location_name)
         polygon = gdf_shape_location['geometry']
 
     # Obtain shape's centroid
     centroid = gdf_shape_location.centroid
     centroid = list(centroid[0].coords)[0]
+    print(centroid)
     centroid_lat = centroid[1]
     centroid_lng = centroid[0]
 
@@ -225,4 +227,4 @@ if __name__ == '__main__':
     # geolocator = Nominatim(user_agent="city_compare")
     # print(geolocator.geocode('Köln', exactly_one=False, limit=3))
 
-    create_geofence(stepsize = 2000, location = 'Aachen', location_name='aachen')
+    create_geofence(stepsize = 2000, location = 'Hamburg', location_name='hamburg')
