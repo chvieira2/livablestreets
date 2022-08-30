@@ -137,17 +137,17 @@ class LivabilityMap(object):
 
 
 if __name__ == '__main__':
-    city = LivabilityMap(location = 'Salt Lake City').calc_livability()
+    # city = LivabilityMap(location = 'Salt Lake City').calc_livability()
 
-    # cities = preloaded_cities[::-1]
-    # # cities = list(dict_city_number_wggesucht.keys())
-    # print(cities)
-    # problem_city = []
-    # for city in cities:
-    #     try:
-    #         map_city = LivabilityMap(location = city, stepsize = 200)
-    #         map_city.calc_livability()
-    #     except:
-    #         problem_city.append(city)
+    cities = preloaded_cities[::-1]
+    # cities = list(dict_city_number_wggesucht.keys())
+    print(cities)
+    problem_city = []
+    for city in cities:
+        try:
+            map_city = LivabilityMap(location = city, stepsize = 200)
+            map_city.calc_livability()
+        except:
+            problem_city.append(city)
 
-    # print(f'Cities with problem: {problem_city}')
+    print(f'Cities with problem: {problem_city}')

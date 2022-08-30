@@ -38,7 +38,7 @@ def get_id_deambiguate(location):
     return area_osm_id
 
 @simple_time_tracker
-def get_city_geojson(area_osm_id):
+def get_city_geojson(area_osm_id,location_name):
 
     #overpass query with overpy
     query = f"""[out:json][timeout:25];
@@ -56,8 +56,18 @@ def get_city_geojson(area_osm_id):
         ls_coords = []
 
         for node in way.nodes:
-            ls_coords.append(
-                (node.lon, node.lat))  # create a list of node coordinates
+
+
+            if location_name == 'hamburg': # Filter by tiles inside box around Hamburg
+                if node.lon <= 10.35 and node.lon >= 9.62 and node.lat <= 53.76 and node.lat >= 53.36:
+                    ls_coords.append((node.lon, node.lat))  # create a list of node coordinates
+
+            elif location_name == 'bremen': # Filter by tiles inside box around Bremen
+                if node.lon <= 9.04 and node.lon >= 8.43 and node.lat <= 53.23 and node.lat >= 53.0:
+                    ls_coords.append((node.lon, node.lat))  # create a list of node coordinates
+
+            else:
+                ls_coords.append((node.lon, node.lat))  # create a list of node coordinates
 
         lss.append(
             geometry.LineString(ls_coords))  # create a LineString from coords
@@ -71,7 +81,7 @@ def get_city_geojson(area_osm_id):
 def save_geojson(location, location_name):
     # converts to geojson
     area_osm_id = get_id_deambiguate(location)
-    city_shape = get_city_geojson(area_osm_id)
+    city_shape = get_city_geojson(area_osm_id,location_name)
 
     # saves to file
     with open(f'{ROOT_DIR}/livablestreets/data/{location_name}/{location_name}_boundaries.geojson', 'w') as f:
