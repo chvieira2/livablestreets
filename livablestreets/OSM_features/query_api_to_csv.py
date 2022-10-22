@@ -44,15 +44,15 @@ def get_csv(location, location_name, query_df):
                         success = True
                     except Exception as e:
                         wait = retries * 5
-                        print ('''Overpass API is busy! Check the API status here: http://overpass-api.de/api/status\n
-                               Waiting %s secs and re-trying...''' % wait)
+                        print (f'''Overpass API busy. Check API status: http://overpass-api.de/api/status\n
+                               Waiting {wait} secs and re-trying...\n''')
                         sys.stdout.flush()
                         time.sleep(wait)
                         retries += 1
 
                 if new_querie['elements']:
                     df_new_querie = pd.DataFrame(new_querie['elements'])
-                    print(f'------------------------------------------------------------>')
+                    print(f'--------------------------------')
 
                     ne = df_new_querie[df_new_querie['geometry'].notna()]
                     xss = ne['geometry']
@@ -61,14 +61,12 @@ def get_csv(location, location_name, query_df):
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {filter_name}.csv ----------------- ')
+                    print(f'\n ---- saving {filter_name}.csv --- ')
                     df_new_querie.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
-                    # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 30 seconds \n------------------------------------------------------------/''')
 
-                    # time.sleep(30)
                 else:
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {filter_name}.csv ----------------- ')
+                    print(f'\n ----- saving EMPTY {filter_name}.csv ---')
                     empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
                     empty_df.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
@@ -85,31 +83,29 @@ def get_csv(location, location_name, query_df):
                         success = True
                     except Exception as e:
                         wait = retries * 5
-                        print ('''Overpass API is busy! Check the API status here: http://overpass-api.de/api/status\n
-                               Waiting %s secs and re-trying...''' % wait)
+                        print (f'''Overpass API busy. Check API status: http://overpass-api.de/api/status\n
+                               Waiting {wait} and re-trying...\n''')
                         sys.stdout.flush()
                         time.sleep(wait)
                         retries += 1
 
                 if new_querie['elements']:
-                    print(f'----------------------------------------------------------->')
+                    print(f'--------------------------------')
 
                     df_new_querie = pd.DataFrame(new_querie['elements'])[['lat', 'lon']]
                     df_new_querie['coor'] = list(zip(df_new_querie.lat, df_new_querie.lon))
 
 
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving {filter_name}.csv ----------------- ')
+                    print(f'\n ---- saving {filter_name}.csv --- ')
                     df_new_querie.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
-                    # print(f'''\nServer cooldown ┬─┬⃰͡ (ᵔᵕᵔ͜ ) please wait 5 seconds\n------------------------------------------------------------/''')
 
-                    # time.sleep(5)
                 else:
-                    print(f'\n ----------- ʕᵔᴥᵔʔ saving EMPTY {filter_name}.csv ----------------- ')
+                    print(f'\n ----- saving EMPTY {filter_name}.csv ---')
                     empty_df=pd.DataFrame({'lat':[],'lon':[],'coor':[]})
                     empty_df.to_csv(f'{outdir}/{filter_name}.csv', index=False)
 
-    print(f'''Done saving features csv file ⊂(◉‿◉)つ sorry for the wait'\n------------------------------------------------------------/''')
+    print(f'''--- csv file for {location} is finished---\n ''')
 
 
 if __name__ == "__main__":
@@ -118,5 +114,6 @@ if __name__ == "__main__":
     # df_eating.to_csv('../livablestreets/data/df_eating.csv', index=False)
     # get_all(location = 'Berlin')
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
+
     query_df = master_query()
     get_csv(location='Berlin', location_name='berlin', query_df=query_df)
