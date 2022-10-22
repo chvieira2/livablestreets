@@ -3,7 +3,7 @@ import numpy as np
 from livablestreets.utils import simple_time_tracker, get_file
 import pandas as pd
 
-from livablestreets.OSM_features.query_names_detailed import master_query
+from livablestreets.OSM_features.query_api_categories import master_query
 
 def blur_matrix(array,sigmapx):
 

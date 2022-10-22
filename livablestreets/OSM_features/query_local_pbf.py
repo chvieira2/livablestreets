@@ -9,13 +9,15 @@ import geopandas as gpd
 
 import shapely.geometry as geometry
 from shapely.ops import linemerge, unary_union, polygonize
-
 from shapely.geometry import mapping
 from geojson import dump
 
+from livablestreets.OSM_features.query_api_categories import master_query
+from livablestreets.OSM_features.query_local_osmfilter import data_from_pbf
 
-from livablestreets.OSM_features.query_names_detailed import master_query
-from livablestreets.OSM_features.query_osmfilter import data_from_pbf
+
+''' This file executes the query_local_osmfilter.py file and exports the data as geojson files
+it uses esy.osmfilter to filter the data from the PBF file. It's a bit slow but it works'''
 
 
 def get_pbf_json(country= 'germany',city = 'berlin'):

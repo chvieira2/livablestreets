@@ -7,8 +7,8 @@ from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
 from config.config import ROOT_DIR
 
-from livablestreets.OSM_features.query_names_detailed import master_query
-from livablestreets.OSM_features.get_csv_detailed import get_csv
+from livablestreets.OSM_features.query_api_categories import master_query
+from livablestreets.OSM_features.query_api_to_csv import get_csv
 
 import pandas as pd
 

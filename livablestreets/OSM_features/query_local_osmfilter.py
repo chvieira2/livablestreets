@@ -1,6 +1,9 @@
 from esy.osmfilter import run_filter
 from esy.osmfilter import Node, Way, Relation
 
+''' This filter function is used only when using PBF files as input. pbf files are much faster to load than osm files.
+pbf files are also much smaller than osm files. The downside is that pbf files are not human readable. '''
+
 def data_from_pbf(index, stri, pbf, json):
     '''index, string, pbf, json'''
     name = index
