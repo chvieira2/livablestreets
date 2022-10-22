@@ -1,7 +1,7 @@
 import pandas as pd
 # from google.cloud import storage
 # from livablestreets.params import BUCKET_NAME
-from livablestreets.OSM_features.osm_query import query_params_osm
+from livablestreets.OSM_features.query_api_osm import query_params_osm
 from livablestreets.OSM_features.query_api_categories import master_query
 
 import os, sys, time
