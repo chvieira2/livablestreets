@@ -50,6 +50,8 @@ def query_params_osm(location, keys, features, limit=''):
     # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
     # location_area = f'area({get_id_deambiguate(location)})->.city'
 
+    # query_area = f'area(id:{osm_id})->.searchArea;
+
     if features == 'ways':
         params = param_ways(dict(keys))
         out_type = 'geom'
@@ -60,14 +62,8 @@ def query_params_osm(location, keys, features, limit=''):
         params = param_nodes(dict(keys))
         out_type = 'center'
 
-    overpass_query = f"""
-                    [out:json][timeout:900];
-                    {location_area};
-                    ({params}
-                    );
-                    (._;>;);
-                    out {limit} {out_type};
-                    """
+    # do not create multiple lines
+    overpass_query = f"""[out:json][timeout:900];{location_area};({params});(._;>;);out {limit} {out_type};"""
 
     ## Code trying to get features beyond border cities:
     # [out:json][timeout:900];

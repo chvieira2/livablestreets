@@ -116,4 +116,4 @@ if __name__ == "__main__":
     # get_leisure_sports(location = 'berlin', leisure_sports= leisure_sports)
 
     query_df = master_query()
-    get_csv(location='Berlin', location_name='berlin', query_df=query_df)
+    get_csv(location='stockholm', location_name='stockholm', query_df=query_df)
