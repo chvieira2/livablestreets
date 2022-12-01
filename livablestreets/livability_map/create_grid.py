@@ -15,11 +15,12 @@ from config.config import ROOT_DIR
 
 
 @simple_time_tracker
-def get_id_deambiguate(location):
+def get_id_deambiguate(location = 'stockholm', country_code = 'SE'):
 
     # Geocoding request via Nominatim
-    geolocator = Nominatim(user_agent="city_compare")
-    geo_results = geolocator.geocode(location, exactly_one=False, limit=3)
+    geolocator = Nominatim(user_agent="livablestreets")
+    geo_results = geolocator.geocode(location, country_codes = country_code, exactly_one=False, limit=3)
+
     # Searching for relation in result set
     for r in geo_results:
         print(r.address, r.raw.get("osm_type"))
@@ -27,22 +28,24 @@ def get_id_deambiguate(location):
             city = r
             break
 
-    # Calculating area id
-    # area_relid = int(city.raw.get("osm_id")) + 3600000000 #for relations
-    # area_wayid = int(city.raw.get("osm_id")) + 2400000000 #for ways
+    # Calculating osm ID number for city
+    osm_id = int(city.raw.get("osm_id")) #+ 3600000000 # only for relations
+
     try:
-        area_osm_id = int(city.raw.get("osm_id")) #for city
+        osm_id = int(city.raw.get("osm_id")) #+ 3600000000 # only for relations
     except UnboundLocalError:
         print(f"OpenStreetMaps could not find a relation osm_type for {location}")
         return get_id_deambiguate(german_characters(location))
-    return area_osm_id
+
+    return osm_id
+
 
 @simple_time_tracker
-def get_city_geojson(area_osm_id,location_name):
+def get_city_geojson(osm_id,location_name):
 
     #overpass query with overpy
     query = f"""[out:json][timeout:25];
-                rel({area_osm_id});
+                rel({osm_id});
                 out body;
                 >;
                 out skel qt; """
@@ -78,9 +81,9 @@ def get_city_geojson(area_osm_id,location_name):
     city_shape = geometry.MultiPolygon(polygons)
     return city_shape
 
-def save_geojson(location, location_name):
+def save_geojson(location, country_code, location_name):
     # converts to geojson
-    area_osm_id = get_id_deambiguate(location)
+    area_osm_id = get_id_deambiguate(location, country_code)
     city_shape = get_city_geojson(area_osm_id,location_name)
 
     # saves to file
@@ -224,7 +227,10 @@ def create_geofence(location, location_name, stepsize,
 
 
 if __name__ == '__main__':
-    # geolocator = Nominatim(user_agent="city_compare")
-    # print(geolocator.geocode('Köln', exactly_one=False, limit=3))
 
-    create_geofence(stepsize = 2000, location = 'Hamburg', location_name='hamburg')
+    # create_geofence(stepsize = 2000, location = 'Hamburg', location_name='hamburg')
+    location = 'stockholm'
+    country_code = 'SE'
+
+    save_geojson(location, country_code, location)
+    print('shapefile saved to geojson')

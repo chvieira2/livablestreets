@@ -13,7 +13,7 @@ def param_nodes(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""node['{k}'='{v}'](area.city);"""
+            osm_keys += f"""node['{k}'='{v}'](area.searchArea);"""
     return osm_keys
 
 def param_ways(keys):
@@ -21,7 +21,7 @@ def param_ways(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""way['{k}'='{v}'](area.city);"""
+            osm_keys += f"""way['{k}'='{v}'](area.searchArea);"""
     return osm_keys
 
 def param_areas(keys):
@@ -29,26 +29,17 @@ def param_areas(keys):
     osm_keys = ''
     for k,val in keys.items():
         for v in val:
-            osm_keys += f"""rel['{k}'='{v}'](area.city);"""
+            osm_keys += f"""rel['{k}'='{v}'](area.searchArea);"""
     return osm_keys
 
-def query_params_osm(location, keys, features, limit=''):
+
+def query_params_osm(osm_id, keys, features, limit=''):
     '''Adding keys and values as a dictionary, example: keys_values_osm = {'amenity':['bbq','cafe']}
     several values can be added to a same key as a list, returns a dict
     feat = nodes, ways or areas (geometry type)
     limit = number (optional query limit)'''
-    location_area = f'area[name="{location}"]->.city'
 
-    # Use:
-    # area[name="Germany"]['admin_level'='2']->.country;
-    # area[name="Berlin"](area.country)->.city;
-    # For selecting within country
-
-    # "name:en" instead of name, for searching names in english.
-
-    ## Maybe search for city ID instead of city name
-    # location_area = f'{{{{geocodeArea:{location}}}}}->.city'
-    # location_area = f'area({get_id_deambiguate(location)})->.city'
+    location_area = f'area(id:{osm_id})->.searchArea'
 
     if features == 'ways':
         params = param_ways(dict(keys))
@@ -60,33 +51,21 @@ def query_params_osm(location, keys, features, limit=''):
         params = param_nodes(dict(keys))
         out_type = 'center'
 
-    overpass_query = f"""
-                    [out:json][timeout:900];
-                    {location_area};
-                    ({params}
-                    );
-                    (._;>;);
-                    out {limit} {out_type};
-                    """
-
-    ## Code trying to get features beyond border cities:
-    # [out:json][timeout:900];
-    # area[name="Germany"]['admin_level'='2']->.country;
-    # area[name="Berlin"](area.country)->.city;
-    # (
-    #  way['waterway'='river'](area.city);
-    #  way['waterway'='river'](around.city:5000);
-    # );
-    # (._;>;);
-    # out geom;
+    # [WARNING] do not create multiple lines for the next string: !!!
+    overpass_query = f"[out:json][timeout:900];{location_area};({params});(._;>;);out {limit} {out_type};"
 
     response = requests.get(overpass_url,
                             params={'data': overpass_query})
     return response.json()
+    # print(overpass_query)
 
 
 if __name__ == "__main__":
-    # print(param_nodes(keys = {'amenity': ['atm', 'bank', 'bureau_de_change']}))
-    print(query_params_osm(location = "Copenhagen",
-                    keys = {'amenity': ['atm', 'bank', 'bureau_de_change']},
-                    features = 'nodes'))
+
+    location = 'stockholm'
+    country_code = 'SE'
+    osm_id = get_id_deambiguate(location, country_code) + 3600000000
+
+    print(query_params_osm(osm_id,
+                           keys = {'amenity': ['atm', 'bank', 'bureau_de_change']},
+                           features = 'nodes'))
