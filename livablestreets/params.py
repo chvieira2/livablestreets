@@ -68,12 +68,15 @@ dict_city_number_wggesucht = {
             'Würzburg':'141'
         }
 
-#### test
-preloaded_cities = ['Stockholm']
 
 #### test nominatim, 'city' , 'country ISO code'
-_location = ['Stockholm']
-_country_ID = ['SE']
+failed_cities = {'Stockholm': 'SE',
+                 'Belfast': 'GB',
+                 'Brussels': 'BE',
+                 'Copenhagen': 'DK',
+                 'Moscow': 'RU',
+                 'Quebec': 'CA'}
+
 
 preloaded_cities = sorted(set([
             'Amsterdam',
