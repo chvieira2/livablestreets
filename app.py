@@ -21,9 +21,9 @@ import pandas as pd
 from config.config import ROOT_DIR
 from livablestreets.livability_map.display_map import plot_map
 from livablestreets.livability_map.generator import LivabilityMap
-from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
-from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
-from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
+from livablestreets.params import preloaded_cities, dict_city_number_wggesucht, failed_cities
+# from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
+# from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
 from livablestreets.utils import get_liv_from_coord, min_max_scaler
 
 #-----------------------page configuration-------------------------
@@ -121,7 +121,10 @@ with st.sidebar:
     form = st.form("calc_weights")
 
     # City selection
-    form.selectbox(label = 'Select a city of interest', key='input_city', options = preloaded_cities, index=preloaded_cities.index('Berlin'))
+    form.selectbox(label = 'Select a city of interest',
+                   key='input_city',
+                   options = list(failed_cities.keys()),
+                   index = 0)
     # form.text_input(label='Type city name', key='input_city', type="default", on_change=None, placeholder='p.ex. Berlin')
 
 
@@ -174,7 +177,14 @@ if submitted:
     #check weights
     print(f'Weights entered by user: {weights}')
 
-    city = LivabilityMap(location=st.session_state.input_city, weights=weights)
+    #city and country code
+    location = st.session_state.input_city
+    country_code = failed_cities.get(location)
+
+    #get the livability map
+    city = LivabilityMap(location, country_code, stepsize=200, weights=weights)
+
+    # city = LivabilityMap(location=st.session_state.input_city, weights=weights)
     city.calc_livability()
     df_liv = city.df_grid_Livability
 
@@ -215,6 +225,7 @@ if submitted:
             """)
 
         ## Add wg-gesucht ads
+        '''
         if city.location in list(dict_city_number_wggesucht.keys()) and cbox_wggesucht:
             start_placeholder = st.empty()
             start_placeholder.markdown("""
@@ -289,3 +300,4 @@ if submitted:
 
         with displayed_map:
             stf.folium_static(mapObj, width=500, height=500)
+        '''
