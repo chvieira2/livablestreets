@@ -3,7 +3,7 @@ from livablestreets.livability_map.create_grid import create_geofence, get_shape
 from livablestreets.livability_map.add_features_to_grid import integrate_all_features_counts
 from livablestreets.livability_map.livability_score import livability_score, update_livability
 from livablestreets.utils import simple_time_tracker, get_file, create_dir
-from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
+from livablestreets.params import preloaded_cities, dict_city_number_wggesucht, failed_cities
 from livablestreets.string_utils import standardize_characters, capitalize_city_name
 from config.config import ROOT_DIR
 
@@ -14,13 +14,14 @@ import pandas as pd
 
 
 class LivabilityMap(object):
-    def __init__(self, location, stepsize = 200, weights = [1,1,1,1]):
+    def __init__(self, location, country_code, stepsize = 200, weights = [1,1,1,1]):
         """ This class puts together all processes to generate and plot the map with livability heatmap
             """
         self.df_grid = None
         self.df_grid_FeatCount = None
         self.df_grid_Livability = None
         self.location = capitalize_city_name(location)
+        self.country_code = country_code
         self.query_df = None
         self.stepsize = stepsize
         self.weights = weights
@@ -87,7 +88,7 @@ class LivabilityMap(object):
         distances = list(self.query_df['distance'])
         # Transform sigmas (divided by two but can be adjusted if necessary) from meters to number of grids
         self.sigmas = [(distance)/self.stepsize for distance in distances]
-        get_csv(location=self.location, location_name = self.location_name, query_df = self.query_df)
+        get_csv(location=self.location, country_code=self.country_code, location_name = self.location_name, query_df = self.query_df)
 
     @simple_time_tracker
     def add_FeatCount_grid(self):
@@ -139,13 +140,15 @@ class LivabilityMap(object):
 if __name__ == '__main__':
     # city = LivabilityMap(location = 'Salt Lake City').calc_livability()
 
-    cities = preloaded_cities[::-1]
+    # cities = preloaded_cities[::-1]
     # cities = list(dict_city_number_wggesucht.keys())
+
+    cities = failed_cities
     print(cities)
     problem_city = []
-    for city in cities:
+    for city, country_code in cities.items():
         try:
-            map_city = LivabilityMap(location = city, stepsize = 200)
+            map_city = LivabilityMap(location = city, country_code = country_code, stepsize = 200)
             map_city.calc_livability()
         except:
             problem_city.append(city)
