@@ -111,7 +111,7 @@ preloaded_cities = sorted(set([
             'San Francisco',
             'San Jose',
             'São Paulo',
-            # 'Stockholm', # no features
+            'Stockholm', # no features
             'Tallinn',
             'Vancouver',
             'Warszawa',

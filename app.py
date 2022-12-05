@@ -21,7 +21,7 @@ import pandas as pd
 from config.config import ROOT_DIR
 from livablestreets.livability_map.display_map import plot_map
 from livablestreets.livability_map.generator import LivabilityMap
-from livablestreets.params import preloaded_cities, dict_city_number_wggesucht
+from livablestreets.params import preloaded_cities, dict_city_number_wggesucht, failed_cities
 from livablestreets.ads_crawler.crawl_wggesucht import CrawlWgGesucht
 from livablestreets.string_utils import standardize_characters, capitalize_city_name, german_characters
 from livablestreets.utils import get_liv_from_coord, min_max_scaler

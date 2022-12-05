@@ -52,7 +52,12 @@ def query_params_osm(osm_id, keys, features, limit=''):
         out_type = 'center'
 
     # [WARNING] do not create multiple lines for the next string: !!!
-    overpass_query = f"[out:json][timeout:900];{location_area};({params});(._;>;);out {limit} {out_type};"
+    overpass_query = f"""[out:json][timeout:900];
+                        {location_area};
+                        ({params});
+                        (._;>;
+                        );
+                        out {limit} {out_type};"""
 
     response = requests.get(overpass_url,
                             params={'data': overpass_query})
