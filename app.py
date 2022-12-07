@@ -71,6 +71,16 @@ st.markdown(
             </style>
             ''', unsafe_allow_html=True)
 
+# --- HIDE STREAMLIT STYLE ---
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 #----Simple placeholder for the world map with arbitrary city coordenates------
 placeholder_map = st.empty()
