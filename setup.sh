@@ -2,7 +2,7 @@ mkdir -p ~/.streamlit/
 
 echo "\
 [general]\n\
-email = \"${HEROKU_EMAIL_ADDRESS}\"\n\
+email = \"${EMAIL_ADDRESS}\"\n\
 " > ~/.streamlit/credentials.toml
 
 echo "\
