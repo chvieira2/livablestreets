@@ -2,7 +2,7 @@
 
 Moving to a new city can be tough. How do you decide which neighborhood to live in? Livablestreets is an open source web-tool for exploring life quality (livability) at street level, and around the world. To make your life easier, we also incorporated housing offers directly to the map, so you immediately receive most recently available offers!
 
-It's easy and intuitive! Visit our webpage and try it out: [Livablestreets](https://livablestreets.herokuapp.com/)
+It's easy and intuitive! Visit our webpage and try it out: [Livablestreets](https://livablestreets.streamlit.app/)
 
 
 Not into reading? Watch about our project on [YouTube](https://youtu.be/KkeSt6GFsLI?t=1950).
